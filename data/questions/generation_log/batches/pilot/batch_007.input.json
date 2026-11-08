@@ -1,0 +1,2592 @@
+{
+ "sample": "pilot",
+ "batch": 7,
+ "prompt_version": "prompt_v1",
+ "n_items": 12,
+ "items": [
+  {
+   "vuid": "VUID-VkBlitImageInfo2-dstImage-02000",
+   "entity": "VkBlitImageInfo2",
+   "entity_kind": "api",
+   "stratum": "core_promoted",
+   "vu_text": "The format features of dstImage must contain VK_FORMAT_FEATURE_BLIT_DST_BIT",
+   "vu_chunk": "VUID-VkBlitImageInfo2-dstImage-02000\n[VkBlitImageInfo2] [dstImage] [VK_KHR_copy_commands2, Vulkan 1.3]\nThe format features of dstImage must contain VK_FORMAT_FEATURE_BLIT_DST_BIT",
+   "answer_type": "yes_no",
+   "qids": {
+    "identifier": "qp-4a415e0fe8-id",
+    "descriptive": "qp-e4ee4b3dee-de"
+   },
+   "related_entities": [
+    "VkBlitImageCubicWeightsInfoQCOM",
+    "VkImageBlit2"
+   ],
+   "ref_chunks": [
+    "sec-9ec7b0d0c6ce",
+    "sec-c625204d3114"
+   ],
+   "expected_verdict": "no"
+  },
+  {
+   "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-buffer-03719",
+   "entity": "VkCopyAccelerationStructureInfoKHR",
+   "entity_kind": "api",
+   "stratum": "ext_popular",
+   "vu_text": "The range of dst accessed by this command must be fully backed by physical memory",
+   "vu_chunk": "VUID-VkCopyAccelerationStructureInfoKHR-buffer-03719\n[VkCopyAccelerationStructureInfoKHR] [buffer] [VK_KHR_acceleration_structure]\nThe range of dst accessed by this command must be fully backed by physical memory",
+   "answer_type": "rule",
+   "qids": {
+    "identifier": "qp-29dea1217d-id",
+    "descriptive": "qp-b89d185a91-de"
+   },
+   "related_entities": [],
+   "ref_chunks": []
+  },
+  {
+   "vuid": "VUID-VkCopyImageInfo2-srcImage-07969",
+   "entity": "VkCopyImageInfo2",
+   "entity_kind": "api",
+   "stratum": "ext_niche",
+   "vu_text": "srcImage must not have been created with flags containing VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT",
+   "vu_chunk": "VUID-VkCopyImageInfo2-srcImage-07969\n[VkCopyImageInfo2] [srcImage] [VK_EXT_fragment_density_map, VK_KHR_copy_commands2, Vulkan 1.3]\nsrcImage must not have been created with flags containing VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT",
+   "answer_type": "scenario",
+   "qids": {
+    "identifier": "qp-f4462dec57-id",
+    "descriptive": "qp-a8f8f4fad5-de"
+   },
+   "related_entities": [
+    "VkImageCopy2"
+   ],
+   "ref_chunks": [
+    "sec-b8bc01c3dfb5"
+   ]
+  },
+  {
+   "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522",
+   "entity": "VkRenderingInputAttachmentIndexInfo",
+   "entity_kind": "api",
+   "stratum": "core_promoted",
+   "vu_text": "Elements of pColorAttachmentInputIndices that are not VK_ATTACHMENT_UNUSED must each be unique",
+   "vu_chunk": "VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522\n[VkRenderingInputAttachmentIndexInfo] [pColorAttachmentInputIndices] [VK_KHR_dynamic_rendering_local_read, Vulkan 1.4]\nElements of pColorAttachmentInputIndices that are not VK_ATTACHMENT_UNUSED must each be unique",
+   "answer_type": "yes_no",
+   "qids": {
+    "identifier": "qp-91121f4f2e-id",
+    "descriptive": "qp-5a30034c40-de"
+   },
+   "related_entities": [],
+   "ref_chunks": [
+    "sec-b6b04f98fae1"
+   ],
+   "expected_verdict": "yes"
+  },
+  {
+   "vuid": "VUID-VkResourceDescriptorInfoEXT-pNext-11401",
+   "entity": "VkResourceDescriptorInfoEXT",
+   "entity_kind": "api",
+   "stratum": "recent",
+   "vu_text": "If there is a VkDebugUtilsObjectNameInfoEXT structure in the pNext chain, its objectType must be VK_OBJECT_TYPE_UNKNOWN",
+   "vu_chunk": "VUID-VkResourceDescriptorInfoEXT-pNext-11401\n[VkResourceDescriptorInfoEXT] [pNext] [VK_EXT_debug_utils, VK_EXT_descriptor_heap]\nIf there is a VkDebugUtilsObjectNameInfoEXT structure in the pNext chain, its objectType must be VK_OBJECT_TYPE_UNKNOWN",
+   "answer_type": "scenario",
+   "qids": {
+    "identifier": "qp-9b90a92152-id",
+    "descriptive": "qp-c7cc3be412-de"
+   },
+   "related_entities": [
+    "VkDebugUtilsObjectNameInfoEXT"
+   ],
+   "ref_chunks": [
+    "sec-fdee43c8b6a8"
+   ]
+  },
+  {
+   "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-idrPeriod-08284",
+   "entity": "VkVideoEncodeH264RateControlInfoKHR",
+   "entity_kind": "api",
+   "stratum": "ext_niche",
+   "vu_text": "If idrPeriod is not 0, then it must be greater than or equal to gopFrameCount",
+   "vu_chunk": "VUID-VkVideoEncodeH264RateControlInfoKHR-idrPeriod-08284\n[VkVideoEncodeH264RateControlInfoKHR] [idrPeriod] [VK_KHR_video_encode_h264, VK_KHR_video_queue]\nIf idrPeriod is not 0, then it must be greater than or equal to gopFrameCount",
+   "answer_type": "yes_no",
+   "qids": {
+    "identifier": "qp-3dd3880816-id",
+    "descriptive": "qp-2445ff385a-de"
+   },
+   "related_entities": [],
+   "ref_chunks": [],
+   "expected_verdict": "yes"
+  },
+  {
+   "vuid": "VUID-vkCmdBeginQuery-queryType-00804",
+   "entity": "vkCmdBeginQuery",
+   "entity_kind": "api",
+   "stratum": "core_1_0",
+   "vu_text": "If the queryType used to create queryPool was VK_QUERY_TYPE_PIPELINE_STATISTICS and any of the pipelineStatistics indicate graphics operations, the VkCommandPool that commandBuffer was allocated from must support graphics operations",
+   "vu_chunk": "VUID-vkCmdBeginQuery-queryType-00804\n[vkCmdBeginQuery] [queryType] [Vulkan 1.0]\nIf the queryType used to create queryPool was VK_QUERY_TYPE_PIPELINE_STATISTICS and any of the pipelineStatistics indicate graphics operations, the VkCommandPool that commandBuffer was allocated from must support graphics operations",
+   "answer_type": "rule",
+   "qids": {
+    "identifier": "qp-4e5326f51a-id",
+    "descriptive": "qp-061cf80350-de"
+   },
+   "related_entities": [],
+   "ref_chunks": [
+    "sec-00c569cd5ce5"
+   ]
+  },
+  {
+   "vuid": "VUID-vkCmdBindIndexBuffer2-None-09493",
+   "entity": "vkCmdBindIndexBuffer2",
+   "entity_kind": "api",
+   "stratum": "core_promoted",
+   "vu_text": "If the maintenance6 feature is not enabled, buffer must not be VK_NULL_HANDLE",
+   "vu_chunk": "VUID-vkCmdBindIndexBuffer2-None-09493\n[vkCmdBindIndexBuffer2] [VK_KHR_maintenance5, Vulkan 1.4]\nIf the maintenance6 feature is not enabled, buffer must not be VK_NULL_HANDLE",
+   "answer_type": "rule",
+   "qids": {
+    "identifier": "qp-6f23709d54-id",
+    "descriptive": "qp-70ad242eee-de"
+   },
+   "related_entities": [],
+   "ref_chunks": [
+    "sec-ca14056a80bf",
+    "sec-0860ce5cef2a"
+   ]
+  },
+  {
+   "vuid": "VUID-vkCmdClearColorImage-imageLayout-01394",
+   "entity": "vkCmdClearColorImage",
+   "entity_kind": "api",
+   "stratum": "core_1_0",
+   "vu_text": "imageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL or VK_IMAGE_LAYOUT_GENERAL",
+   "vu_chunk": "VUID-vkCmdClearColorImage-imageLayout-01394\n[vkCmdClearColorImage] [imageLayout] [Vulkan 1.0]\nimageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL or VK_IMAGE_LAYOUT_GENERAL",
+   "answer_type": "yes_no",
+   "qids": {
+    "identifier": "qp-d75cfc8ca0-id",
+    "descriptive": "qp-7d6851fa48-de"
+   },
+   "related_entities": [
+    "VkImageSubresourceRange"
+   ],
+   "ref_chunks": [
+    "sec-30fe2a45d5fc"
+   ],
+   "expected_verdict": "no"
+  },
+  {
+   "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-00209",
+   "entity": "vkCmdCopyBufferToImage",
+   "entity_kind": "api",
+   "stratum": "core_1_0",
+   "vu_text": "For each element of pRegions, if the sum of imageOffset.z and extent.depth does not equal the depth of the subresource specified by srcSubresource, extent.depth must be a multiple of the texel block extent depth of the VkFormat of dstImage",
+   "vu_chunk": "VUID-vkCmdCopyBufferToImage-dstImage-00209\n[vkCmdCopyBufferToImage] [dstImage] [Vulkan 1.0]\nFor each element of pRegions, if the sum of imageOffset.z and extent.depth does not equal the depth of the subresource specified by srcSubresource, extent.depth must be a multiple of the texel block extent depth of the VkFormat of dstImage",
+   "answer_type": "rule",
+   "qids": {
+    "identifier": "qp-cb98ab0dea-id",
+    "descriptive": "qp-24045ce9f4-de"
+   },
+   "related_entities": [
+    "VkBufferImageCopy"
+   ],
+   "ref_chunks": [
+    "sec-f4f3e92f02e7",
+    "sec-7feaf622aec6"
+   ]
+  },
+  {
+   "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-10936",
+   "entity": "vkCmdCopyMemoryIndirectKHR",
+   "entity_kind": "api",
+   "stratum": "recent",
+   "vu_text": "The VkCommandPool that commandBuffer was allocated from must support at least one of the queue types specified in VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues",
+   "vu_chunk": "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-10936\n[vkCmdCopyMemoryIndirectKHR] [commandBuffer] [VK_KHR_copy_memory_indirect, VK_NV_copy_memory_indirect]\nThe VkCommandPool that commandBuffer was allocated from must support at least one of the queue types specified in VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues",
+   "answer_type": "rule",
+   "qids": {
+    "identifier": "qp-372fd8f17a-id",
+    "descriptive": "qp-09e74c06cd-de"
+   },
+   "related_entities": [
+    "VkCopyMemoryIndirectInfoKHR"
+   ],
+   "ref_chunks": [
+    "sec-a8fd078bdbe7",
+    "sec-68443922c32f"
+   ]
+  },
+  {
+   "vuid": "VUID-vkDestroyBuffer-buffer-00922",
+   "entity": "vkDestroyBuffer",
+   "entity_kind": "api",
+   "stratum": "core_1_0",
+   "vu_text": "All submitted commands that refer to buffer, either directly or via a VkBufferView, must have completed execution",
+   "vu_chunk": "VUID-vkDestroyBuffer-buffer-00922\n[vkDestroyBuffer] [buffer] [Vulkan 1.0]\nAll submitted commands that refer to buffer, either directly or via a VkBufferView, must have completed execution",
+   "answer_type": "scenario",
+   "qids": {
+    "identifier": "qp-6de2eff3d2-id",
+    "descriptive": "qp-47e8a572a9-de"
+   },
+   "related_entities": [
+    "VkAllocationCallbacks"
+   ],
+   "ref_chunks": []
+  }
+ ],
+ "context": {
+  "entities": {
+   "VkBlitImageInfo2": {
+    "section_id": "VkBlitImageInfo2",
+    "section_parts": [
+     "[Copy Commands > Image Copies With Scaling > VkBlitImageInfo2]\nThe VkBlitImageInfo2 structure is defined as:\n\n// Provided by VK_VERSION_1_3\ntypedef struct VkBlitImageInfo2 {\nVkStructureType sType;\nconst void* pNext;\nVkImage srcImage;\nVkImageLayout srcImageLayout;\nVkImage dstImage;\nVkImageLayout dstImageLayout;\nuint32_t regionCount;\nconst VkImageBlit2* pRegions;\nVkFilter filter;\n} VkBlitImageInfo2;\n\n// Provided by VK_KHR_copy_commands2\n// Equivalent to VkBlitImageInfo2\ntypedef VkBlitImageInfo2 VkBlitImageInfo2KHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- srcImage is the source image.\n\n- srcImageLayout is the layout of the source image subresources for the blit.\n\n- dstImage is the destination image.\n\n- dstImageLayout is the layout of the destination image subresources for the blit.\n\n- regionCount is the number of regions to blit.\n\n- pRegions is a pointer to an array of VkImageBlit2 structures specifying the regions to blit.\n\n- filter is a VkFilter specifying the filter to apply if the blits require scaling."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkBlitImageInfo2-aspectMask-00241",
+      "explicit": true,
+      "text": "For each element of pRegions, srcSubresource.aspectMask must specify aspects present in srcImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-aspectMask-00242",
+      "explicit": true,
+      "text": "For each element of pRegions, dstSubresource.aspectMask must specify aspects present in dstImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-00224",
+      "explicit": true,
+      "text": "dstImage must have been created with the VK_IMAGE_USAGE_TRANSFER_DST_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-00225",
+      "explicit": true,
+      "text": "If dstImage is non-sparse then it must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-00234",
+      "explicit": true,
+      "text": "dstImage must have been created with a samples value of VK_SAMPLE_COUNT_1_BIT"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-00250",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, dstOffsets[0].y must be 0 and dstOffsets[1].y must be 1"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-00252",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D or VK_IMAGE_TYPE_2D, then for each element of pRegions, dstOffsets[0].z must be 0 and dstOffsets[1].z must be 1"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-02000",
+      "explicit": true,
+      "text": "The format features of dstImage must contain VK_FORMAT_FEATURE_BLIT_DST_BIT"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-02545",
+      "explicit": true,
+      "text": "dstImage and srcImage must not have been created with flags containing VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-06422",
+      "explicit": true,
+      "text": "dstImage must not use a format that requires a sampler Y′C_BC_R conversion"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImageLayout-00226",
+      "explicit": true,
+      "text": "dstImageLayout must specify the layout of the image subresources of dstImage specified in pRegions at the time this command is executed on a VkDevice"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImageLayout-01399",
+      "explicit": true,
+      "text": "dstImageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL or VK_IMAGE_LAYOUT_GENERAL"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstOffset-00248",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffsets[0].x and dstOffsets[1].x must both be greater than or equal to 0 and less than or equal to the width of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstOffset-00249",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffsets[0].y and dstOffsets[1].y must both be greater than or equal to 0 and less than or equal to the height of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstOffset-00251",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffsets[0].z and dstOffsets[1].z must both be greater than or equal to 0 and less than or equal to the depth of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstOffsets-12518",
+      "explicit": true,
+      "text": "dstOffsets[0].x must not be equal to dstOffsets[1].x"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstOffsets-12519",
+      "explicit": true,
+      "text": "dstOffsets[0].y must not be equal to dstOffsets[1].y"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstOffsets-12520",
+      "explicit": true,
+      "text": "dstOffsets[0].z must not be equal to dstOffsets[1].z"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstSubresource-01706",
+      "explicit": true,
+      "text": "The dstSubresource.mipLevel member of each element of pRegions must be less than the mipLevels specified in VkImageCreateInfo when dstImage was created"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstSubresource-01708",
+      "explicit": true,
+      "text": "If dstSubresource.layerCount is not VK_REMAINING_ARRAY_LAYERS, dstSubresource.baseArrayLayer + dstSubresource.layerCount of each element of pRegions must be less than or equal to the arrayLayers specified in VkImageCreateInfo when dstImage was created"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-filter-00237",
+      "explicit": true,
+      "text": "If filter is VK_FILTER_CUBIC_EXT, srcImage must be of type VK_IMAGE_TYPE_2D"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-filter-02001",
+      "explicit": true,
+      "text": "If filter is VK_FILTER_LINEAR, then the format features of srcImage must contain VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-filter-02002",
+      "explicit": true,
+      "text": "If filter is VK_FILTER_CUBIC_EXT, then the format features of srcImage must contain VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_EXT"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-filter-09204",
+      "explicit": true,
+      "text": "If filter is VK_FILTER_CUBIC_EXT and if the selectableCubicWeights feature is not enabled then the cubic weights must be VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-maintenance8-10207",
+      "explicit": true,
+      "text": "If the maintenance8 feature is enabled and srcImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcSubresource.baseArrayLayer must be 0, and srcSubresource.layerCount and dstSubresource.layerCount must each be 1"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-maintenance8-10208",
+      "explicit": true,
+      "text": "If the maintenance8 feature is enabled and dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, dstSubresource.baseArrayLayer must be 0, and srcSubresource.layerCount and dstSubresource.layerCount must each be 1"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-maintenance8-10579",
+      "explicit": true,
+      "text": "If the maintenance8 feature is enabled, dstImage is VK_IMAGE_TYPE_3D, and srcImage is not of type VK_IMAGE_TYPE_3D, then for each element of pRegions, the absolute difference of the z member of each member of dstOffsets must equal srcSubresource.layerCount"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-maintenance8-10580",
+      "explicit": true,
+      "text": "If the maintenance8 feature is enabled, srcImage is VK_IMAGE_TYPE_3D, and dstImage is not of type VK_IMAGE_TYPE_3D, then for each element of pRegions, the absolute difference of the z member of each member of srcOffsets must equal dstSubresource.layerCount"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-pRegions-00217",
+      "explicit": true,
+      "text": "The union of all destination regions, specified by the elements of pRegions, must not overlap in memory with any texel that may be sampled during the blit operation"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-pRegions-04561",
+      "explicit": true,
+      "text": "If any element of pRegions contains VkCopyCommandTransformInfoQCOM in its pNext chain, then srcImage and dstImage must not be block-compressed images"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00219",
+      "explicit": true,
+      "text": "srcImage must have been created with the VK_IMAGE_USAGE_TRANSFER_SRC_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00220",
+      "explicit": true,
+      "text": "If srcImage is non-sparse then it must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00229",
+      "explicit": true,
+      "text": "If either of srcImage or dstImage was created with a signed integer VkFormat, the other must also have been created with a signed integer VkFormat"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00230",
+      "explicit": true,
+      "text": "If either of srcImage or dstImage was created with an unsigned integer color VkFormat, the other must also have been created with an unsigned integer color VkFormat"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00231",
+      "explicit": true,
+      "text": "If either of srcImage or dstImage was created with a depth/stencil format, the other must have exactly the same format"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00232",
+      "explicit": true,
+      "text": "If srcImage was created with a depth/stencil format, filter must be VK_FILTER_NEAREST"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00233",
+      "explicit": true,
+      "text": "srcImage must have been created with a samples value of VK_SAMPLE_COUNT_1_BIT"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00240",
+      "explicit": true,
+      "text": "If the maintenance8 feature is not enabled and either srcImage or dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcSubresource.baseArrayLayer and dstSubresource.baseArrayLayer must each be 0, and srcSubresource.layerCount and dstSubresource.layerCount must each be 1"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00245",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, srcOffsets[0].y must be 0 and srcOffsets[1].y must be 1"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-00247",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_1D or VK_IMAGE_TYPE_2D, then for each element of pRegions, srcOffsets[0].z must be 0 and srcOffsets[1].z must be 1"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-01999",
+      "explicit": true,
+      "text": "The format features of srcImage must contain VK_FORMAT_FEATURE_BLIT_SRC_BIT"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-06421",
+      "explicit": true,
+      "text": "srcImage must not use a format that requires a sampler Y′C_BC_R conversion"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-09459",
+      "explicit": true,
+      "text": "If srcImage and dstImage are the same, and an element of pRegions contains the srcSubresource and dstSubresource with matching mipLevel and overlapping array layers, then the srcImageLayout and dstImageLayout must be VK_IMAGE_LAYOUT_GENERAL or VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImageLayout-00221",
+      "explicit": true,
+      "text": "srcImageLayout must specify the layout of the image subresources of srcImage specified in pRegions at the time this command is executed on a VkDevice"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImageLayout-01398",
+      "explicit": true,
+      "text": "srcImageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL or VK_IMAGE_LAYOUT_GENERAL"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcOffset-00243",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffsets[0].x and srcOffsets[1].x must both be greater than or equal to 0 and less than or equal to the width of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcOffset-00244",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffsets[0].y and srcOffsets[1].y must both be greater than or equal to 0 and less than or equal to the height of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcOffset-00246",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffsets[0].z and srcOffsets[1].z must both be greater than or equal to 0 and less than or equal to the depth of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcSubresource-01705",
+      "explicit": true,
+      "text": "The srcSubresource.mipLevel member of each element of pRegions must be less than the mipLevels specified in VkImageCreateInfo when srcImage was created"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcSubresource-01707",
+      "explicit": true,
+      "text": "If srcSubresource.layerCount is not VK_REMAINING_ARRAY_LAYERS, srcSubresource.baseArrayLayer + srcSubresource.layerCount of each element of pRegions must be less than or equal to the arrayLayers specified in VkImageCreateInfo when srcImage was created"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2KHR-pRegions-06207",
+      "explicit": true,
+      "text": "If any element of pRegions contains VkCopyCommandTransformInfoQCOM in its pNext chain, then srcImage must be of type VK_IMAGE_TYPE_2D"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2KHR-pRegions-06208",
+      "explicit": true,
+      "text": "If any element of pRegions contains VkCopyCommandTransformInfoQCOM in its pNext chain, then srcImage must not have a multi-planar format"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-commonparent",
+      "explicit": false,
+      "text": "Both of dstImage, and srcImage must have been created, allocated, or retrieved from the same VkDevice"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImage-parameter",
+      "explicit": false,
+      "text": "dstImage must be a valid VkImage handle"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-dstImageLayout-parameter",
+      "explicit": false,
+      "text": "dstImageLayout must be a valid VkImageLayout value"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-filter-parameter",
+      "explicit": false,
+      "text": "filter must be a valid VkFilter value"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-pNext-pNext",
+      "explicit": false,
+      "text": "pNext must be NULL or a pointer to a valid instance of VkBlitImageCubicWeightsInfoQCOM"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-pRegions-parameter",
+      "explicit": false,
+      "text": "pRegions must be a valid pointer to an array of regionCount valid VkImageBlit2 structures"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-regionCount-arraylength",
+      "explicit": false,
+      "text": "regionCount must be greater than 0"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_BLIT_IMAGE_INFO_2"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-sType-unique",
+      "explicit": false,
+      "text": "The sType value of each structure in the pNext chain must be unique"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImage-parameter",
+      "explicit": false,
+      "text": "srcImage must be a valid VkImage handle"
+     },
+     {
+      "vuid": "VUID-VkBlitImageInfo2-srcImageLayout-parameter",
+      "explicit": false,
+      "text": "srcImageLayout must be a valid VkImageLayout value"
+     }
+    ]
+   },
+   "VkCopyAccelerationStructureInfoKHR": {
+    "section_id": "VkCopyAccelerationStructureInfoKHR",
+    "section_parts": [
+     "[Acceleration Structures > Acceleration Structures > Copying Acceleration Structures > VkCopyAccelerationStructureInfoKHR]\nThe VkCopyAccelerationStructureInfoKHR structure is defined as:\n\n// Provided by VK_KHR_acceleration_structure\ntypedef struct VkCopyAccelerationStructureInfoKHR {\nVkStructureType sType;\nconst void* pNext;\nVkAccelerationStructureKHR src;\nVkAccelerationStructureKHR dst;\nVkCopyAccelerationStructureModeKHR mode;\n} VkCopyAccelerationStructureInfoKHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- src is the source acceleration structure for the copy.\n\n- dst is the target acceleration structure for the copy.\n\n- mode is a VkCopyAccelerationStructureModeKHR value specifying additional operations to perform during the copy."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-buffer-03718",
+      "explicit": true,
+      "text": "The range of src accessed by this command must be fully backed by physical memory"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-buffer-03719",
+      "explicit": true,
+      "text": "The range of dst accessed by this command must be fully backed by physical memory"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-dst-07791",
+      "explicit": true,
+      "text": "The range of memory backing dst that is accessed by this command must not overlap the memory backing src that is accessed by this command"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-mode-03410",
+      "explicit": true,
+      "text": "mode must be VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR or VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-mode-12418",
+      "explicit": true,
+      "text": "If mode is VK_COPY_ACCELERATION_STRUCTURE_MODE_CLONE_KHR, the memory pointed to by dst must be at least as large as the size of src, as reported by vkWriteAccelerationStructuresPropertiesKHR or vkCmdWriteAccelerationStructuresPropertiesKHR with a query type of VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-mode-12419",
+      "explicit": true,
+      "text": "If mode is VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR, the memory pointed to by dst must be at least as large as the compacted size of src, as reported by vkWriteAccelerationStructuresPropertiesKHR or vkCmdWriteAccelerationStructuresPropertiesKHR with a query type of VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-src-03411",
+      "explicit": true,
+      "text": "If mode is VK_COPY_ACCELERATION_STRUCTURE_MODE_COMPACT_KHR, src must have been constructed with VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_COMPACTION_BIT_KHR in the build"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-commonparent",
+      "explicit": false,
+      "text": "Both of dst, and src must have been created, allocated, or retrieved from the same VkDevice"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-dst-parameter",
+      "explicit": false,
+      "text": "dst must be a valid VkAccelerationStructureKHR handle"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-mode-parameter",
+      "explicit": false,
+      "text": "mode must be a valid VkCopyAccelerationStructureModeKHR value"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-pNext-pNext",
+      "explicit": false,
+      "text": "pNext must be NULL"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_COPY_ACCELERATION_STRUCTURE_INFO_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyAccelerationStructureInfoKHR-src-parameter",
+      "explicit": false,
+      "text": "src must be a valid VkAccelerationStructureKHR handle"
+     }
+    ]
+   },
+   "VkCopyImageInfo2": {
+    "section_id": "VkCopyImageInfo2",
+    "section_parts": [
+     "[Copy Commands > Copying Data Between Images > VkCopyImageInfo2]\nThe VkCopyImageInfo2 structure is defined as:\n\n// Provided by VK_VERSION_1_3\ntypedef struct VkCopyImageInfo2 {\nVkStructureType sType;\nconst void* pNext;\nVkImage srcImage;\nVkImageLayout srcImageLayout;\nVkImage dstImage;\nVkImageLayout dstImageLayout;\nuint32_t regionCount;\nconst VkImageCopy2* pRegions;\n} VkCopyImageInfo2;\n\n// Provided by VK_KHR_copy_commands2\n// Equivalent to VkCopyImageInfo2\ntypedef VkCopyImageInfo2 VkCopyImageInfo2KHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- srcImage is the source image.\n\n- srcImageLayout is the current layout of the source image subresource.\n\n- dstImage is the destination image.\n\n- dstImageLayout is the current layout of the destination image subresource.\n\n- regionCount is the number of regions to copy.\n\n- pRegions is a pointer to an array of VkImageCopy2 structures specifying the regions to copy."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkCopyImageInfo2-None-01549",
+      "explicit": true,
+      "text": "In a copy to or from a plane of a multi-planar image, the VkFormat of the image and plane must be compatible according to the description of compatible planes for the plane being copied"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-apiVersion-07932",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, or VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, and either srcImage or dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcSubresource.baseArrayLayer and dstSubresource.baseArrayLayer must both be 0, and srcSubresource.layerCount and dstSubresource.layerCount must both be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-apiVersion-07933",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, srcImage and dstImage must have the same VkImageType"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-apiVersion-08969",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, srcImage or dstImage is of type VK_IMAGE_TYPE_2D, then for each element of pRegions, extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-aspect-06662",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes any flag other than VK_IMAGE_ASPECT_STENCIL_BIT or srcImage was not created with separate stencil usage, srcImage must have been created with the VK_IMAGE_USAGE_TRANSFER_SRC_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-aspect-06663",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes any flag other than VK_IMAGE_ASPECT_STENCIL_BIT or dstImage was not created with separate stencil usage, dstImage must have been created with the VK_IMAGE_USAGE_TRANSFER_DST_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-aspect-06664",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes VK_IMAGE_ASPECT_STENCIL_BIT, and srcImage was created with separate stencil usage, srcImage must have been created with the VK_IMAGE_USAGE_TRANSFER_SRC_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-aspect-06665",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes VK_IMAGE_ASPECT_STENCIL_BIT, and dstImage was created with separate stencil usage, srcImage must have been created with the VK_IMAGE_USAGE_TRANSFER_DST_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-aspectMask-00142",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-aspectMask-00241"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-aspectMask-00143",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-aspectMask-00242"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-00152",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, dstOffset.y must be 0"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-01557",
+      "explicit": true,
+      "text": "If dstImage has a multi-planar format and the srcImage does not have a multi-planar image format, then for each element of pRegions, srcSubresource.aspectMask must be VK_IMAGE_ASPECT_COLOR_BIT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-01786",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, dstOffset.z must be 0"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-01788",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_2D, then for each element of pRegions, dstOffset.z must be 0"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-01792",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_2D, and srcImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, extent.depth must equal dstSubresource.layerCount"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-01996",
+      "explicit": true,
+      "text": "The format features of dstImage must contain VK_FORMAT_FEATURE_TRANSFER_DST_BIT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-04444",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, dstSubresource.baseArrayLayer must be 0 and dstSubresource.layerCount must be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-07966",
+      "explicit": true,
+      "text": "If dstImage is non-sparse then the image or each specified disjoint plane must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-07969",
+      "explicit": true,
+      "text": "dstImage must not have been created with flags containing VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-08714",
+      "explicit": true,
+      "text": "If dstImage has a multi-planar format, then for each element of pRegions, dstSubresource.aspectMask must be a single valid multi-planar aspect mask bit"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImageLayout-00133",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstImageLayout-00226"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImageLayout-01395",
+      "explicit": true,
+      "text": "dstImageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, or VK_IMAGE_LAYOUT_GENERAL"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstOffset-00150",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.x and (extent.width + dstOffset.x), where extent is adjusted for size-compatibility, must both be greater than or equal to 0 and less than or equal to the width of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstOffset-00151",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.y and (extent.height + dstOffset.y), where extent is adjusted for size-compatibility, must both be greater than or equal to 0 and less than or equal to the height of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstOffset-00153",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, dstOffset.z and (extent.depth + dstOffset.z), where extent is adjusted for size-compatibility, must both be greater than or equal to 0 and less than or equal to the depth of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstOffset-01784",
+      "explicit": true,
+      "text": "The dstOffset and extent members of each element of pRegions must respect the image transfer granularity requirements of commandBuffer’s command pool’s queue family, as described in VkQueueFamilyProperties"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstSubresource-07967",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstSubresource-01706"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstSubresource-07968",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstSubresource-01708"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstSubresource-10215",
+      "explicit": true,
+      "text": "If dstSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT, then srcSubresource.aspectMask must not contain both VK_IMAGE_ASPECT_DEPTH_BIT and VK_IMAGE_ASPECT_STENCIL_BIT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-00124",
+      "explicit": true,
+      "text": "Each memory location accessed by this command must not be accessed by both a source region and a destination region, as specified by pRegions and accessed according to Copy Image Addressing"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-07278",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.x must be a multiple of the texel block extent width of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-07279",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.y must be a multiple of the texel block extent height of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-07280",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.z must be a multiple of the texel block extent depth of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-07281",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.x must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-07282",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.y must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-07283",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.z must be a multiple of the texel block extent depth of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-12201",
+      "explicit": true,
+      "text": "For each element of pRegions where srcSubresource.aspectMask and dstSubresource.aspectMask each contain at least one of VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT, srcSubresource.aspectMask and dstSubresource.aspectMask must match"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-12484",
+      "explicit": true,
+      "text": "Each memory location accessed by this command must not be accessed by more than one destination region, as specified by pRegions and accessed according to Copy Image Addressing"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-00136",
+      "explicit": true,
+      "text": "The sample count of srcImage and dstImage must match"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-00146",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, srcOffset.y must be 0 and extent.height must be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01548",
+      "explicit": true,
+      "text": "If the VkFormat of each of srcImage and dstImage is not a multi-planar format, the VkFormat of each of srcImage and dstImage must be size-compatible"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01551",
+      "explicit": true,
+      "text": "If neither srcImage nor dstImage has a multi-planar format and the maintenance8 feature is not enabled then for each element of pRegions, srcSubresource.aspectMask and dstSubresource.aspectMask must match"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01556",
+      "explicit": true,
+      "text": "If srcImage has a multi-planar format and the dstImage does not have a multi-planar image format, then for each element of pRegions, dstSubresource.aspectMask must be VK_IMAGE_ASPECT_COLOR_BIT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01728",
+      "explicit": true,
+      "text": "For each element of pRegions, if the sum of srcOffset.x and extent.width does not equal the width of the subresource specified by srcSubresource, extent.width must be a multiple of the texel block extent width of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01729",
+      "explicit": true,
+      "text": "For each element of pRegions, if the sum of srcOffset.y and extent.height does not equal the height of the subresource specified by srcSubresource, extent.height must be a multiple of the texel block extent height of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01730",
+      "explicit": true,
+      "text": "For each element of pRegions, if the sum of srcOffset.z and extent.depth does not equal the depth of the subresource specified by srcSubresource, extent.depth must be a multiple of the texel block extent depth of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01785",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, srcOffset.z must be 0 and extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01787",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_2D, then for each element of pRegions, srcOffset.z must be 0"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01790",
+      "explicit": true,
+      "text": "If srcImage and dstImage are both of type VK_IMAGE_TYPE_2D, then for each element of pRegions, extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01791",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_2D, and dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, extent.depth must equal srcSubresource.layerCount"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-01995",
+      "explicit": true,
+      "text": "The format features of srcImage must contain VK_FORMAT_FEATURE_TRANSFER_SRC_BIT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-04443",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcSubresource.baseArrayLayer must be 0 and srcSubresource.layerCount must be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-07743",
+      "explicit": true,
+      "text": "If srcImage and dstImage have a different VkImageType, and the maintenance5 feature is not enabled, one must be VK_IMAGE_TYPE_3D and the other must be VK_IMAGE_TYPE_2D"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-07966",
+      "explicit": true,
+      "text": "If srcImage is non-sparse then the image or each specified disjoint plane must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-07969",
+      "explicit": true,
+      "text": "srcImage must not have been created with flags containing VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-08713",
+      "explicit": true,
+      "text": "If srcImage has a multi-planar format, then for each element of pRegions, srcSubresource.aspectMask must be a single valid multi-planar aspect mask bit"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-08793",
+      "explicit": true,
+      "text": "If srcImage and dstImage have the same VkImageType, for each element of pRegions, if neither of the layerCount members of srcSubresource or dstSubresource are VK_REMAINING_ARRAY_LAYERS, the layerCount members of srcSubresource or dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-08794",
+      "explicit": true,
+      "text": "If srcImage and dstImage have the same VkImageType, and one of the layerCount members of srcSubresource or dstSubresource is VK_REMAINING_ARRAY_LAYERS, the other member must be either VK_REMAINING_ARRAY_LAYERS or equal to the arrayLayers member of the VkImageCreateInfo used to create the image minus baseArrayLayer"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-09247",
+      "explicit": true,
+      "text": "If the VkFormat of each of srcImage and dstImage is a compressed image format, the formats must have the same texel block extent"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-09460",
+      "explicit": true,
+      "text": "If srcImage and dstImage are the same, and any element of pRegions contains the srcSubresource and dstSubresource with matching mipLevel and overlapping array layers, then the srcImageLayout and dstImageLayout must be VK_IMAGE_LAYOUT_GENERAL or VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-10907",
+      "explicit": true,
+      "text": "If either the VkFormat of each of srcImage and dstImage is not a compressed image format, and dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-10908",
+      "explicit": true,
+      "text": "If either the VkFormat of each of srcImage and dstImage is not a compressed image format, and dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, extent.height must be 1, where extent is adjusted for size-compatibility"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImageLayout-00128",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-srcImageLayout-00221"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImageLayout-01917",
+      "explicit": true,
+      "text": "srcImageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, or VK_IMAGE_LAYOUT_GENERAL"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcOffset-00144",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.x and (extent.width + srcOffset.x) must both be greater than or equal to 0 and less than or equal to the width of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcOffset-00145",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.y and (extent.height + srcOffset.y) must both be greater than or equal to 0 and less than or equal to the height of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcOffset-00147",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcOffset.z and (extent.depth + srcOffset.z) must both be greater than or equal to 0 and less than or equal to the depth of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcOffset-01783",
+      "explicit": true,
+      "text": "The srcOffset and extent members of each element of pRegions must respect the image transfer granularity requirements of commandBuffer’s command pool’s queue family, as described in VkQueueFamilyProperties"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcSubresource-07967",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-srcSubresource-01705"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcSubresource-07968",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-srcSubresource-01707"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcSubresource-10211",
+      "explicit": true,
+      "text": "If srcSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT and dstSubresource.aspectMask is VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT, then the VkFormat values of srcImage and dstImage must be compatible according to the list of compatible depth-stencil and color formats"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcSubresource-10212",
+      "explicit": true,
+      "text": "If srcSubresource.aspectMask is VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT and dstSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT, then the VkFormat values of srcImage and dstImage must be compatible according to the list of compatible depth-stencil and color formats"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcSubresource-10214",
+      "explicit": true,
+      "text": "If srcSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT, then dstSubresource.aspectMask must not contain both VK_IMAGE_ASPECT_DEPTH_BIT and VK_IMAGE_ASPECT_STENCIL_BIT"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-commonparent",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-commonparent"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImage-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstImage-parameter"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-dstImageLayout-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstImageLayout-parameter"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pNext-pNext",
+      "explicit": false,
+      "same_text_as": "VUID-VkCopyAccelerationStructureInfoKHR-pNext-pNext"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-pRegions-parameter",
+      "explicit": false,
+      "text": "pRegions must be a valid pointer to an array of regionCount valid VkImageCopy2 structures"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-regionCount-arraylength",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-regionCount-arraylength"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_COPY_IMAGE_INFO_2"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImage-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-srcImage-parameter"
+     },
+     {
+      "vuid": "VUID-VkCopyImageInfo2-srcImageLayout-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-srcImageLayout-parameter"
+     }
+    ]
+   },
+   "VkRenderingInputAttachmentIndexInfo": {
+    "section_id": "VkRenderingInputAttachmentIndexInfo",
+    "section_parts": [
+     "[Shader Interfaces > Fragment Input Attachment Interface > VkRenderingInputAttachmentIndexInfo]\nThe VkRenderingInputAttachmentIndexInfo structure is defined as:\n\n// Provided by VK_VERSION_1_4\ntypedef struct VkRenderingInputAttachmentIndexInfo {\nVkStructureType sType;\nconst void* pNext;\nuint32_t colorAttachmentCount;\nconst uint32_t* pColorAttachmentInputIndices;\nconst uint32_t* pDepthInputAttachmentIndex;\nconst uint32_t* pStencilInputAttachmentIndex;\n} VkRenderingInputAttachmentIndexInfo;\n\n// Provided by VK_KHR_dynamic_rendering_local_read\n// Equivalent to VkRenderingInputAttachmentIndexInfo\ntypedef VkRenderingInputAttachmentIndexInfo VkRenderingInputAttachmentIndexInfoKHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- colorAttachmentCount is the number of elements in pColorAttachmentInputIndices.\n\n- pColorAttachmentInputIndices is a pointer to an array of colorAttachmentCount uint32_t values defining indices for color attachments to be used as input attachments.\n\n- pDepthInputAttachmentIndex is either NULL, or a pointer to a uint32_t value defining the index for the depth attachment to be used as an input attachment.\n\n- pStencilInputAttachmentIndex is either NULL, or a pointer to a uint32_t value defining the index for the stencil attachment to be used as an input attachment.\n\nThis structure allows applications to remap attachments to different input attachment indices.\n\nEach element of pColorAttachmentInputIndices set to a value of VK_ATTACHMENT_UNUSED indicates that the corresponding attachment will not be used as an input attachment in this pipeline. Any other value in each of those elements will map the corresponding attachment to a InputAttachmentIndex value defined in shader code.\n\nIf pColorAttachmentInputIndices is NULL, it is equivalent to setting each element to its index within the array.\n\nIf pDepthInputAttachmentIndex or pStencilInputAttachmentIndex are set to NULL, they map to input attachments without a InputAttachmentIndex decoration. If they point to a value of VK_ATTACHMENT_UNUSED, it indicates that the corresponding attachment will not be used as an input attachment in this pipeline. If they point to any other value it maps the corresponding attachment to a InputAttachmentIndex value defined in shader code.",
+     "[Shader Interfaces > Fragment Input Attachment Interface > VkRenderingInputAttachmentIndexInfo]\nThis structure can be included in the pNext chain of a VkGraphicsPipelineCreateInfo structure to set this state for a pipeline. If this structure is not included in the pNext chain of VkGraphicsPipelineCreateInfo, it is equivalent to specifying this structure with the following properties:\n\n- colorAttachmentCount set to VkPipelineRenderingCreateInfo::colorAttachmentCount.\n\n- pColorAttachmentInputIndices set to NULL.\n\n- pDepthInputAttachmentIndex set to NULL.\n\n- pStencilInputAttachmentIndex set to NULL.\n\nThis structure can be included in the pNext chain of a VkCommandBufferInheritanceInfo structure to specify inherited state from the primary command buffer. If this structure is not included in the pNext chain of VkCommandBufferInheritanceInfo, it is equivalent to specifying this structure with the following properties:\n\n- colorAttachmentCount set to VkCommandBufferInheritanceRenderingInfo::colorAttachmentCount.\n\n- pColorAttachmentInputIndices set to NULL.\n\n- pDepthInputAttachmentIndex set to NULL.\n\n- pStencilInputAttachmentIndex set to NULL.\n\nStructure Chaining:\n\nExtends the structures\n\n- VkCommandBufferInheritanceInfo\n\n- VkGraphicsPipelineCreateInfo"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-colorAttachmentCount-09525",
+      "explicit": true,
+      "text": "colorAttachmentCount must be less than or equal to maxColorAttachments"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09519",
+      "explicit": true,
+      "text": "If the dynamicRenderingLocalRead feature is not enabled, and pColorAttachmentInputIndices is not NULL, each element must be VK_ATTACHMENT_UNUSED"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09520",
+      "explicit": true,
+      "text": "If the dynamicRenderingLocalRead feature is not enabled, pDepthInputAttachmentIndex must be a valid pointer to a value of VK_ATTACHMENT_UNUSED"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-dynamicRenderingLocalRead-09521",
+      "explicit": true,
+      "text": "If the dynamicRenderingLocalRead feature is not enabled, pStencilInputAttachmentIndex must be a valid pointer to a value of VK_ATTACHMENT_UNUSED"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522",
+      "explicit": true,
+      "text": "Elements of pColorAttachmentInputIndices that are not VK_ATTACHMENT_UNUSED must each be unique"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09523",
+      "explicit": true,
+      "text": "Elements of pColorAttachmentInputIndices that are not VK_ATTACHMENT_UNUSED must not take the same value as the content of pDepthInputAttachmentIndex"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09524",
+      "explicit": true,
+      "text": "Elements of pColorAttachmentInputIndices that are not VK_ATTACHMENT_UNUSED must not take the same value as the content of pStencilInputAttachmentIndex"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-12274",
+      "explicit": true,
+      "text": "Elements of pDepthInputAttachmentIndex, pStencilInputAttachmentIndex, and pColorAttachmentInputIndices that are not VK_ATTACHMENT_UNUSED must be less than maxPerStageDescriptorInputAttachments"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-parameter",
+      "explicit": false,
+      "text": "If colorAttachmentCount is not 0, and pColorAttachmentInputIndices is not NULL, pColorAttachmentInputIndices must be a valid pointer to an array of colorAttachmentCount uint32_t values"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pDepthInputAttachmentIndex-parameter",
+      "explicit": false,
+      "text": "If pDepthInputAttachmentIndex is not NULL, pDepthInputAttachmentIndex must be a valid pointer to a valid uint32_t value"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-pStencilInputAttachmentIndex-parameter",
+      "explicit": false,
+      "text": "If pStencilInputAttachmentIndex is not NULL, pStencilInputAttachmentIndex must be a valid pointer to a valid uint32_t value"
+     },
+     {
+      "vuid": "VUID-VkRenderingInputAttachmentIndexInfo-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_RENDERING_INPUT_ATTACHMENT_INDEX_INFO"
+     }
+    ]
+   },
+   "VkResourceDescriptorInfoEXT": {
+    "section_id": "VkResourceDescriptorInfoEXT",
+    "section_parts": [
+     "[Descriptor Heaps > Writing Descriptors > VkResourceDescriptorInfoEXT]\nVkResourceDescriptorInfoEXT is defined as:\n\n// Provided by VK_EXT_descriptor_heap\ntypedef struct VkResourceDescriptorInfoEXT {\nVkStructureType sType;\nconst void* pNext;\nVkDescriptorType type;\nVkResourceDescriptorDataEXT data;\n} VkResourceDescriptorInfoEXT;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- type is the type of descriptor to get.\n\n- data is a VkResourceDescriptorDataEXT union defining the properties of a resource descriptor according to type.\n\nIf type is VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER or VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, data->pTexelBuffer is used to construct the descriptor.\n\nIf type is VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR, VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV, VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, or VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, data->pAddressRange is used to construct the descriptor. For acceleration structures, the size of the range is not used by the descriptor, and can be set to 0. If a non-zero size is provided though, it must be a valid range.\n\nNote | Applications may wish to provide a valid range as a way to check their own assumptions about the range they are binding; but it has no bearing on anything except validation. Implementations cannot make any assumptions based on the size of the provided range.\n\nIf type is VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM, VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM, VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, or VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, data->pImage is used to construct the descriptor. If type is VK_DESCRIPTOR_TYPE_TENSOR_ARM, data->pTensorARM is used to construct the descriptor.\n\nIf the nullDescriptor feature is enabled, the corresponding element of data may be NULL to generate a null descriptor.",
+     "[Descriptor Heaps > Writing Descriptors > VkResourceDescriptorInfoEXT]\nApplications can give resource descriptors a debug name in a similar way to naming an object, via the VkDebugUtilsObjectNameInfoEXT structure. However, as there is no actual object, this structure must be passed via the pNext chain of this structure, with a objectType of VK_OBJECT_TYPE_UNKNOWN and a objectHandle of VK_NULL_HANDLE. The name is attached to the unique set of descriptor bits written by the implementation, and writing the same bits again with new debug info may rename the original descriptor.\n\nNote | Implementations are not prevented from returning the same bits for different descriptors. This can result in multiple different resources mapping to the same name. A common case for this might be something like a uniform buffer and storage buffer with the same device address range.\n\nIf a descriptor becomes invalid due to the underlying resource becoming invalid, implementations may remove the name association."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-None-11211",
+      "explicit": true,
+      "text": "If the nullDescriptor feature is not enabled, and type is VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE or VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, data->pImage must not be NULL"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-None-11212",
+      "explicit": true,
+      "text": "If the nullDescriptor feature is not enabled, and type is VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER or VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, data->pTexelBuffer must not be NULL"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-None-11213",
+      "explicit": true,
+      "text": "If the nullDescriptor feature is not enabled, and type is VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR, VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV, VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, or VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, data->pAddressRange must not be NULL"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-None-11457",
+      "explicit": true,
+      "text": "If the nullDescriptor feature is not enabled, and type is VK_DESCRIPTOR_TYPE_TENSOR_ARM, data->pTensorARM must not be NULL"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-pNext-11401",
+      "explicit": true,
+      "text": "If there is a VkDebugUtilsObjectNameInfoEXT structure in the pNext chain, its objectType must be VK_OBJECT_TYPE_UNKNOWN"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11210",
+      "explicit": true,
+      "text": "type must be one of VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER, VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM, VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM, VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR, VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV, VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV, VK_DESCRIPTOR_TYPE_TENSOR_ARM, or VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11422",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM, VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM, or VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, data.pImage->pView->image must not have been created with an imageType of VK_IMAGE_TYPE_3D"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11424",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, data.pImage->pView->viewType is VK_IMAGE_VIEW_TYPE_2D, and the image2DViewOf3D feature is not enabled, data.pImage->pView->image must not have been created with an imageType of VK_IMAGE_TYPE_3D"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11425",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, data.pImage->pView->viewType is VK_IMAGE_VIEW_TYPE_2D, and the sampler2DViewOf3D feature is not enabled, data.pImage->pView->image must not have been created with an imageType of VK_IMAGE_TYPE_3D"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11433",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_STORAGE_BUFFER or VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, data.pAddressRange->size must not be 0"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11454",
+      "explicit": true,
+      "text": "If type is one of\n\n- VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR\n\n- VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV\n\n- VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV\n\ndata->pAddressRange->address must be a multiple of 256"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11458",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE and data.pImage is not NULL, the effective usage of the VkImageViewCreateInfo must include the VK_IMAGE_USAGE_SAMPLED_BIT usage flag"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11459",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_STORAGE_IMAGE and data.pImage is not NULL, the effective usage of the VkImageViewCreateInfo must include the VK_IMAGE_USAGE_STORAGE_BIT usage flag"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11460",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT and data.pImage is not NULL, the effective usage of the VkImageViewCreateInfo must include the VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT usage flag"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11461",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER and data.pAddressRange is not NULL, data.pAddressRange must be a device address range allocated to the application from a buffer created with the VK_BUFFER_USAGE_UNIFORM_BUFFER_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11462",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_STORAGE_BUFFER and data.pAddressRange is not NULL, data.pAddressRange must be a device address range allocated to the application from a buffer created with the VK_BUFFER_USAGE_STORAGE_BUFFER_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11463",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER and data.pTexelBuffer is not NULL, data.pTexelBuffer->addressRange must be a device address range allocated to the application from a buffer created with the VK_BUFFER_USAGE_UNIFORM_TEXEL_BUFFER_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11464",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER and data.pTexelBuffer is not NULL, data.pTexelBuffer->addressRange must be a device address range allocated to the application from a buffer created with the VK_BUFFER_USAGE_STORAGE_TEXEL_BUFFER_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11467",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV and data.pAddressRange is not NULL, data.pAddressRange->address must be an acceleration structure handle retrieved from a VkAccelerationStructureNV object via vkGetAccelerationStructureHandleNV"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11468",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_NV and data.pAddressRange is not NULL, data.pAddressRange->size must be 0"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11469",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM, VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM, or VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, data->pImage must not be NULL"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11483",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV or VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR, and data.pAddressRange is not NULL, data.pAddressRange->address must be an acceleration structure address retrieved from a VkAccelerationStructureKHR object via vkGetAccelerationStructureDeviceAddressKHR"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-11484",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_PARTITIONED_ACCELERATION_STRUCTURE_NV or VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR, data.pAddressRange is not NULL, and data.pAddressRange->size is not 0, data.pAddressRange must be a device address range allocated to the application from the buffer used to create the acceleration structure that data.pAddressRange->address was retrieved from, and within the buffer range bound to that acceleration structure"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-12349",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER or VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, data->pTexelBuffer->addressRange.address must be a multiple of the effective alignment requirement of data->pTexelBuffer->format as determined by minTexelBufferOffsetAlignment"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-12350",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, data->pAddressRange->address must be a multiple of minUniformBufferOffsetAlignment"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-12351",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, data->pAddressRange->address must be a multiple of minStorageBufferOffsetAlignment"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-12496",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, data->pAddressRange->size must be less than or equal to maxUniformBufferRange"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-12497",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, and the shader64BitIndexing feature is not enabled, data->pAddressRange->size must be less than or equal to maxStorageBufferRange"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-12498",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM and data.pImage is not NULL, the effective usage of the VkImageViewCreateInfo must include the VK_IMAGE_USAGE_SAMPLE_WEIGHT_BIT_QCOM usage flag"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-12499",
+      "explicit": true,
+      "text": "If type is VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM and data.pImage is not NULL, the effective usage of the VkImageViewCreateInfo must include the VK_IMAGE_USAGE_SAMPLE_BLOCK_MATCH_BIT_QCOM usage flag"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-pAddressRange-parameter",
+      "explicit": false,
+      "text": "If type is VK_DESCRIPTOR_TYPE_ACCELERATION_STRUCTURE_KHR, VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER, or VK_DESCRIPTOR_TYPE_STORAGE_BUFFER, and if pAddressRange is not NULL, the pAddressRange member of data must be a valid pointer to a valid VkDeviceAddressRangeEXT structure"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-pImage-parameter",
+      "explicit": false,
+      "text": "If type is VK_DESCRIPTOR_TYPE_SAMPLED_IMAGE, VK_DESCRIPTOR_TYPE_STORAGE_IMAGE, VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT, VK_DESCRIPTOR_TYPE_BLOCK_MATCH_IMAGE_QCOM, or VK_DESCRIPTOR_TYPE_SAMPLE_WEIGHT_IMAGE_QCOM, and if pImage is not NULL, the pImage member of data must be a valid pointer to a valid VkImageDescriptorInfoEXT structure"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-pNext-pNext",
+      "explicit": false,
+      "text": "pNext must be NULL or a pointer to a valid instance of VkDebugUtilsObjectNameInfoEXT"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-pTensorARM-parameter",
+      "explicit": false,
+      "text": "If type is VK_DESCRIPTOR_TYPE_TENSOR_ARM, and if pTensorARM is not NULL, the pTensorARM member of data must be a valid pointer to a valid VkTensorViewCreateInfoARM structure"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-pTexelBuffer-parameter",
+      "explicit": false,
+      "text": "If type is VK_DESCRIPTOR_TYPE_UNIFORM_TEXEL_BUFFER or VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER, and if pTexelBuffer is not NULL, the pTexelBuffer member of data must be a valid pointer to a valid VkTexelBufferDescriptorInfoEXT structure"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_RESOURCE_DESCRIPTOR_INFO_EXT"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-sType-unique",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-sType-unique"
+     },
+     {
+      "vuid": "VUID-VkResourceDescriptorInfoEXT-type-parameter",
+      "explicit": false,
+      "text": "type must be a valid VkDescriptorType value"
+     }
+    ]
+   },
+   "VkVideoEncodeH264RateControlInfoKHR": {
+    "section_id": "VkVideoEncodeH264RateControlInfoKHR",
+    "section_parts": [
+     "[Video Coding > H.264 Encode Operations > H.264 Encode Rate Control > Group of Pictures > VkVideoEncodeH264RateControlInfoKHR]\nThe VkVideoEncodeH264RateControlInfoKHR structure is defined as:\n\n// Provided by VK_KHR_video_encode_h264\ntypedef struct VkVideoEncodeH264RateControlInfoKHR {\nVkStructureType sType;\nconst void* pNext;\nVkVideoEncodeH264RateControlFlagsKHR flags;\nuint32_t gopFrameCount;\nuint32_t idrPeriod;\nuint32_t consecutiveBFrameCount;\nuint32_t temporalLayerCount;\n} VkVideoEncodeH264RateControlInfoKHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- flags is a bitmask of VkVideoEncodeH264RateControlFlagBitsKHR specifying H.264 rate control flags.\n\n- gopFrameCount is the number of frames within a group of pictures (GOP) intended to be used by the application. If it is 0, the rate control algorithm may assume an implementation-dependent GOP length. If it is UINT32_MAX, the GOP length is treated as infinite.\n\n- idrPeriod is the interval, in terms of number of frames, between two IDR frames (see IDR period). If it is 0, the rate control algorithm may assume an implementation-dependent IDR period. If it is UINT32_MAX, the IDR period is treated as infinite.\n\n- consecutiveBFrameCount is the number of consecutive B frames between I and/or P frames within the GOP.\n\n- temporalLayerCount specifies the number of H.264 temporal layers that the application intends to use.\n\nWhen an instance of this structure is included in the pNext chain of the VkVideoCodingControlInfoKHR structure passed to the vkCmdControlVideoCodingKHR command, and VkVideoCodingControlInfoKHR::flags includes VK_VIDEO_CODING_CONTROL_ENCODE_RATE_CONTROL_BIT_KHR, the parameters in this structure are used as guidance for the implementation’s rate control algorithm (see Video Coding Control).\n\nIf flags includes VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR, then the rate control state is reset to an initial state to meet HRD compliance requirements. Otherwise the new rate control state may be applied without a reset depending on the implementation and the specified rate control parameters.\n\nNote | It would be possible to infer the picture type to be used when encoding a frame, on the basis of the values provided for / consecutiveBFrameCount /, / idrPeriod /, and / gopFrameCount /, but this inferred picture type will not be used by implementations to override the picture type provided to the video encode operation.\n\nStructure Chaining:\n\nExtends the structures\n\n- VkVideoBeginCodingInfoKHR\n\n- VkVideoCodingControlInfoKHR"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-consecutiveBFrameCount-08285",
+      "explicit": true,
+      "text": "If consecutiveBFrameCount is not 0, then it must be less than gopFrameCount"
+     },
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-flags-08280",
+      "explicit": true,
+      "text": "If VkVideoEncodeH264CapabilitiesKHR::flags, as returned by vkGetPhysicalDeviceVideoCapabilitiesKHR for the used video profile, does not include VK_VIDEO_ENCODE_H264_CAPABILITY_HRD_COMPLIANCE_BIT_KHR, then flags must not contain VK_VIDEO_ENCODE_H264_RATE_CONTROL_ATTEMPT_HRD_COMPLIANCE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-flags-08281",
+      "explicit": true,
+      "text": "If flags contains VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR or VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR, then it must also contain VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-flags-08282",
+      "explicit": true,
+      "text": "If flags contains VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_FLAT_BIT_KHR, then it must not also contain VK_VIDEO_ENCODE_H264_RATE_CONTROL_REFERENCE_PATTERN_DYADIC_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-flags-08283",
+      "explicit": true,
+      "text": "If flags contains VK_VIDEO_ENCODE_H264_RATE_CONTROL_REGULAR_GOP_BIT_KHR, then gopFrameCount must be greater than 0"
+     },
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-idrPeriod-08284",
+      "explicit": true,
+      "text": "If idrPeriod is not 0, then it must be greater than or equal to gopFrameCount"
+     },
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-flags-parameter",
+      "explicit": false,
+      "text": "If flags is not 0, flags must be a valid combination of VkVideoEncodeH264RateControlFlagBitsKHR values"
+     },
+     {
+      "vuid": "VUID-VkVideoEncodeH264RateControlInfoKHR-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_VIDEO_ENCODE_H264_RATE_CONTROL_INFO_KHR"
+     }
+    ]
+   },
+   "vkCmdBeginQuery": {
+    "section_id": "vkCmdBeginQuery",
+    "section_parts": [
+     "[Queries > Query Operation > vkCmdBeginQuery]\nTo begin a query, call:\n\n// Provided by VK_VERSION_1_0\nvoid vkCmdBeginQuery(\nVkCommandBuffer commandBuffer,\nVkQueryPool queryPool,\nuint32_t query,\nVkQueryControlFlags flags);\n\n- commandBuffer is the command buffer into which this command will be recorded.\n\n- queryPool is the query pool that will manage the results of the query.\n\n- query is the query index within the query pool that will contain the results.\n\n- flags is a bitmask of VkQueryControlFlagBits specifying constraints on the types of queries that can be performed.\n\nIf the queryType of the pool is VK_QUERY_TYPE_OCCLUSION and flags contains VK_QUERY_CONTROL_PRECISE_BIT, an implementation must return a result that matches the actual number of samples passed. This is described in more detail in Occlusion Queries.\n\nCalling vkCmdBeginQuery is equivalent to calling vkCmdBeginQueryIndexedEXT with the index parameter set to zero.\n\nAfter beginning a query, that query is considered active within the command buffer it was called in until that same query is ended. Queries active in a primary command buffer when secondary command buffers are executed are considered active for those secondary command buffers.\n\nFurthermore, if the query is started within a video coding scope, the following command buffer states are initialized for the query type:\n\n- The active query index is set to the value specified by query.\n\n- The last activatable query index is also set to the value specified by query.\n\nEach video coding operation stores a result to the query corresponding to the current active query index, followed by incrementing the active query index. If the active query index gets incremented past the last activatable query index, issuing any further video coding operations results in undefined behavior.\n\nNote | In practice, this means that currently no more than a single video coding operation / must / be issued between a begin and end query pair.\n\nThis command defines an execution dependency between other query commands that reference the same query.\n\nThe first synchronization scope includes all commands which reference the queries in queryPool indicated by query that occur earlier in submission order.\n\nThe second synchronization scope includes all commands which reference the queries in queryPool indicated by query that occur later in submission order.\n\nThe operation of this command happens after the first scope and happens before the second scope.\n\nIf the queryType of the pool is VK_QUERY_TYPE_TIME_ELAPSED_QCOM, this command also defines an execution dependency on commands that were submitted before it, and starting the timer.\n\nThe first synchronization scope includes all commands that occur earlier in submission order.\n\nThe second synchronization scope includes only the starting of the timer.\n\nHost Synchronization:\n\n- Host access to commandBuffer must be externally synchronized",
+     "[Queries > Query Operation > vkCmdBeginQuery]\n- Host access to the VkCommandPool that commandBuffer was allocated from must be externally synchronized\n\nCommand Properties:\n\nCommand Buffer Levels: Primary / Secondary; Render Pass Scope: Both; Video Coding Scope: Both; Supported Queue Types: VK_QUEUE_COMPUTE_BIT / VK_QUEUE_GRAPHICS_BIT / VK_QUEUE_VIDEO_DECODE_BIT_KHR / VK_QUEUE_VIDEO_ENCODE_BIT_KHR; Command Type: Action / State\n\nConditional Rendering:\n\nvkCmdBeginQuery is not affected by conditional rendering"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-vkCmdBeginQuery-None-00807",
+      "explicit": true,
+      "text": "All queries used by the command must be unavailable"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-None-02863",
+      "explicit": true,
+      "text": "If queryPool was created with a queryType of VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR, this command must not be recorded in a command buffer that, either directly or through secondary command buffers, also contains a vkCmdResetQueryPool command affecting the same query"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-None-07127",
+      "explicit": true,
+      "text": "If there is a bound video session, then there must be no active queries"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-None-08370",
+      "explicit": true,
+      "text": "If there is a bound video session, then it must not have been created with VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-None-10681",
+      "explicit": true,
+      "text": "This command must not be recorded when per-tile execution model is enabled"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-commandBuffer-01885",
+      "explicit": true,
+      "text": "commandBuffer must not be a protected command buffer"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-query-00802",
+      "explicit": true,
+      "text": "query must be less than the number of queries in queryPool"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-query-00808",
+      "explicit": true,
+      "text": "If called within a render pass instance, the sum of query and the number of bits set in the current subpass’s view mask must be less than or equal to the number of queries in queryPool"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryPool-01922",
+      "explicit": true,
+      "text": "queryPool must have been created with a queryType that differs from that of any queries that are active within commandBuffer"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryPool-03223",
+      "explicit": true,
+      "text": "If queryPool was created with a queryType of VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR, the profiling lock must have been held before vkBeginCommandBuffer was called on commandBuffer"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryPool-03224",
+      "explicit": true,
+      "text": "If queryPool was created with a queryType of VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR and one of the counters used to create queryPool was VK_PERFORMANCE_COUNTER_SCOPE_COMMAND_BUFFER_KHR, the query begin must be the first recorded command in commandBuffer"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryPool-03225",
+      "explicit": true,
+      "text": "If queryPool was created with a queryType of VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR and one of the counters used to create queryPool was VK_PERFORMANCE_COUNTER_SCOPE_RENDER_PASS_KHR, the begin command must not be recorded within a render pass instance"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryPool-03226",
+      "explicit": true,
+      "text": "If queryPool was created with a queryType of VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR and another query pool with a queryType VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR has been used within commandBuffer, its parent primary command buffer or secondary command buffer recorded within the same parent primary command buffer as commandBuffer, the performanceCounterMultipleQueryPools feature must be enabled"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryPool-07289",
+      "explicit": true,
+      "text": "If queryPool was created with a queryType of VK_QUERY_TYPE_PERFORMANCE_QUERY_KHR, then the VkQueryPoolPerformanceCreateInfoKHR::queueFamilyIndex queryPool was created with must equal the queue family index of the VkCommandPool that commandBuffer was allocated from"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-00800",
+      "explicit": true,
+      "text": "If the occlusionQueryPrecise feature is not enabled, or the queryType used to create queryPool was not VK_QUERY_TYPE_OCCLUSION, flags must not contain VK_QUERY_CONTROL_PRECISE_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-00803",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_OCCLUSION, the VkCommandPool that commandBuffer was allocated from must support graphics operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-00804",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_PIPELINE_STATISTICS and any of the pipelineStatistics indicate graphics operations, the VkCommandPool that commandBuffer was allocated from must support graphics operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-00805",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_PIPELINE_STATISTICS and any of the pipelineStatistics indicate compute operations, the VkCommandPool that commandBuffer was allocated from must support compute operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-02327",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT the VkCommandPool that commandBuffer was allocated from must support graphics operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-02328",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT then VkPhysicalDeviceTransformFeedbackPropertiesEXT::transformFeedbackQueries must be supported"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-02804",
+      "explicit": true,
+      "text": "The queryType used to create queryPool must not be VK_QUERY_TYPE_TIMESTAMP"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-04728",
+      "explicit": true,
+      "text": "The queryType used to create queryPool must not be VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR or VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-04729",
+      "explicit": true,
+      "text": "The queryType used to create queryPool must not be VK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-06687",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT the VkCommandPool that commandBuffer was allocated from must support graphics operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-06688",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT then primitivesGeneratedQuery must be enabled"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-06741",
+      "explicit": true,
+      "text": "The queryType used to create queryPool must not be VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR or VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-07070",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT the VkCommandPool that commandBuffer was allocated from must support graphics operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-07126",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR, then the VkCommandPool that commandBuffer was allocated from must have been created with a queue family index that supports result status queries, as indicated by VkQueueFamilyQueryResultStatusPropertiesKHR::queryResultStatusSupport"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-07128",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR and there is a bound video session, then queryPool must have been created with a VkVideoProfileInfoKHR structure included in the pNext chain of VkQueryPoolCreateInfo identical to the one specified in VkVideoSessionCreateInfoKHR::pVideoProfile the bound video session was created with"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-07129",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR, then there must be a bound video session"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-07130",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR and there is a bound video session, then queryPool must have been created with a VkVideoProfileInfoKHR structure included in the pNext chain of VkQueryPoolCreateInfo identical to the one specified in VkVideoSessionCreateInfoKHR::pVideoProfile the bound video session was created with"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-07131",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was not VK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR or VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR, then there must be no bound video session"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-08972",
+      "explicit": true,
+      "text": "The queryType used to create queryPool must not be VK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT or VK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryType-12423",
+      "explicit": true,
+      "text": "If the queryType used to create queryPool was VK_QUERY_TYPE_TIME_ELAPSED_QCOM, the command pool’s queue family must support a non-zero timestampValidBits"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-commandBuffer-cmdpool",
+      "explicit": false,
+      "text": "The VkCommandPool that commandBuffer was allocated from must support VK_QUEUE_COMPUTE_BIT, VK_QUEUE_GRAPHICS_BIT, VK_QUEUE_VIDEO_DECODE_BIT_KHR, or VK_QUEUE_VIDEO_ENCODE_BIT_KHR operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-commandBuffer-parameter",
+      "explicit": false,
+      "text": "commandBuffer must be a valid VkCommandBuffer handle"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-commandBuffer-recording",
+      "explicit": false,
+      "text": "commandBuffer must be in the recording state"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-commonparent",
+      "explicit": false,
+      "text": "Both of commandBuffer, and queryPool must have been created, allocated, or retrieved from the same VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-flags-parameter",
+      "explicit": false,
+      "text": "If flags is not 0, flags must be a valid combination of VkQueryControlFlagBits values"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-queryPool-parameter",
+      "explicit": false,
+      "text": "queryPool must be a valid VkQueryPool handle"
+     },
+     {
+      "vuid": "VUID-vkCmdBeginQuery-suspended",
+      "explicit": false,
+      "text": "This command must not be called between suspended render pass instances"
+     }
+    ]
+   },
+   "vkCmdBindIndexBuffer2": {
+    "section_id": "vkCmdBindIndexBuffer2",
+    "section_parts": [
+     "[Drawing Commands > Programmable Primitive Shading > vkCmdBindIndexBuffer2]\nTo bind an index buffer, along with its size, to a command buffer, call:\n\n// Provided by VK_VERSION_1_4\nvoid vkCmdBindIndexBuffer2(\nVkCommandBuffer commandBuffer,\nVkBuffer buffer,\nVkDeviceSize offset,\nVkDeviceSize size,\nVkIndexType indexType);\n\n// Provided by VK_KHR_maintenance5\n// Equivalent to vkCmdBindIndexBuffer2\nvoid vkCmdBindIndexBuffer2KHR(\nVkCommandBuffer commandBuffer,\nVkBuffer buffer,\nVkDeviceSize offset,\nVkDeviceSize size,\nVkIndexType indexType);\n\n- commandBuffer is the command buffer into which the command is recorded.\n\n- buffer is the buffer being bound.\n\n- offset is the starting offset in bytes within buffer used in index buffer address calculations.\n\n- size is the size in bytes of index data bound from buffer.\n\n- indexType is a VkIndexType value specifying the size of the indices.\n\nbuffer, offset, and size specify the bound index buffer range, with a range of memory bound from [base + offset, base + offset + size), where base is the start of buffer. If size is VK_WHOLE_SIZE then the range is from offset to the end of the buffer.\n\nIf the maintenance6 feature is enabled, buffer can be VK_NULL_HANDLE. If buffer is VK_NULL_HANDLE and the nullDescriptor feature is enabled, every index fetched results in a value of zero.\n\nHost Synchronization:\n\n- Host access to commandBuffer must be externally synchronized\n\n- Host access to the VkCommandPool that commandBuffer was allocated from must be externally synchronized\n\nCommand Properties:\n\nCommand Buffer Levels: Primary / Secondary; Render Pass Scope: Both; Video Coding Scope: Outside; Supported Queue Types: VK_QUEUE_GRAPHICS_BIT; Command Type: State\n\nConditional Rendering:\n\nvkCmdBindIndexBuffer2 is not affected by conditional rendering"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-None-09493",
+      "explicit": true,
+      "text": "If the maintenance6 feature is not enabled, buffer must not be VK_NULL_HANDLE"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-buffer-08784",
+      "explicit": true,
+      "text": "buffer must have been created with the VK_BUFFER_USAGE_INDEX_BUFFER_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-buffer-08785",
+      "explicit": true,
+      "text": "If buffer is non-sparse then it must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-buffer-09494",
+      "explicit": true,
+      "text": "If buffer is VK_NULL_HANDLE, offset must be zero"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-indexType-08786",
+      "explicit": true,
+      "text": "indexType must not be VK_INDEX_TYPE_NONE_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-indexType-08787",
+      "explicit": true,
+      "text": "If indexType is VK_INDEX_TYPE_UINT8, the indexTypeUint8 feature must be enabled"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-offset-08782",
+      "explicit": true,
+      "text": "offset must be less than the size of buffer"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-offset-08783",
+      "explicit": true,
+      "text": "The sum of offset and the base address of the range of VkDeviceMemory object that is backing buffer must be a multiple of the size of the type indicated by indexType"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-size-08767",
+      "explicit": true,
+      "text": "If size is not VK_WHOLE_SIZE, size must be a multiple of the size of the type indicated by indexType"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-size-08768",
+      "explicit": true,
+      "text": "If size is not VK_WHOLE_SIZE, the sum of offset and size must be less than or equal to the size of buffer"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-buffer-parameter",
+      "explicit": false,
+      "text": "If buffer is not VK_NULL_HANDLE, buffer must be a valid VkBuffer handle"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-commandBuffer-cmdpool",
+      "explicit": false,
+      "text": "The VkCommandPool that commandBuffer was allocated from must support VK_QUEUE_GRAPHICS_BIT operations"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-commandBuffer-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-parameter"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-commandBuffer-recording",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-recording"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-commonparent",
+      "explicit": false,
+      "text": "Both of buffer, and commandBuffer that are valid handles of non-ignored parameters must have been created, allocated, or retrieved from the same VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-indexType-parameter",
+      "explicit": false,
+      "text": "indexType must be a valid VkIndexType value"
+     },
+     {
+      "vuid": "VUID-vkCmdBindIndexBuffer2-videocoding",
+      "explicit": false,
+      "text": "This command must only be called outside of a video coding scope"
+     }
+    ]
+   },
+   "vkCmdClearColorImage": {
+    "section_id": "vkCmdClearColorImage",
+    "section_parts": [
+     "[Clear Commands > Clearing Images Outside a Render Pass Instance > vkCmdClearColorImage]\nColor and depth/stencil images can be cleared outside a render pass instance using vkCmdClearColorImage or vkCmdClearDepthStencilImage, respectively. These commands are only allowed outside of a render pass instance.\n\nTo clear one or more subranges of a color image, call:\n\n// Provided by VK_VERSION_1_0\nvoid vkCmdClearColorImage(\nVkCommandBuffer commandBuffer,\nVkImage image,\nVkImageLayout imageLayout,\nconst VkClearColorValue* pColor,\nuint32_t rangeCount,\nconst VkImageSubresourceRange* pRanges);\n\n- commandBuffer is the command buffer into which the command will be recorded.\n\n- image is the image to be cleared.\n\n- imageLayout specifies the current layout of the image subresource ranges to be cleared, and must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_GENERAL or VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL.\n\n- pColor is a pointer to a VkClearColorValue structure containing the values that the image subresource ranges will be cleared to (see Clear Values below).\n\n- rangeCount is the number of image subresource range structures in pRanges.\n\n- pRanges is a pointer to an array of VkImageSubresourceRange structures describing a range of mipmap levels, array layers, and aspects to be cleared, as described in Image Views.\n\nEach specified range in pRanges is cleared to the value specified by pColor.\n\nHost Synchronization:\n\n- Host access to commandBuffer must be externally synchronized\n\n- Host access to the VkCommandPool that commandBuffer was allocated from must be externally synchronized\n\nCommand Properties:\n\nCommand Buffer Levels: Primary / Secondary; Render Pass Scope: Outside; Video Coding Scope: Outside; Supported Queue Types: VK_QUEUE_COMPUTE_BIT / VK_QUEUE_GRAPHICS_BIT; Command Type: Action\n\nConditional Rendering:\n\nvkCmdClearColorImage is not affected by conditional rendering"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-vkCmdClearColorImage-aspectMask-02498",
+      "explicit": true,
+      "text": "The VkImageSubresourceRange::aspectMask members of the elements of the pRanges array must each only include VK_IMAGE_ASPECT_COLOR_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-baseArrayLayer-01472",
+      "explicit": true,
+      "text": "The VkImageSubresourceRange::baseArrayLayer members of the elements of the pRanges array must each be less than the arrayLayers specified in VkImageCreateInfo when image was created"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-baseMipLevel-01470",
+      "explicit": true,
+      "text": "The VkImageSubresourceRange::baseMipLevel members of the elements of the pRanges array must each be less than the mipLevels specified in VkImageCreateInfo when image was created"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-commandBuffer-01805",
+      "explicit": true,
+      "text": "If commandBuffer is an unprotected command buffer and protectedNoFault is not supported, image must not be a protected image"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-commandBuffer-01806",
+      "explicit": true,
+      "text": "If commandBuffer is a protected command buffer and protectedNoFault is not supported, image must not be an unprotected image"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-image-00002",
+      "explicit": true,
+      "text": "image must have been created with the VK_IMAGE_USAGE_TRANSFER_DST_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-image-00003",
+      "explicit": true,
+      "text": "If image is non-sparse then it must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-image-00007",
+      "explicit": true,
+      "text": "image must not have a compressed or depth/stencil format"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-image-01545",
+      "explicit": true,
+      "text": "image must not use any of the formats that require a sampler Y′C_BC_R conversion"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-image-01993",
+      "explicit": true,
+      "text": "The format features of image must contain VK_FORMAT_FEATURE_TRANSFER_DST_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-image-09678",
+      "explicit": true,
+      "text": "If image’s format has components other than R and G, it must not have a 64-bit component width"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-imageLayout-00004",
+      "explicit": true,
+      "text": "imageLayout must specify the layout of the image subresource ranges of image specified in pRanges at the time this command is executed on a VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-imageLayout-01394",
+      "explicit": true,
+      "text": "imageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL or VK_IMAGE_LAYOUT_GENERAL"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-pColor-04961",
+      "explicit": true,
+      "text": "pColor must be a valid pointer to a VkClearColorValue union"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-pRanges-01692",
+      "explicit": true,
+      "text": "For each VkImageSubresourceRange element of pRanges, if the levelCount member is not VK_REMAINING_MIP_LEVELS, then baseMipLevel + levelCount must be less than or equal to the mipLevels specified in VkImageCreateInfo when image was created"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-pRanges-01693",
+      "explicit": true,
+      "text": "For each VkImageSubresourceRange element of pRanges, if the layerCount member is not VK_REMAINING_ARRAY_LAYERS, then baseArrayLayer + layerCount must be less than or equal to the arrayLayers specified in VkImageCreateInfo when image was created"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-commandBuffer-cmdpool",
+      "explicit": false,
+      "text": "The VkCommandPool that commandBuffer was allocated from must support VK_QUEUE_COMPUTE_BIT, or VK_QUEUE_GRAPHICS_BIT operations"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-commandBuffer-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-parameter"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-commandBuffer-recording",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-recording"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-commonparent",
+      "explicit": false,
+      "text": "Both of commandBuffer, and image must have been created, allocated, or retrieved from the same VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-image-parameter",
+      "explicit": false,
+      "text": "image must be a valid VkImage handle"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-imageLayout-parameter",
+      "explicit": false,
+      "text": "imageLayout must be a valid VkImageLayout value"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-pRanges-parameter",
+      "explicit": false,
+      "text": "pRanges must be a valid pointer to an array of rangeCount valid VkImageSubresourceRange structures"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-rangeCount-arraylength",
+      "explicit": false,
+      "text": "rangeCount must be greater than 0"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-renderpass",
+      "explicit": false,
+      "text": "This command must only be called outside of a render pass instance"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-suspended",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-suspended"
+     },
+     {
+      "vuid": "VUID-vkCmdClearColorImage-videocoding",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBindIndexBuffer2-videocoding"
+     }
+    ]
+   },
+   "vkCmdCopyBufferToImage": {
+    "section_id": "vkCmdCopyBufferToImage",
+    "section_parts": [
+     "[Copy Commands > Copying Data Between Buffers and Images > vkCmdCopyBufferToImage]\nTo copy data from a buffer object to an image object, call:\n\n// Provided by VK_VERSION_1_0\nvoid vkCmdCopyBufferToImage(\nVkCommandBuffer commandBuffer,\nVkBuffer srcBuffer,\nVkImage dstImage,\nVkImageLayout dstImageLayout,\nuint32_t regionCount,\nconst VkBufferImageCopy* pRegions);\n\n- commandBuffer is the command buffer into which the command will be recorded.\n\n- srcBuffer is the source buffer.\n\n- dstImage is the destination image.\n\n- dstImageLayout is the layout of the destination image subresources for the copy.\n\n- regionCount is the number of regions to copy.\n\n- pRegions is a pointer to an array of VkBufferImageCopy structures specifying the regions to copy.\n\nEach source region specified by pRegions is copied from the source buffer to the destination region of the destination image according to the addressing calculations for each resource. If any region accesses a depth aspect in dstImage and the VK_EXT_depth_range_unrestricted extension is not enabled, values copied from srcBuffer outside of the range [0,1] will be written as undefined values to the destination image.\n\nCopy regions for the image must be aligned to a multiple of the texel block extent in each dimension, except at the edges of the image, where region extents must match the edge of the image.\n\nHost Synchronization:\n\n- Host access to commandBuffer must be externally synchronized\n\n- Host access to the VkCommandPool that commandBuffer was allocated from must be externally synchronized\n\nCommand Properties:\n\nCommand Buffer Levels: Primary / Secondary; Render Pass Scope: Outside; Video Coding Scope: Outside; Supported Queue Types: VK_QUEUE_COMPUTE_BIT / VK_QUEUE_GRAPHICS_BIT / VK_QUEUE_TRANSFER_BIT; Command Type: Action\n\nConditional Rendering:\n\nvkCmdCopyBufferToImage is not affected by conditional rendering"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-bufferImageHeight-09107",
+      "explicit": true,
+      "text": "For each element of pRegions, bufferImageHeight must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-bufferRowLength-09106",
+      "explicit": true,
+      "text": "For each element of pRegions, bufferRowLength must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-bufferRowLength-09108",
+      "explicit": true,
+      "text": "For each element of pRegions, bufferRowLength divided by the texel block extent width and then multiplied by the texel block size of dstImage must be less than or equal to 2^31-1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-01828",
+      "explicit": true,
+      "text": "If commandBuffer is an unprotected command buffer and protectedNoFault is not supported, srcBuffer must not be a protected buffer"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-01829",
+      "explicit": true,
+      "text": "If commandBuffer is an unprotected command buffer and protectedNoFault is not supported, dstImage must not be a protected image"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-01830",
+      "explicit": true,
+      "text": "If commandBuffer is a protected command buffer and protectedNoFault is not supported, dstImage must not be an unprotected image"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-07737",
+      "explicit": true,
+      "text": "If the maintenance11 feature is not enabled, and the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT or VK_QUEUE_COMPUTE_BIT, the bufferOffset member of any element of pRegions must be a multiple of 4"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-07739",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT, and the maintenance10 feature is not enabled, for each element of pRegions, the aspectMask member of imageSubresource must not be VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-11778",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT but does support VK_QUEUE_COMPUTE_BIT, and in any element of pRegions the aspectMask member of imageSubresource is VK_IMAGE_ASPECT_DEPTH_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-11779",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT and VK_QUEUE_COMPUTE_BIT, but does support VK_QUEUE_TRANSFER_BIT, and in any element of pRegions the aspectMask member of imageSubresource is VK_IMAGE_ASPECT_DEPTH_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-11780",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT but does support VK_QUEUE_COMPUTE_BIT, and in any element of pRegions the aspectMask member of imageSubresource is VK_IMAGE_ASPECT_STENCIL_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-11781",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT and VK_QUEUE_COMPUTE_BIT, but does support VK_QUEUE_TRANSFER_BIT, and in any element of pRegions the aspectMask member of imageSubresource is VK_IMAGE_ASPECT_STENCIL_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-00177",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstImage-00224"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-00207",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR, and the sum of imageOffset.x and extent.width does not equal the width of the subresource specified by imageSubresource, extent.width must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-00208",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR, and the sum of imageOffset.y and extent.height does not equal the height of the subresource specified by imageSubresource, extent.height must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-00209",
+      "explicit": true,
+      "text": "For each element of pRegions, if the sum of imageOffset.z and extent.depth does not equal the depth of the subresource specified by srcSubresource, extent.depth must be a multiple of the texel block extent depth of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-01997",
+      "explicit": true,
+      "same_text_as": "VUID-VkCopyImageInfo2-dstImage-01996"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07274",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR or VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR, imageOffset.x must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07275",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR or VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR, imageOffset.y must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07276",
+      "explicit": true,
+      "text": "For each element of pRegions, imageOffset.z must be a multiple of the texel block extent depth of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07966",
+      "explicit": true,
+      "same_text_as": "VUID-VkCopyImageInfo2-dstImage-07966"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07969",
+      "explicit": true,
+      "same_text_as": "VUID-VkCopyImageInfo2-dstImage-07969"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07973",
+      "explicit": true,
+      "text": "dstImage must have a sample count equal to VK_SAMPLE_COUNT_1_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07975",
+      "explicit": true,
+      "text": "If dstImage does not have either a depth/stencil format or a multi-planar format, then for each element of pRegions, bufferOffset must be a multiple of the texel block size"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07976",
+      "explicit": true,
+      "text": "If dstImage has a multi-planar format, then for each element of pRegions, bufferOffset must be a multiple of the element size of the compatible format for the format and the aspectMask of the imageSubresource as defined in Compatible Formats of Planes of Multi-Planar Formats"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07978",
+      "explicit": true,
+      "text": "If dstImage has a depth/stencil format, the bufferOffset member of any element of pRegions must be a multiple of 4"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07979",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, imageOffset.y must be 0 and imageExtent.height must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07980",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D or VK_IMAGE_TYPE_2D, then for each element of pRegions, imageOffset.z must be 0 and imageExtent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07981",
+      "explicit": true,
+      "text": "If dstImage has a multi-planar format, then for each element of pRegions, imageSubresource.aspectMask must be a single valid multi-planar aspect mask bit"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-07983",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_3D, for each element of pRegions, imageSubresource.baseArrayLayer must be 0 and imageSubresource.layerCount must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImageLayout-00180",
+      "explicit": true,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstImageLayout-00226"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImageLayout-01396",
+      "explicit": true,
+      "same_text_as": "VUID-VkCopyImageInfo2-dstImageLayout-01395"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-07738",
+      "explicit": true,
+      "text": "The imageOffset and imageExtent members of each element of pRegions must respect the image transfer granularity requirements of commandBuffer’s command pool’s queue family, as described in VkQueueFamilyProperties"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-09104",
+      "explicit": true,
+      "text": "For each element of pRegions, imageOffset.z and (imageExtent.depth + imageOffset.z) must both be greater than or equal to 0 and less than or equal to the depth of the specified imageSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10051",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR or VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR, and imageOffset.x does not equal the width of the subresource specified by imageSubresource, imageOffset.x must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10052",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR or VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR, and imageOffset.y does not equal the height of the subresource specified by imageSubresource, imageOffset.y must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10053",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR, the difference of imageOffset.x and extent.height must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10054",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR, the difference of imageOffset.x and extent.width must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10055",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR, the sum of imageOffset.x and extent.height does not equal the width of the subresource specified by imageSubresource, extent.height must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10056",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR, the sum of imageOffset.y and extent.width does not equal the height of the subresource specified by imageSubresource, extent.width must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10057",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR, the difference of imageOffset.y and extent.height must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageOffset-10058",
+      "explicit": true,
+      "text": "For each element of pRegions, if VkCopyCommandTransformInfoQCOM::transform is equal to VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR, the difference of imageOffset.y and extent.width must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageSubresource-07967",
+      "explicit": true,
+      "text": "The imageSubresource.mipLevel member of each element of pRegions must be less than the mipLevels specified in VkImageCreateInfo when dstImage was created"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageSubresource-07968",
+      "explicit": true,
+      "text": "If imageSubresource.layerCount is not VK_REMAINING_ARRAY_LAYERS, imageSubresource.baseArrayLayer + imageSubresource.layerCount of each element of pRegions must be less than or equal to the arrayLayers specified in VkImageCreateInfo when dstImage was created"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageSubresource-07971",
+      "explicit": true,
+      "text": "For each element of pRegions, imageOffset.x and (imageExtent.width + imageOffset.x) must both be greater than or equal to 0 and less than or equal to the width of the specified imageSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageSubresource-07972",
+      "explicit": true,
+      "text": "For each element of pRegions, imageOffset.y and (imageExtent.height + imageOffset.y) must both be greater than or equal to 0 and less than or equal to the height of the specified imageSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-imageSubresource-09105",
+      "explicit": true,
+      "text": "For each element of pRegions, imageSubresource.aspectMask must specify aspects present in dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-pRegions-00171",
+      "explicit": true,
+      "text": "srcBuffer must be large enough to contain all buffer locations that are accessed according to Buffer and Image Addressing, for each element of pRegions"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-pRegions-00173",
+      "explicit": true,
+      "text": "Each memory location accessed by this command must not be accessed by both a source region and a destination region, as specified in pRegions and accessed according to Buffer and Image Addressing"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-pRegions-07931",
+      "explicit": true,
+      "text": "If VK_EXT_depth_range_unrestricted is not enabled, for each element of pRegions whose imageSubresource contains a depth aspect, the data in srcBuffer must be in the range [0,1]"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-pRegions-12483",
+      "explicit": true,
+      "text": "Each memory location accessed by this command must not be accessed by more than one destination region, as specified by pRegions and accessed according to Buffer and Image Addressing"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-srcBuffer-00174",
+      "explicit": true,
+      "text": "srcBuffer must have been created with the VK_BUFFER_USAGE_TRANSFER_SRC_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-srcBuffer-00176",
+      "explicit": true,
+      "text": "If srcBuffer is non-sparse then it must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-cmdpool",
+      "explicit": false,
+      "text": "The VkCommandPool that commandBuffer was allocated from must support VK_QUEUE_COMPUTE_BIT, VK_QUEUE_GRAPHICS_BIT, or VK_QUEUE_TRANSFER_BIT operations"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-parameter"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commandBuffer-recording",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-recording"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-commonparent",
+      "explicit": false,
+      "text": "Each of commandBuffer, dstImage, and srcBuffer must have been created, allocated, or retrieved from the same VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImage-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstImage-parameter"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-dstImageLayout-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-dstImageLayout-parameter"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-pRegions-parameter",
+      "explicit": false,
+      "text": "pRegions must be a valid pointer to an array of regionCount valid VkBufferImageCopy structures"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-regionCount-arraylength",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-regionCount-arraylength"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-renderpass",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdClearColorImage-renderpass"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-srcBuffer-parameter",
+      "explicit": false,
+      "text": "srcBuffer must be a valid VkBuffer handle"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-suspended",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-suspended"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyBufferToImage-videocoding",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBindIndexBuffer2-videocoding"
+     }
+    ]
+   },
+   "vkCmdCopyMemoryIndirectKHR": {
+    "section_id": "vkCmdCopyMemoryIndirectKHR",
+    "section_parts": [
+     "[Copy Commands > Indirect Copies > vkCmdCopyMemoryIndirectKHR]\nAn application can use indirect copies when the copy parameters are not known during the command buffer creation time.\n\nTo copy data between two memory regions by specifying copy parameters indirectly in memory, call:\n\n// Provided by VK_KHR_copy_memory_indirect\nvoid vkCmdCopyMemoryIndirectKHR(\nVkCommandBuffer commandBuffer,\nconst VkCopyMemoryIndirectInfoKHR* pCopyMemoryIndirectInfo);\n\n- commandBuffer is the command buffer into which the command will be recorded.\n\n- pCopyMemoryIndirectInfo is a pointer to a VkCopyMemoryIndirectInfoKHR structure containing the copy parameters, including the number of copies to execute and a strided array of VkCopyMemoryIndirectCommandKHR structures.\n\nEach region specified in the memory referenced by pCopyMemoryIndirectInfo->copyAddressRange is copied from the source region to the specified destination region.\n\nHost Synchronization:\n\n- Host access to commandBuffer must be externally synchronized\n\n- Host access to the VkCommandPool that commandBuffer was allocated from must be externally synchronized\n\nCommand Properties:\n\nCommand Buffer Levels: Primary / Secondary; Render Pass Scope: Outside; Video Coding Scope: Outside; Supported Queue Types: VK_QUEUE_COMPUTE_BIT / VK_QUEUE_GRAPHICS_BIT / VK_QUEUE_TRANSFER_BIT; Command Type: Action\n\nConditional Rendering:\n\nvkCmdCopyMemoryIndirectKHR is not affected by conditional rendering"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-10936",
+      "explicit": true,
+      "text": "The VkCommandPool that commandBuffer was allocated from must support at least one of the queue types specified in VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-10937",
+      "explicit": true,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-01885"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-indirectMemoryCopy-10935",
+      "explicit": true,
+      "text": "The indirectMemoryCopy feature must be enabled"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-cmdpool",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdCopyBufferToImage-commandBuffer-cmdpool"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-parameter"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-recording",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-commandBuffer-recording"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-pCopyMemoryIndirectInfo-parameter",
+      "explicit": false,
+      "text": "pCopyMemoryIndirectInfo must be a valid pointer to a valid VkCopyMemoryIndirectInfoKHR structure"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-renderpass",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdClearColorImage-renderpass"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-suspended",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBeginQuery-suspended"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyMemoryIndirectKHR-videocoding",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBindIndexBuffer2-videocoding"
+     }
+    ]
+   },
+   "vkDestroyBuffer": {
+    "section_id": "vkDestroyBuffer",
+    "section_parts": [
+     "[Resource Creation > Buffers > vkDestroyBuffer]\nTo destroy a buffer, call:\n\n// Provided by VK_VERSION_1_0\nvoid vkDestroyBuffer(\nVkDevice device,\nVkBuffer buffer,\nconst VkAllocationCallbacks* pAllocator);\n\n- device is the logical device that destroys the buffer.\n\n- buffer is the buffer to destroy.\n\n- pAllocator controls host memory allocation as described in the Memory Allocation chapter.\n\nHost Synchronization:\n\n- Host access to buffer must be externally synchronized"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-vkDestroyBuffer-buffer-00922",
+      "explicit": true,
+      "text": "All submitted commands that refer to buffer, either directly or via a VkBufferView, must have completed execution"
+     },
+     {
+      "vuid": "VUID-vkDestroyBuffer-buffer-00923",
+      "explicit": true,
+      "text": "If VkAllocationCallbacks were provided when buffer was created, a compatible set of callbacks must be provided here"
+     },
+     {
+      "vuid": "VUID-vkDestroyBuffer-buffer-00924",
+      "explicit": true,
+      "text": "If no VkAllocationCallbacks were provided when buffer was created, pAllocator must be NULL"
+     },
+     {
+      "vuid": "VUID-vkDestroyBuffer-buffer-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-vkCmdBindIndexBuffer2-buffer-parameter"
+     },
+     {
+      "vuid": "VUID-vkDestroyBuffer-buffer-parent",
+      "explicit": false,
+      "text": "If buffer is a valid handle, it must have been created, allocated, or retrieved from device"
+     },
+     {
+      "vuid": "VUID-vkDestroyBuffer-device-parameter",
+      "explicit": false,
+      "text": "device must be a valid VkDevice handle"
+     },
+     {
+      "vuid": "VUID-vkDestroyBuffer-pAllocator-parameter",
+      "explicit": false,
+      "text": "If pAllocator is not NULL, pAllocator must be a valid pointer to a valid VkAllocationCallbacks structure"
+     }
+    ]
+   },
+   "VkAllocationCallbacks": {
+    "section_id": "VkAllocationCallbacks",
+    "section_parts": [
+     "[Memory Allocation > Host Memory > VkAllocationCallbacks]\nHost memory is memory needed by the Vulkan implementation for non-device-visible storage.\n\nNote | This memory / may / be used to store the implementation’s representation and state of Vulkan objects.\n\nVulkan provides applications the opportunity to perform host memory allocations on behalf of the Vulkan implementation. If this feature is not used, the implementation will perform its own memory allocations. Since most memory allocations are off the critical path, this is not meant as a performance feature. Rather, this can be useful for certain embedded systems, for debugging purposes (e.g. putting a guard page after all host allocations), or for memory allocation logging.\n\nAllocators are provided by the application as a pointer to a VkAllocationCallbacks structure:\n\n// Provided by VK_VERSION_1_0\ntypedef struct VkAllocationCallbacks {\nvoid* pUserData;\nPFN_vkAllocationFunction pfnAllocation;\nPFN_vkReallocationFunction pfnReallocation;\nPFN_vkFreeFunction pfnFree;\nPFN_vkInternalAllocationNotification pfnInternalAllocation;\nPFN_vkInternalFreeNotification pfnInternalFree;\n} VkAllocationCallbacks;\n\n- pUserData is NULL or an application-defined user data pointer to be interpreted by the implementation of the callbacks. When any of the callbacks in VkAllocationCallbacks are called, the Vulkan implementation will pass this value as the first parameter to the callback. This value can vary each time an allocator is passed into a command, even when the same object takes an allocator in multiple commands.\n\n- pfnAllocation is a PFN_vkAllocationFunction pointer to an application-defined memory allocation function.\n\n- pfnReallocation is a PFN_vkReallocationFunction pointer to an application-defined memory reallocation function.\n\n- pfnFree is a PFN_vkFreeFunction pointer to an application-defined memory free function.\n\n- pfnInternalAllocation is a PFN_vkInternalAllocationNotification pointer to an application-defined function that is called by the implementation when the implementation makes internal allocations.\n\n- pfnInternalFree is a PFN_vkInternalFreeNotification pointer to an application-defined function that is called by the implementation when the implementation frees internal allocations."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkAllocationCallbacks-pfnAllocation-00632",
+      "explicit": true,
+      "text": "pfnAllocation must be a valid pointer to a valid application-defined PFN_vkAllocationFunction"
+     },
+     {
+      "vuid": "VUID-VkAllocationCallbacks-pfnFree-00634",
+      "explicit": true,
+      "text": "pfnFree must be a valid pointer to a valid application-defined PFN_vkFreeFunction"
+     },
+     {
+      "vuid": "VUID-VkAllocationCallbacks-pfnInternalAllocation-00635",
+      "explicit": true,
+      "text": "If either of pfnInternalAllocation or pfnInternalFree is not NULL, both must be valid callbacks"
+     },
+     {
+      "vuid": "VUID-VkAllocationCallbacks-pfnReallocation-00633",
+      "explicit": true,
+      "text": "pfnReallocation must be a valid pointer to a valid application-defined PFN_vkReallocationFunction"
+     }
+    ]
+   },
+   "VkBlitImageCubicWeightsInfoQCOM": {
+    "section_id": "VkBlitImageCubicWeightsInfoQCOM",
+    "section_parts": [
+     "[Copy Commands > Image Copies With Scaling > VkBlitImageCubicWeightsInfoQCOM]\nIf filter is VK_FILTER_CUBIC_EXT and if the pNext chain of VkBlitImageInfo2 includes a VkBlitImageCubicWeightsInfoQCOM structure, then that structure specifies cubic weights are used in the blit. If that structure is not present, then cubic weights are considered to be VK_CUBIC_FILTER_WEIGHTS_CATMULL_ROM_QCOM.\n\nThe VkBlitImageCubicWeightsInfoQCOM structure is defined as:\n\n// Provided by VK_QCOM_filter_cubic_weights\ntypedef struct VkBlitImageCubicWeightsInfoQCOM {\nVkStructureType sType;\nconst void* pNext;\nVkCubicFilterWeightsQCOM cubicWeights;\n} VkBlitImageCubicWeightsInfoQCOM;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- cubicWeights is a VkCubicFilterWeightsQCOM value controlling cubic filter weights for the blit.\n\nStructure Chaining:\n\nExtends the structure\n\n- VkBlitImageInfo2"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkBlitImageCubicWeightsInfoQCOM-cubicWeights-parameter",
+      "explicit": false,
+      "text": "cubicWeights must be a valid VkCubicFilterWeightsQCOM value"
+     },
+     {
+      "vuid": "VUID-VkBlitImageCubicWeightsInfoQCOM-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_BLIT_IMAGE_CUBIC_WEIGHTS_INFO_QCOM"
+     }
+    ]
+   },
+   "VkBufferImageCopy": {
+    "section_id": "VkBufferImageCopy",
+    "section_parts": [
+     "[Copy Commands > Copying Data Between Buffers and Images > VkBufferImageCopy]\nFor both vkCmdCopyBufferToImage and vkCmdCopyImageToBuffer, each element of pRegions is a structure defined as:\n\n// Provided by VK_VERSION_1_0\ntypedef struct VkBufferImageCopy {\nVkDeviceSize bufferOffset;\nuint32_t bufferRowLength;\nuint32_t bufferImageHeight;\nVkImageSubresourceLayers imageSubresource;\nVkOffset3D imageOffset;\nVkExtent3D imageExtent;\n} VkBufferImageCopy;\n\n- bufferOffset is the offset in bytes from the start of the buffer object where the image data is copied from or to.\n\n- bufferRowLength and bufferImageHeight specify in texels a subregion of a larger two- or three-dimensional image in buffer memory, and control the addressing calculations. If either of these values is zero, that aspect of the buffer memory is considered to be tightly packed according to the imageExtent.\n\n- imageSubresource is a VkImageSubresourceLayers used to specify the specific image subresources of the image used for the source or destination image data.\n\n- imageOffset selects the initial x, y, z offsets in texels of the sub-region of the source or destination image data.\n\n- imageExtent is the size in texels of the image to copy in width, height and depth."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkBufferImageCopy-aspectMask-09103",
+      "explicit": true,
+      "text": "The aspectMask member of imageSubresource must only have a single bit set"
+     },
+     {
+      "vuid": "VUID-VkBufferImageCopy-bufferImageHeight-09102",
+      "explicit": true,
+      "text": "bufferImageHeight must be 0, or greater than or equal to the height member of imageExtent"
+     },
+     {
+      "vuid": "VUID-VkBufferImageCopy-bufferRowLength-09101",
+      "explicit": true,
+      "text": "bufferRowLength must be 0, or greater than or equal to the width member of imageExtent"
+     },
+     {
+      "vuid": "VUID-VkBufferImageCopy-imageExtent-06659",
+      "explicit": true,
+      "text": "imageExtent.width must not be 0"
+     },
+     {
+      "vuid": "VUID-VkBufferImageCopy-imageExtent-06660",
+      "explicit": true,
+      "text": "imageExtent.height must not be 0"
+     },
+     {
+      "vuid": "VUID-VkBufferImageCopy-imageExtent-06661",
+      "explicit": true,
+      "text": "imageExtent.depth must not be 0"
+     },
+     {
+      "vuid": "VUID-VkBufferImageCopy-imageSubresource-parameter",
+      "explicit": false,
+      "text": "imageSubresource must be a valid VkImageSubresourceLayers structure"
+     }
+    ]
+   },
+   "VkCopyMemoryIndirectInfoKHR": {
+    "section_id": "VkCopyMemoryIndirectInfoKHR",
+    "section_parts": [
+     "[Copy Commands > Indirect Copies > VkCopyMemoryIndirectInfoKHR]\nThe VkCopyMemoryIndirectInfoKHR structure is defined as:\n\n// Provided by VK_KHR_copy_memory_indirect\ntypedef struct VkCopyMemoryIndirectInfoKHR {\nVkStructureType sType;\nconst void* pNext;\nVkAddressCopyFlagsKHR srcCopyFlags;\nVkAddressCopyFlagsKHR dstCopyFlags;\nuint32_t copyCount;\nVkStridedDeviceAddressRangeKHR copyAddressRange;\n} VkCopyMemoryIndirectInfoKHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- srcCopyFlags is a VkAddressCopyFlagsKHR value defining the copy flags for the source address range.\n\n- dstCopyFlags is a VkAddressCopyFlagsKHR value defining the copy flags for the destination address range.\n\n- copyCount is the number of copies to execute, and can be zero.\n\n- copyAddressRange is a memory region specifying the copy parameters. It is laid out as an array of VkCopyMemoryIndirectCommandKHR structures."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-copyAddressRange-10942",
+      "explicit": true,
+      "text": "copyAddressRange.address must be 4 byte aligned"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-copyAddressRange-10943",
+      "explicit": true,
+      "text": "copyAddressRange.stride must be a multiple of 4 and must be greater than or equal to sizeof(VkCopyMemoryIndirectCommandKHR)"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-copyAddressRange-10945",
+      "explicit": true,
+      "text": "Each memory location accessed by this command must not be accessed by both a source region and a destination region, and must not be accessed by more than one destination region, as specified in copyAddressRange"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-copyAddressRange-12210",
+      "explicit": true,
+      "text": "copyAddressRange must be a device address range allocated to the application from a buffer created with the VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-copyCount-10944",
+      "explicit": true,
+      "text": "copyCount must be less than or equal to copyAddressRange.size / copyAddressRange.stride"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-10939",
+      "explicit": true,
+      "text": "If dstCopyFlags contains VK_ADDRESS_COPY_SPARSE_BIT_KHR, the destination memory regions accessed must be bound to memory"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-10941",
+      "explicit": true,
+      "text": "dstCopyFlags must not contain VK_ADDRESS_COPY_PROTECTED_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-10938",
+      "explicit": true,
+      "text": "If srcCopyFlags contains VK_ADDRESS_COPY_SPARSE_BIT_KHR, the source memory regions accessed must be bound to memory"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-10940",
+      "explicit": true,
+      "text": "srcCopyFlags must not contain VK_ADDRESS_COPY_PROTECTED_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-dstCopyFlags-parameter",
+      "explicit": false,
+      "text": "If dstCopyFlags is not 0, dstCopyFlags must be a valid combination of VkAddressCopyFlagBitsKHR values"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-pNext-pNext",
+      "explicit": false,
+      "same_text_as": "VUID-VkCopyAccelerationStructureInfoKHR-pNext-pNext"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_COPY_MEMORY_INDIRECT_INFO_KHR"
+     },
+     {
+      "vuid": "VUID-VkCopyMemoryIndirectInfoKHR-srcCopyFlags-parameter",
+      "explicit": false,
+      "text": "If srcCopyFlags is not 0, srcCopyFlags must be a valid combination of VkAddressCopyFlagBitsKHR values"
+     }
+    ]
+   },
+   "VkDebugUtilsObjectNameInfoEXT": {
+    "section_id": "VkDebugUtilsObjectNameInfoEXT",
+    "section_parts": [
+     "[Debugging > Debug Utilities > Object Debug Annotation > Object Naming > VkDebugUtilsObjectNameInfoEXT]\nThe VkDebugUtilsObjectNameInfoEXT structure is defined as:\n\n// Provided by VK_EXT_debug_utils\ntypedef struct VkDebugUtilsObjectNameInfoEXT {\nVkStructureType sType;\nconst void* pNext;\nVkObjectType objectType;\nuint64_t objectHandle;\nconst char* pObjectName;\n} VkDebugUtilsObjectNameInfoEXT;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- objectType is a VkObjectType specifying the type of the object to be named.\n\n- objectHandle is the object to be named.\n\n- pObjectName is either NULL or a null-terminated UTF-8 string specifying the name to apply to objectHandle.\n\nApplications may change the name associated with an object simply by calling vkSetDebugUtilsObjectNameEXT again with a new string. If pObjectName is either NULL or an empty string, then any previously set name is removed.\n\nThe graphicsPipelineLibrary feature allows the specification of pipelines without the creation of VkShaderModule objects beforehand. In order to continue to allow naming these shaders independently, VkDebugUtilsObjectNameInfoEXT can be included in the pNext chain of VkPipelineShaderStageCreateInfo, which associates a static name with that particular shader.\n\nThis structure can be included in the pNext chain of VkResourceDescriptorInfoEXT or VkSamplerCreateInfo to label a descriptor or embedded sampler. This structure may be ignored when included in the pNext chain of VkSamplerCreateInfo when creating a sampler object. The label must remain valid while the descriptor is valid; it may be discarded if it becomes invalid.\n\nStructure Chaining:\n\nExtends the structures\n\n- VkPipelineShaderStageCreateInfo\n\n- VkResourceDescriptorInfoEXT\n\n- VkSamplerCreateInfo"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02589",
+      "explicit": true,
+      "text": "If objectType is VK_OBJECT_TYPE_UNKNOWN, objectHandle must not be VK_NULL_HANDLE"
+     },
+     {
+      "vuid": "VUID-VkDebugUtilsObjectNameInfoEXT-objectType-02590",
+      "explicit": true,
+      "text": "If objectType is not VK_OBJECT_TYPE_UNKNOWN, objectHandle must be VK_NULL_HANDLE or a valid Vulkan handle of the type associated with objectType as defined in the VkObjectType and Vulkan Handle Relationship table"
+     },
+     {
+      "vuid": "VUID-VkDebugUtilsObjectNameInfoEXT-objectType-parameter",
+      "explicit": false,
+      "text": "objectType must be a valid VkObjectType value"
+     },
+     {
+      "vuid": "VUID-VkDebugUtilsObjectNameInfoEXT-pObjectName-parameter",
+      "explicit": false,
+      "text": "If pObjectName is not NULL, pObjectName must be a null-terminated UTF-8 string"
+     },
+     {
+      "vuid": "VUID-VkDebugUtilsObjectNameInfoEXT-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_DEBUG_UTILS_OBJECT_NAME_INFO_EXT"
+     }
+    ]
+   },
+   "VkImageBlit2": {
+    "section_id": "VkImageBlit2",
+    "section_parts": [
+     "[Copy Commands > Image Copies With Scaling > VkImageBlit2]\nThe VkImageBlit2 structure is defined as:\n\n// Provided by VK_VERSION_1_3\ntypedef struct VkImageBlit2 {\nVkStructureType sType;\nconst void* pNext;\nVkImageSubresourceLayers srcSubresource;\nVkOffset3D srcOffsets[2];\nVkImageSubresourceLayers dstSubresource;\nVkOffset3D dstOffsets[2];\n} VkImageBlit2;\n\n// Provided by VK_KHR_copy_commands2\n// Equivalent to VkImageBlit2\ntypedef VkImageBlit2 VkImageBlit2KHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- srcSubresource is the subresource to blit from.\n\n- srcOffsets is a pointer to an array of two VkOffset3D structures specifying the bounds of the source region within srcSubresource.\n\n- dstSubresource is the subresource to blit into.\n\n- dstOffsets is a pointer to an array of two VkOffset3D structures specifying the bounds of the destination region within dstSubresource.\n\nFor each element of the pRegions array, a blit operation is performed for the specified source and destination regions."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkImageBlit2-aspectMask-00238",
+      "explicit": true,
+      "text": "The aspectMask member of srcSubresource and dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-VkImageBlit2-layerCount-08800",
+      "explicit": true,
+      "text": "If neither of the layerCount members of srcSubresource or dstSubresource are VK_REMAINING_ARRAY_LAYERS, the layerCount members of srcSubresource and dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-VkImageBlit2-layerCount-08801",
+      "explicit": true,
+      "text": "If one of the layerCount members of srcSubresource or dstSubresource is VK_REMAINING_ARRAY_LAYERS, the other member must be either VK_REMAINING_ARRAY_LAYERS or equal to the arrayLayers member of the VkImageCreateInfo used to create the image minus baseArrayLayer"
+     },
+     {
+      "vuid": "VUID-VkImageBlit2-dstSubresource-parameter",
+      "explicit": false,
+      "text": "dstSubresource must be a valid VkImageSubresourceLayers structure"
+     },
+     {
+      "vuid": "VUID-VkImageBlit2-pNext-pNext",
+      "explicit": false,
+      "text": "pNext must be NULL or a pointer to a valid instance of VkCopyCommandTransformInfoQCOM"
+     },
+     {
+      "vuid": "VUID-VkImageBlit2-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_IMAGE_BLIT_2"
+     },
+     {
+      "vuid": "VUID-VkImageBlit2-sType-unique",
+      "explicit": false,
+      "same_text_as": "VUID-VkBlitImageInfo2-sType-unique"
+     },
+     {
+      "vuid": "VUID-VkImageBlit2-srcSubresource-parameter",
+      "explicit": false,
+      "text": "srcSubresource must be a valid VkImageSubresourceLayers structure"
+     }
+    ]
+   },
+   "VkImageCopy2": {
+    "section_id": "VkImageCopy2",
+    "section_parts": [
+     "[Copy Commands > Copying Data Between Images > VkImageCopy2]\nThe VkImageCopy2 structure is defined as:\n\n// Provided by VK_VERSION_1_3\ntypedef struct VkImageCopy2 {\nVkStructureType sType;\nconst void* pNext;\nVkImageSubresourceLayers srcSubresource;\nVkOffset3D srcOffset;\nVkImageSubresourceLayers dstSubresource;\nVkOffset3D dstOffset;\nVkExtent3D extent;\n} VkImageCopy2;\n\n// Provided by VK_KHR_copy_commands2\n// Equivalent to VkImageCopy2\ntypedef VkImageCopy2 VkImageCopy2KHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- srcSubresource and dstSubresource are VkImageSubresourceLayers structures specifying the image subresources of the images used for the source and destination image data, respectively.\n\n- srcOffset and dstOffset select the initial x, y, and z offsets in texels of the sub-regions of the source and destination image data.\n\n- extent is the size in texels of the image to copy in width, height and depth."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkImageCopy2-apiVersion-07940",
+      "explicit": true,
+      "text": "If the VK_KHR_sampler_ycbcr_conversion extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, the aspectMask member of srcSubresource and dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-apiVersion-07941",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, the layerCount member of srcSubresource and dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-extent-06668",
+      "explicit": true,
+      "text": "extent.width must not be 0"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-extent-06669",
+      "explicit": true,
+      "text": "extent.height must not be 0"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-extent-06670",
+      "explicit": true,
+      "text": "extent.depth must not be 0"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-dstSubresource-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkImageBlit2-dstSubresource-parameter"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-pNext-pNext",
+      "explicit": false,
+      "same_text_as": "VUID-VkCopyAccelerationStructureInfoKHR-pNext-pNext"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-sType-sType",
+      "explicit": false,
+      "text": "sType must be VK_STRUCTURE_TYPE_IMAGE_COPY_2"
+     },
+     {
+      "vuid": "VUID-VkImageCopy2-srcSubresource-parameter",
+      "explicit": false,
+      "same_text_as": "VUID-VkImageBlit2-srcSubresource-parameter"
+     }
+    ]
+   },
+   "VkImageSubresourceRange": {
+    "section_id": "VkImageSubresourceRange",
+    "section_parts": [
+     "[Resource Creation > Image Views > VkImageSubresourceRange]\nThe VkImageSubresourceRange structure is defined as:\n\n// Provided by VK_VERSION_1_0\ntypedef struct VkImageSubresourceRange {\nVkImageAspectFlags aspectMask;\nuint32_t baseMipLevel;\nuint32_t levelCount;\nuint32_t baseArrayLayer;\nuint32_t layerCount;\n} VkImageSubresourceRange;\n\n- aspectMask is a bitmask of VkImageAspectFlagBits specifying which aspect(s) of the image are included in the view.\n\n- baseMipLevel is the first mipmap level accessible to the view.\n\n- levelCount is the number of mipmap levels (starting from baseMipLevel) accessible to the view.\n\n- baseArrayLayer is the first array layer accessible to the view.\n\n- layerCount is the number of array layers (starting from baseArrayLayer) accessible to the view.\n\nThe number of mipmap levels and array layers must be a subset of the image subresources in the image. If an application wants to use all mip levels or layers in an image after the baseMipLevel or baseArrayLayer, it can set levelCount and layerCount to the special values VK_REMAINING_MIP_LEVELS and VK_REMAINING_ARRAY_LAYERS without knowing the exact number of mip levels or layers.\n\nFor cube and cube array image views, the layers of the image view starting at baseArrayLayer correspond to faces in the order +X, -X, +Y, -Y, +Z, -Z. For cube arrays, each set of six sequential layers is a single cube, so the number of cube maps in a cube map array view is layerCount / 6, and image array layer (baseArrayLayer + i) is face index (i mod 6) of cube i / 6. If the number of layers in the view, whether set explicitly in layerCount or implied by VK_REMAINING_ARRAY_LAYERS, is not a multiple of 6, the last cube map in the array must not be accessed.\n\naspectMask must be only VK_IMAGE_ASPECT_COLOR_BIT, VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT if format is a color, depth-only or stencil-only format, respectively.\n\nWhen creating a VkImageView, if image was created with VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT, and the image format is a multi-planar format, then aspectMask can be set to one of the multi-planar aspect bits.\n\nWhen creating a VkImageView, if image was created with an Android hardware buffer external format, then aspectMask must equal VK_IMAGE_ASPECT_COLOR_BIT.\n\nIf using a depth/stencil format with both depth and stencil components, aspectMask must include at least one of VK_IMAGE_ASPECT_DEPTH_BIT and VK_IMAGE_ASPECT_STENCIL_BIT, and can include both.",
+     "[Resource Creation > Image Views > VkImageSubresourceRange]\nWhen creating an image view of a depth/stencil image to be used as a descriptor (e.g. for sampling in the shader, or for use as an input attachment), the aspectMask must only include one bit, which selects whether the image view is used for depth reads (i.e. using a floating-point sampler or input attachment in the shader) or stencil reads (i.e. using an unsigned integer sampler or input attachment in the shader). When an image view of a depth/stencil image is used as a depth/stencil framebuffer attachment, the aspectMask is ignored and both depth and stencil image subresources are used.\n\nWhen the VkImageSubresourceRange structure is used to select a subset of the slices of a 3D image’s mip level in order to create a 2D or 2D array image view of a 3D image created with VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT, baseArrayLayer and layerCount specify the first slice index and the number of slices to include in the created image view. Such an image view can be used as a framebuffer attachment that refers only to the specified range of slices of the selected mip level. If the maintenance9 feature is not enabled, any layout transitions performed on such an attachment view during a render pass instance still apply to the entire subresource referenced which includes all the slices of the selected mip level."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkImageSubresourceRange-aspectMask-01670",
+      "explicit": true,
+      "text": "If aspectMask includes VK_IMAGE_ASPECT_COLOR_BIT, then it must not include any of the multi-planar aspect mask bits"
+     },
+     {
+      "vuid": "VUID-VkImageSubresourceRange-aspectMask-02278",
+      "explicit": true,
+      "text": "aspectMask must not include VK_IMAGE_ASPECT_MEMORY_PLANE_i_BIT_EXT for any index i"
+     },
+     {
+      "vuid": "VUID-VkImageSubresourceRange-layerCount-01721",
+      "explicit": true,
+      "text": "If layerCount is not VK_REMAINING_ARRAY_LAYERS, it must be greater than 0"
+     },
+     {
+      "vuid": "VUID-VkImageSubresourceRange-levelCount-01720",
+      "explicit": true,
+      "text": "If levelCount is not VK_REMAINING_MIP_LEVELS, it must be greater than 0"
+     },
+     {
+      "vuid": "VUID-VkImageSubresourceRange-aspectMask-parameter",
+      "explicit": false,
+      "text": "aspectMask must be a valid combination of VkImageAspectFlagBits values"
+     }
+    ]
+   }
+  },
+  "ref_chunks": {
+   "sec-9ec7b0d0c6ce": "[Resource Creation > Images > Image Format Features]\nValid uses of a VkImage may depend on the image’s format features, defined below. Such constraints are documented in the affected valid usage statement.\n\n- If the image was created with VK_IMAGE_TILING_LINEAR, then its set of format features is the value of VkFormatProperties::linearTilingFeatures found by calling vkGetPhysicalDeviceFormatProperties on the same format as VkImageCreateInfo::format.\n\n- If the image was created with VK_IMAGE_TILING_OPTIMAL, but without an Android hardware buffer external format, or a QNX Screen Buffer external format or an VkBufferCollectionImageCreateInfoFUCHSIA, then its set of format features is the value of VkFormatProperties::optimalTilingFeatures found by calling vkGetPhysicalDeviceFormatProperties on the same format as VkImageCreateInfo::format.\n\n- If the image was created with an Android hardware buffer external format, then its set of format features is the value of VkAndroidHardwareBufferFormatPropertiesANDROID::formatFeatures found by calling vkGetAndroidHardwareBufferPropertiesANDROID on the Android hardware buffer that was imported to the VkDeviceMemory to which the image is bound.\n\n- If the image was created with a QNX Screen buffer external format, then its set of format features is the value of VkScreenBufferFormatPropertiesQNX::formatFeatures found by calling vkGetScreenBufferPropertiesQNX on the QNX Screen buffer that was imported to the VkDeviceMemory to which the image is bound.\n\n- If the image was created with VK_IMAGE_TILING_DRM_FORMAT_MODIFIER_EXT, then:\n\n - The image’s DRM format modifier is the value of VkImageDrmFormatModifierPropertiesEXT::drmFormatModifier found by calling vkGetImageDrmFormatModifierPropertiesEXT.\n\n - Let VkDrmFormatModifierPropertiesListEXT::pDrmFormatModifierProperties be the array found by calling vkGetPhysicalDeviceFormatProperties2 on the same format as VkImageCreateInfo::format.\n\n - Let VkDrmFormatModifierPropertiesEXT prop be the array element whose drmFormatModifier member is the value of the image’s DRM format modifier.\n\n - Then the image’s set of format features is the value of prop::drmFormatModifierTilingFeatures.",
+   "sec-c625204d3114": "[Formats > Format Properties > VkFormatFeatureFlagBits]\nBits which can be set in the VkFormatProperties features linearTilingFeatures, optimalTilingFeatures, VkDrmFormatModifierPropertiesEXT::drmFormatModifierTilingFeatures, and bufferFeatures are:\n\nWarning | This functionality is superseded by / VkFormatFeatureFlagBits2 /. See / Legacy Functionality / for more information.",
+   "sec-b8bc01c3dfb5": "[Resource Creation > Images > Use External Memory On Open Harmony OS platform > VkImageCreateFlagBits]\nBits which can be set in VkImageCreateInfo::flags, specifying additional parameters of an image, are:",
+   "sec-b6b04f98fae1": "[Render Pass > Render Pass Objects > VK_ATTACHMENT_UNUSED]\nVK_ATTACHMENT_UNUSED is a constant indicating that a render pass attachment is not used.\n\n#define VK_ATTACHMENT_UNUSED (~0U)",
+   "sec-fdee43c8b6a8": "[Debugging > VkObjectType]\nTo aid developers in tracking down errors in the application’s use of Vulkan, particularly in combination with an external debugger or profiler, debugging extensions may be available.\n\nThe VkObjectType enumeration defines values, each of which corresponds to a specific Vulkan handle type. These values can be used to associate debug information with a particular type of object through one or more extensions.",
+   "sec-00c569cd5ce5": "[Queries > Query Pools > VkQueryType]\nPossible values of VkQueryPoolCreateInfo::queryType, specifying the type of queries managed by the pool, are:\n\n// Provided by VK_VERSION_1_0\ntypedef enum VkQueryType {\nVK_QUERY_TYPE_OCCLUSION = 0,\nVK_QUERY_TYPE_PIPELINE_STATISTICS = 1,\nVK_QUERY_TYPE_TIMESTAMP = 2,\n// Provided by VK_KHR_video_queue\nVK_QUERY_TYPE_RESULT_STATUS_ONLY_KHR = 1000023000,\n// Provided by VK_EXT_transform_feedback\nVK_QUERY_TYPE_TRANSFORM_FEEDBACK_STREAM_EXT = 1000028004,\n// Provided by VK_KHR_performance_query\nVK_QUERY_TYPE_PERFORMANCE_QUERY_KHR = 1000116000,\n// Provided by VK_KHR_acceleration_structure\nVK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_KHR = 1000150000,\n// Provided by VK_KHR_acceleration_structure\nVK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_SIZE_KHR = 1000150001,\n// Provided by VK_NV_ray_tracing\nVK_QUERY_TYPE_ACCELERATION_STRUCTURE_COMPACTED_SIZE_NV = 1000165000,\n// Provided by VK_QCOM_elapsed_timer_query\nVK_QUERY_TYPE_TIME_ELAPSED_QCOM = 1000173000,\n// Provided by VK_INTEL_performance_query\nVK_QUERY_TYPE_PERFORMANCE_QUERY_INTEL = 1000210000,\n// Provided by VK_KHR_video_encode_queue\nVK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR = 1000299000,\n// Provided by VK_EXT_mesh_shader\nVK_QUERY_TYPE_MESH_PRIMITIVES_GENERATED_EXT = 1000328000,\n// Provided by VK_EXT_primitives_generated_query\nVK_QUERY_TYPE_PRIMITIVES_GENERATED_EXT = 1000382000,\n// Provided by VK_KHR_ray_tracing_maintenance1\nVK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR = 1000386000,\n// Provided by VK_KHR_ray_tracing_maintenance1\nVK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR = 1000386001,\n// Provided by VK_EXT_opacity_micromap\nVK_QUERY_TYPE_MICROMAP_SERIALIZATION_SIZE_EXT = 1000396000,\n// Provided by VK_EXT_opacity_micromap\nVK_QUERY_TYPE_MICROMAP_COMPACTED_SIZE_EXT = 1000396001,\n} VkQueryType;",
+   "sec-ca14056a80bf": "[Features > VkPhysicalDeviceVulkan14Features]\nThe VkPhysicalDeviceVulkan14Features structure is defined as:\n\n// Provided by VK_VERSION_1_4\ntypedef struct VkPhysicalDeviceVulkan14Features {\nVkStructureType sType;\nvoid* pNext;\nVkBool32 globalPriorityQuery;\nVkBool32 shaderSubgroupRotate;\nVkBool32 shaderSubgroupRotateClustered;\nVkBool32 shaderFloatControls2;\nVkBool32 shaderExpectAssume;\nVkBool32 rectangularLines;\nVkBool32 bresenhamLines;\nVkBool32 smoothLines;\nVkBool32 stippledRectangularLines;\nVkBool32 stippledBresenhamLines;\nVkBool32 stippledSmoothLines;\nVkBool32 vertexAttributeInstanceRateDivisor;\nVkBool32 vertexAttributeInstanceRateZeroDivisor;\nVkBool32 indexTypeUint8;\nVkBool32 dynamicRenderingLocalRead;\nVkBool32 maintenance5;\nVkBool32 maintenance6;\nVkBool32 pipelineProtectedAccess;\nVkBool32 pipelineRobustness;\nVkBool32 hostImageCopy;\nVkBool32 pushDescriptor;\n} VkPhysicalDeviceVulkan14Features;\n\nThis structure describes the following features:\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- globalPriorityQuery indicates whether the implementation supports the ability to query global queue priorities.\n\n- shaderSubgroupRotate specifies whether shader modules can declare the GroupNonUniformRotateKHR capability.\n\n- shaderSubgroupRotateClustered specifies whether shader modules can use the ClusterSize operand to OpGroupNonUniformRotateKHR.\n\n- shaderFloatControls2 specifies whether shader modules can declare the FloatControls2 capability.\n\n- shaderExpectAssume specifies whether shader modules can declare the ExpectAssumeKHR capability.\n\n- rectangularLines indicates whether the implementation supports rectangular line rasterization.\n\n- bresenhamLines indicates whether the implementation supports Bresenham-style line rasterization.\n\n- smoothLines indicates whether the implementation supports smooth line rasterization.\n\n- stippledRectangularLines indicates whether the implementation supports stippled line rasterization with VK_LINE_RASTERIZATION_MODE_RECTANGULAR lines.\n\n- stippledBresenhamLines indicates whether the implementation supports stippled line rasterization with VK_LINE_RASTERIZATION_MODE_BRESENHAM lines.\n\n- stippledSmoothLines indicates whether the implementation supports stippled line rasterization with VK_LINE_RASTERIZATION_MODE_RECTANGULAR_SMOOTH lines.",
+   "sec-0860ce5cef2a": "[API Boilerplate > Vulkan Header Files > Vulkan Core API Header vulkan_core.h > Vulkan Handle Macros > VK_NULL_HANDLE]\nVK_NULL_HANDLE is a reserved value representing a non-valid object handle. It may be passed to and returned from Vulkan commands only when specifically allowed.\n\n// Provided by VK_VERSION_1_0\n#ifndef VK_DEFINE_NON_DISPATCHABLE_HANDLE\n#if (VK_USE_64_BIT_PTR_DEFINES==1)\n#if (defined(__cplusplus) && (__cplusplus >= 201103L)) || (defined(_MSVC_LANG) && (_MSVC_LANG >= 201103L))\n#define VK_NULL_HANDLE nullptr\n#else\n#define VK_NULL_HANDLE ((void*)0)\n#endif\n#else\n#define VK_NULL_HANDLE 0ULL\n#endif\n#endif\n#ifndef VK_NULL_HANDLE\n#define VK_NULL_HANDLE 0\n#endif",
+   "sec-30fe2a45d5fc": "[Resource Creation > Image Layouts > VkImageLayout]\nThe set of image layouts consists of:",
+   "sec-f4f3e92f02e7": "[Formats > Format Definition > Format Compatibility Classes]\nUncompressed color formats are compatible with each other if they occupy the same number of bits per texel block as long as neither or both are alpha formats (e.g., VK_FORMAT_A8_UNORM). Compressed color formats are compatible with each other if the only difference between them is the numeric format of the uncompressed texels. Each depth/stencil format is only compatible with itself. In the following table, all the formats in the same row are compatible. Each format has a defined texel block extent specifying how many texels each texel block represents in each dimension.\n\nClass, Texel Block Size, Texel Block Extent, # Texels/Block: 8-bit / Block size 1 byte / 1x1x1 block extent / 1 texel/block; Formats: VK_FORMAT_R8_BOOL_ARM /, / VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM /, / VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM /, / VK_FORMAT_R4G4_UNORM_PACK8 /, / VK_FORMAT_R8_UNORM /, / VK_FORMAT_R8_SNORM /, / VK_FORMAT_R8_USCALED /, / VK_FORMAT_R8_SSCALED /, / VK_FORMAT_R8_UINT /, / VK_FORMAT_R8_SINT /, / VK_FORMAT_R8_SRGB",
+   "sec-7feaf622aec6": "[Formats > Format Definition > VkFormat]\nThe following image formats can be passed to, and may be returned from Vulkan commands. The memory required to store each format is discussed with that format, and also summarized in the Representation and Texel Block Size section and the Compatible formats table.",
+   "sec-a8fd078bdbe7": "[Command Buffers > Command Pools > VkCommandPool]\nCommand pools are opaque objects that command buffer memory is allocated from, and which allow the implementation to amortize the cost of resource creation across multiple command buffers. Command pools are externally synchronized, meaning that a command pool must not be used concurrently in multiple threads. That includes use via recording commands on any command buffers allocated from the pool, as well as operations that allocate, free, and reset command buffers or the pool itself.\n\nCommand pools are represented by VkCommandPool handles:\n\n// Provided by VK_VERSION_1_0\nVK_DEFINE_NON_DISPATCHABLE_HANDLE(VkCommandPool)",
+   "sec-68443922c32f": "[Limits > VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR]\nThe VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR structure is defined as:\n\n// Provided by VK_KHR_copy_memory_indirect\ntypedef struct VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR {\nVkStructureType sType;\nvoid* pNext;\nVkQueueFlags supportedQueues;\n} VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR;\n\n// Provided by VK_NV_copy_memory_indirect\n// Equivalent to VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR\ntypedef VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR VkPhysicalDeviceCopyMemoryIndirectPropertiesNV;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- supportedQueues is a bitmask of VkQueueFlagBits indicating the types of queues on which indirect copy commands are supported. If a queue family supports any of the bits set in supportedQueues, then it must support at least one indirect copy command.\n\nIf the indirectMemoryCopy or indirectMemoryToImageCopy feature is supported, supportedQueues must return at least one supported queue type.\n\nIf the VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR structure is included in the pNext chain of the VkPhysicalDeviceProperties2 structure passed to vkGetPhysicalDeviceProperties2, it is filled in with each corresponding implementation-dependent property.\n\nStructure Chaining:\n\nExtends the structure\n\n- VkPhysicalDeviceProperties2"
+  }
+ }
+}

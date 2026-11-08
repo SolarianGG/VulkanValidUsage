@@ -1,0 +1,359 @@
+{
+ "sample": "pilot",
+ "prompt_version": "prompt_v1",
+ "quotas": {
+  "nonexistent": 2,
+  "false_rule": 2,
+  "false_behavior": 1
+ },
+ "qid_prefix": "qp-u",
+ "identifier_sources": [
+  "data/processed/identifiers.json (by_kind, union over all vk.xml tags + main)",
+  "data/processed/aliases.json",
+  "data/external/spirv_identifiers.txt"
+ ],
+ "candidate_entities": {
+  "VkAccelerationStructureCaptureDescriptorDataInfoEXT": {
+   "section_id": "VkAccelerationStructureCaptureDescriptorDataInfoEXT",
+   "section_parts": [
+    "[Descriptor Buffers > Capture and Replay > VkAccelerationStructureCaptureDescriptorDataInfoEXT]\nInformation about the acceleration structure to get descriptor buffer capture data for is passed in a VkAccelerationStructureCaptureDescriptorDataInfoEXT structure:\n\nWarning | This functionality is superseded by / VK_EXT_descriptor_heap /. See / Legacy Functionality / for more information.\n\n// Provided by VK_EXT_descriptor_buffer with VK_KHR_acceleration_structure or VK_NV_ray_tracing\ntypedef struct VkAccelerationStructureCaptureDescriptorDataInfoEXT {\nVkStructureType sType;\nconst void* pNext;\nVkAccelerationStructureKHR accelerationStructure;\nVkAccelerationStructureNV accelerationStructureNV;\n} VkAccelerationStructureCaptureDescriptorDataInfoEXT;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- accelerationStructure is the VkAccelerationStructureKHR handle of the acceleration structure to get opaque capture data for.\n\n- accelerationStructureNV is the VkAccelerationStructureNV handle of the acceleration structure to get opaque capture data for."
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-None-12430",
+     "explicit": true,
+     "text": "If the accelerationStructure feature is not enabled, accelerationStructure must be VK_NULL_HANDLE"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-accelerationStructure-08091",
+     "explicit": true,
+     "text": "If accelerationStructure is not VK_NULL_HANDLE then accelerationStructure must have been created with VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT set in VkAccelerationStructureCreateInfoKHR::createFlags"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-accelerationStructure-08093",
+     "explicit": true,
+     "text": "If accelerationStructure is not VK_NULL_HANDLE then accelerationStructureNV must be VK_NULL_HANDLE"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-accelerationStructureNV-08092",
+     "explicit": true,
+     "text": "If accelerationStructureNV is not VK_NULL_HANDLE then accelerationStructureNV must have been created with VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT set in VkAccelerationStructureCreateInfoNV::info.flags"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-accelerationStructureNV-08094",
+     "explicit": true,
+     "text": "If accelerationStructureNV is not VK_NULL_HANDLE then accelerationStructure must be VK_NULL_HANDLE"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-accelerationStructureNV-12431",
+     "explicit": true,
+     "text": "If the VK_NV_ray_tracing extension is not enabled, then accelerationStructureNV must be VK_NULL_HANDLE"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-accelerationStructure-parameter",
+     "explicit": false,
+     "text": "If accelerationStructure is not VK_NULL_HANDLE, accelerationStructure must be a valid VkAccelerationStructureKHR handle"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-accelerationStructureNV-parameter",
+     "explicit": false,
+     "text": "If accelerationStructureNV is not VK_NULL_HANDLE, accelerationStructureNV must be a valid VkAccelerationStructureNV handle"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-commonparent",
+     "explicit": false,
+     "text": "Both of accelerationStructure, and accelerationStructureNV that are valid handles of non-ignored parameters must have been created, allocated, or retrieved from the same VkDevice"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-pNext-pNext",
+     "explicit": false,
+     "text": "pNext must be NULL"
+    },
+    {
+     "vuid": "VUID-VkAccelerationStructureCaptureDescriptorDataInfoEXT-sType-sType",
+     "explicit": false,
+     "text": "sType must be VK_STRUCTURE_TYPE_ACCELERATION_STRUCTURE_CAPTURE_DESCRIPTOR_DATA_INFO_EXT"
+    }
+   ]
+  },
+  "VkBindDescriptorBufferEmbeddedSamplersInfoEXT": {
+   "section_id": "VkBindDescriptorBufferEmbeddedSamplersInfoEXT",
+   "section_parts": [
+    "[Descriptor Buffers > Binding Descriptor Buffers > VkBindDescriptorBufferEmbeddedSamplersInfoEXT]\nThe VkBindDescriptorBufferEmbeddedSamplersInfoEXT structure is defined as:\n\n// Provided by VK_KHR_maintenance6 with VK_EXT_descriptor_buffer\ntypedef struct VkBindDescriptorBufferEmbeddedSamplersInfoEXT {\nVkStructureType sType;\nconst void* pNext;\nVkShaderStageFlags stageFlags;\nVkPipelineLayout layout;\nuint32_t set;\n} VkBindDescriptorBufferEmbeddedSamplersInfoEXT;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- stageFlags is a bitmask of VkShaderStageFlagBits specifying the shader stages that will use the embedded immutable samplers.\n\n- layout is a VkPipelineLayout object used to program the bindings. If the dynamicPipelineLayout feature is enabled, layout can be VK_NULL_HANDLE and the layout must be specified by chaining VkPipelineLayoutCreateInfo structure off the pNext.\n\n- set is the number of the set to be bound.\n\nIf stageFlags specifies a subset of all stages corresponding to one or more pipeline bind points, the binding operation still affects all stages corresponding to the given pipeline bind point(s) as if the equivalent original version of this command had been called with the same parameters. For example, specifying a stageFlags value of VK_SHADER_STAGE_VERTEX_BIT | VK_SHADER_STAGE_FRAGMENT_BIT | VK_SHADER_STAGE_COMPUTE_BIT is equivalent to calling the original version of this command once with VK_PIPELINE_BIND_POINT_GRAPHICS and once with VK_PIPELINE_BIND_POINT_COMPUTE."
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-None-09495",
+     "explicit": true,
+     "text": "If the dynamicPipelineLayout feature is not enabled, layout must be a valid VkPipelineLayout handle"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-layout-09496",
+     "explicit": true,
+     "text": "If layout is VK_NULL_HANDLE, the pNext chain must include a valid VkPipelineLayoutCreateInfo structure"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-set-08070",
+     "explicit": true,
+     "text": "The VkDescriptorSetLayout at index set when layout was created must have been created with the VK_DESCRIPTOR_SET_LAYOUT_CREATE_EMBEDDED_IMMUTABLE_SAMPLERS_BIT_EXT bit set"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-set-08071",
+     "explicit": true,
+     "text": "set must be less than VkPipelineLayoutCreateInfo::setLayoutCount provided when layout was created"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-layout-parameter",
+     "explicit": false,
+     "text": "If layout is not VK_NULL_HANDLE, layout must be a valid VkPipelineLayout handle"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-pNext-pNext",
+     "explicit": false,
+     "text": "pNext must be NULL or a pointer to a valid instance of VkPipelineLayoutCreateInfo"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-sType-sType",
+     "explicit": false,
+     "text": "sType must be VK_STRUCTURE_TYPE_BIND_DESCRIPTOR_BUFFER_EMBEDDED_SAMPLERS_INFO_EXT"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-sType-unique",
+     "explicit": false,
+     "text": "The sType value of each structure in the pNext chain must be unique"
+    },
+    {
+     "vuid": "VUID-VkBindDescriptorBufferEmbeddedSamplersInfoEXT-stageFlags-parameter",
+     "explicit": false,
+     "text": "stageFlags must be a valid combination of VkShaderStageFlagBits values"
+    }
+   ]
+  },
+  "VkCopyMemoryToMicromapInfoEXT": {
+   "section_id": "VkCopyMemoryToMicromapInfoEXT",
+   "section_parts": [
+    "[Micromap > Micromaps > Copying Micromaps > VkCopyMemoryToMicromapInfoEXT]\nThe VkCopyMemoryToMicromapInfoEXT structure is defined as:\n\n// Provided by VK_EXT_opacity_micromap\ntypedef struct VkCopyMemoryToMicromapInfoEXT {\nVkStructureType sType;\nconst void* pNext;\nVkDeviceOrHostAddressConstKHR src;\nVkMicromapEXT dst;\nVkCopyMicromapModeEXT mode;\n} VkCopyMemoryToMicromapInfoEXT;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- src is the device or host address of memory containing the source data for the copy.\n\n- dst is the target micromap for the copy.\n\n- mode is a VkCopyMicromapModeEXT value specifying additional operations to perform during the copy."
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-dst-07550",
+     "explicit": true,
+     "text": "dst must have been created with a size greater than or equal to that used to serialize the data in src"
+    },
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-mode-07548",
+     "explicit": true,
+     "text": "mode must be VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT"
+    },
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-src-07547",
+     "explicit": true,
+     "text": "The source memory pointed to by src must contain data previously serialized using vkCmdCopyMicromapToMemoryEXT"
+    },
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-src-07549",
+     "explicit": true,
+     "text": "The data in src must have a format compatible with the destination physical device as returned by vkGetDeviceMicromapCompatibilityEXT"
+    },
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-dst-parameter",
+     "explicit": false,
+     "text": "dst must be a valid VkMicromapEXT handle"
+    },
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-mode-parameter",
+     "explicit": false,
+     "text": "mode must be a valid VkCopyMicromapModeEXT value"
+    },
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-pNext-pNext",
+     "explicit": false,
+     "text": "pNext must be NULL"
+    },
+    {
+     "vuid": "VUID-VkCopyMemoryToMicromapInfoEXT-sType-sType",
+     "explicit": false,
+     "text": "sType must be VK_STRUCTURE_TYPE_COPY_MEMORY_TO_MICROMAP_INFO_EXT"
+    }
+   ]
+  },
+  "VkDataGraphPipelineSessionMemoryRequirementsInfoARM": {
+   "section_id": "VkDataGraphPipelineSessionMemoryRequirementsInfoARM",
+   "section_parts": [
+    "[Data graphs > Sessions > VkDataGraphPipelineSessionMemoryRequirementsInfoARM]\nThe VkDataGraphPipelineSessionMemoryRequirementsInfoARM structure is defined as:\n\n// Provided by VK_ARM_data_graph\ntypedef struct VkDataGraphPipelineSessionMemoryRequirementsInfoARM {\nVkStructureType sType;\nconst void* pNext;\nVkDataGraphPipelineSessionARM session;\nVkDataGraphPipelineSessionBindPointARM bindPoint;\nuint32_t objectIndex;\n} VkDataGraphPipelineSessionMemoryRequirementsInfoARM;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- session is the data graph pipeline session to query.\n\n- bindPoint is the bind point of a data graph pipeline session for which memory requirements are being queried.\n\n- objectIndex is the index of the object whose memory requirements are being queried."
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-objectIndex-09855",
+     "explicit": true,
+     "text": "objectIndex must be less than the number of objects returned by vkGetDataGraphPipelineSessionBindPointRequirementsARM via VkDataGraphPipelineSessionBindPointRequirementARM::numObjects with VkDataGraphPipelineSessionMemoryRequirementsInfoARM::bindPoint equal to bindPoint"
+    },
+    {
+     "vuid": "VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-bindPoint-parameter",
+     "explicit": false,
+     "text": "bindPoint must be a valid VkDataGraphPipelineSessionBindPointARM value"
+    },
+    {
+     "vuid": "VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-pNext-pNext",
+     "explicit": false,
+     "text": "pNext must be NULL"
+    },
+    {
+     "vuid": "VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-sType-sType",
+     "explicit": false,
+     "text": "sType must be VK_STRUCTURE_TYPE_DATA_GRAPH_PIPELINE_SESSION_MEMORY_REQUIREMENTS_INFO_ARM"
+    },
+    {
+     "vuid": "VUID-VkDataGraphPipelineSessionMemoryRequirementsInfoARM-session-parameter",
+     "explicit": false,
+     "text": "session must be a valid VkDataGraphPipelineSessionARM handle"
+    }
+   ]
+  },
+  "VkExternalFormatANDROID": {
+   "section_id": "VkExternalFormatANDROID",
+   "section_parts": [
+    "[Resource Creation > Images > Use External Memory On Open Harmony OS platform > VkExternalFormatANDROID]\nVkExternalFormatANDROID is defined as:\n\n// Provided by VK_ANDROID_external_memory_android_hardware_buffer\ntypedef struct VkExternalFormatANDROID {\nVkStructureType sType;\nvoid* pNext;\nuint64_t externalFormat;\n} VkExternalFormatANDROID;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- externalFormat is an implementation-defined identifier for the external format.\n\nWhen included in the pNext chain of another structure, it indicates additional format information beyond what is provided by VkFormat values for an Android hardware buffer. If externalFormat is zero, it indicates that no external format is used, and implementations should rely only on other format information. If this structure is not present, it is equivalent to setting externalFormat to zero.\n\nStructure Chaining:\n\nExtends the structures\n\n- VkAttachmentDescription2\n\n- VkCommandBufferInheritanceInfo\n\n- VkGraphicsPipelineCreateInfo\n\n- VkImageCreateInfo\n\n- VkSamplerYcbcrConversionCreateInfo"
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-VkExternalFormatANDROID-externalFormat-01894",
+     "explicit": true,
+     "text": "externalFormat must be 0 or a value returned in the externalFormat member of VkAndroidHardwareBufferFormatPropertiesANDROID by an earlier call to vkGetAndroidHardwareBufferPropertiesANDROID"
+    },
+    {
+     "vuid": "VUID-VkExternalFormatANDROID-sType-sType",
+     "explicit": false,
+     "text": "sType must be VK_STRUCTURE_TYPE_EXTERNAL_FORMAT_ANDROID"
+    }
+   ]
+  },
+  "VkMemoryGetWin32HandleInfoKHR": {
+   "section_id": "VkMemoryGetWin32HandleInfoKHR",
+   "section_parts": [
+    "[Memory Allocation > Device Memory > Win32 External Memory > VkMemoryGetWin32HandleInfoKHR]\nThe VkMemoryGetWin32HandleInfoKHR structure is defined as:\n\n// Provided by VK_KHR_external_memory_win32\ntypedef struct VkMemoryGetWin32HandleInfoKHR {\nVkStructureType sType;\nconst void* pNext;\nVkDeviceMemory memory;\nVkExternalMemoryHandleTypeFlagBits handleType;\n} VkMemoryGetWin32HandleInfoKHR;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- memory is the memory object from which the handle will be exported.\n\n- handleType is a VkExternalMemoryHandleTypeFlagBits value specifying the type of handle requested.\n\nThe properties of the handle returned depend on the value of handleType. See VkExternalMemoryHandleTypeFlagBits for a description of the properties of the defined external memory handle types."
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-VkMemoryGetWin32HandleInfoKHR-handleType-00662",
+     "explicit": true,
+     "text": "handleType must have been included in VkExportMemoryAllocateInfo::handleTypes when memory was created"
+    },
+    {
+     "vuid": "VUID-VkMemoryGetWin32HandleInfoKHR-handleType-00663",
+     "explicit": true,
+     "text": "If handleType is defined as an NT handle, vkGetMemoryWin32HandleKHR must be called no more than once for each valid unique combination of memory and handleType"
+    },
+    {
+     "vuid": "VUID-VkMemoryGetWin32HandleInfoKHR-handleType-00664",
+     "explicit": true,
+     "text": "handleType must be defined as an NT handle or a global share handle"
+    },
+    {
+     "vuid": "VUID-VkMemoryGetWin32HandleInfoKHR-handleType-parameter",
+     "explicit": false,
+     "text": "handleType must be a valid VkExternalMemoryHandleTypeFlagBits value"
+    },
+    {
+     "vuid": "VUID-VkMemoryGetWin32HandleInfoKHR-memory-parameter",
+     "explicit": false,
+     "text": "memory must be a valid VkDeviceMemory handle"
+    },
+    {
+     "vuid": "VUID-VkMemoryGetWin32HandleInfoKHR-pNext-pNext",
+     "explicit": false,
+     "text": "pNext must be NULL"
+    },
+    {
+     "vuid": "VUID-VkMemoryGetWin32HandleInfoKHR-sType-sType",
+     "explicit": false,
+     "text": "sType must be VK_STRUCTURE_TYPE_MEMORY_GET_WIN32_HANDLE_INFO_KHR"
+    }
+   ]
+  },
+  "VkPresentFrameTokenGGP": {
+   "section_id": "VkPresentFrameTokenGGP",
+   "section_parts": [
+    "[Window System Integration (WSI) > WSI Swapchain > VkPresentFrameTokenGGP]\nWhen the VK_GGP_frame_token extension is enabled, a Google Games Platform frame token can be specified when presenting an image to a swapchain by adding a VkPresentFrameTokenGGP structure to the pNext chain of the VkPresentInfoKHR structure.\n\nThe VkPresentFrameTokenGGP structure is defined as:\n\n// Provided by VK_GGP_frame_token\ntypedef struct VkPresentFrameTokenGGP {\nVkStructureType sType;\nconst void* pNext;\nGgpFrameToken frameToken;\n} VkPresentFrameTokenGGP;\n\n- sType is a VkStructureType value identifying this structure.\n\n- pNext is NULL or a pointer to a structure extending this structure.\n\n- frameToken is the Google Games Platform frame token.\n\nStructure Chaining:\n\nExtends the structure\n\n- VkPresentInfoKHR"
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-VkPresentFrameTokenGGP-frameToken-02680",
+     "explicit": true,
+     "text": "frameToken must be a valid GgpFrameToken"
+    },
+    {
+     "vuid": "VUID-VkPresentFrameTokenGGP-sType-sType",
+     "explicit": false,
+     "text": "sType must be VK_STRUCTURE_TYPE_PRESENT_FRAME_TOKEN_GGP"
+    }
+   ]
+  },
+  "vkCreateInstance": {
+   "section_id": "vkCreateInstance",
+   "section_parts": [
+    "[Initialization > Instances > vkCreateInstance]\nTo create an instance object, call:\n\n// Provided by VK_VERSION_1_0\nVkResult vkCreateInstance(\nconst VkInstanceCreateInfo* pCreateInfo,\nconst VkAllocationCallbacks* pAllocator,\nVkInstance* pInstance);\n\n- pCreateInfo is a pointer to a VkInstanceCreateInfo structure controlling creation of the instance.\n\n- pAllocator controls host memory allocation as described in the Memory Allocation chapter.\n\n- pInstance is a pointer to a VkInstance handle in which the resulting instance is returned.\n\nvkCreateInstance verifies that the requested layers exist. If not, vkCreateInstance will return VK_ERROR_LAYER_NOT_PRESENT. Next vkCreateInstance verifies that the requested extensions are supported (e.g. in the implementation or in any enabled instance layer) and if any requested extension is not supported, vkCreateInstance must return VK_ERROR_EXTENSION_NOT_PRESENT. After verifying and enabling the instance layers and extensions the VkInstance object is created and returned to the application. If a requested extension is only supported by a layer, both the layer and the extension need to be specified at vkCreateInstance time for the creation to succeed.\n\nReturn Codes:\n\nSuccess\n\n- VK_SUCCESS\n\nFailure\n\n- VK_ERROR_EXTENSION_NOT_PRESENT\n\n- VK_ERROR_INCOMPATIBLE_DRIVER\n\n- VK_ERROR_INITIALIZATION_FAILED\n\n- VK_ERROR_LAYER_NOT_PRESENT\n\n- VK_ERROR_OUT_OF_DEVICE_MEMORY\n\n- VK_ERROR_OUT_OF_HOST_MEMORY\n\n- VK_ERROR_UNKNOWN\n\n- VK_ERROR_VALIDATION_FAILED"
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-vkCreateInstance-ppEnabledExtensionNames-01388",
+     "explicit": true,
+     "text": "All required extensions for each extension in the VkInstanceCreateInfo::ppEnabledExtensionNames list must also be present in that list"
+    },
+    {
+     "vuid": "VUID-vkCreateInstance-pAllocator-parameter",
+     "explicit": false,
+     "text": "If pAllocator is not NULL, pAllocator must be a valid pointer to a valid VkAllocationCallbacks structure"
+    },
+    {
+     "vuid": "VUID-vkCreateInstance-pCreateInfo-parameter",
+     "explicit": false,
+     "text": "pCreateInfo must be a valid pointer to a valid VkInstanceCreateInfo structure"
+    },
+    {
+     "vuid": "VUID-vkCreateInstance-pInstance-parameter",
+     "explicit": false,
+     "text": "pInstance must be a valid pointer to a VkInstance handle"
+    }
+   ]
+  },
+  "vkDestroyPrivateDataSlot": {
+   "section_id": "vkDestroyPrivateDataSlot",
+   "section_parts": [
+    "[Private Data > vkDestroyPrivateDataSlot]\nTo destroy a private data slot, call:\n\n// Provided by VK_VERSION_1_3\nvoid vkDestroyPrivateDataSlot(\nVkDevice device,\nVkPrivateDataSlot privateDataSlot,\nconst VkAllocationCallbacks* pAllocator);\n\n// Provided by VK_EXT_private_data\n// Equivalent to vkDestroyPrivateDataSlot\nvoid vkDestroyPrivateDataSlotEXT(\nVkDevice device,\nVkPrivateDataSlot privateDataSlot,\nconst VkAllocationCallbacks* pAllocator);\n\n- device is the logical device associated with the creation of the object(s) holding the private data slot.\n\n- pAllocator controls host memory allocation as described in the Memory Allocation chapter.\n\n- privateDataSlot is the private data slot to destroy.\n\nHost Synchronization:\n\n- Host access to privateDataSlot must be externally synchronized"
+   ],
+   "vus": [
+    {
+     "vuid": "VUID-vkDestroyPrivateDataSlot-privateDataSlot-04062",
+     "explicit": true,
+     "text": "If VkAllocationCallbacks were provided when privateDataSlot was created, a compatible set of callbacks must be provided here"
+    },
+    {
+     "vuid": "VUID-vkDestroyPrivateDataSlot-privateDataSlot-04063",
+     "explicit": true,
+     "text": "If no VkAllocationCallbacks were provided when privateDataSlot was created, pAllocator must be NULL"
+    },
+    {
+     "vuid": "VUID-vkDestroyPrivateDataSlot-device-parameter",
+     "explicit": false,
+     "text": "device must be a valid VkDevice handle"
+    },
+    {
+     "vuid": "VUID-vkDestroyPrivateDataSlot-pAllocator-parameter",
+     "explicit": false,
+     "text": "If pAllocator is not NULL, pAllocator must be a valid pointer to a valid VkAllocationCallbacks structure"
+    },
+    {
+     "vuid": "VUID-vkDestroyPrivateDataSlot-privateDataSlot-parameter",
+     "explicit": false,
+     "text": "If privateDataSlot is not VK_NULL_HANDLE, privateDataSlot must be a valid VkPrivateDataSlot handle"
+    },
+    {
+     "vuid": "VUID-vkDestroyPrivateDataSlot-privateDataSlot-parent",
+     "explicit": false,
+     "text": "If privateDataSlot is a valid handle, it must have been created, allocated, or retrieved from device"
+    }
+   ]
+  }
+ }
+}

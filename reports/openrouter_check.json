@@ -1,0 +1,283 @@
+{
+ "date": "2026-11-07T06:33:14+00:00",
+ "key": {
+  "limit": 100,
+  "limit_remaining": 99.480748358,
+  "usage": 0.519251642,
+  "limit_reset": null,
+  "is_free_tier": false
+ },
+ "answerer_remote": {
+  "model": "deepseek/deepseek-v4-flash-0731",
+  "config_provider": {
+   "order": [],
+   "allow_fallbacks": false,
+   "require_parameters": true,
+   "data_collection": "deny",
+   "quantizations": [
+    "bf16",
+    "fp8"
+   ]
+  },
+  "runs": [
+   {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "provider": "DeepInfra",
+    "finish_reason": "stop",
+    "prompt_tokens": 41,
+    "completion_tokens": 3,
+    "reasoning_tokens": 0,
+    "cached_tokens": 0,
+    "cost_usd": 3e-06,
+    "latency_s": 0.498,
+    "content": "No.",
+    "has_reasoning_text": false,
+    "requested": "deepinfra/fp8",
+    "repeat_identical": true,
+    "cost_second_usd": 3e-06,
+    "generation": {
+     "provider_name": "DeepInfra",
+     "model": "deepseek/deepseek-v4-flash-20260731",
+     "total_cost": 3e-06,
+     "native_tokens_prompt": 41,
+     "native_tokens_completion": 3,
+     "native_tokens_reasoning": 0,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   },
+   {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "provider": "Nebius",
+    "finish_reason": "stop",
+    "prompt_tokens": 41,
+    "completion_tokens": 17,
+    "reasoning_tokens": 0,
+    "cached_tokens": 0,
+    "cost_usd": 1.05e-05,
+    "latency_s": 1.03,
+    "content": "No. vkCmdDraw must be recorded inside an active render pass instance.",
+    "has_reasoning_text": false,
+    "requested": "nebius/fp8",
+    "repeat_identical": false,
+    "cost_second_usd": 6.58e-06,
+    "generation": {
+     "provider_name": "Nebius",
+     "model": "deepseek/deepseek-v4-flash-20260731",
+     "total_cost": 1.05e-05,
+     "native_tokens_prompt": 41,
+     "native_tokens_completion": 17,
+     "native_tokens_reasoning": 0,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   },
+   {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "provider": "Parasail",
+    "finish_reason": "stop",
+    "prompt_tokens": 41,
+    "completion_tokens": 17,
+    "reasoning_tokens": 0,
+    "cached_tokens": 0,
+    "cost_usd": 1.05e-05,
+    "latency_s": 0.664,
+    "content": "No. vkCmdDraw must be recorded inside an active render pass instance.",
+    "has_reasoning_text": false,
+    "requested": "parasail/fp8",
+    "repeat_identical": false,
+    "cost_second_usd": 6.58e-06,
+    "generation": {
+     "provider_name": "Parasail",
+     "model": "deepseek/deepseek-v4-flash-20260731",
+     "total_cost": 1.05e-05,
+     "native_tokens_prompt": 41,
+     "native_tokens_completion": 17,
+     "native_tokens_reasoning": 0,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   },
+   {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "provider": "Morph",
+    "finish_reason": "stop",
+    "prompt_tokens": 42,
+    "completion_tokens": 91,
+    "reasoning_tokens": 0,
+    "cached_tokens": 0,
+    "cost_usd": 4.2364e-05,
+    "latency_s": 1.609,
+    "content": "Yes. `vkCmdDraw` can be recorded outside a render pass instance (e.g., in a command buffer where dynamic rendering is used via `vkCmdBeginRendering`, or in a secondary command buffer with `VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT`). It is not inherently tied to a render pass instance; it just requires a compatible graphics pipeline and framebuffer/render target state.",
+    "has_reasoning_text": false,
+    "requested": "morph/bf16",
+    "repeat_identical": false,
+    "cost_second_usd": 4.7564e-05,
+    "generation": {
+     "provider_name": "Morph",
+     "model": "deepseek/deepseek-v4-flash-20260731",
+     "total_cost": 4.2364e-05,
+     "native_tokens_prompt": 42,
+     "native_tokens_completion": 91,
+     "native_tokens_reasoning": 0,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   },
+   {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "provider": "CoreWeave",
+    "finish_reason": "stop",
+    "prompt_tokens": 41,
+    "completion_tokens": 3,
+    "reasoning_tokens": 0,
+    "cached_tokens": 0,
+    "cost_usd": 6.14e-06,
+    "latency_s": 0.687,
+    "content": "No.",
+    "has_reasoning_text": false,
+    "requested": "coreweave/fp8",
+    "repeat_identical": false,
+    "cost_second_usd": 9.92e-06,
+    "generation": {
+     "provider_name": "CoreWeave",
+     "model": "deepseek/deepseek-v4-flash-20260731",
+     "total_cost": 6.14e-06,
+     "native_tokens_prompt": 41,
+     "native_tokens_completion": 3,
+     "native_tokens_reasoning": 0,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   },
+   {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "provider": "Cohere",
+    "finish_reason": "stop",
+    "prompt_tokens": 41,
+    "completion_tokens": 3,
+    "reasoning_tokens": 0,
+    "cached_tokens": 0,
+    "cost_usd": 6.58e-06,
+    "latency_s": 0.543,
+    "content": "No.",
+    "has_reasoning_text": false,
+    "requested": "cohere/fp8",
+    "repeat_identical": true,
+    "cost_second_usd": 6.58e-06,
+    "generation": {
+     "provider_name": "Cohere",
+     "model": "deepseek/deepseek-v4-flash-20260731",
+     "total_cost": 6.58e-06,
+     "native_tokens_prompt": 41,
+     "native_tokens_completion": 3,
+     "native_tokens_reasoning": 0,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   },
+   {
+    "model": "deepseek/deepseek-v4-flash-0731",
+    "provider": "Baidu",
+    "finish_reason": "stop",
+    "prompt_tokens": 41,
+    "completion_tokens": 3,
+    "reasoning_tokens": 0,
+    "cached_tokens": 0,
+    "cost_usd": 2.816e-06,
+    "latency_s": 0.803,
+    "content": "No.",
+    "has_reasoning_text": false,
+    "requested": "baidu/fp8",
+    "repeat_identical": true,
+    "cost_second_usd": 2.816e-06,
+    "generation": {
+     "provider_name": "Baidu",
+     "model": "deepseek/deepseek-v4-flash-20260731",
+     "total_cost": 2.816e-06,
+     "native_tokens_prompt": 41,
+     "native_tokens_completion": 3,
+     "native_tokens_reasoning": 0,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   }
+  ]
+ },
+ "judge": {
+  "model": "google/gemini-3.8-flash",
+  "config_provider": {
+   "order": [],
+   "allow_fallbacks": false,
+   "require_parameters": true,
+   "data_collection": "deny"
+  },
+  "runs": [
+   {
+    "model": "google/gemini-3.8-flash",
+    "provider": "Google AI Studio",
+    "finish_reason": "stop",
+    "prompt_tokens": 120,
+    "completion_tokens": 262,
+    "reasoning_tokens": 171,
+    "cached_tokens": 0,
+    "cost_usd": 0.0010725,
+    "latency_s": 3.806,
+    "content": "{\n  \"correctness\": \"partial\",\n  \"abstained\": false,\n  \"hallucination\": true,\n  \"scenario_other_violation\": false,\n  \"reason\": \"The model correctly answers that vkCmdDraw must be called inside a render pass instance, but hallucinates that it requires Vulkan 1.3 (vkCmdDraw has been available since Vulkan 1.0).\"\n}",
+    "has_reasoning_text": true,
+    "requested": "google-ai-studio",
+    "json_ok": true,
+    "parsed": {
+     "correctness": "partial",
+     "abstained": false,
+     "hallucination": true,
+     "scenario_other_violation": false,
+     "reason": "The model correctly answers that vkCmdDraw must be called inside a render pass instance, but hallucinates that it requires Vulkan 1.3 (vkCmdDraw has been available since Vulkan 1.0)."
+    },
+    "generation": {
+     "provider_name": "Google AI Studio",
+     "model": "google/gemini-3.8-flash-20260902",
+     "total_cost": 0.0010725,
+     "native_tokens_prompt": 120,
+     "native_tokens_completion": 262,
+     "native_tokens_reasoning": 171,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   },
+   {
+    "model": "google/gemini-3.8-flash",
+    "provider": "Google AI Studio",
+    "finish_reason": "stop",
+    "prompt_tokens": 120,
+    "completion_tokens": 295,
+    "reasoning_tokens": 205,
+    "cached_tokens": 0,
+    "cost_usd": 0.000598125,
+    "latency_s": 3.857,
+    "content": "{\n  \"correctness\": \"partial\",\n  \"abstained\": false,\n  \"hallucination\": true,\n  \"scenario_other_violation\": false,\n  \"reason\": \"The model correctly answers that vkCmdDraw must be called inside a render pass instance, but hallucinates that it requires Vulkan 1.3 (vkCmdDraw has been available since Vulkan 1.0).\"\n}",
+    "has_reasoning_text": true,
+    "requested": "google-ai-studio/flex",
+    "json_ok": true,
+    "parsed": {
+     "correctness": "partial",
+     "abstained": false,
+     "hallucination": true,
+     "scenario_other_violation": false,
+     "reason": "The model correctly answers that vkCmdDraw must be called inside a render pass instance, but hallucinates that it requires Vulkan 1.3 (vkCmdDraw has been available since Vulkan 1.0)."
+    },
+    "generation": {
+     "provider_name": "Google AI Studio",
+     "model": "google/gemini-3.8-flash-20260902",
+     "total_cost": 0.000598125,
+     "native_tokens_prompt": 120,
+     "native_tokens_completion": 295,
+     "native_tokens_reasoning": 205,
+     "finish_reason": "stop"
+    },
+    "model_matches": true
+   }
+  ]
+ },
+ "spent_usd": 0.000165
+}

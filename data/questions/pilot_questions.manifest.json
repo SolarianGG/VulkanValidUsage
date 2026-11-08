@@ -1,0 +1,24 @@
+{
+ "sample": "pilot",
+ "file": "pilot_questions.jsonl",
+ "sha256": "094b8a26d00e078dd27279425a4f1c5fb01343baa3f2276a13b2adb04e85f8b5",
+ "questions": 95,
+ "answerable": 90,
+ "unanswerable": 5,
+ "in_generation": 50,
+ "corpus_hash": "5e83355c0922cb78a3ad305305675b809986d4e107e79a9eacdcaf407be88696",
+ "gold_final": true,
+ "stage": "3b",
+ "gold_class_size": {
+  "max": 39,
+  "multi": 64
+ },
+ "acceptable": {
+  "questions_with_acceptable": 0,
+  "ambiguous": [],
+  "judge_model": "google/gemini-3.8-flash",
+  "prompt_hash": "5b2229f91861",
+  "run_id": "pilot",
+  "top_n": 10
+ }
+}

@@ -1,0 +1,300 @@
+{
+ "explicit_total": 20575,
+ "explicit_with_section": 20575,
+ "coverage": 1.0,
+ "unmapped_explicit": [],
+ "json_vuids_missing_in_html": [],
+ "html_vuids_missing_in_json": [],
+ "headers_diff": {
+  "headers_total": 27429,
+  "only_in_build": [],
+  "only_in_headers": []
+ },
+ "sections": {
+  "vu_blocks": 3285,
+  "vu_blocks_outside_refpage": 0
+ },
+ "chunks_by_type": {
+  "section_prose": 5301,
+  "section_refpage": 4027,
+  "vu": 27429
+ },
+ "sections_split": 636,
+ "chunks_over_limit": [
+  "VUID-VkDeviceCreateInfo-pNext-pNext",
+  "VUID-VkPhysicalDeviceProperties2-pNext-pNext"
+ ],
+ "vu_chunks_over_limit": {
+  "explicit": 0,
+  "implicit": 2,
+  "over_1024_xlmr": 2
+ },
+ "length_tokens_max_of_three": {
+  "section_prose": {
+   "n": 5301,
+   "p50": 127,
+   "p90": 677,
+   "p99": 777,
+   "max": 796
+  },
+  "section_refpage": {
+   "n": 4027,
+   "p50": 400,
+   "p90": 757,
+   "p99": 792,
+   "max": 797
+  },
+  "vu": {
+   "n": 27429,
+   "p50": 98,
+   "p90": 203,
+   "p99": 279,
+   "max": 5518
+  }
+ },
+ "tokenizers": {
+  "qwen": "Qwen/Qwen3.5-9B@c202236235762e1c871ad0ccb60c8ee5ba337b9a",
+  "xlmr": "BAAI/bge-m3@5617a9f61b028005a4858fdac845db406aefb181",
+  "remote": "deepseek-ai/DeepSeek-V4-Flash-0731@7872f01b1d1fe23eabc4c98b48bffcef5a386062"
+ },
+ "equivalence": {
+  "explicit_classes": 7261,
+  "size_distribution": {
+   "1": 5565,
+   "2": 824,
+   "3": 203,
+   "4": 88,
+   "5": 51,
+   "6": 17,
+   "7": 8,
+   "8": 61,
+   "9": 17,
+   "10": 9,
+   "11": 14,
+   "12": 3,
+   "13": 19,
+   "14": 3,
+   "15": 31,
+   "16": 1,
+   "17": 11,
+   "19": 1,
+   "21": 2,
+   "26": 226,
+   "31": 1,
+   "39": 98,
+   "40": 8
+  },
+  "merged_by_text_only": 845,
+  "merged_by_text_by_entity_kind": {
+   "api": 845
+  },
+  "largest": [
+   {
+    "class": "eq-vkCmdDispatch-commandBuffer-02707",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-None-08606",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-None-08600",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-None-08119",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-None-08117",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-None-08116",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-None-08115",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-None-08114",
+    "size": 40,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchDataGraphARM",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-viewType-07752",
+    "size": 39,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI",
+     "vkCmdDrawIndexed"
+    ]
+   },
+   {
+    "class": "eq-vkCmdDispatch-unnormalizedCoordinates-09635",
+    "size": 39,
+    "entities": [
+     "vkCmdDispatch",
+     "vkCmdDispatchBase",
+     "vkCmdDispatchGraphAMDX",
+     "vkCmdDispatchGraphIndirectAMDX",
+     "vkCmdDispatchGraphIndirectCountAMDX",
+     "vkCmdDispatchIndirect",
+     "vkCmdDispatchIndirect2KHR",
+     "vkCmdDispatchTileQCOM",
+     "vkCmdDraw",
+     "vkCmdDrawClusterHUAWEI",
+     "vkCmdDrawClusterIndirectHUAWEI",
+     "vkCmdDrawIndexed"
+    ]
+   }
+  ]
+ },
+ "refs_unresolved": {
+  "distinct": 2,
+  "total_distinct": 6031,
+  "top": [
+   [
+    "legacy-dynamicrendering",
+    44
+   ],
+   [
+    "builtin-volatile-semantics",
+    3
+   ]
+  ]
+ },
+ "corpus_hash": "5e83355c0922cb78a3ad305305675b809986d4e107e79a9eacdcaf407be88696",
+ "build_info": {
+  "tag": "v1.4.366",
+  "docker_image": "khronosgroup/docker-images@sha256:f1ca671f3bdb10ad49e238b9bf28853088a21af49504498fc9084c9b4fea4762",
+  "built_at": "2026-11-07T04:52:06+00:00",
+  "docs_commit": "a8b088a3fae12c8575407ea90c7c09bd653db923",
+  "files": {
+   "vkspec.html": "fc28eeb7b67f4613db366187e79645beb385b4377e3fff5d99053e4440a4b8be",
+   "validusage.json": "5cc340d708ebedfc3189a03fc5019e6f65bb79663bef21076a39f3500d581c84",
+   "specattribs.adoc": "e46f622a3a8ae04e5750fedbc5ba636c63ca0ab9c2f810f1ba250ab2f7b2325c"
+  }
+ }
+}

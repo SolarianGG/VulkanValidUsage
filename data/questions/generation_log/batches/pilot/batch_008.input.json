@@ -1,0 +1,592 @@
+{
+ "sample": "pilot",
+ "batch": 8,
+ "prompt_version": "prompt_v2",
+ "n_items": 1,
+ "items": [
+  {
+   "vuid": "VUID-vkCmdCopyImage-srcImage-01729",
+   "entity": "vkCmdCopyImage",
+   "entity_kind": "api",
+   "stratum": "core_1_0",
+   "vu_text": "For each element of pRegions, if the sum of srcOffset.y and extent.height does not equal the height of the subresource specified by srcSubresource, extent.height must be a multiple of the texel block extent height of the VkFormat of srcImage",
+   "vu_chunk": "VUID-vkCmdCopyImage-srcImage-01729\n[vkCmdCopyImage] [srcImage] [Vulkan 1.0]\nFor each element of pRegions, if the sum of srcOffset.y and extent.height does not equal the height of the subresource specified by srcSubresource, extent.height must be a multiple of the texel block extent height of the VkFormat of srcImage",
+   "answer_type": "yes_no",
+   "qids": {
+    "identifier": "qp-447f14a302-id",
+    "descriptive": "qp-824c087d23-de"
+   },
+   "related_entities": [
+    "VkImageCopy"
+   ],
+   "ref_chunks": [
+    "sec-f4f3e92f02e7",
+    "sec-7feaf622aec6"
+   ],
+   "expected_verdict": "yes"
+  }
+ ],
+ "context": {
+  "entities": {
+   "vkCmdCopyImage": {
+    "section_id": "vkCmdCopyImage",
+    "section_parts": [
+     "[Copy Commands > Copying Data Between Images > vkCmdCopyImage]\nTo copy data between image objects, call:\n\n// Provided by VK_VERSION_1_0\nvoid vkCmdCopyImage(\nVkCommandBuffer commandBuffer,\nVkImage srcImage,\nVkImageLayout srcImageLayout,\nVkImage dstImage,\nVkImageLayout dstImageLayout,\nuint32_t regionCount,\nconst VkImageCopy* pRegions);\n\n- commandBuffer is the command buffer into which the command will be recorded.\n\n- srcImage is the source image.\n\n- srcImageLayout is the current layout of the source image subresource.\n\n- dstImage is the destination image.\n\n- dstImageLayout is the current layout of the destination image subresource.\n\n- regionCount is the number of regions to copy.\n\n- pRegions is a pointer to an array of VkImageCopy structures specifying the regions to copy.\n\nEach source region specified by pRegions is copied from the source image to the destination region of the destination image.\n\nIf any region accesses a depth aspect in dstImage and the VK_EXT_depth_range_unrestricted extension is not enabled, values copied from srcImage outside of the range [0,1] will be written as undefined values to the destination image.\n\nCopy regions for each image must be aligned to a multiple of the texel block extent in each dimension, except at the edges of the image, where region extents must match the edge of the image.\n\nThe texels in the images are accessed as follows.\n\nTexels at each coordinate (x,y,z,layer) in an image subresource are accessed, where:\n\nx is in the range [offset.x, offset.x + extent.width),\n\ny is in the range [offset.y, offset.y + extent.height),\n\nz is in the range [offset.z, offset.z + extent.depth),\n\nlayer is in the range [subresource.baseArrayLayer, subresource.baseArrayLayer + subresource.layerCount)\n\nwhere for srcImage, offset, extent, and subresource are srcOffset, extent, and srcSubresource for each region, respectively.\n\nFor dstImage, offset, extent, and subresource are dstOffset, extent, and dstSubresource for each region, respectively, where dstOffset and extent are first size-adjusted if the format of the destination image has a different block extent than the format of the source image (e.g. one is a compressed format).\n\nMulti-planar images can only be copied on a per-plane basis, and the subresources used in each region when copying to or from such images must specify only one plane, though different regions can specify different planes. When copying planes of multi-planar images, the format considered is the compatible format for that plane, rather than the format of the multi-planar image.",
+     "[Copy Commands > Copying Data Between Images > vkCmdCopyImage]\nImage data can be copied between images with different image types. If one image is VK_IMAGE_TYPE_3D and the other image is VK_IMAGE_TYPE_2D with multiple layers, then each slice is copied to or from a different layer; depth slices in the 3D image correspond to layerCount layers in the 2D image, with an effective depth of 1 used for the 2D image. If the maintenance5 feature is enabled, all other combinations are allowed and function as if 1D images are 2D images with a height of 1. Otherwise, other combinations of image types are disallowed.\n\nThe memory locations accessed by the source and destination images overlap if they alias each other, both srcSubresource and dstSubresource overlap the aliased range, and any of the following are true:\n\n- Their contents are not able to be interpreted in consistent ways\n\n- If the aliased regions are host-accessible, their accessed regions defined above overlap, where the memory locations accessed by the texels of a linear image are according to its VkSubresourceLayout\n\n- Otherwise, their accessed texel ranges share any of the same texel coordinates\n\nThe memory locations of an image overlap if those two ranges share any of the same texel coordinates in the same image aspects.\n\nHost Synchronization:\n\n- Host access to commandBuffer must be externally synchronized\n\n- Host access to the VkCommandPool that commandBuffer was allocated from must be externally synchronized\n\nCommand Properties:\n\nCommand Buffer Levels: Primary / Secondary; Render Pass Scope: Outside; Video Coding Scope: Outside; Supported Queue Types: VK_QUEUE_COMPUTE_BIT / VK_QUEUE_GRAPHICS_BIT / VK_QUEUE_TRANSFER_BIT; Command Type: Action\n\nConditional Rendering:\n\nvkCmdCopyImage is not affected by conditional rendering"
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-vkCmdCopyImage-None-01549",
+      "explicit": true,
+      "text": "In a copy to or from a plane of a multi-planar image, the VkFormat of the image and plane must be compatible according to the description of compatible planes for the plane being copied"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-apiVersion-07932",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, or VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, and either srcImage or dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcSubresource.baseArrayLayer and dstSubresource.baseArrayLayer must both be 0, and srcSubresource.layerCount and dstSubresource.layerCount must both be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-apiVersion-07933",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, srcImage and dstImage must have the same VkImageType"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-apiVersion-08969",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, srcImage or dstImage is of type VK_IMAGE_TYPE_2D, then for each element of pRegions, extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-aspect-06662",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes any flag other than VK_IMAGE_ASPECT_STENCIL_BIT or srcImage was not created with separate stencil usage, srcImage must have been created with the VK_IMAGE_USAGE_TRANSFER_SRC_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-aspect-06663",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes any flag other than VK_IMAGE_ASPECT_STENCIL_BIT or dstImage was not created with separate stencil usage, dstImage must have been created with the VK_IMAGE_USAGE_TRANSFER_DST_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-aspect-06664",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes VK_IMAGE_ASPECT_STENCIL_BIT, and srcImage was created with separate stencil usage, srcImage must have been created with the VK_IMAGE_USAGE_TRANSFER_SRC_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-aspect-06665",
+      "explicit": true,
+      "text": "If the aspect member of any element of pRegions includes VK_IMAGE_ASPECT_STENCIL_BIT, and dstImage was created with separate stencil usage, srcImage must have been created with the VK_IMAGE_USAGE_TRANSFER_DST_BIT usage flag set"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-aspectMask-00142",
+      "explicit": true,
+      "text": "For each element of pRegions, srcSubresource.aspectMask must specify aspects present in srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-aspectMask-00143",
+      "explicit": true,
+      "text": "For each element of pRegions, dstSubresource.aspectMask must specify aspects present in dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-01825",
+      "explicit": true,
+      "text": "If commandBuffer is an unprotected command buffer and protectedNoFault is not supported, srcImage must not be a protected image"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-01826",
+      "explicit": true,
+      "text": "If commandBuffer is an unprotected command buffer and protectedNoFault is not supported, dstImage must not be a protected image"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-01827",
+      "explicit": true,
+      "text": "If commandBuffer is a protected command buffer and protectedNoFault is not supported, dstImage must not be an unprotected image"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-10217",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT, and the maintenance10 feature is not enabled, for each element of pRegions, where the aspectMask member of srcSubresource is VK_IMAGE_ASPECT_COLOR_BIT, the aspectMask of dstSubresource must not be VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-10218",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT, and the maintenance10 feature is not enabled, for each element of pRegions, where the aspectMask member of dstSubresource is VK_IMAGE_ASPECT_COLOR_BIT then the aspectMask of srcSubresource must not be VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11782",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT but does support VK_QUEUE_COMPUTE_BIT, and in any element of pRegions the aspectMask member of srcSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of dstSubresource is VK_IMAGE_ASPECT_DEPTH_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11783",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT and VK_QUEUE_COMPUTE_BIT, but does support VK_QUEUE_TRANSFER_BIT, and in any element of pRegions the aspectMask member of srcSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of dstSubresource is VK_IMAGE_ASPECT_DEPTH_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11784",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT but does support VK_QUEUE_COMPUTE_BIT, and in any element of pRegions the aspectMask member of srcSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of dstSubresource is VK_IMAGE_ASPECT_STENCIL_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11785",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT and VK_QUEUE_COMPUTE_BIT, but does support VK_QUEUE_TRANSFER_BIT, and in any element of pRegions the aspectMask member of srcSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of dstSubresource is VK_IMAGE_ASPECT_STENCIL_BIT, then the format features of dstImage must contain VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11786",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT but does support VK_QUEUE_COMPUTE_BIT, and in any element of pRegions the aspectMask member of dstSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of srcSubresource is VK_IMAGE_ASPECT_DEPTH_BIT, then the format features of srcImage must contain VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_COMPUTE_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11787",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT and VK_QUEUE_COMPUTE_BIT, but does support VK_QUEUE_TRANSFER_BIT, and in any element of pRegions the aspectMask member of dstSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of srcSubresource is VK_IMAGE_ASPECT_DEPTH_BIT, then the format features of srcImage must contain VK_FORMAT_FEATURE_2_DEPTH_COPY_ON_TRANSFER_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11788",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT but does support VK_QUEUE_COMPUTE_BIT, and in any element of pRegions the aspectMask member of dstSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of srcSubresource is VK_IMAGE_ASPECT_STENCIL_BIT, then the format features of srcImage must contain VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_COMPUTE_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-11789",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT and VK_QUEUE_COMPUTE_BIT, but does support VK_QUEUE_TRANSFER_BIT, and in any element of pRegions the aspectMask member of dstSubresource is VK_IMAGE_ASPECT_COLOR_BIT and the aspectMask of srcSubresource is VK_IMAGE_ASPECT_STENCIL_BIT, then the format features of srcImage must contain VK_FORMAT_FEATURE_2_STENCIL_COPY_ON_TRANSFER_QUEUE_BIT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-12449",
+      "explicit": true,
+      "text": "If the queue family used to create the VkCommandPool which commandBuffer was allocated from does not support VK_QUEUE_GRAPHICS_BIT and srcSubresource.aspectMask or dstSubresource.aspectMask of any element of pRegions contain VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT, then both srcImage and dstImage must have a sample count equal to VK_SAMPLE_COUNT_1_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-00152",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, dstOffset.y must be 0"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-01557",
+      "explicit": true,
+      "text": "If dstImage has a multi-planar format and the srcImage does not have a multi-planar image format, then for each element of pRegions, srcSubresource.aspectMask must be VK_IMAGE_ASPECT_COLOR_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-01786",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, dstOffset.z must be 0"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-01788",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_2D, then for each element of pRegions, dstOffset.z must be 0"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-01792",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_2D, and srcImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, extent.depth must equal dstSubresource.layerCount"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-01996",
+      "explicit": true,
+      "text": "The format features of dstImage must contain VK_FORMAT_FEATURE_TRANSFER_DST_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-04444",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, dstSubresource.baseArrayLayer must be 0 and dstSubresource.layerCount must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-07966",
+      "explicit": true,
+      "text": "If dstImage is non-sparse then the image or each specified disjoint plane must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-07969",
+      "explicit": true,
+      "text": "dstImage must not have been created with flags containing VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-08714",
+      "explicit": true,
+      "text": "If dstImage has a multi-planar format, then for each element of pRegions, dstSubresource.aspectMask must be a single valid multi-planar aspect mask bit"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImageLayout-00133",
+      "explicit": true,
+      "text": "dstImageLayout must specify the layout of the image subresources of dstImage specified in pRegions at the time this command is executed on a VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImageLayout-01395",
+      "explicit": true,
+      "text": "dstImageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL, or VK_IMAGE_LAYOUT_GENERAL"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstOffset-00150",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.x and (extent.width + dstOffset.x), where extent is adjusted for size-compatibility, must both be greater than or equal to 0 and less than or equal to the width of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstOffset-00151",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.y and (extent.height + dstOffset.y), where extent is adjusted for size-compatibility, must both be greater than or equal to 0 and less than or equal to the height of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstOffset-00153",
+      "explicit": true,
+      "text": "If dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, dstOffset.z and (extent.depth + dstOffset.z), where extent is adjusted for size-compatibility, must both be greater than or equal to 0 and less than or equal to the depth of the specified dstSubresource of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstOffset-01784",
+      "explicit": true,
+      "text": "The dstOffset and extent members of each element of pRegions must respect the image transfer granularity requirements of commandBuffer’s command pool’s queue family, as described in VkQueueFamilyProperties"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstSubresource-07967",
+      "explicit": true,
+      "text": "The dstSubresource.mipLevel member of each element of pRegions must be less than the mipLevels specified in VkImageCreateInfo when dstImage was created"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstSubresource-07968",
+      "explicit": true,
+      "text": "If dstSubresource.layerCount is not VK_REMAINING_ARRAY_LAYERS, dstSubresource.baseArrayLayer + dstSubresource.layerCount of each element of pRegions must be less than or equal to the arrayLayers specified in VkImageCreateInfo when dstImage was created"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstSubresource-10215",
+      "explicit": true,
+      "text": "If dstSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT, then srcSubresource.aspectMask must not contain both VK_IMAGE_ASPECT_DEPTH_BIT and VK_IMAGE_ASPECT_STENCIL_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-00124",
+      "explicit": true,
+      "text": "Each memory location accessed by this command must not be accessed by both a source region and a destination region, as specified by pRegions and accessed according to Copy Image Addressing"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-07278",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.x must be a multiple of the texel block extent width of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-07279",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.y must be a multiple of the texel block extent height of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-07280",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.z must be a multiple of the texel block extent depth of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-07281",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.x must be a multiple of the texel block extent width of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-07282",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.y must be a multiple of the texel block extent height of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-07283",
+      "explicit": true,
+      "text": "For each element of pRegions, dstOffset.z must be a multiple of the texel block extent depth of the VkFormat of dstImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-12201",
+      "explicit": true,
+      "text": "For each element of pRegions where srcSubresource.aspectMask and dstSubresource.aspectMask each contain at least one of VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT, srcSubresource.aspectMask and dstSubresource.aspectMask must match"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-12484",
+      "explicit": true,
+      "text": "Each memory location accessed by this command must not be accessed by more than one destination region, as specified by pRegions and accessed according to Copy Image Addressing"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-00136",
+      "explicit": true,
+      "text": "The sample count of srcImage and dstImage must match"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-00146",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, srcOffset.y must be 0 and extent.height must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01548",
+      "explicit": true,
+      "text": "If the VkFormat of each of srcImage and dstImage is not a multi-planar format, the VkFormat of each of srcImage and dstImage must be size-compatible"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01551",
+      "explicit": true,
+      "text": "If neither srcImage nor dstImage has a multi-planar format and the maintenance8 feature is not enabled then for each element of pRegions, srcSubresource.aspectMask and dstSubresource.aspectMask must match"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01556",
+      "explicit": true,
+      "text": "If srcImage has a multi-planar format and the dstImage does not have a multi-planar image format, then for each element of pRegions, dstSubresource.aspectMask must be VK_IMAGE_ASPECT_COLOR_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01728",
+      "explicit": true,
+      "text": "For each element of pRegions, if the sum of srcOffset.x and extent.width does not equal the width of the subresource specified by srcSubresource, extent.width must be a multiple of the texel block extent width of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01729",
+      "explicit": true,
+      "text": "For each element of pRegions, if the sum of srcOffset.y and extent.height does not equal the height of the subresource specified by srcSubresource, extent.height must be a multiple of the texel block extent height of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01730",
+      "explicit": true,
+      "text": "For each element of pRegions, if the sum of srcOffset.z and extent.depth does not equal the depth of the subresource specified by srcSubresource, extent.depth must be a multiple of the texel block extent depth of the VkFormat of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01785",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, srcOffset.z must be 0 and extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01787",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_2D, then for each element of pRegions, srcOffset.z must be 0"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01790",
+      "explicit": true,
+      "text": "If srcImage and dstImage are both of type VK_IMAGE_TYPE_2D, then for each element of pRegions, extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01791",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_2D, and dstImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, extent.depth must equal srcSubresource.layerCount"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-01995",
+      "explicit": true,
+      "text": "The format features of srcImage must contain VK_FORMAT_FEATURE_TRANSFER_SRC_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-04443",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcSubresource.baseArrayLayer must be 0 and srcSubresource.layerCount must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-07743",
+      "explicit": true,
+      "text": "If srcImage and dstImage have a different VkImageType, and the maintenance5 feature is not enabled, one must be VK_IMAGE_TYPE_3D and the other must be VK_IMAGE_TYPE_2D"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-07966",
+      "explicit": true,
+      "text": "If srcImage is non-sparse then the image or each specified disjoint plane must be bound completely and contiguously to a single VkDeviceMemory object"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-07969",
+      "explicit": true,
+      "text": "srcImage must not have been created with flags containing VK_IMAGE_CREATE_SUBSAMPLED_BIT_EXT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-08713",
+      "explicit": true,
+      "text": "If srcImage has a multi-planar format, then for each element of pRegions, srcSubresource.aspectMask must be a single valid multi-planar aspect mask bit"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-08793",
+      "explicit": true,
+      "text": "If srcImage and dstImage have the same VkImageType, for each element of pRegions, if neither of the layerCount members of srcSubresource or dstSubresource are VK_REMAINING_ARRAY_LAYERS, the layerCount members of srcSubresource or dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-08794",
+      "explicit": true,
+      "text": "If srcImage and dstImage have the same VkImageType, and one of the layerCount members of srcSubresource or dstSubresource is VK_REMAINING_ARRAY_LAYERS, the other member must be either VK_REMAINING_ARRAY_LAYERS or equal to the arrayLayers member of the VkImageCreateInfo used to create the image minus baseArrayLayer"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-09247",
+      "explicit": true,
+      "text": "If the VkFormat of each of srcImage and dstImage is a compressed image format, the formats must have the same texel block extent"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-09460",
+      "explicit": true,
+      "text": "If srcImage and dstImage are the same, and any element of pRegions contains the srcSubresource and dstSubresource with matching mipLevel and overlapping array layers, then the srcImageLayout and dstImageLayout must be VK_IMAGE_LAYOUT_GENERAL or VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-10907",
+      "explicit": true,
+      "text": "If either the VkFormat of each of srcImage and dstImage is not a compressed image format, and dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, extent.depth must be 1"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-10908",
+      "explicit": true,
+      "text": "If either the VkFormat of each of srcImage and dstImage is not a compressed image format, and dstImage is of type VK_IMAGE_TYPE_1D, then for each element of pRegions, extent.height must be 1, where extent is adjusted for size-compatibility"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImageLayout-00128",
+      "explicit": true,
+      "text": "srcImageLayout must specify the layout of the image subresources of srcImage specified in pRegions at the time this command is executed on a VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImageLayout-01917",
+      "explicit": true,
+      "text": "srcImageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL, or VK_IMAGE_LAYOUT_GENERAL"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcOffset-00144",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.x and (extent.width + srcOffset.x) must both be greater than or equal to 0 and less than or equal to the width of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcOffset-00145",
+      "explicit": true,
+      "text": "For each element of pRegions, srcOffset.y and (extent.height + srcOffset.y) must both be greater than or equal to 0 and less than or equal to the height of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcOffset-00147",
+      "explicit": true,
+      "text": "If srcImage is of type VK_IMAGE_TYPE_3D, then for each element of pRegions, srcOffset.z and (extent.depth + srcOffset.z) must both be greater than or equal to 0 and less than or equal to the depth of the specified srcSubresource of srcImage"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcOffset-01783",
+      "explicit": true,
+      "text": "The srcOffset and extent members of each element of pRegions must respect the image transfer granularity requirements of commandBuffer’s command pool’s queue family, as described in VkQueueFamilyProperties"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcSubresource-07967",
+      "explicit": true,
+      "text": "The srcSubresource.mipLevel member of each element of pRegions must be less than the mipLevels specified in VkImageCreateInfo when srcImage was created"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcSubresource-07968",
+      "explicit": true,
+      "text": "If srcSubresource.layerCount is not VK_REMAINING_ARRAY_LAYERS, srcSubresource.baseArrayLayer + srcSubresource.layerCount of each element of pRegions must be less than or equal to the arrayLayers specified in VkImageCreateInfo when srcImage was created"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcSubresource-10211",
+      "explicit": true,
+      "text": "If srcSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT and dstSubresource.aspectMask is VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT, then the VkFormat values of srcImage and dstImage must be compatible according to the list of compatible depth-stencil and color formats"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcSubresource-10212",
+      "explicit": true,
+      "text": "If srcSubresource.aspectMask is VK_IMAGE_ASPECT_DEPTH_BIT or VK_IMAGE_ASPECT_STENCIL_BIT and dstSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT, then the VkFormat values of srcImage and dstImage must be compatible according to the list of compatible depth-stencil and color formats"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcSubresource-10214",
+      "explicit": true,
+      "text": "If srcSubresource.aspectMask is VK_IMAGE_ASPECT_COLOR_BIT, then dstSubresource.aspectMask must not contain both VK_IMAGE_ASPECT_DEPTH_BIT and VK_IMAGE_ASPECT_STENCIL_BIT"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-cmdpool",
+      "explicit": false,
+      "text": "The VkCommandPool that commandBuffer was allocated from must support VK_QUEUE_COMPUTE_BIT, VK_QUEUE_GRAPHICS_BIT, or VK_QUEUE_TRANSFER_BIT operations"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-parameter",
+      "explicit": false,
+      "text": "commandBuffer must be a valid VkCommandBuffer handle"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commandBuffer-recording",
+      "explicit": false,
+      "text": "commandBuffer must be in the recording state"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-commonparent",
+      "explicit": false,
+      "text": "Each of commandBuffer, dstImage, and srcImage must have been created, allocated, or retrieved from the same VkDevice"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImage-parameter",
+      "explicit": false,
+      "text": "dstImage must be a valid VkImage handle"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-dstImageLayout-parameter",
+      "explicit": false,
+      "text": "dstImageLayout must be a valid VkImageLayout value"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-pRegions-parameter",
+      "explicit": false,
+      "text": "pRegions must be a valid pointer to an array of regionCount valid VkImageCopy structures"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-regionCount-arraylength",
+      "explicit": false,
+      "text": "regionCount must be greater than 0"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-renderpass",
+      "explicit": false,
+      "text": "This command must only be called outside of a render pass instance"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImage-parameter",
+      "explicit": false,
+      "text": "srcImage must be a valid VkImage handle"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-srcImageLayout-parameter",
+      "explicit": false,
+      "text": "srcImageLayout must be a valid VkImageLayout value"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-suspended",
+      "explicit": false,
+      "text": "This command must not be called between suspended render pass instances"
+     },
+     {
+      "vuid": "VUID-vkCmdCopyImage-videocoding",
+      "explicit": false,
+      "text": "This command must only be called outside of a video coding scope"
+     }
+    ]
+   },
+   "VkImageCopy": {
+    "section_id": "VkImageCopy",
+    "section_parts": [
+     "[Copy Commands > Copying Data Between Images > VkImageCopy]\nThe VkImageCopy structure is defined as:\n\n// Provided by VK_VERSION_1_0\ntypedef struct VkImageCopy {\nVkImageSubresourceLayers srcSubresource;\nVkOffset3D srcOffset;\nVkImageSubresourceLayers dstSubresource;\nVkOffset3D dstOffset;\nVkExtent3D extent;\n} VkImageCopy;\n\n- srcSubresource and dstSubresource are VkImageSubresourceLayers structures specifying the image subresources of the images used for the source and destination image data, respectively.\n\n- srcOffset and dstOffset select the initial x, y, and z offsets in texels of the sub-regions of the source and destination image data.\n\n- extent is the size in texels of the image to copy in width, height and depth."
+    ],
+    "vus": [
+     {
+      "vuid": "VUID-VkImageCopy-apiVersion-07940",
+      "explicit": true,
+      "text": "If the VK_KHR_sampler_ycbcr_conversion extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, the aspectMask member of srcSubresource and dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-VkImageCopy-apiVersion-07941",
+      "explicit": true,
+      "text": "If the VK_KHR_maintenance1 extension is not enabled, and VkPhysicalDeviceProperties::apiVersion is less than Vulkan 1.1, the layerCount member of srcSubresource and dstSubresource must match"
+     },
+     {
+      "vuid": "VUID-VkImageCopy-extent-06668",
+      "explicit": true,
+      "text": "extent.width must not be 0"
+     },
+     {
+      "vuid": "VUID-VkImageCopy-extent-06669",
+      "explicit": true,
+      "text": "extent.height must not be 0"
+     },
+     {
+      "vuid": "VUID-VkImageCopy-extent-06670",
+      "explicit": true,
+      "text": "extent.depth must not be 0"
+     },
+     {
+      "vuid": "VUID-VkImageCopy-dstSubresource-parameter",
+      "explicit": false,
+      "text": "dstSubresource must be a valid VkImageSubresourceLayers structure"
+     },
+     {
+      "vuid": "VUID-VkImageCopy-srcSubresource-parameter",
+      "explicit": false,
+      "text": "srcSubresource must be a valid VkImageSubresourceLayers structure"
+     }
+    ]
+   }
+  },
+  "ref_chunks": {
+   "sec-f4f3e92f02e7": "[Formats > Format Definition > Format Compatibility Classes]\nUncompressed color formats are compatible with each other if they occupy the same number of bits per texel block as long as neither or both are alpha formats (e.g., VK_FORMAT_A8_UNORM). Compressed color formats are compatible with each other if the only difference between them is the numeric format of the uncompressed texels. Each depth/stencil format is only compatible with itself. In the following table, all the formats in the same row are compatible. Each format has a defined texel block extent specifying how many texels each texel block represents in each dimension.\n\nClass, Texel Block Size, Texel Block Extent, # Texels/Block: 8-bit / Block size 1 byte / 1x1x1 block extent / 1 texel/block; Formats: VK_FORMAT_R8_BOOL_ARM /, / VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E4M3_ARM /, / VK_FORMAT_R8_SFLOAT_FPENCODING_FLOAT8E5M2_ARM /, / VK_FORMAT_R4G4_UNORM_PACK8 /, / VK_FORMAT_R8_UNORM /, / VK_FORMAT_R8_SNORM /, / VK_FORMAT_R8_USCALED /, / VK_FORMAT_R8_SSCALED /, / VK_FORMAT_R8_UINT /, / VK_FORMAT_R8_SINT /, / VK_FORMAT_R8_SRGB",
+   "sec-7feaf622aec6": "[Formats > Format Definition > VkFormat]\nThe following image formats can be passed to, and may be returned from Vulkan commands. The memory required to store each format is discussed with that format, and also summarized in the Representation and Texel Block Size section and the Compatible formats table."
+  }
+ },
+ "regenerates": {
+  "VUID-vkCmdCopyImage-srcImage-01729": 5
+ }
+}

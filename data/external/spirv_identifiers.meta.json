@@ -1,0 +1,36 @@
+{
+ "spirv_headers": {
+  "commit": "fbf86836a9b1966586faf7be7bb8a6440e156d62",
+  "date": "2026-10-21T08:50:08-07:00"
+ },
+ "glsl": {
+  "commit": "0099bf83b0288469917fc2e2972cb0a2b74d6711",
+  "date": "2026-09-11T14:33:40+01:00"
+ },
+ "grammars": [
+  "extinst.arm.experimental-ml-operations.grammar.json",
+  "extinst.arm.motion-engine.100.grammar.json",
+  "extinst.debuginfo.grammar.json",
+  "extinst.glsl.std.450.grammar.json",
+  "extinst.nonsemantic.clspvreflection.grammar.json",
+  "extinst.nonsemantic.debugbreak.grammar.json",
+  "extinst.nonsemantic.debugprintf.grammar.json",
+  "extinst.nonsemantic.graph.debuginfo.grammar.json",
+  "extinst.nonsemantic.shader.debuginfo.100.grammar.json",
+  "extinst.nonsemantic.shader.debuginfo.grammar.json",
+  "extinst.nonsemantic.vkspreflection.grammar.json",
+  "extinst.opencl.debuginfo.100.grammar.json",
+  "extinst.opencl.std.100.grammar.json",
+  "extinst.spv-amd-gcn-shader.grammar.json",
+  "extinst.spv-amd-shader-ballot.grammar.json",
+  "extinst.spv-amd-shader-explicit-vertex-parameter.grammar.json",
+  "extinst.spv-amd-shader-trinary-minmax.grammar.json",
+  "extinst.tosa.001000.1.grammar.json",
+  "spirv.core.grammar.json"
+ ],
+ "counts": {
+  "spirv": 2928,
+  "glsl": 675,
+  "total": 3603
+ }
+}

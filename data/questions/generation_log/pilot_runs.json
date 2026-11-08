@@ -1,0 +1,50 @@
+{
+ "sample": "pilot",
+ "date": "2026-11-07",
+ "generator": "Claude Code subagent (general-purpose), model claude-opus-5-5, one fresh context per batch",
+ "prompt": "prompt_v1.md",
+ "prompt_sha256": "21affb8d3b977550ddbcaa33505d1f68d0c505d1b99e8c6e111f5b4eff664121",
+ "self_check": "uv run vkrag questions validate --sample pilot --no-dedup, <= 3 rounds",
+ "batches": {
+  "batch_001": {
+   "input_sha256": "22c47c5c8df2e444145193dfbb5814e0f3d8411b7e2187c4846851477c9e0959",
+   "output_sha256": "82abfa50e522e13b4f692d6158e76fca002c5d6c40d00225db5dfc0785c7d5ce",
+   "lines": 2
+  },
+  "batch_002": {
+   "input_sha256": "b56d90ddce87a20dbcc6702997fd3768a9759ff5f538042ef23174649dd77db5",
+   "output_sha256": "e188322ae0d318ea9111bc96cd075741d681d9876873b78063acd373d3d5d973",
+   "lines": 10
+  },
+  "batch_003": {
+   "input_sha256": "d5cb8f7f950cfcb7b1d23272dabeba75cce05bc446401cb1ffda6a2207a342e5",
+   "output_sha256": "81517df151ca0fe93d4d104ffc6c05e1bebc50297d12d7311a1df1b0520770ae",
+   "lines": 16
+  },
+  "batch_004": {
+   "input_sha256": "e06ee04a31d77368b01d9fb6cef21dbcdab2fb1c667f139d19d76276bcd429f7",
+   "output_sha256": "4065e19b8c6e93aaaa562a1cdcb9ed7e0f9f5a76711d5d720afdc8f20328945a",
+   "lines": 14
+  },
+  "batch_005": {
+   "input_sha256": "e392db9efdd6c08a79fa942e99dc9a75b2fbe6b9efa2c07480487a276976b590",
+   "output_sha256": "54a9dae3982c29cbed0080f3584255eab2af061644cd9352d632552e4704de90",
+   "lines": 10
+  },
+  "batch_006": {
+   "input_sha256": "d4dada209de694459e5f42923fdfabfa613e4ae1b46b2dc2595057f85da3d104",
+   "output_sha256": "233e57cee0a986c87c85f5e69d4751c431b1a9c337a34ab049b7d04e48a0e72b",
+   "lines": 14
+  },
+  "batch_007": {
+   "input_sha256": "e29ce78128767a64f09b0977e0cd47577463408ae54c4d4024497d4df91f2267",
+   "output_sha256": "21c1e57ccf2c8ad28bdd6f4f21e157c8d862417702245af1ff97f465ffea011a",
+   "lines": 24
+  },
+  "batch_unans": {
+   "input_sha256": "34ece881d5829f27b611a674e716059f7e7ab8a9021a807227e9e22dc5ac3ecd",
+   "output_sha256": "de8650dbb665f7b2202db723a3de656f34e5f1c587cfa9248d5753b02f8420d7",
+   "lines": 5
+  }
+ }
+}

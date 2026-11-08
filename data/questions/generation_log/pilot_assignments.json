@@ -1,0 +1,564 @@
+{
+ "summary": {
+  "sample": "pilot",
+  "seed": 20261107,
+  "samples_sha256": "e63d2b5e2eafdb03365a9eb6e446c206b2440613855eb4d968f1497a249ed7be",
+  "prompt_version": "prompt_v1",
+  "n_vus": 45,
+  "answer_type_by_stratum": {
+   "core_1_0": {
+    "rule": 3,
+    "yes_no": 3,
+    "scenario": 3
+   },
+   "core_promoted": {
+    "rule": 3,
+    "yes_no": 3,
+    "scenario": 3
+   },
+   "ext_niche": {
+    "rule": 3,
+    "yes_no": 3,
+    "scenario": 3
+   },
+   "ext_popular": {
+    "rule": 3,
+    "yes_no": 3,
+    "scenario": 3
+   },
+   "recent": {
+    "rule": 3,
+    "yes_no": 3,
+    "scenario": 3
+   }
+  },
+  "verdicts": {
+   "yes": 8,
+   "no": 7
+  },
+  "gen_style": {
+   "identifier": 23,
+   "descriptive": 22
+  },
+  "batches": [
+   {
+    "batch": 1,
+    "items": 1,
+    "entities": 33,
+    "chars": 300334
+   },
+   {
+    "batch": 2,
+    "items": 5,
+    "entities": 7,
+    "chars": 392263
+   },
+   {
+    "batch": 3,
+    "items": 8,
+    "entities": 5,
+    "chars": 410216
+   },
+   {
+    "batch": 4,
+    "items": 7,
+    "entities": 9,
+    "chars": 395724
+   },
+   {
+    "batch": 5,
+    "items": 5,
+    "entities": 31,
+    "chars": 297768
+   },
+   {
+    "batch": 6,
+    "items": 7,
+    "entities": 27,
+    "chars": 326261
+   },
+   {
+    "batch": 7,
+    "items": 12,
+    "entities": 20,
+    "chars": 173613
+   }
+  ],
+  "unanswerable_quotas": {
+   "nonexistent": 2,
+   "false_rule": 2,
+   "false_behavior": 1
+  },
+  "not_in": "main"
+ },
+ "assignments": {
+  "VUID-RuntimeSpirv-shaderRoundingModeRTZFloat16-06305": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-c086065c9b-id",
+    "descriptive": "qp-0e6dc511aa-de"
+   },
+   "batch": 5
+  },
+  "VUID-TaskCountNV-TaskCountNV-04385": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "no",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-a0125d5647-id",
+    "descriptive": "qp-490a161efb-de"
+   },
+   "batch": 4
+  },
+  "VUID-VkBlitImageInfo2-dstImage-02000": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "no",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-4a415e0fe8-id",
+    "descriptive": "qp-e4ee4b3dee-de"
+   },
+   "batch": 7
+  },
+  "VUID-VkCopyAccelerationStructureInfoKHR-buffer-03719": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-29dea1217d-id",
+    "descriptive": "qp-b89d185a91-de"
+   },
+   "batch": 7
+  },
+  "VUID-VkCopyImageInfo2-srcImage-07969": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-f4462dec57-id",
+    "descriptive": "qp-a8f8f4fad5-de"
+   },
+   "batch": 7
+  },
+  "VUID-VkCopyImageToBufferInfo2-imageSubresource-09105": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-21904f21bf-id",
+    "descriptive": "qp-a1bc8d77ea-de"
+   },
+   "batch": 4
+  },
+  "VUID-VkFramebufferCreateInfo-renderPass-04536": {
+   "answer_type": "scenario",
+   "gen_style": "descriptive",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-0a570b4223-id",
+    "descriptive": "qp-56d6a4aeb3-de"
+   },
+   "batch": 6
+  },
+  "VUID-VkGraphicsPipelineCreateInfo-pLibraries-06611": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-6f890544c6-id",
+    "descriptive": "qp-c19a5e8522-de"
+   },
+   "batch": 1
+  },
+  "VUID-VkImageCreateInfo-flags-00950": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "yes",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-8bae2ebd9c-id",
+    "descriptive": "qp-8b59ebb630-de"
+   },
+   "batch": 5
+  },
+  "VUID-VkImageCreateInfo-tiling-04121": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "yes",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-42bd7dd9ef-id",
+    "descriptive": "qp-f03e5133bc-de"
+   },
+   "batch": 5
+  },
+  "VUID-VkRenderingInfo-pColorAttachments-11515": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-ee74934e9c-id",
+    "descriptive": "qp-7885f8c47d-de"
+   },
+   "batch": 6
+  },
+  "VUID-VkRenderingInputAttachmentIndexInfo-pColorAttachmentInputIndices-09522": {
+   "answer_type": "yes_no",
+   "gen_style": "identifier",
+   "expected_verdict": "yes",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-91121f4f2e-id",
+    "descriptive": "qp-5a30034c40-de"
+   },
+   "batch": 7
+  },
+  "VUID-VkResourceDescriptorInfoEXT-pNext-11401": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-9b90a92152-id",
+    "descriptive": "qp-c7cc3be412-de"
+   },
+   "batch": 7
+  },
+  "VUID-VkShaderCreateInfoEXT-stage-08420": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-fa30b585a6-id",
+    "descriptive": "qp-11ea6a852f-de"
+   },
+   "batch": 6
+  },
+  "VUID-VkVideoEncodeH264RateControlInfoKHR-idrPeriod-08284": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "yes",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-3dd3880816-id",
+    "descriptive": "qp-2445ff385a-de"
+   },
+   "batch": 7
+  },
+  "VUID-vkBuildAccelerationStructuresKHR-pInfos-03767": {
+   "answer_type": "yes_no",
+   "gen_style": "identifier",
+   "expected_verdict": "no",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-17b357d107-id",
+    "descriptive": "qp-ae92a7674b-de"
+   },
+   "batch": 6
+  },
+  "VUID-vkCmdBeginQuery-queryType-00804": {
+   "answer_type": "rule",
+   "gen_style": "descriptive",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-4e5326f51a-id",
+    "descriptive": "qp-061cf80350-de"
+   },
+   "batch": 7
+  },
+  "VUID-vkCmdBindIndexBuffer2-None-09493": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-6f23709d54-id",
+    "descriptive": "qp-70ad242eee-de"
+   },
+   "batch": 7
+  },
+  "VUID-vkCmdBuildAccelerationStructuresIndirectKHR-dstAccelerationStructure-03703": {
+   "answer_type": "scenario",
+   "gen_style": "descriptive",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-601f760c90-id",
+    "descriptive": "qp-ac3e8c330f-de"
+   },
+   "batch": 6
+  },
+  "VUID-vkCmdBuildAccelerationStructuresKHR-dstAccelerationStructure-11547": {
+   "answer_type": "rule",
+   "gen_style": "descriptive",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-8e43282c0a-id",
+    "descriptive": "qp-b6a8aafaa4-de"
+   },
+   "batch": 6
+  },
+  "VUID-vkCmdBuildAccelerationStructuresKHR-micromap-11551": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-4361030744-id",
+    "descriptive": "qp-46fc588419-de"
+   },
+   "batch": 6
+  },
+  "VUID-vkCmdClearColorImage-imageLayout-01394": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "no",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-d75cfc8ca0-id",
+    "descriptive": "qp-7d6851fa48-de"
+   },
+   "batch": 7
+  },
+  "VUID-vkCmdCopyBufferToImage-dstImage-00209": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-cb98ab0dea-id",
+    "descriptive": "qp-24045ce9f4-de"
+   },
+   "batch": 7
+  },
+  "VUID-vkCmdCopyImage-srcImage-01729": {
+   "answer_type": "yes_no",
+   "gen_style": "identifier",
+   "expected_verdict": "yes",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-447f14a302-id",
+    "descriptive": "qp-824c087d23-de"
+   },
+   "batch": 8,
+   "previous_batches": [
+    5
+   ]
+  },
+  "VUID-vkCmdCopyMemoryIndirectKHR-commandBuffer-10936": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-372fd8f17a-id",
+    "descriptive": "qp-09e74c06cd-de"
+   },
+   "batch": 7
+  },
+  "VUID-vkCmdDispatchIndirect-buffer-02708": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-4cf63f0924-id",
+    "descriptive": "qp-4db260beba-de"
+   },
+   "batch": 4
+  },
+  "VUID-vkCmdDispatchIndirect2KHR-None-11302": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "yes",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-d52a6bc4f3-id",
+    "descriptive": "qp-c645753012-de"
+   },
+   "batch": 4
+  },
+  "VUID-vkCmdDraw-None-07888": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-1bdef10841-id",
+    "descriptive": "qp-de5dbeecb2-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkCmdDrawClusterHUAWEI-None-07644": {
+   "answer_type": "scenario",
+   "gen_style": "descriptive",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-23820c200b-id",
+    "descriptive": "qp-fbf17c3600-de"
+   },
+   "batch": 4
+  },
+  "VUID-vkCmdDrawIndexedIndirect-None-08689": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-7979434efb-id",
+    "descriptive": "qp-d7f726b98d-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkCmdDrawIndexedIndirect-None-10795": {
+   "answer_type": "yes_no",
+   "gen_style": "identifier",
+   "expected_verdict": "yes",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-e806829b9e-id",
+    "descriptive": "qp-336d83f114-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkCmdDrawIndexedIndirect2KHR-stippledLineEnable-07496": {
+   "answer_type": "rule",
+   "gen_style": "identifier",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-7219f374f5-id",
+    "descriptive": "qp-ae99aeef25-de"
+   },
+   "batch": 2
+  },
+  "VUID-vkCmdDrawIndirect-None-02693": {
+   "answer_type": "rule",
+   "gen_style": "descriptive",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-5ef7e4e937-id",
+    "descriptive": "qp-3018db2308-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkCmdDrawIndirect-attachmentCount-07750": {
+   "answer_type": "scenario",
+   "gen_style": "descriptive",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-3a4c9936fc-id",
+    "descriptive": "qp-6a6f8f407a-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkCmdDrawIndirectCount-pStrides-04913": {
+   "answer_type": "rule",
+   "gen_style": "descriptive",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-560e6498e1-id",
+    "descriptive": "qp-14be9f7fd8-de"
+   },
+   "batch": 2
+  },
+  "VUID-vkCmdDrawMeshTasksEXT-subpass-02685": {
+   "answer_type": "yes_no",
+   "gen_style": "identifier",
+   "expected_verdict": "no",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-36faa89d82-id",
+    "descriptive": "qp-f8fcf80db1-de"
+   },
+   "batch": 4
+  },
+  "VUID-vkCmdDrawMeshTasksIndirectCountNV-None-07649": {
+   "answer_type": "rule",
+   "gen_style": "descriptive",
+   "stratum": "ext_niche",
+   "qids": {
+    "identifier": "qp-d82045c0a2-id",
+    "descriptive": "qp-551bad7584-de"
+   },
+   "batch": 4
+  },
+  "VUID-vkCmdDrawMultiEXT-flags-11521": {
+   "answer_type": "scenario",
+   "gen_style": "descriptive",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-d9c55c5d45-id",
+    "descriptive": "qp-4726e63aac-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkCmdDrawMultiEXT-format-10390": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "no",
+   "stratum": "recent",
+   "qids": {
+    "identifier": "qp-3b8803afed-id",
+    "descriptive": "qp-747b319746-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkCmdDrawMultiIndexedEXT-stippledLineEnable-07495": {
+   "answer_type": "yes_no",
+   "gen_style": "identifier",
+   "expected_verdict": "yes",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-697afaefaa-id",
+    "descriptive": "qp-8452ef6c67-de"
+   },
+   "batch": 2
+  },
+  "VUID-vkCmdResetEvent2-stageMask-03929": {
+   "answer_type": "scenario",
+   "gen_style": "descriptive",
+   "stratum": "core_promoted",
+   "qids": {
+    "identifier": "qp-54226001a5-id",
+    "descriptive": "qp-10da09acd9-de"
+   },
+   "batch": 5
+  },
+  "VUID-vkCmdSetScissor-offset-00597": {
+   "answer_type": "scenario",
+   "gen_style": "identifier",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-d303b6ab2f-id",
+    "descriptive": "qp-24e2f850c0-de"
+   },
+   "batch": 2
+  },
+  "VUID-vkCmdTraceRaysKHR-sparseImageInt64Atomics-04474": {
+   "answer_type": "rule",
+   "gen_style": "descriptive",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-af30f77eb8-id",
+    "descriptive": "qp-d98c98e2cb-de"
+   },
+   "batch": 2
+  },
+  "VUID-vkCmdWriteAccelerationStructuresPropertiesKHR-accelerationStructure-08924": {
+   "answer_type": "yes_no",
+   "gen_style": "descriptive",
+   "expected_verdict": "no",
+   "stratum": "ext_popular",
+   "qids": {
+    "identifier": "qp-0b31079ae7-id",
+    "descriptive": "qp-31e0818803-de"
+   },
+   "batch": 3
+  },
+  "VUID-vkDestroyBuffer-buffer-00922": {
+   "answer_type": "scenario",
+   "gen_style": "descriptive",
+   "stratum": "core_1_0",
+   "qids": {
+    "identifier": "qp-6de2eff3d2-id",
+    "descriptive": "qp-47e8a572a9-de"
+   },
+   "batch": 7
+  }
+ }
+}

@@ -1,0 +1,275 @@
+{
+ "sample": "pilot",
+ "missing_outputs": [],
+ "accepted_lines": 95,
+ "reject_reasons": {},
+ "regenerate_vuids": [],
+ "superseded": [
+  "VUID-vkCmdCopyImage-srcImage-01729@5"
+ ],
+ "per_batch": {
+  "batch_001.input.json": {
+   "lines": 2,
+   "mean_words": 46.5,
+   "answer_type": {
+    "scenario": 2
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  },
+  "batch_002.input.json": {
+   "lines": 10,
+   "mean_words": 34.5,
+   "answer_type": {
+    "rule": 6,
+    "yes_no": 2,
+    "scenario": 2
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  },
+  "batch_003.input.json": {
+   "lines": 16,
+   "mean_words": 42.9,
+   "answer_type": {
+    "scenario": 8,
+    "yes_no": 6,
+    "rule": 2
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  },
+  "batch_004.input.json": {
+   "lines": 14,
+   "mean_words": 41.6,
+   "answer_type": {
+    "yes_no": 6,
+    "scenario": 4,
+    "rule": 4
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  },
+  "batch_005.input.json": {
+   "lines": 10,
+   "mean_words": 27.3,
+   "answer_type": {
+    "rule": 2,
+    "yes_no": 6,
+    "scenario": 2
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  },
+  "batch_006.input.json": {
+   "lines": 14,
+   "mean_words": 42.5,
+   "answer_type": {
+    "scenario": 6,
+    "rule": 6,
+    "yes_no": 2
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  },
+  "batch_007.input.json": {
+   "lines": 24,
+   "mean_words": 30.4,
+   "answer_type": {
+    "yes_no": 8,
+    "rule": 10,
+    "scenario": 6
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  },
+  "batch_008.input.json": {
+   "lines": 2,
+   "mean_words": 41.5,
+   "answer_type": {
+    "yes_no": 2
+   },
+   "downgraded": 0,
+   "verdict_changed": 0,
+   "descriptive_infeasible": 0,
+   "rejected": 0
+  }
+ },
+ "unanswerable": {
+  "present": true,
+  "accepted": {
+   "nonexistent": 2,
+   "false_rule": 2,
+   "false_behavior": 1
+  },
+  "rejected": 0,
+  "quota_short": {}
+ },
+ "near_duplicates": {
+  "threshold": 0.92,
+  "pairs": [],
+  "top": [
+   {
+    "cos": 0.8707,
+    "a": "qp-7219f374f5-id",
+    "b": "qp-697afaefaa-id"
+   },
+   {
+    "cos": 0.8116,
+    "a": "qp-ae99aeef25-de",
+    "b": "qp-8452ef6c67-de"
+   },
+   {
+    "cos": 0.7841,
+    "a": "qp-21904f21bf-id",
+    "b": "qp-f4462dec57-id"
+   },
+   {
+    "cos": 0.7464,
+    "a": "qp-d9c55c5d45-id",
+    "b": "qp-ee74934e9c-id"
+   },
+   {
+    "cos": 0.746,
+    "a": "qp-7219f374f5-id",
+    "b": "qp-8452ef6c67-de"
+   },
+   {
+    "cos": 0.7298,
+    "a": "qp-14be9f7fd8-de",
+    "b": "qp-551bad7584-de"
+   },
+   {
+    "cos": 0.7288,
+    "a": "qp-cb98ab0dea-id",
+    "b": "qp-447f14a302-id"
+   },
+   {
+    "cos": 0.7158,
+    "a": "qp-601f760c90-id",
+    "b": "qp-29dea1217d-id"
+   },
+   {
+    "cos": 0.7144,
+    "a": "qp-d9c55c5d45-id",
+    "b": "qp-36faa89d82-id"
+   },
+   {
+    "cos": 0.7111,
+    "a": "qp-601f760c90-id",
+    "b": "qp-4361030744-id"
+   },
+   {
+    "cos": 0.7088,
+    "a": "qp-ae99aeef25-de",
+    "b": "qp-697afaefaa-id"
+   },
+   {
+    "cos": 0.7074,
+    "a": "qp-601f760c90-id",
+    "b": "qp-8e43282c0a-id"
+   },
+   {
+    "cos": 0.707,
+    "a": "qp-e806829b9e-id",
+    "b": "qp-5a30034c40-de"
+   },
+   {
+    "cos": 0.7053,
+    "a": "qp-e806829b9e-id",
+    "b": "qp-3a4c9936fc-id"
+   },
+   {
+    "cos": 0.703,
+    "a": "qp-0a570b4223-id",
+    "b": "qp-ee74934e9c-id"
+   },
+   {
+    "cos": 0.6995,
+    "a": "qp-7979434efb-id",
+    "b": "qp-5ef7e4e937-id"
+   },
+   {
+    "cos": 0.699,
+    "a": "qp-0b31079ae7-id",
+    "b": "qp-601f760c90-id"
+   },
+   {
+    "cos": 0.698,
+    "a": "qp-3a4c9936fc-id",
+    "b": "qp-d82045c0a2-id"
+   },
+   {
+    "cos": 0.6963,
+    "a": "qp-560e6498e1-id",
+    "b": "qp-d82045c0a2-id"
+   },
+   {
+    "cos": 0.6961,
+    "a": "qp-560e6498e1-id",
+    "b": "qp-7979434efb-id"
+   }
+  ],
+  "same_vu_style_pairs": [
+   0.5884,
+   0.6283,
+   0.6376,
+   0.6443,
+   0.6546,
+   0.6775,
+   0.6784,
+   0.6817,
+   0.6846,
+   0.689,
+   0.6934,
+   0.694,
+   0.6972,
+   0.7055,
+   0.7069,
+   0.7209,
+   0.7218,
+   0.7225,
+   0.7256,
+   0.7431,
+   0.7462,
+   0.7528,
+   0.7528,
+   0.7579,
+   0.7642,
+   0.7667,
+   0.7674,
+   0.7694,
+   0.7701,
+   0.7746,
+   0.778,
+   0.7793,
+   0.7797,
+   0.7811,
+   0.7823,
+   0.7835,
+   0.785,
+   0.7874,
+   0.7907,
+   0.8006,
+   0.8013,
+   0.8015,
+   0.8173,
+   0.8291,
+   0.8309
+  ]
+ }
+}

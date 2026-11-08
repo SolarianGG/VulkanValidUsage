@@ -1,0 +1,1 @@
+Rewrite the user's question as a search query for the Vulkan specification. Use precise Vulkan terminology (command, structure, enum and feature names) where you are confident they exist. Output only the query, one line.

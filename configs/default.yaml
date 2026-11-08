@@ -1,0 +1,68 @@
+seed: 20261107
+spec:
+  tag: v1.4.366                     # v1.4.NNN, chosen by `vkrag spec select-tag` (latest tag <= freeze_date - 14 days)
+  freeze_date: "2026-11-07"
+  min_tag_age_days: 14
+  docker_image: "khronosgroup/docker-images:asciidoctor-spec"
+  docker_digest: sha256:f1ca671f3bdb10ad49e238b9bf28853088a21af49504498fc9084c9b4fea4762  # from BUILD.adoc of the selected tag
+  docker_volume: vkdocs-build   # ext4 inside the docker-desktop WSL VM
+paths: {data: data, runs: runs}
+corpus:
+  max_chunk_tokens: 800
+  coverage_threshold: 0.99
+  # true = also merge explicit VUs whose text matches after replacing the entity name with a placeholder.
+  # Decided 2026-11-07: false (raw identical text only); the placeholder merged distinct rules of
+  # different SPIR-V built-ins into 87-/48-VU classes. See PLAN §2 and reports/data_facts.md.
+  equiv_text_placeholder: false
+strata:
+  per_stratum: 80
+  max_per_entity: 3
+  popularity_threshold: 0.50
+  gpuinfo_snapshot: data/external/gpuinfo_snapshot.json
+  recent_cutoff_sensitivity: ["2024-06-30", "2024-12-31", "2025-03-31"]
+  recent_cutoff:
+    qwen: {date: "2024-09-30", source: "probe undetermined (5/177 recognized at every age); set to the remote cutoff by user decision 2026-11-07"}
+    remote: {date: "2024-09-30", source: "extension probe 2026-11-07, quarterly rule (PLAN 9.1): last quarter >= 50% is 2024-Q3"}
+  history_years: 3
+  text_change: {levenshtein: 0.1, last_n_tags: 10}
+cutoff_probe:                 # PLAN §9.1 recent_cutoff_date probe by extensions
+  start_month: "2022-01"   # variant (a), 2026-11-07: old extensions give a baseline recognition level
+  per_month: null           # null = every eligible extension of the month
+  bin: quarter              # cutoff rule over quarters, not months
+  max_tokens: 256
+  remote_provider: deepinfra/fp8   # pinned for the probe only; the main-run provider is chosen on the pilot
+  judge_provider: google-ai-studio
+questions:
+  answer_type_mix: {rule: 0.4, yes_no: 0.3, scenario: 0.3}
+  ngram_max: 5
+  dup_cosine: 0.92
+  unanswerable: {nonexistent: 20, false_rule: 20, false_behavior: 10}
+  pilot: {answerable: 45, unanswerable: 5}
+bm25: {k1: 1.2, b: 0.75}
+embedder: {model: BAAI/bge-m3, revision: 5617a9f61b028005a4858fdac845db406aefb181, max_length: 1024, fp16: true, batch_size: 16}
+reranker: {model: BAAI/bge-reranker-v2-m3, revision: 953dc6f6f85a1b2dbfca4c34a2796e7dde08d41e, max_length: 1024, fp16: true}
+retrieval: {depth: 50, k_rrf: 60, k_gen: 5, k_eval: [1, 3, 5, 10, 20], collapse_classes: true, raw_depth: 2000}  # collapse: 50 distinct equivalence classes per retriever (2026-11-08)
+ollama:
+  model: "qwen3.5-9b-text"   # qwen3.5:9b without the vision projector, configs/ollama/qwen3.5-9b-text.Modelfile
+  base_model: "qwen3.5:9b"
+  weights_blob: "sha256:02d45dc1cf451ba2475ac33b301c2dd8f985abe4c182ce04a1f2f5bf0260278d"
+  host: "http://127.0.0.1:11434"   # not localhost: on Windows httpx loses ~2 s trying IPv6
+  digest: "sha256:fb2b6d5b0e717b46177d67c059abd42d4fc17e401bf5c352f65753269d279046"
+  num_ctx: 8192
+  num_predict: {answer: 512, rewrite: 128, hyde: 384}
+  temperature: 0
+  think: false
+  presence_penalty: 0          # the qwen3.5:9b Modelfile defaults to 1.5
+openrouter:
+  answerer_remote:
+    model: deepseek/deepseek-v4-flash-0731
+    provider: {order: [], allow_fallbacks: false, require_parameters: true, data_collection: deny, quantizations: [bf16, fp8]}
+    reasoning: {enabled: false}
+    max_tokens: 1024
+  judge:
+    model: google/gemini-3.8-flash
+    provider: {order: [], allow_fallbacks: false, require_parameters: true, data_collection: deny}
+    reasoning: {effort: medium}
+    max_tokens: 2048
+  budget_usd: 10
+eval: {bootstrap: 10000, permutations: 10000, ni_margin: -0.05, rerank_min_gain: 0.05, latency_max_gain_s: 0.5}

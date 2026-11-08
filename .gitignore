@@ -1,0 +1,16 @@
+.env
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+data/raw/
+data/build/
+data/processed/*.faiss
+data/processed/index/
+runs/*/
+!runs/.gitkeep
+.ipynb_checkpoints/
+# derived and large (> 25 MB); rebuilt by `vkrag ingest` / `vkrag chunk`
+data/processed/chunks.jsonl
+data/processed/vu_base.jsonl
+data/processed/vuids.jsonl

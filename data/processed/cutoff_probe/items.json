@@ -1,0 +1,1419 @@
+{
+ "months": [
+  "2022-01",
+  "2022-02",
+  "2022-03",
+  "2022-04",
+  "2022-05",
+  "2022-06",
+  "2022-07",
+  "2022-08",
+  "2022-09",
+  "2022-10",
+  "2022-11",
+  "2022-12",
+  "2023-01",
+  "2023-02",
+  "2023-03",
+  "2023-04",
+  "2023-05",
+  "2023-06",
+  "2023-07",
+  "2023-08",
+  "2023-09",
+  "2023-10",
+  "2023-11",
+  "2023-12",
+  "2024-01",
+  "2024-02",
+  "2024-03",
+  "2024-04",
+  "2024-05",
+  "2024-06",
+  "2024-07",
+  "2024-08",
+  "2024-09",
+  "2024-10",
+  "2024-11",
+  "2024-12",
+  "2025-01",
+  "2025-02",
+  "2025-03",
+  "2025-04",
+  "2025-05",
+  "2025-06",
+  "2025-07",
+  "2025-08",
+  "2025-09",
+  "2025-10",
+  "2025-11",
+  "2025-12",
+  "2026-01",
+  "2026-02",
+  "2026-03",
+  "2026-04",
+  "2026-05",
+  "2026-06",
+  "2026-07",
+  "2026-08",
+  "2026-09",
+  "2026-10"
+ ],
+ "baseline_tag": "v1.2.203",
+ "per_month": {
+  "2022-01": {
+   "published": 1,
+   "eligible": 0,
+   "picked": 0
+  },
+  "2022-02": {
+   "published": 0,
+   "eligible": 0,
+   "picked": 0
+  },
+  "2022-03": {
+   "published": 4,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2022-04": {
+   "published": 1,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2022-05": {
+   "published": 7,
+   "eligible": 7,
+   "picked": 7
+  },
+  "2022-06": {
+   "published": 4,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2022-07": {
+   "published": 3,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2022-08": {
+   "published": 3,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2022-09": {
+   "published": 11,
+   "eligible": 7,
+   "picked": 7
+  },
+  "2022-10": {
+   "published": 1,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2022-11": {
+   "published": 4,
+   "eligible": 0,
+   "picked": 0
+  },
+  "2022-12": {
+   "published": 6,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2023-01": {
+   "published": 2,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2023-02": {
+   "published": 4,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2023-03": {
+   "published": 4,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2023-04": {
+   "published": 1,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2023-05": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2023-06": {
+   "published": 4,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2023-07": {
+   "published": 4,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2023-08": {
+   "published": 4,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2023-09": {
+   "published": 5,
+   "eligible": 5,
+   "picked": 5
+  },
+  "2023-10": {
+   "published": 4,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2023-11": {
+   "published": 1,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2023-12": {
+   "published": 9,
+   "eligible": 6,
+   "picked": 6
+  },
+  "2024-01": {
+   "published": 9,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2024-02": {
+   "published": 3,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2024-03": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2024-04": {
+   "published": 0,
+   "eligible": 0,
+   "picked": 0
+  },
+  "2024-05": {
+   "published": 3,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2024-06": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2024-07": {
+   "published": 1,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2024-08": {
+   "published": 3,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2024-09": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2024-10": {
+   "published": 2,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2024-11": {
+   "published": 5,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2024-12": {
+   "published": 0,
+   "eligible": 0,
+   "picked": 0
+  },
+  "2025-01": {
+   "published": 9,
+   "eligible": 9,
+   "picked": 9
+  },
+  "2025-02": {
+   "published": 1,
+   "eligible": 1,
+   "picked": 1
+  },
+  "2025-03": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2025-04": {
+   "published": 3,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2025-05": {
+   "published": 3,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2025-06": {
+   "published": 10,
+   "eligible": 10,
+   "picked": 10
+  },
+  "2025-07": {
+   "published": 5,
+   "eligible": 5,
+   "picked": 5
+  },
+  "2025-08": {
+   "published": 2,
+   "eligible": 0,
+   "picked": 0
+  },
+  "2025-09": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2025-10": {
+   "published": 8,
+   "eligible": 7,
+   "picked": 7
+  },
+  "2025-11": {
+   "published": 4,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2025-12": {
+   "published": 3,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2026-01": {
+   "published": 5,
+   "eligible": 5,
+   "picked": 5
+  },
+  "2026-02": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2026-03": {
+   "published": 5,
+   "eligible": 5,
+   "picked": 5
+  },
+  "2026-04": {
+   "published": 4,
+   "eligible": 4,
+   "picked": 4
+  },
+  "2026-05": {
+   "published": 10,
+   "eligible": 10,
+   "picked": 10
+  },
+  "2026-06": {
+   "published": 5,
+   "eligible": 5,
+   "picked": 5
+  },
+  "2026-07": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2026-08": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  },
+  "2026-09": {
+   "published": 3,
+   "eligible": 3,
+   "picked": 3
+  },
+  "2026-10": {
+   "published": 2,
+   "eligible": 2,
+   "picked": 2
+  }
+ },
+ "items": [
+  {
+   "month": "2022-03",
+   "extension": "VK_EXT_graphics_pipeline_library",
+   "first_tag": "v1.3.210",
+   "description": "This extension allows the separate compilation of four distinct parts of graphics pipelines, with the intent of allowing faster pipeline loading for applications reusing the same shaders or state in multiple pipelines. Each part can be independently compiled into a graphics pipeline library, with a final link step required to create an executable pipeline that can be bound to a command buffer."
+  },
+  {
+   "month": "2022-03",
+   "extension": "VK_EXT_primitives_generated_query",
+   "first_tag": "v1.3.210",
+   "description": "This extension adds support for a new query type to match OpenGL\u2019s GL_PRIMITIVES_GENERATED to support layering."
+  },
+  {
+   "month": "2022-03",
+   "extension": "VK_KHR_portability_enumeration",
+   "first_tag": "v1.3.208",
+   "description": "This extension allows applications to control whether devices that expose the VK_KHR_portability_subset extension are included in the results of physical device enumeration. Since devices which support the VK_KHR_portability_subset extension are not fully conformant Vulkan implementations, the Vulkan loader does not report those devices unless the application explicitly asks for them. This prevents applications which may not be aware of non-conformant devices from accidentally using them, as any device which supports the VK_KHR_portability_subset extension mandates that the extension must be enabled if that device is used.\n\nThis extension is implemented in the loader."
+  },
+  {
+   "month": "2022-03",
+   "extension": "VK_VALVE_descriptor_set_host_mapping",
+   "first_tag": "v1.3.207",
+   "description": "This extension allows applications to directly query a host pointer for a VkDescriptorSet which can be used to copy descriptors between descriptor sets without the use of an API command. Memory offsets and sizes for descriptors can be queried from a VkDescriptorSetLayout as well.\n\nNote | There is currently no specification language written for this extension. The links to APIs defined by the extension are to stubs that only include generated content such as API declarations and implicit valid usage statements.\n\nNote | This extension is only intended for use in specific embedded environments with known implementation details, and is therefore undocumented."
+  },
+  {
+   "month": "2022-04",
+   "extension": "VK_EXT_image_2d_view_of_3d",
+   "first_tag": "v1.3.211",
+   "description": "This extension allows a single slice of a 3D image to be used as a 2D view in image descriptors, matching both the functionality of glBindImageTexture in OpenGL with the layer parameter set to true and 2D view binding provided by the extension EGL_KHR_gl_texture_3D_image. It is primarily intended to support GL emulation."
+  },
+  {
+   "month": "2022-05",
+   "extension": "VK_AMD_shader_early_and_late_fragment_tests",
+   "first_tag": "v1.3.214",
+   "description": "This extension adds support for the SPV_AMD_shader_early_and_late_fragment_tests extension, allowing shaders to explicitly opt in to allowing both early and late fragment tests with the EarlyAndLateFragmentTestsAMD execution mode.\n\nIf the VK_EXT_shader_stencil_export extension is supported, additional execution modes allowing early depth tests similar to DepthUnchanged, DepthLess, and DepthGreater are provided."
+  },
+  {
+   "month": "2022-05",
+   "extension": "VK_EXT_image_compression_control",
+   "first_tag": "v1.3.213",
+   "description": "This extension enables fixed-rate image compression and adds the ability to control when this kind of compression can be applied. Many implementations support some form of framebuffer compression. This is typically transparent to applications as lossless compression schemes are used. With fixed-rate compression, the compression is done at a defined bitrate. Such compression algorithms generally produce results that are visually lossless, but the results are typically not bit-exact when compared to a non-compressed result. The implementation may not be able to use the requested compression rate in all cases. This extension adds a query that can be used to determine the compression scheme and rate that was applied to an image."
+  },
+  {
+   "month": "2022-05",
+   "extension": "VK_EXT_image_compression_control_swapchain",
+   "first_tag": "v1.3.213",
+   "description": "This extension enables fixed-rate image compression and adds the ability to control when this kind of compression can be applied to swapchain images."
+  },
+  {
+   "month": "2022-05",
+   "extension": "VK_EXT_pipeline_properties",
+   "first_tag": "v1.3.213",
+   "description": "Vulkan SC requires offline compilation of pipelines. In order to support this, the pipeline state is represented in a JSON schema that is read by an offline tool for compilation.\n\nOne method of developing a Vulkan SC application is to author a Vulkan application and use a layer to record and serialize the pipeline state and shaders for offline compilation. Each pipeline is represented by a separate JSON file, and can be identified with a pipelineIdentifier.\n\nOnce the pipelines have been compiled by the offline pipeline cache compiler, the Vulkan SC application can then use this pipelineIdentifier for identifying the pipeline via Vulkan SC\u2019s VkPipelineIdentifierInfo structure.\n\nThis extension allows the Vulkan application to query the pipelineIdentifier associated with each pipeline so that the application can store this with its pipeline metadata and the Vulkan SC application will then use to map the same state to an entry in the Vulkan SC pipeline cache.\n\nIt is expected that this extension will initially be implemented in the json generation layer, although we can envision that there might be future uses for it in native Vulkan drivers as well."
+  },
+  {
+   "month": "2022-05",
+   "extension": "VK_EXT_subpass_merge_feedback",
+   "first_tag": "v1.3.213",
+   "description": "This extension adds a mechanism to provide feedback to an application about whether the subpasses specified on render pass creation are merged by the implementation. Additionally, it provides a control to enable or disable subpass merging in the render pass."
+  },
+  {
+   "month": "2022-05",
+   "extension": "VK_KHR_fragment_shader_barycentric",
+   "first_tag": "v1.3.215",
+   "description": "This extension is based on the VK_NV_fragment_shader_barycentric extension, and adds support for the following SPIR-V extension in Vulkan:\n\n- SPV_KHR_fragment_shader_barycentric\n\nThe extension provides access to three additional fragment shader variable decorations in SPIR-V:\n\n- PerVertexKHR, which indicates that a fragment shader input will not have interpolated values, but instead must be accessed with an extra array index that identifies one of the vertices of the primitive producing the fragment\n\n- BaryCoordKHR, which indicates that the variable is a three-component floating-point vector holding barycentric weights for the fragment produced using perspective interpolation\n\n- BaryCoordNoPerspKHR, which indicates that the variable is a three-component floating-point vector holding barycentric weights for the fragment produced using linear interpolation\n\nWhen using GLSL source-based shader languages, the following variables from GL_EXT_fragment_shader_barycentric map to these SPIR-V built-in decorations:\n\n- in vec3 gl_BaryCoordEXT; \u2192 BaryCoordKHR\n\n- in vec3 gl_BaryCoordNoPerspEXT; \u2192 BaryCoordNoPerspKHR\n\nGLSL variables declared using the pervertexEXT GLSL qualifier are expected to be decorated with PerVertexKHR in SPIR-V."
+  },
+  {
+   "month": "2022-05",
+   "extension": "VK_KHR_ray_tracing_maintenance1",
+   "first_tag": "v1.3.213",
+   "description": "VK_KHR_ray_tracing_maintenance1 adds a collection of minor ray tracing features, none of which would warrant an entire extension of their own.\n\nThe new features are as follows:\n\n- Adds support for the SPV_KHR_ray_cull_mask SPIR-V extension in Vulkan. This extension provides access to built-in CullMaskKHR shader variable which contains the value of the OpTrace* Cull Mask parameter. This new shader variable is accessible in the intersection, any-hit, closest hit and miss shader stages.\n\n- Adds support for a new pipeline stage and access mask built on top of VK_KHR_synchronization2:\n\n - VK_PIPELINE_STAGE_2_ACCELERATION_STRUCTURE_COPY_BIT_KHR to specify execution of acceleration structure copy commands\n\n - VK_ACCESS_2_SHADER_BINDING_TABLE_READ_BIT_KHR to specify read access to a shader binding table in any shader pipeline stage\n\n- Adds two new acceleration structure query parameters:\n\n - VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SIZE_KHR to query the acceleration structure size on the device timeline\n\n - VK_QUERY_TYPE_ACCELERATION_STRUCTURE_SERIALIZATION_BOTTOM_LEVEL_POINTERS_KHR to query the number of bottom level acceleration structure pointers for serialization\n\n- Adds an optional new indirect ray tracing dispatch command, vkCmdTraceRaysIndirect2KHR, which sources the shader binding table parameters as well as the dispatch dimensions from the device. The rayTracingPipelineTraceRaysIndirect2 feature indicates whether this functionality is supported."
+  },
+  {
+   "month": "2022-06",
+   "extension": "VK_EXT_metal_objects",
+   "first_tag": "v1.3.217",
+   "description": "In a Vulkan implementation that is layered on top of Metal on Apple device platforms, this extension provides the ability to import and export the underlying Metal objects associated with specific Vulkan objects.\n\nAs detailed in the extension proposal document, this extension adds one new Vulkan command, vkExportMetalObjectsEXT, to export underlying Metal objects from Vulkan objects, and supports importing the appropriate existing Metal objects when creating Vulkan objects of types VkDeviceMemory, VkImage, VkSemaphore, and VkEvent,\n\nThe intent is that this extension will be advertised and supported only on implementations that are layered on top of Metal on Apple device platforms."
+  },
+  {
+   "month": "2022-06",
+   "extension": "VK_EXT_multisampled_render_to_single_sampled",
+   "first_tag": "v1.3.219",
+   "description": "With careful usage of resolve attachments, multisampled image memory allocated with VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT, loadOp not equal to VK_ATTACHMENT_LOAD_OP_LOAD and storeOp not equal to VK_ATTACHMENT_STORE_OP_STORE, a Vulkan application is able to efficiently perform multisampled rendering without incurring any additional memory penalty on some implementations.\n\nUnder certain circumstances however, the application may not be able to complete its multisampled rendering within a single render pass; for example if it does partial rasterization from frame to frame, blending on an image from a previous frame, or in emulation of GL_EXT_multisampled_render_to_texture. In such cases, the application can use an initial subpass to effectively load single-sampled data from the next subpass\u2019s resolve attachment and fill in the multisampled attachment which otherwise uses loadOp equal to VK_ATTACHMENT_LOAD_OP_DONT_CARE. However, this is not always possible (for example for stencil in the absence of VK_EXT_shader_stencil_export) and has multiple drawbacks.\n\nSome implementations are able to perform said operation efficiently in hardware, effectively loading a multisampled attachment from the contents of a single sampled one. Together with the ability to perform a resolve operation at the end of a subpass, these implementations are able to perform multisampled rendering on single-sampled attachments with no extra memory or bandwidth overhead. This extension exposes this capability by allowing a framebuffer and render pass to include single-sampled attachments while rendering is done with a specified number of samples."
+  },
+  {
+   "month": "2022-06",
+   "extension": "VK_EXT_non_seamless_cube_map",
+   "first_tag": "v1.3.217",
+   "description": "This extension provides functionality to disable cube map edge handling on a per sampler level which matches the behavior of other graphics APIs.\n\nThis extension may be useful for building translation layers for those APIs or for porting applications that rely on this cube map behavior."
+  },
+  {
+   "month": "2022-06",
+   "extension": "VK_EXT_shader_module_identifier",
+   "first_tag": "v1.3.219",
+   "description": "Some applications generate SPIR-V code at runtime. When pipeline caches are primed, either explicitly through e.g. VkPipelineCache mechanisms, or implicitly through driver managed caches, having to re-generate SPIR-V modules is redundant. SPIR-V modules could be cached on disk by an application, but the extra disk size requirement might be prohibitive in some use cases.\n\nThis extension adds the ability for an application to query a small identifier associated with a VkShaderModule. On subsequent runs of the application, the same identifier can be provided in lieu of a VkShaderModule object. A pipeline creation call with such a module may succeed if a pipeline could be created without invoking compilation, and information inside the SPIR-V module is not required by the implementation.\n\nVK_PIPELINE_CREATE_FAIL_ON_PIPELINE_COMPILE_REQUIRED_BIT must be used if only the identifier is provided, and this use case is intended to work like a non-blocking, speculative compile. Applications can fallback as necessary.\n\nThe main motivation for identifying the module itself and not the entire pipeline is that pipeline identifiers change when a driver is updated, but module identifiers are expected to be stable for any particular driver implementation. This approach is helpful for shader pre-compilation systems which can prime pipeline caches ahead of time. When on-disk pipeline caches are updated, the same shader identifiers could lead to a pipeline cache hit."
+  },
+  {
+   "month": "2022-07",
+   "extension": "VK_QCOM_image_processing",
+   "first_tag": "v1.3.222",
+   "description": "GPUs are commonly used to process images for various applications from 3D graphics to UI and from composition to compute applications. Simple scaling and filtering can be done with bilinear filtering, which comes for free during texture sampling. However, as screen sizes get larger and more use cases rely on GPU such as camera and video post-processing needs, there is increasing demand for GPU to support higher order filtering and other advanced image processing.\n\nThis extension introduces a new set of SPIR-V built-in functions for image processing. It exposes the following new imaging operations\n\n- The OpImageSampleWeightedQCOM instruction takes 3 operands: sampled image, weight image, and texture coordinates. The instruction computes a weighted average of an MxN region of texels in the sampled image, using a set of MxN weights in the weight image.\n\n- The OpImageBoxFilterQCOM instruction takes 3 operands: sampled image, box size, and texture coordinates. Note that box size specifies a floating-point width and height in texels. The instruction computes a weighted average of all texels in the sampled image that are covered (either partially or fully) by a box with the specified size and centered at the specified texture coordinates.\n\n- The OpImageBlockMatchSADQCOM and OpImageBlockMatchSSDQCOM instructions each takes 5 operands: target image, target coordinates, reference image, reference coordinates, and block size. Each instruction computes an error metric, that describes whether a block of texels in the target image matches a corresponding block of texels in the reference image. The error metric is computed per-component. OpImageBlockMatchSADQCOM computes \u201cSum Of Absolute Difference\u201d and OpImageBlockMatchSSDQCOM computes \u201cSum of Squared Difference\u201d.\n\nEach of the image processing instructions operate only on 2D images. The instructions do not-support sampling of mipmap, multi-plane, multi-layer, multi-sampled, or depth/stencil images. The instructions can be used in any shader stage.\n\nImplementations of this extension should support these operations natively at the HW instruction level, offering potential performance gains as well as ease of development."
+  },
+  {
+   "month": "2022-07",
+   "extension": "VK_QCOM_tile_properties",
+   "first_tag": "v1.3.222",
+   "description": "This extension allows an application to query the tile properties. This extension supports both renderpasses and dynamic rendering."
+  },
+  {
+   "month": "2022-08",
+   "extension": "VK_EXT_attachment_feedback_loop_layout",
+   "first_tag": "v1.3.224",
+   "description": "This extension adds a new image layout, VK_IMAGE_LAYOUT_ATTACHMENT_FEEDBACK_LOOP_OPTIMAL_EXT, which allows applications to have an image layout in which they are able to both render to and sample/fetch from the same subresource of an image in a given render pass."
+  },
+  {
+   "month": "2022-08",
+   "extension": "VK_EXT_rasterization_order_attachment_access",
+   "first_tag": "v1.3.225",
+   "description": "This extension extends the mechanism of input attachments to allow access to framebuffer attachments that are used both as input and as color or depth/stencil attachments from one fragment to the next, in rasterization order, without explicit synchronization."
+  },
+  {
+   "month": "2022-08",
+   "extension": "VK_SEC_amigo_profiling",
+   "first_tag": "v1.3.224",
+   "description": "This extension is intended to communicate information from layered API implementations such as ANGLE to internal proprietary system schedulers. It has no behavioral implications beyond enabling more intelligent behavior from the system scheduler.\n\nApplication developers should avoid using this extension. It is documented solely for the benefit of tools and layer developers, who may need to manipulate pNext chains that include these structures.\n\nNote | There is currently no specification language written for this extension. The links to APIs defined by the extension are to stubs that only include generated content such as API declarations and implicit valid usage statements.\n\nNote | This extension is only intended for use in specific embedded environments with known implementation details, and is therefore undocumented."
+  },
+  {
+   "month": "2022-09",
+   "extension": "VK_EXT_device_address_binding_report",
+   "first_tag": "v1.3.230",
+   "description": "This extension enables applications to track the binding of regions of the GPU virtual address space, and to associate those regions with Vulkan objects. This extension is primarily intended to aid in crash postmortem, where applications may wish to map a faulting GPU address to a Vulkan object.\n\nFor example, a page fault triggered by accessing an address located within a region of the GPU virtual address space that was previously reported as bound and then unbound may indicate a use-after-free error. Similarly, faults generated by accessing virtual addresses outside the limits of a bound region of GPU virtual address space may indicate indexing beyond the bounds of a resource."
+  },
+  {
+   "month": "2022-09",
+   "extension": "VK_EXT_extended_dynamic_state3",
+   "first_tag": "v1.3.230",
+   "description": "This extension adds almost all of the remaining pipeline state as dynamic state to help applications further reduce the number of monolithic pipelines they need to create and bind."
+  },
+  {
+   "month": "2022-09",
+   "extension": "VK_EXT_legacy_dithering",
+   "first_tag": "v1.3.227",
+   "description": "This extension exposes a hardware feature used by some vendors to implement OpenGL\u2019s dithering. The purpose of this extension is to support layering OpenGL over Vulkan, by allowing the layer to take advantage of the same hardware feature and provide equivalent dithering to OpenGL applications."
+  },
+  {
+   "month": "2022-09",
+   "extension": "VK_EXT_mesh_shader",
+   "first_tag": "v1.3.226",
+   "description": "This extension provides a new mechanism allowing applications to generate collections of geometric primitives via programmable mesh shading. It is an alternative to the existing programmable primitive shading pipeline, which relied on generating input primitives by a fixed function assembler as well as fixed function vertex fetch.\n\nThis extension also adds support for the following SPIR-V extension in Vulkan:\n\n- SPV_EXT_mesh_shader"
+  },
+  {
+   "month": "2022-09",
+   "extension": "VK_EXT_mutable_descriptor_type",
+   "first_tag": "v1.3.228",
+   "description": "This extension allows applications to reduce descriptor memory footprint by allowing a descriptor to be able to mutate to a given list of descriptor types depending on which descriptor types are written into, or copied into a descriptor set.\n\nThe main use case this extension intends to address is descriptor indexing with VK_DESCRIPTOR_BINDING_VARIABLE_DESCRIPTOR_COUNT_BIT where the descriptor types are completely generic, as this means applications can allocate one large descriptor set, rather than having one large descriptor set per descriptor type, which significantly bloats descriptor memory usage and causes performance issues.\n\nThis extension also adds a mechanism to declare that a descriptor pool, and therefore the descriptor sets that are allocated from it, reside only in host memory; as such these descriptors can only be updated/copied, but not bound.\n\nThese features together allow much more efficient emulation of the raw D3D12 binding model. This extension is primarily intended to be useful for API layering efforts."
+  },
+  {
+   "month": "2022-09",
+   "extension": "VK_NV_optical_flow",
+   "first_tag": "v1.3.230",
+   "description": "Optical flow are fundamental algorithms in computer vision (CV) area. This extension allows applications to estimate 2D displacement of pixels between two frames.\n\nNote | This extension is designed to be used with upcoming NVIDIA Optical Flow SDK Version 5 which will be available on NVIDIA Developer webpage."
+  },
+  {
+   "month": "2022-09",
+   "extension": "VK_NV_present_barrier",
+   "first_tag": "v1.3.230",
+   "description": "This extension adds support for synchronizing corresponding presentation requests across multiple swapchains using the present barrier."
+  },
+  {
+   "month": "2022-10",
+   "extension": "VK_ARM_shader_core_builtins",
+   "first_tag": "v1.3.231",
+   "description": "This extension provides the ability to determine device-specific properties on Arm GPUs. It exposes properties for the number of shader cores, the maximum number of warps that can run on a shader core, and shader builtins to enable invocations to identify which core and warp a shader invocation is executing on.\n\nThis extension enables support for the SPIR-V CoreBuiltinsARM capability.\n\nThese properties and built-ins can be used for debugging or performance optimization purposes. A typical optimization example would be to use CoreIDARM to select a per-shader-core instance of a data structure in algorithms that use atomics so as to reduce contention."
+  },
+  {
+   "month": "2022-12",
+   "extension": "VK_KHR_video_decode_h264",
+   "first_tag": "v1.3.238",
+   "description": "This extension builds upon the VK_KHR_video_decode_queue extension by adding support for decoding elementary video stream sequences compliant with the H.264/AVC video compression standard.\n\nNote | This extension was promoted to / KHR / from the provisional extension / VK_EXT_video_decode_h264 /."
+  },
+  {
+   "month": "2022-12",
+   "extension": "VK_KHR_video_decode_h265",
+   "first_tag": "v1.3.238",
+   "description": "This extension builds upon the VK_KHR_video_decode_queue extension by adding support for decoding elementary video stream sequences compliant with the H.265/HEVC video compression standard.\n\nNote | This extension was promoted to / KHR / from the provisional extension / VK_EXT_video_decode_h265 /."
+  },
+  {
+   "month": "2022-12",
+   "extension": "VK_LUNARG_direct_driver_loading",
+   "first_tag": "v1.3.236",
+   "description": "This extension provides a mechanism for applications to add drivers to the implementation. This allows drivers to be included with an application without requiring installation and is capable of being used in any execution environment, such as a process running with elevated privileges."
+  },
+  {
+   "month": "2022-12",
+   "extension": "VK_QCOM_multiview_per_view_viewports",
+   "first_tag": "v1.3.236",
+   "description": "Certain use cases for multiview have a need for specifying a separate viewport and scissor for each view, without using shader-based viewport indexing as introduced with VK_EXT_shader_viewport_index_layer.\n\nThis extension adds a new way to control ViewportIndex with multiview. When the multiviewPerViewViewports feature is enabled and if the last pre-rasterization shader entry point\u2019s interface does not use the ViewportIndex built-in decoration, then each view of a multiview render pass instance will use a viewport and scissor index equal to the ViewIndex."
+  },
+  {
+   "month": "2023-01",
+   "extension": "VK_HUAWEI_cluster_culling_shader",
+   "first_tag": "v1.3.239",
+   "description": "Cluster Culling Shaders (CCS) are similar to the existing compute shaders. Their main purpose is to provide an execution environment in order to perform coarse-level geometry culling and LOD selection more efficiently on the GPU.\n\nThe traditional 2-pass GPU culling solution using a compute shader sometimes needs a pipeline barrier between compute and graphics pipeline to optimize performance. An additional compaction process may also be required. This extension addresses these shortcomings, allowing compute shaders to directly emit visible clusters to the following graphics pipeline.\n\nA set of new built-in output variables are used to express a visible cluster, including per-cluster shading rate. In addition, a new built-in function is used to emit these variables from CCS to the IA stage. The IA stage can use these variables to fetch vertices of a visible cluster and drive vertex shaders to shading these vertices.\n\nNote that CCS do not work with geometry or tessellation shaders, but both IA and vertex shaders are preserved. Vertex shaders are still used for vertex position shading, instead of directly outputting transformed vertices from the compute shader. This makes CCS more suitable for mobile GPUs."
+  },
+  {
+   "month": "2023-02",
+   "extension": "VK_ARM_shader_core_properties",
+   "first_tag": "v1.3.241",
+   "description": "This extension provides the ability to determine device-specific performance properties of Arm GPUs.\n\nIt exposes properties for the number of texel, pixel, and fused multiply-add operations per clock per shader core. This can be used in combination with the VK_ARM_shader_core_builtins extension that provides the ability to query the number of shader cores on the physical device."
+  },
+  {
+   "month": "2023-02",
+   "extension": "VK_EXT_image_sliced_view_of_3d",
+   "first_tag": "v1.3.241",
+   "description": "This extension allows creating 3D views of 3D images such that the views contain a subset of the slices in the image, using a Z offset and range, for the purpose of using the views as storage image descriptors. This matches functionality in D3D12 and is primarily intended to support D3D12 emulation."
+  },
+  {
+   "month": "2023-02",
+   "extension": "VK_QCOM_multiview_per_view_render_areas",
+   "first_tag": "v1.3.241",
+   "description": "Certain use cases (e.g., side-by-side VR rendering) use multiview and render to distinct regions of the framebuffer for each view. On some implementations, there may be a performance benefit for providing per-view render areas to the implementation. Such per-view render areas can be used by the implementation to reduce the pixels that are affected by attachment load, store, and multisample resolve operations.\n\nThe extension enables a multiview render pass instance to define per-view render areas. For each view of a multiview render pass instance, only those pixels in the per-view render area are affected by load, store, and resolve operations."
+  },
+  {
+   "month": "2023-03",
+   "extension": "VK_EXT_shader_object",
+   "first_tag": "v1.3.246",
+   "description": "This extension introduces a new VkShaderEXT object type which represents a single compiled shader stage. Shader objects provide a more flexible alternative to VkPipeline objects, which may be helpful in certain use cases."
+  },
+  {
+   "month": "2023-03",
+   "extension": "VK_EXT_shader_tile_image",
+   "first_tag": "v1.3.246",
+   "description": "This extension allows fragment shader invocations to read color, depth, and stencil values at their pixel location in rasterization order. The functionality is only available when using dynamic render passes introduced by VK_KHR_dynamic_rendering. Example use cases are programmable blending and deferred shading.\n\nSee fragment shader tile image reads for more information."
+  },
+  {
+   "month": "2023-04",
+   "extension": "VK_KHR_ray_tracing_position_fetch",
+   "first_tag": "v1.3.249",
+   "description": "VK_KHR_ray_tracing_position_fetch adds the ability to fetch the vertex positions in the shader from a hit triangle as stored in the acceleration structure.\n\nAn application adds VK_BUILD_ACCELERATION_STRUCTURE_ALLOW_DATA_ACCESS_BIT_KHR to the acceleration structure at build time. Then, if the hit is a triangle geometry, the shader (any-hit or closest hit for ray pipelines or using ray query) can fetch the three, three-component vertex positions in object space, of the triangle which was hit."
+  },
+  {
+   "month": "2023-05",
+   "extension": "VK_EXT_attachment_feedback_loop_dynamic_state",
+   "first_tag": "v1.3.250",
+   "description": "This extension adds support for setting attachment feedback loops dynamically on command buffers."
+  },
+  {
+   "month": "2023-05",
+   "extension": "VK_EXT_dynamic_rendering_unused_attachments",
+   "first_tag": "v1.3.251",
+   "description": "This extension lifts some restrictions in the VK_KHR_dynamic_rendering extension to allow render pass instances and bound pipelines within those render pass instances to have an unused attachment specified in one but not the other. It also allows pipelines to use different formats in a render pass as long the attachment is NULL."
+  },
+  {
+   "month": "2023-06",
+   "extension": "VK_EXT_depth_bias_control",
+   "first_tag": "v1.3.254",
+   "description": "This extension adds a new structure, VkDepthBiasRepresentationInfoEXT, that can be added to a pNext chain of VkPipelineRasterizationStateCreateInfo and allows setting the scaling and representation of depth bias for a pipeline.\n\nThis state can also be set dynamically by using the new structure mentioned above in combination with the new vkCmdSetDepthBias2EXT command."
+  },
+  {
+   "month": "2023-06",
+   "extension": "VK_EXT_external_memory_acquire_unmodified",
+   "first_tag": "v1.3.252",
+   "description": "A memory barrier may have a performance penalty when acquiring ownership of a subresource range from an external queue family. This extension provides API that may reduce the performance penalty if ownership of the subresource range was previously released to the external queue family and if the resource\u2019s memory has remained unmodified between the release and acquire operations."
+  },
+  {
+   "month": "2023-06",
+   "extension": "VK_KHR_cooperative_matrix",
+   "first_tag": "v1.3.255",
+   "description": "This extension adds support for using cooperative matrix types in SPIR-V. Cooperative matrix types are medium-sized matrices that are primarily supported in compute shaders, where the storage for the matrix is spread across all invocations in some scope (usually a subgroup) and those invocations cooperate to efficiently perform matrix multiplies.\n\nCooperative matrix types are defined by the SPV_KHR_cooperative_matrix SPIR-V extension and can be used with the GLSL_KHR_cooperative_matrix GLSL extension.\n\nThis extension includes support for enumerating the matrix types and dimensions that are supported by the implementation."
+  },
+  {
+   "month": "2023-06",
+   "extension": "VK_QNX_external_memory_screen_buffer",
+   "first_tag": "v1.3.254",
+   "description": "This extension enables an application to import QNX Screen _screen_buffer objects created outside of the Vulkan device into Vulkan memory objects, where they can be bound to images and buffers.\n\nSome _screen_buffer images have implementation-defined external formats that may not correspond to Vulkan formats. Sampler Y\u2032C_BC_R conversion can be used to sample from these images and convert them to a known color space.\n\n_screen_buffer is strongly typed, so naming the handle type is redundant. The internal layout and therefore size of a _screen_buffer image may depend on native usage flags that do not have corresponding Vulkan counterparts."
+  },
+  {
+   "month": "2023-07",
+   "extension": "VK_NV_device_generated_commands_compute",
+   "first_tag": "v1.3.258",
+   "description": "This extension allows the device to generate commands for binding compute pipelines, setting push constants and launching compute dispatches."
+  },
+  {
+   "month": "2023-08",
+   "extension": "VK_QCOM_filter_cubic_clamp",
+   "first_tag": "v1.3.262",
+   "description": "This extension extends cubic filtering by adding the ability to enable an anti-ringing clamp. Cubic filtering samples from a 4x4 region of texels and computes a cubic weighted average of the region. In some cases, the resulting value is outside the range of any of the texels in the 4x4 region. This is sometimes referred to as \u201cfilter overshoot\u201d or \u201cfilter ringing\u201d and can occur when there is a sharp discontinuity in the 4x4 region being filtered. For some use cases this \u201cringing\u201d can produces unacceptable artifacts.\n\nThe solution to the ringing problem is to clamp the post-cubic-filtered value to be within the max and min of texel values in the 4x4 region. While such \u201crange clamping\u201d can be performed in shader code, the additional texture fetches and clamping ALU operations can be costly.\n\nCertain Adreno GPUs are able to perform the range clamp in the texture unit during cubic filtering at significant performance/power savings versus a shader-based clamping approach. This extension exposes such hardware functionality.\n\nThis extension extends VkSamplerReductionMode, adding VK_SAMPLER_REDUCTION_MODE_WEIGHTED_AVERAGE_RANGECLAMP_QCOM which enables the range clamp operation."
+  },
+  {
+   "month": "2023-08",
+   "extension": "VK_QCOM_filter_cubic_weights",
+   "first_tag": "v1.3.262",
+   "description": "This extension extends cubic filtering by adding the ability to select a set of weights. Without this extension, the weights used in cubic filtering are limited to those corresponding to a Catmull-Rom spline. This extension adds support for 3 additional spline weights.\n\nThis extension adds a new structure that can be added to the pNext chain of VkSamplerCreateInfo that can be used to specify which set of cubic weights are used in cubic filtering. A similar structure can be added to the pNext chain of VkBlitImageInfo2 to specify cubic weights used in a blit operation.\n\nWith this extension weights corresponding to the following additional splines can be selected for cubic filtered sampling and blits:\n\n- Zero Tangent Cardinal\n\n- B-Spline\n\n- Mitchell-Netravali"
+  },
+  {
+   "month": "2023-08",
+   "extension": "VK_QCOM_image_processing2",
+   "first_tag": "v1.3.262",
+   "description": "This extension enables support for the SPIR-V TextureBlockMatch2QCOM capability. It builds on the functionality of QCOM_image_processing with the addition of 4 new image processing operations.\n\n- The opImageBlockMatchWindowSADQCOM` SPIR-V instruction builds upon the functionality of opImageBlockMatchSADQCOM` by repeatedly performing block match operations across a 2D window. The \u201c2D windowExtent\u201d and \u201ccompareMode\u201d are specified by VkSamplerBlockMatchWindowCreateInfoQCOM in the sampler used to create the target image. Like OpImageBlockMatchSADQCOM, opImageBlockMatchWindowSADQCOM computes an error metric, that describes whether a block of texels in the target image matches a corresponding block of texels in the reference image. Unlike OpImageBlockMatchSADQCOM, this instruction computes an error metric at each (X,Y) location within the 2D window and returns either the minimum or maximum error. The instruction only supports single-component formats. Refer to the pseudocode below for details.\n\n- The opImageBlockMatchWindowSSDQCOM follows the same pattern, computing the SSD error metric at each location within the 2D window.\n\n- The opImageBlockMatchGatherSADQCOM builds upon OpImageBlockMatchSADQCOM. This instruction computes an error metric, that describes whether a block of texels in the target image matches a corresponding block of texels in the reference image. The instruction computes the SAD error metric at 4 texel offsets and returns the error metric for each offset in the X,Y,Z,and W components. The instruction only supports single-component texture formats. Refer to the pseudocode below for details.\n\n- The opImageBlockMatchGatherSSDQCOM follows the same pattern, computing the SSD error metric for 4 offsets.\n\nEach of the above 4 image processing instructions are limited to single-component formats.\n\nBelow is the pseudocode for GLSL built-in function textureWindowBlockMatchSADQCOM. The pseudocode for textureWindowBlockMatchSSD is identical other than replacing all instances of \"SAD\" with \"SSD\".\n\nvec4 textureBlockMatchWindowSAD( sampler2D target,\nuvec2 targetCoord,\nsampler2D reference,\nuvec2 refCoord,\nuvec2 blocksize) {\n// compareMode (MIN or MAX) comes from the vkSampler associated with `target`\n// uvec2 window comes from the vkSampler associated with `target`\nminSAD = INF;\nmaxSAD = -INF;\nuvec2 minCoord;\nuvec2 maxCoord;for (uint x=0, x < window.width; x++) {\nfor (uint y=0; y < window.height; y++) {\nfloat SAD = textureBlockMatchSAD(target,\ntargetCoord + uvec2(x, y),\nreference,\nrefCoord,\nblocksize).x;\n// Note: the below comparison operator will produce undefined results\n// if SAD is a denorm value.\nif (SAD < minSAD) {\nminSAD = SAD;\nminCoord = uvec2(x,y);\n}\nif (SAD > maxSAD) {\nmaxSAD = SAD;\nmaxCoord = uvec2(x,y);\n}\n}\n}\nif (compareMode=MIN) {\nreturn vec4(minSAD, minCoord.x, minCoord.y, 0.0);\n} else {\nreturn vec4(maxSAD, maxCoord.x, maxCoord.y, 0.0);\n}\n}\n\nBelow is the pseudocode for textureBlockMatchGatherSADQCOM. The pseudocode for textureBlockMatchGatherSSD follows an identical pattern.\n\nvec4 textureBlockMatchGatherSAD( sampler2D target,\nuvec2 targetCoord,\nsampler2D reference,\nuvec2 refCoord,\nuvec2 blocksize) {\nvec4 out;\nfor (uint x=0, x<4; x++) {\nfloat SAD = textureBlockMatchSAD(target,\ntargetCoord + uvec2(x, 0),\nreference,\nrefCoord,\nblocksize).x;\nout[x] = SAD;\n}\nreturn out;\n}"
+  },
+  {
+   "month": "2023-08",
+   "extension": "VK_QCOM_ycbcr_degamma",
+   "first_tag": "v1.3.262",
+   "description": "This extension allows implementations to expose support for \u201csRGB EOTF\u201d also known as \u201csRGB degamma\u201d, used in combination with images using 8-bit Y\u2032C_BC_R formats. In addition, the degamma can be selectively applied to the Y (luma) or CrCb (chroma).\n\nVK_KHR_sampler_ycbcr_conversion adds support for Y\u2032C_BC_R conversion, but allows texture sampling in a non-linear space which can cause artifacts. This extension allows implementations to expose sRGB degamma for Y\u2032C_BC_R formats, which is performed during texture filtering, allowing texture filtering to operate in a linear space."
+  },
+  {
+   "month": "2023-09",
+   "extension": "VK_ANDROID_external_format_resolve",
+   "first_tag": "v1.3.266",
+   "description": "This extension enables rendering to Android Hardware Buffers with external formats which cannot be directly represented as renderable in Vulkan, including Y\u2032C_BC_R formats."
+  },
+  {
+   "month": "2023-09",
+   "extension": "VK_EXT_frame_boundary",
+   "first_tag": "v1.3.264",
+   "description": "VK_EXT_frame_boundary is a device extension that helps tools (such as debuggers) to group queue submissions per frames in non-trivial scenarios, typically when vkQueuePresentKHR is not a relevant frame boundary delimiter."
+  },
+  {
+   "month": "2023-09",
+   "extension": "VK_MSFT_layered_driver",
+   "first_tag": "v1.3.264",
+   "description": "This extension adds new physical device properties to allow applications and the Vulkan ICD loader to understand when a physical device is implemented as a layered driver on top of another underlying API."
+  },
+  {
+   "month": "2023-09",
+   "extension": "VK_NV_descriptor_pool_overallocation",
+   "first_tag": "v1.3.263",
+   "description": "There are scenarios where the application does not know ahead of time how many descriptor sets it may need to allocate from a descriptor pool, or how many descriptors of any of the descriptor types it may need to allocate from the descriptor pool.\n\nThis extension gives applications the ability to request the implementation allow more sets or descriptors to be allocated than initially specified at descriptor pool creation time, subject to available resources.\n\nThe VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_SETS_BIT_NV flag lets the application allocate more than VkDescriptorPoolCreateInfo::maxSets descriptor sets, and the VK_DESCRIPTOR_POOL_CREATE_ALLOW_OVERALLOCATION_POOLS_BIT_NV lets the application allocate more descriptors than initially specified by VkDescriptorPoolSize::descriptorCount for any descriptor types."
+  },
+  {
+   "month": "2023-09",
+   "extension": "VK_NV_low_latency2",
+   "first_tag": "v1.3.266",
+   "description": "This extension gives applications timing suggestions on when to start the recording of new frames to reduce the latency between input sampling and frame presentation. Applications can accomplish this through the extension by calling vkSetLatencySleepModeNV to allow the driver to pace a given swapchain, then calling vkLatencySleepNV before input sampling to delay the start of the CPU side work. Additional methods and structures are provided to give insight into the latency pipeline of an application through the latency markers. VK_NV_low_latency provides legacy support for applications that make use of the NVIDIA Reflex SDK whereas new implementations should use the VK_NV_low_latency2 extension."
+  },
+  {
+   "month": "2023-10",
+   "extension": "VK_ARM_scheduling_controls",
+   "first_tag": "v1.3.269",
+   "description": "This extension exposes a collection of controls to modify the scheduling behavior of Arm Mali devices."
+  },
+  {
+   "month": "2023-10",
+   "extension": "VK_EXT_nested_command_buffer",
+   "first_tag": "v1.3.267",
+   "description": "With core Vulkan it is not legal to call vkCmdExecuteCommands when recording a secondary command buffer. This extension relaxes that restriction, allowing secondary command buffers to execute other secondary command buffers."
+  },
+  {
+   "month": "2023-10",
+   "extension": "VK_NV_extended_sparse_address_space",
+   "first_tag": "v1.3.267",
+   "description": "Implementations may be able to support an extended address space for sparse memory resources, but only for a certain set of usages.\n\nThis extension adds a query for the extended limit, and the supported usages that are allowed for that limit. This limit is an increase to VkPhysicalDeviceLimits::sparseAddressSpaceSize when the VkImage or VkBuffer uses only usages that are supported."
+  },
+  {
+   "month": "2023-11",
+   "extension": "VK_IMG_relaxed_line_rasterization",
+   "first_tag": "v1.3.270",
+   "description": "OpenGL specifies that implementations should rasterize lines using the diamond exit rule (a slightly modified version of Bresenham\u2019s algorithm). To implement OpenGL some implementations have a device-level compatibility mode to rasterize lines according to the OpenGL specification.\n\nThis extension allows OpenGL emulation layers to enable the OpenGL compatible line rasterization mode of such implementations."
+  },
+  {
+   "month": "2023-12",
+   "extension": "VK_ARM_render_pass_striped",
+   "first_tag": "v1.3.272",
+   "description": "This extension adds the ability to split a render pass instance into stripes, and to get a notification when rendering has completed for each stripe."
+  },
+  {
+   "month": "2023-12",
+   "extension": "VK_EXT_layer_settings",
+   "first_tag": "v1.3.272",
+   "description": "This extension provides a mechanism for configuring programmatically through the Vulkan API the behavior of layers.\n\nThis extension provides the VkLayerSettingsCreateInfoEXT structure that can be included in the pNext chain of the VkInstanceCreateInfo structure passed as the pCreateInfo parameter of vkCreateInstance.\n\nThe structure contains an array of VkLayerSettingEXT structure values that configure specific features of layers.\n\nNote | The / VK_EXT_layer_settings / extension subsumes all the functionality provided in the / VK_EXT_validation_flags / extension and the / VK_EXT_validation_features / extension."
+  },
+  {
+   "month": "2023-12",
+   "extension": "VK_KHR_calibrated_timestamps",
+   "first_tag": "v1.3.273",
+   "description": "This extension provides an interface to query calibrated timestamps obtained quasi simultaneously from two time domains."
+  },
+  {
+   "month": "2023-12",
+   "extension": "VK_KHR_video_encode_h264",
+   "first_tag": "v1.3.274",
+   "description": "This extension builds upon the VK_KHR_video_encode_queue extension by adding support for encoding elementary video stream sequences compliant with the H.264/AVC video compression standard.\n\nNote | This extension was promoted to / KHR / from the provisional extension / VK_EXT_video_encode_h264 /."
+  },
+  {
+   "month": "2023-12",
+   "extension": "VK_KHR_video_encode_h265",
+   "first_tag": "v1.3.274",
+   "description": "This extension builds upon the VK_KHR_video_encode_queue extension by adding support for encoding elementary video stream sequences compliant with the H.265/HEVC video compression standard.\n\nNote | This extension was promoted to / KHR / from the provisional extension / VK_EXT_video_encode_h265 /."
+  },
+  {
+   "month": "2023-12",
+   "extension": "VK_KHR_video_maintenance1",
+   "first_tag": "v1.3.274",
+   "description": "VK_KHR_video_maintenance1 adds a collection of minor video coding features, none of which would warrant an entire extension of their own.\n\nThe new features are as follows:\n\n- Allow creating buffers that can be used in video coding operations, independent of the used video profile, using the new buffer creation flag VK_BUFFER_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR.\n\n- Allow creating images that can be used as decode output or encode input pictures, independent of the used video profile, using the new image creation flag VK_IMAGE_CREATE_VIDEO_PROFILE_INDEPENDENT_BIT_KHR.\n\n- Allow specifying queries used by video coding operations as part of the video coding command parameters, instead of using begin/end query when the video session is created using the new video session creation flag VK_VIDEO_SESSION_CREATE_INLINE_QUERIES_BIT_KHR."
+  },
+  {
+   "month": "2024-01",
+   "extension": "VK_KHR_shader_maximal_reconvergence",
+   "first_tag": "v1.3.276",
+   "description": "This extension allows the use of the SPV_KHR_maximal_reconvergence SPIR-V extension in shader modules. SPV_KHR_maximal_reconvergence provides stronger guarantees that diverged subgroups will reconverge. These guarantees should match shader author intuition about divergence and reconvergence of invocations based on the structure of the code in the HLL.\n\nDevelopers should utilize this extension if they require stronger guarantees about reconvergence than either the core spec or SPV_KHR_subgroup_uniform_control_flow. This extension will define the rules that govern how invocations diverge and reconverge in a way that should match developer intuition. It allows robust programs to be written relying on subgroup operations and other tangled instructions."
+  },
+  {
+   "month": "2024-01",
+   "extension": "VK_KHR_shader_quad_control",
+   "first_tag": "v1.3.276",
+   "description": "This extension adds new quad any/all operations, requires that derivatives are well-defined in quad-uniform control flow, and adds the ability to require helper invocations participate in group operations."
+  },
+  {
+   "month": "2024-02",
+   "extension": "VK_EXT_map_memory_placed",
+   "first_tag": "v1.3.278",
+   "description": "This extension allows an application to request that vkMapMemory2KHR attempt to place the memory map at a particular virtual address."
+  },
+  {
+   "month": "2024-02",
+   "extension": "VK_KHR_video_decode_av1",
+   "first_tag": "v1.3.277",
+   "description": "This extension builds upon the VK_KHR_video_decode_queue extension by adding support for decoding elementary video stream sequences compliant with the AV1 video compression standard."
+  },
+  {
+   "month": "2024-02",
+   "extension": "VK_NV_shader_atomic_float16_vector",
+   "first_tag": "v1.3.278",
+   "description": "This extension allows a shader to perform atomic add, min, max, and exchange operations on 2- and 4-component vectors of float16. Buffer, workgroup, and image storage classes are all supported."
+  },
+  {
+   "month": "2024-03",
+   "extension": "VK_NV_raw_access_chains",
+   "first_tag": "v1.3.279",
+   "description": "This extension allows the use of the SPV_NV_raw_access_chains extension in SPIR-V shader modules. This enables SPIR-V producers to efficiently implement interfaces similar to Direct3D structured buffers and byte address buffers, allowing shaders compiled from an HLSL source to generate more efficient code."
+  },
+  {
+   "month": "2024-03",
+   "extension": "VK_NV_ray_tracing_validation",
+   "first_tag": "v1.3.280",
+   "description": "This extension adds support for performing ray tracing validation at an implementation level."
+  },
+  {
+   "month": "2024-05",
+   "extension": "VK_EXT_legacy_vertex_attributes",
+   "first_tag": "v1.3.284",
+   "description": "This extension adds support for legacy features of (non-64-bit) vertex attributes as found in OpenGL:\n\n- Vertex attributes loaded from arbitrary buffer alignments\n\n- Vertex attributes using arbitrary strides\n\n- Vertex attributes where the component data type of the binding does not match the component numeric type of the shader input\n\nThese features are only usable with dynamic vertex input. Unaligned loads of vertex attributes may incur performance penalties, indicated with a property."
+  },
+  {
+   "month": "2024-05",
+   "extension": "VK_MESA_image_alignment_control",
+   "first_tag": "v1.3.285",
+   "description": "This extension allows applications to request a narrower alignment for images than an implementation would otherwise require. Some implementations internally support multiple image layouts in VK_IMAGE_TILING_OPTIMAL, each with different alignment requirements and performance trade-offs. In some API layering use cases such as D3D12, it is beneficial to be able to control the alignment, since certain alignments for placed resources are guaranteed to be supported, and emulating that expectation requires unnecessary padding of allocations.\n\nVkImageAlignmentControlCreateInfoMESA can be chained to VkImageCreateInfo, requesting that the alignment is no more than the provided alignment. If the requested alignment is not supported for a given VkImageCreateInfo, a larger alignment may be returned.\n\nWhile something similar could be achieved with VK_EXT_image_drm_format_modifier in theory, this is not the intended way to use that extension. Format modifiers are generally used for externally shareable images, and would not be platform portable. It is also a cumbersome API to use just to lower the alignment."
+  },
+  {
+   "month": "2024-06",
+   "extension": "VK_KHR_maintenance7",
+   "first_tag": "v1.3.289",
+   "description": "VK_KHR_maintenance7 adds a collection of minor features, none of which would warrant an entire extension of their own.\n\nThe proposed new features are as follows:\n\n- Add a property query to determine if a framebuffer writes to depth or stencil aspect does not trigger a write access in the sibling aspect. For example, this allows sampling stencil aspect as a texture while rendering to the sibling depth attachment and vice-versa given appropriate image layouts.\n\n- Add a way to query information regarding the underlying devices in environments where the Vulkan implementation is provided through layered implementations. For example, running on Mesa/Venus, driver ID is returned as VK_DRIVER_ID_MESA_VENUS, but it can be necessary to know what the real driver under the hood is. The new VkPhysicalDeviceLayeredApiPropertiesKHR structure can be used to gather information regarding layers underneath the top-level physical device.\n\n- Promote VK_RENDERING_CONTENTS_INLINE_BIT_EXT and VK_SUBPASS_CONTENTS_INLINE_AND_SECONDARY_COMMAND_BUFFERS_EXT to KHR\n\n- Add a limit to report the maximum total count of dynamic uniform buffers and dynamic storage buffers that can be included in a pipeline layout.\n\n- Require that for an unsigned integer query, the 32-bit result value must be equal to the 32 least significant bits of the equivalent 64-bit result value.\n\n- Add query for robust access support when using fragment shading rate attachments"
+  },
+  {
+   "month": "2024-06",
+   "extension": "VK_KHR_shader_relaxed_extended_instruction",
+   "first_tag": "v1.3.288",
+   "description": "This extension allows the use of the SPV_KHR_relaxed_extended_instruction extension in SPIR-V shader modules.\n\nIt adds a new SPIR-V instruction, which allows some usage of forward references in non-semantic instruction sets. This extensions interacts with the SPV_KHR_non_semantic_info extension, hence with VK_KHR_shader_non_semantic_info."
+  },
+  {
+   "month": "2024-07",
+   "extension": "VK_AMD_anti_lag",
+   "first_tag": "v1.3.291",
+   "description": "This extension automatically paces the CPU to make sure it does not get too far ahead of the GPU, reducing the latency between inputs received and updates on the screen. Additionally, Anti-Lag+ offers applications the ability to inform the driver when input processing begins, in order to align the timing of display updates, enabling even lower latency between receiving input and displaying on the screen."
+  },
+  {
+   "month": "2024-08",
+   "extension": "VK_KHR_compute_shader_derivatives",
+   "first_tag": "v1.3.295",
+   "description": "This extension adds Vulkan support for the SPV_KHR_compute_shader_derivatives SPIR-V extension.\n\nThe SPIR-V extension provides two new execution modes, both of which allow execution models with defined workgroups to use built-ins that evaluate derivatives explicitly or implicitly. Derivatives will be computed via differencing over a 2x2 group of shader invocations. The DerivativeGroupQuadsKHR execution mode assembles shader invocations into 2x2 groups, where each group has x and y coordinates of the local invocation ID of the form (2m+{0,1}, 2n+{0,1}). The DerivativeGroupLinearKHR execution mode assembles shader invocations into 2x2 groups, where each group has local invocation index values of the form 4m+{0,1,2,3}.\n\nThe new execution modes are supported in compute shaders and optionally (see meshAndTaskShaderDerivatives) in mesh and task shaders."
+  },
+  {
+   "month": "2024-08",
+   "extension": "VK_KHR_pipeline_binary",
+   "first_tag": "v1.3.294",
+   "description": "This extension provides a method to obtain binary data associated with individual pipelines such that applications can manage caching themselves instead of using VkPipelineCache objects."
+  },
+  {
+   "month": "2024-08",
+   "extension": "VK_NV_command_buffer_inheritance",
+   "first_tag": "v1.3.293",
+   "description": "This extension allows applications to take advantage of the graphics and compute state that remains valid in the queue between executions of submitted command buffers. This works across both primary and secondary command buffers.\n\nThe state inherited includes the previously bound pipeline state, previously bound shader objects, previously bound vertex and index buffers, previously bound descriptor sets and push constants, and all previously set dynamic state.\n\nThis extension relaxes the requirement that all that state needs to be bound and set after begin command buffer and before the next draw or dispatch.\n\nBy not having to set state that has been inherited applications can save both CPU and GPU cycles by not having to set state redundantly, and also have improved flexibility when reusing secondary command buffers."
+  },
+  {
+   "month": "2024-09",
+   "extension": "VK_EXT_depth_clamp_control",
+   "first_tag": "v1.3.296",
+   "description": "This extension allows the application to control the viewport depth clamp range separately from the viewport minDepth and maxDepth. This gives the ability for the application to restrict depth values to an application-defined range rather than the viewport depth range or the range defined in the VK_EXT_depth_clamp_zero_one extension.\n\nIt can be used to set a smaller or larger clamping range than the viewport depth range without affecting the depth mapping of the viewport transform. Another possible use of this extension is to restrict depth values beyond the viewport depth range to a clamping range other than the [0, 1] range defined in the VK_EXT_depth_clamp_zero_one extension."
+  },
+  {
+   "month": "2024-09",
+   "extension": "VK_EXT_device_generated_commands",
+   "first_tag": "v1.3.296",
+   "description": "This extension allows the device to generate a number of commands for command buffers. It provides a subset of functionality from both VK_NV_device_generated_commands and VK_NV_device_generated_commands_compute as well as some new features.\n\nWhen rendering a large number of objects, the device can be leveraged to implement a number of critical functions, like updating matrices, or implementing occlusion culling, frustum culling, front to back sorting, etc. Implementing those on the device does not require any special extension, since an application is free to define its own data structures, and just process them using shaders.\n\nTo render objects which have been processed on the device, Vulkan has several ways to perform indirect rendering, from the most basic vkCmdDrawIndirect with one indirect draw to vkCmdDrawIndirectCount which supports multiple indirect draws batched together, with a way to determine number of draws at device execution time.\n\nHowever, if rendering state needs to change between the indirect draws, then unextended Vulkan forces the application to speculatively record a prohibitive number of redundant indirect commands covering all possible state combinations - which could end up processing nothing after culling - or read back the processed stream and issue graphics command from the host. For very large scenes, the synchronization overhead and cost to generate the command buffer can become the bottleneck. This extension allows an application to generate a device side stream of state changes and commands, and convert it efficiently into a command buffer without having to read it back to the host.\n\nFurthermore, it allows incremental changes to such command buffers by manipulating only partial sections of a command stream \u2014 for example pipeline and shader object bindings. Unextended Vulkan requires re-creation of entire command buffers in such a scenario, or updates synchronized on the host.\n\nThe intended usage for this extension is for the application to:\n\n- create VkBuffer objects and retrieve physical addresses from them via vkGetBufferDeviceAddress\n\n- create a VkIndirectExecutionSetEXT for the ability to change shaders on the device.\n\n- create a VkIndirectCommandsLayoutEXT, which lists the VkIndirectCommandsTokenTypeEXT it wants to dynamically execute as an atomic command sequence. This step likely involves some internal device code compilation, since the intent is for the GPU to generate the command buffer based on the layout.\n\n- fill the input stream buffers with the data for each of the inputs it needs. Each input is an array that will be filled with token-dependent data.\n\n- set up a preprocess VkBuffer that uses memory according to the information retrieved via vkGetGeneratedCommandsMemoryRequirementsEXT.\n\n- optionally preprocess the generated content using vkCmdPreprocessGeneratedCommandsEXT, for example on an asynchronous compute queue, or for the purpose of reusing the data in multiple executions.- call vkCmdExecuteGeneratedCommandsEXT to create and execute the actual device commands for all sequences based on the inputs provided.\n\nFor each draw in a sequence, the following can be specified:\n\n- a number of vertex buffer bindings\n\n- a different index buffer, with an optional dynamic offset and index type\n\n- a number of different push constants\n\n- updates to bound shader stages\n\nFor each dispatch in a sequence, the following can be specified:\n\n- a number of different push constants\n\n- updates to bound shader stages\n\nFor each trace rays in a sequence, the following can be specified:\n\n- a number of different push constants\n\n- updates to bound shader stages\n\nWhile the GPU can be faster than a CPU to generate the commands, it will not happen asynchronously to the device, therefore the primary use case is generating \u201cless\u201d total work (occlusion culling, classification to use specialized shaders, etc.)."
+  },
+  {
+   "month": "2024-10",
+   "extension": "VK_NV_cooperative_matrix2",
+   "first_tag": "v1.3.300",
+   "description": "This extension adds several new features building on the cooperative matrix types added in VK_KHR_cooperative_matrix. The goal is to add and accelerate features beyond just simple GEMM kernels, including adding support for type/use conversions, reductions, per-element operations, and tensor addressing, and also to improve usability and out-of-the-box performance by adding support for more flexible matrix sizes, and workgroup scope matrices with compiler-managed staging through shared memory.\n\nThe new functionality is defined by the SPV_NV_tensor_addressing and SPV_NV_cooperative_matrix2 SPIR-V extensions and can be used with the GLSL_NV_cooperative_matrix2 GLSL extension.\n\nThis extension includes support for enumerating the matrix types and dimensions that are supported by the implementation, and which specific features are supported."
+  },
+  {
+   "month": "2024-11",
+   "extension": "VK_HUAWEI_hdr_vivid",
+   "first_tag": "v1.3.301",
+   "description": "This extension allows applications to assign HDR Vivid (T/UWA 005.1-2022) metadata to swapchains.\n\nHDR Vivid is an HDR standard released by UWA (UHD World Association). It defines tone mapping from the metadata to better preserve the creator\u2019s intentions and achieve better consistency across devices with different display capabilities."
+  },
+  {
+   "month": "2024-11",
+   "extension": "VK_KHR_video_encode_av1",
+   "first_tag": "v1.3.302",
+   "description": "This extension builds upon the VK_KHR_video_encode_queue extension by adding support for encoding elementary video stream sequences compliant with the AV1 video compression standard."
+  },
+  {
+   "month": "2024-11",
+   "extension": "VK_KHR_video_encode_quantization_map",
+   "first_tag": "v1.3.302",
+   "description": "This extension builds upon the VK_KHR_video_encode_queue extension by enabling fine grained control of codec-specific quantization parameters in video encode operations.\n\nMore specifically, it adds support for quantization maps:\n\n- Quantization delta maps to directly control the relative value of quantization parameter values on a per-block basis for all rate control modes (including when rate control is disabled).\n\n- Emphasis maps to indirectly control the relative quantization parameter values on a per-block basis when rate control is not disabled and the rate control mode is not configured to the implementation-defined default mode.\n\nThis extension is to be used in conjunction with other codec specific video encode extensions that specify the codec specific quantization parameters these maps control."
+  },
+  {
+   "month": "2024-11",
+   "extension": "VK_NV_display_stereo",
+   "first_tag": "v1.3.302",
+   "description": "This extension allows the application to choose which type of 3D stereo hardware it wants to use so the driver can configure it properly. This configuration is useful for swapchains created from display surfaces because some environments do not have an intermediate windowing system available for easy configuration. This extension will override any stereo type configuration in the windowing system.\n\nFor HDMI 3D, only some display modes support stereo rendering, and a new structure is needed to expose that information to the application."
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_ARM_pipeline_opacity_micromap",
+   "first_tag": "v1.4.305",
+   "description": "The Opacity Micromap extension VK_EXT_opacity_micromap supports the new pipeline creation flag VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_EXT, indicating that the ray tracing pipeline may be used with acceleration structures referencing micromaps. This allows for possible optimizations, knowing beforehand that opacity micromaps may be used with the pipeline.\n\nAn equivalent flag does not exist for pipelines supporting Ray Query with opacity micromaps, such as graphics and compute. Consequently, it is currently not possible to optimize such pipelines for no-opacity, e.g. when opacity micromaps are supported by an application but not used by the pipeline. This may lead to performance degradation.\n\nThis extension adds a new flag, VK_PIPELINE_CREATE_2_DISALLOW_OPACITY_MICROMAP_BIT_ARM, indicating that a pipeline will NOT be used with an acceleration structure referencing an opacity micromap, therefore allowing possible pipeline optimizations."
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_EXT_external_memory_metal",
+   "first_tag": "v1.4.306",
+   "description": "An application may wish to reference device memory in multiple Vulkan device instances, in multiple processes, and/or in Metal API. This extension enables an application to export and import Metal handles from Vulkan memory objects such that the underlying resources can be referenced outside the scope of the Vulkan device instance that created them."
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_KHR_depth_clamp_zero_one",
+   "first_tag": "v1.4.305",
+   "description": "This extension is based on the VK_EXT_depth_clamp_zero_one extension. This extension gives defined behavior to fragment depth values which end up outside the conventional [0, 1] range. It can be used to ensure portability in edge cases of features like depthBias. The particular behavior is chosen to match OpenGL to aid porting or emulation."
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_KHR_maintenance8",
+   "first_tag": "v1.4.305",
+   "description": "VK_KHR_maintenance8 adds a collection of minor features, none of which would warrant an entire extension of their own.\n\nThe new features are as follows:\n\n- Allow copies between depth/stencil and \u201cmatching\u201d color attachments\n\n- Allow dstCache in vkMergePipelineCaches to be implicitly synchronized.\n\n- Require src/dst sync scopes to work when doing queue family ownership transfers\n\n- Support Offset (as an alternative to ConstOffset) image operand in texture sampling and fetch operations\n\n- Use the SPIR-V definition of OpSRem and OpSMod, making these operations produce well-defined results for negative operands\n\n- Loosen layer restrictions when blitting from 3D images to other image types\n\n- Add space for an additional 64 access flags for use with VkMemoryBarrier2, VkBufferMemoryBarrier2, and VkImageMemoryBarrier2"
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_KHR_video_maintenance2",
+   "first_tag": "v1.4.306",
+   "description": "VK_KHR_video_maintenance2 adds a collection of minor video coding features, none of which would warrant an entire extension of their own.\n\nThe new features are as follows:\n\n- Allow video coding control commands (such as video session reset) to be issued without the need for a bound video session parameters object for video decode operations that would otherwise require the use of video session parameters objects.\n\n- Allow applications to specify codec-specific parameter sets inline for each decode operation instead of having to construct video session parameters objects.\n\n- Require support for VK_VIDEO_ENCODE_RATE_CONTROL_MODE_DISABLED_BIT_KHR in all applicable video encode profiles.\n\n- Provide additional guarantees on Video Std parameters that the encoder implementation will not override."
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_NV_cluster_acceleration_structure",
+   "first_tag": "v1.4.307",
+   "description": "Acceleration structure build times can become a bottleneck in ray tracing applications dealing with extensive dynamic geometry. This extension addresses the problem by enabling applications to construct bottom-level acceleration structures (BLAS) from pre-generated acceleration structures based on clusters of triangles (CLAS), leading to significant improvements in build times.\n\nIt provides a host-side query function to fetch the requirements and a versatile multi-indirect call for managing cluster geometry. This call enables applications to generate cluster geometry, construct Cluster BLAS from CLAS lists, and move or copy CLAS and BLAS. By sourcing inputs from device memory and processing multiple elements simultaneously, the call reduces the host-side costs associated with traditional acceleration structure functions.\n\nThis extension adds support for the following SPIR-V extension in Vulkan:\n\n- SPV_NV_cluster_acceleration_structure"
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_NV_cooperative_vector",
+   "first_tag": "v1.4.307",
+   "description": "This extension adds support for using cooperative vector types in SPIR-V. Unlike cooperative matrix types, a variable with a cooperative vector type is logically stored in the invocation it belongs to, but they can cooperate behind the scenes when performing matrix-vector multiplies. Cooperative vectors do not require a fully occupied subgroup or uniform control flow like cooperative matrices, although these do increase the likelihood of being on the fast path. And unlike normal vector types, they have arbitrary length and support a relatively limited set of operations. These types are intended to help accelerate the evaluation of small neural networks, where each invocation is performing its own independent evaluation of the network.\n\nCooperative vector types are defined by the SPV_NV_cooperative_vector SPIR-V extension and can be used with the GL_NV_cooperative_vector GLSL extension.\n\nThis extension includes support for enumerating the combinations of types that are supported by the implementation, and for converting matrix data to and from an optimized opaque layout."
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_NV_partitioned_acceleration_structure",
+   "first_tag": "v1.4.307",
+   "description": "With an increase in scene complexity and expansive game worlds, the number of instances has surged in ray tracing over the last few years. The current Top Level Acceleration Structure (TLAS) API necessitates a full rebuild of the entire data structure even when only a few instances are modified.\n\nThis extension introduces Partitioned Top Level Acceleration Structures (PTLAS) as an alternative to the existing TLAS. PTLAS enables the efficient reuse of previously constructed parts of the acceleration structure, resulting in much faster build times and supporting a higher number of instances."
+  },
+  {
+   "month": "2025-01",
+   "extension": "VK_NV_ray_tracing_linear_swept_spheres",
+   "first_tag": "v1.4.307",
+   "description": "This extension adds two new primitives for ray tracing: a sphere primitive and a linear swept sphere (LSS) primitive. The purpose of the LSS primitive is to enable rendering of high quality hair and fur using a compact primitive representation encoded in the acceleration structure. Sphere primitives are defined by a position and a radius and are a subset of LSS, but are useful in their own right, for example for particle systems.\n\nThis extension adds support for the following SPIR-V extension in Vulkan:\n\n- SPV_NV_linear_swept_spheres"
+  },
+  {
+   "month": "2025-02",
+   "extension": "VK_NV_present_metering",
+   "first_tag": "v1.4.308",
+   "description": "This extension is used to evenly meter presents."
+  },
+  {
+   "month": "2025-03",
+   "extension": "VK_EXT_fragment_density_map_offset",
+   "first_tag": "v1.4.311",
+   "description": "This extension allows an application to specify offsets to a fragment density map attachment, changing the framebuffer location where density values are applied to without having to regenerate the fragment density map."
+  },
+  {
+   "month": "2025-03",
+   "extension": "VK_KHR_shader_bfloat16",
+   "first_tag": "v1.4.311",
+   "description": "This extension enables support for bfloat16 (\u201cbrain float\u201d) operations in shaders as defined in SPV_KHR_bfloat16."
+  },
+  {
+   "month": "2025-04",
+   "extension": "VK_NV_external_compute_queue",
+   "first_tag": "v1.4.312",
+   "description": "This extension gives applications the ability to join compatible external compute APIs to a VkDevice. In this way, the extension allows an application to achieve simultaneous execution between work submitted from these compatible external APIs and work that has been submitted through the Vulkan API.\n\nAt device creation time, an application must supply a VkExternalComputeQueueDeviceCreateInfoNV. This communicates to the implementation the maximum number of external queues that the application can create at once. This information may be used by the implementation to aid in decisions made during device creation.\n\nAfter device creation, the function vkCreateExternalComputeQueueNV is used by an application to create a new VkExternalComputeQueueNV object. The VkExternalComputeQueueNV object holds information and reserves resources necessary for a compatible external API to be able to join a VkDevice. This information can be queried through the vkGetExternalComputeQueueDataNV function, returning an opaque blob of data which can be passed to compatible external APIs. The application must finally call vkDestroyExternalComputeQueueNV when it is done in order to release the reserved resources.\n\nThis extension introduces a new properties structure, VkPhysicalDeviceExternalComputeQueuePropertiesNV, which can be queried through vkGetPhysicalDeviceProperties2. The structure provides information on functional limits to the extension as well as a way of querying the size of the application allocated memory which must be passed to the vkGetExternalComputeQueueDataNV function.\n\nWhen creating a VkExternalComputeQueueNV through vkCreateExternalComputeQueueNV, the VkExternalComputeQueueCreateInfoNV structure requires an application to supply a VkQueue to aid in external compute queue creation. The supplied VkQueue is a strong scheduling hint about which queue it expects to submit graphics workloads to and with which it expects simultaneous execution of compute workloads submitted through the external API."
+  },
+  {
+   "month": "2025-04",
+   "extension": "VK_QCOM_tile_memory_heap",
+   "first_tag": "v1.4.313",
+   "description": "This extension adds a new memory heap which allows applications to allocate and manage tile memory. A tile memory heap is denoted by the new VK_MEMORY_HEAP_TILE_MEMORY_BIT_QCOM property. Memory contents within this heap behave differently than other heaps and only persist its memory contents within a command buffer submission batch boundary. This boundary may be extended to a queue submit boundary by querying queueSubmitBoundary in the new VkPhysicalDeviceTileMemoryHeapPropertiesQCOM structure.\n\nTile memory from this heap can be bound to VkImages or VkBuffers. The following new usage flags VK_IMAGE_USAGE_TILE_MEMORY_BIT_QCOM, VK_BUFFER_USAGE_TILE_MEMORY_BIT_QCOM, VK_BUFFER_USAGE_2_TILE_MEMORY_BIT_QCOM were added for this. A new extended structure is added to get memory requirements for tile memory VkTileMemoryRequirementsQCOM.\n\nA new command is added to bind tile memory to a command buffer in order to access and persist tile memory contents while executing commands vkCmdBindTileMemoryQCOM.\n\nThis extension can be used in combination with VK_QCOM_tile_properties with the new structure VkTileMemorySizeInfoQCOM."
+  },
+  {
+   "month": "2025-04",
+   "extension": "VK_QCOM_tile_shading",
+   "first_tag": "v1.4.312",
+   "description": "This extension exposes tile shading in Vulkan. Many mobile GPUs utilize Tile-Based Deferred Rendering (TBDR) to optimize for power and performance. Conversely, most desktop GPUs use immediate-mode rendering (IM). Adreno \u2122 GPUs uniquely have the ability to operate in either mode, and when this extension is not enabled, the Adreno driver will select the most optimal mode (TBDR or IM) based on the workload; this feature is called FlexRender \u2122. When this extension is in use, FlexRender is disabled and the GPU operates exclusively in TBDR wherever possible.\n\nThe TBDR mode divides the color and depth/stencil buffer attachments into a regular grid of smaller regions called \u201ctiles\u201d. When a render pass instance is submitted for execution on an Adreno GPU, the rendering is split into two phases: a single \u201cvisibility pass\u201d followed by multiple \u201crendering passes\u201d where a separate render pass is issued for each tile in the framebuffer.\n\nThe \u201cvisibility pass\u201d processes the geometry: identifies which tiles are covered by each primitive, eliminates occluded primitives and unneeded state changes, and performs other tile-specific optimizations. The primitive coverage information collected during the visibility pass is used in the subsequent \u201crendering pass\u201d for each tile. During the rendering pass for each tile, any primitives that were determined not to cover the current tile are skipped.\n\nThis deferred rasterization additionally utilizes a specialized high-bandwidth on-die memory, \u201ctile memory\u201d. Tile memory is dramatically more efficient than other device memory. The tile memory temporarily stores the color and other attachments for each tile during rasterization. After each tile is fully rasterized, the resulting tile is typically copied to device memory backing the attachment as specified by the render pass STORE_OP. The per-tile rendering passes occur independently for each tile, with multiple tiles potentially being processed in parallel.\n\nThis extension enables applications to leverage the power and performance of tile memory in new ways:\n\n- Adds a mechanism for recording dispatches or draws that are guaranteed to be executed per-tile.\n\n- Such draws bypass the above-mentioned visibility-based skipping and are guaranteed to be executed for every tile in the rendering pass.\n\n- Shaders can declare \u201ctile attachments\u201d variables, providing shader access to color, depth/stencil, and input attachment pixels.\n\n- Fragment and compute shaders can read these render pass attachments at any location within the tile. Compute shaders can also write to color attachments at any location within the tile.\n\n- Shaders can use new built-in variables that provide the location, size, and apron region of the tile.\n\n- A new tile dispatch command automatically scales workgroup sizes and counts to the tile size, given a desired shading rate.\n\n- Framebuffer-local dependencies are expanded to tile-sized regions, rather than a single pixel or sample.- A tile shading render pass can also enable tiling \u201caprons\u201d. This is a specialized rendering mode where the GPU renders overlapping tiles that enable specific use cases."
+  },
+  {
+   "month": "2025-05",
+   "extension": "VK_ARM_format_pack",
+   "first_tag": "v1.4.316",
+   "description": "This extension adds support for additional 1-, 2- and 4-component formats with 10, 12, or 14 bits of components in 16-bit containers."
+  },
+  {
+   "month": "2025-05",
+   "extension": "VK_EXT_zero_initialize_device_memory",
+   "first_tag": "v1.4.315",
+   "description": "By default, Vulkan provides no guarantees that device memory allocated through vkAllocateMemory is cleared to zero. This means that applications wanting resources to be zero-initialized must execute a command such as vkCmdFillBuffer or vkCmdClearColorImage on the device to ensure a deterministic result. This can be wasteful if the underlying platform either:\n\n- Already performs that zero clear anyway, due to e.g. security concerns.\n\n- Can be performed more efficiently in implementation, by e.g. clearing pages to zero in the background after device memory is freed.\n\nThis extension also has uses in API layering and porting efforts, where zero memory behavior may be more strict than Vulkan. Different OS platforms also have wildly different behaviors here, which leads to implementations needing to apply workarounds to paper over these issues in the wild. If an extension exists to make allocation behavior explicit, we hopefully achieve a more robust ecosystem for Vulkan."
+  },
+  {
+   "month": "2025-05",
+   "extension": "VK_KHR_robustness2",
+   "first_tag": "v1.4.314",
+   "description": "This extension is based on the VK_EXT_robustness2 extension. This extension adds stricter requirements for how out of bounds reads and writes are handled. Most accesses must be tightly bounds-checked, out of bounds writes must be discarded, out of bound reads must return zero. Rather than allowing multiple possible (0,0,0,x) vectors, the out of bounds values are treated as zero, and then missing components are inserted based on the format as described in Component Substitution and vertex input attribute extraction.\n\nThese additional requirements may be expensive on some implementations, and should only be enabled when truly necessary.\n\nThis extension also adds support for \u201cnull descriptors\u201d, where VK_NULL_HANDLE can be used instead of a valid handle. Accesses to null descriptors have well-defined behavior, and do not rely on robustness."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_ARM_data_graph",
+   "first_tag": "v1.4.319",
+   "description": "This extension adds support for a new type of pipeline, data graph pipelines, that provide an encapsulation construct for computational graphs operating on full resources (e.g. ML/AI graphs, image processing pipelines, etc). This extension only supports tensor resources and does not define any operations that can be used within those graphs. These operations will be defined by separate extensions."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_ARM_tensors",
+   "first_tag": "v1.4.317",
+   "description": "This extension adds support for tensors."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_EXT_shader_float8",
+   "first_tag": "v1.4.317",
+   "description": "This extension enables support for 8-bit floating-point data types as defined in SPV_EXT_float8."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_KHR_maintenance9",
+   "first_tag": "v1.4.317",
+   "description": "VK_KHR_maintenance9 adds a collection of minor features, none of which would warrant an entire extension of their own.\n\nThe new features are as follows:\n\n- Support VkDevice with no queues. These can be used as effectively an offline compiler to prepopulate pipeline caches, without expensive queue creation or internal memory allocations.\n\n- Allow vkCmdSetEvent2 to not provide a dependency, providing vkCmdSetEvent-style usage using enums from VK_KHR_synchronization2\n\n- Add a VkQueryPoolCreateFlagBits::VK_QUERY_POOL_CREATE_RESET_BIT_KHR flag to create a query pool with all queries initialized to the reset state.\n\n- Allow any integer bit width for specific bit-wise operations.\n\n- Add a property to enable sparse support with VK_EXT_image_2d_view_of_3d.\n\n- Add a property to indicate the implementation will return (0,0,0,0) or (0,0,0,1) to vertex shaders that read unassigned attributes.\n\n- The effects of image memory barriers and image layout transitions on 3D images created with VK_IMAGE_CREATE_2D_ARRAY_COMPATIBLE_BIT are scoped to the slices specified by the user-provided VkImageSubresourceRange.\n\n- Queue family ownership transfers are no longer required for buffers and linear images, and a new physical device queue family property is exposed to indicate whether queue family ownership transfers are required for optimal images."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_KHR_present_id2",
+   "first_tag": "v1.4.317",
+   "description": "This device extension allows an application that uses the VK_KHR_swapchain extension to provide an identifier for present operations on a swapchain. An application can use this to reference specific present operations in other extensions."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_KHR_present_wait2",
+   "first_tag": "v1.4.317",
+   "description": "This device extension allows an application that uses the VK_KHR_swapchain extension to wait for present operations to complete. An application can use this to monitor and control the pacing of the application by managing the number of outstanding images yet to be presented."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_KHR_unified_image_layouts",
+   "first_tag": "v1.4.317",
+   "description": "This extension significantly simplifies synchronization in Vulkan by removing the need for image layout transitions in most cases. In particular, it guarantees that using the VK_IMAGE_LAYOUT_GENERAL layout everywhere possible is just as efficient as using the other layouts."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_KHR_video_decode_vp9",
+   "first_tag": "v1.4.317",
+   "description": "This extension builds upon the VK_KHR_video_decode_queue extension by adding support for decoding elementary video stream sequences compliant with the VP9 video compression standard."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_OHOS_surface",
+   "first_tag": "v1.4.318",
+   "description": "The VK_OHOS_surface extension is an instance extension. It provides a mechanism to create a VkSurfaceKHR object (defined by the VK_KHR_surface extension) that refers to an OHNativeWindow, the native surface type of Open Harmony OS. Common consumer endpoints for OHNativeWindows are the system window compositor, video encoders, and application-specific compositors."
+  },
+  {
+   "month": "2025-06",
+   "extension": "VK_VALVE_fragment_density_map_layered",
+   "first_tag": "v1.4.318",
+   "description": "This extension enables the use of layered fragment density maps."
+  },
+  {
+   "month": "2025-07",
+   "extension": "VK_KHR_present_mode_fifo_latest_ready",
+   "first_tag": "v1.4.321",
+   "description": "This extension is based on VK_EXT_present_mode_fifo_latest_ready and provides equivalent functionality.\n\nThis extension adds a new present mode, VK_PRESENT_MODE_FIFO_LATEST_READY_KHR.\n\nThis tear-free present mode behaves much like VK_PRESENT_MODE_FIFO_KHR, except that each vertical blanking period dequeues consecutive present requests until the latest ready is found to update the current image.\n\nWhile this seems similar in concept to VK_PRESENT_MODE_MAILBOX_KHR, the fundamental difference is that the processing of the present requests is done during vblank. From the application perspective, this means for example, that in a flip-based model, a single vblank may cause multiple swapchain images to be released at once, while VK_PRESENT_MODE_MAILBOX_KHR may continuously be releasing images as new requests become ready.\n\nThis additional present mode is useful when using a time-based present API."
+  },
+  {
+   "month": "2025-07",
+   "extension": "VK_KHR_surface_maintenance1",
+   "first_tag": "v1.4.321",
+   "description": "This extension is based off the VK_EXT_surface_maintenance1 extension.\n\nVK_KHR_surface_maintenance1 adds a collection of window system integration features that were intentionally left out or overlooked in the original VK_KHR_surface extension.\n\nThe new features are as follows:\n\n- Allow querying number of min/max images from a surface for a particular presentation mode.\n\n- Allow querying a surface\u2019s scaled presentation capabilities.\n\n- Allow querying a surface for the set of presentation modes which can be easily switched between without requiring swapchain recreation."
+  },
+  {
+   "month": "2025-07",
+   "extension": "VK_KHR_swapchain_maintenance1",
+   "first_tag": "v1.4.321",
+   "description": "This extension is based off the VK_EXT_swapchain_maintenance1 extension.\n\nVK_KHR_swapchain_maintenance1 adds a collection of window system integration features that were intentionally left out or overlooked in the original VK_KHR_swapchain extension.\n\nThe new features are as follows:\n\n- Specify a fence that will be signaled when the resources associated with a present operation can be safely destroyed.\n\n- Allow changing the present mode a swapchain is using at per-present granularity.\n\n- Allow applications to define the behavior when presenting a swapchain image to a surface with different dimensions than the image. Using this feature may allow implementations to avoid returning VK_ERROR_OUT_OF_DATE_KHR in this situation.\n\n- Allow applications to defer swapchain memory allocation for improved startup time and memory footprint.\n\n- Allow applications to release previously acquired images without presenting them."
+  },
+  {
+   "month": "2025-07",
+   "extension": "VK_KHR_video_encode_intra_refresh",
+   "first_tag": "v1.4.321",
+   "description": "This extension builds upon the VK_KHR_video_encode_queue extension by enabling the application to perform intra refresh in video encode operations."
+  },
+  {
+   "month": "2025-07",
+   "extension": "VK_SEC_pipeline_cache_incremental_mode",
+   "first_tag": "v1.4.321",
+   "description": "This extension allows layered implementations such as ANGLE to modify the default behavior of VkPipelineCache to return only the incremental data from the previous call to vkGetPipelineCacheData. Application developers should avoid using this extension.\n\nNote | There is currently no specification language written for this extension. The links to APIs defined by the extension are to stubs that only include generated content such as API declarations and implicit valid usage statements.\n\nNote | This extension is only intended for use in specific embedded environments with known implementation details, and is therefore undocumented."
+  },
+  {
+   "month": "2025-09",
+   "extension": "VK_KHR_copy_memory_indirect",
+   "first_tag": "v1.4.328",
+   "description": "This extension adds support for performing copies between memory and image regions using indirect parameters that are read by the device from a buffer during execution. This functionality may be useful for performing copies where the copy parameters are not known during the command buffer creation time."
+  },
+  {
+   "month": "2025-09",
+   "extension": "VK_VALVE_video_encode_rgb_conversion",
+   "first_tag": "v1.4.327",
+   "description": "This extension builds upon the VK_KHR_video_encode_queue extension by enabling the application to pass in RGB/RGBA images in video encode operations."
+  },
+  {
+   "month": "2025-10",
+   "extension": "VK_ARM_performance_counters_by_region",
+   "first_tag": "v1.4.331",
+   "description": "This extension provides the ability to capture performance counters per region ('tile').\n\nIt exposes an enumeration of the available counters, and a way to request counters to be captured per render pass instance."
+  },
+  {
+   "month": "2025-10",
+   "extension": "VK_EXT_memory_decompression",
+   "first_tag": "v1.4.330",
+   "description": "This extension adds support for performing memory to memory decompression."
+  },
+  {
+   "month": "2025-10",
+   "extension": "VK_EXT_shader_64bit_indexing",
+   "first_tag": "v1.4.330",
+   "description": "This extension relaxes the maxStorageBufferRange limit, allowing more than 4GB to be accessed through a buffer binding (or through a buffer device address). It adds pipeline and shader creation flags that request 64-bit addressing support, and defines which addressing calculations use 64 bits of range."
+  },
+  {
+   "month": "2025-10",
+   "extension": "VK_EXT_shader_uniform_buffer_unsized_array",
+   "first_tag": "v1.4.330",
+   "description": "This extension allows the last member of a uniform buffer block to be declared as an unsized array. This capability enables applications to create flexible buffer layouts where the array size can vary based on runtime requirements.\n\nWhen the last member of a uniform buffer block is declared as an unsized array, the effective array size is inferred at runtime from the size of the buffer object backing the uniform buffer block. Such unsized arrays can be indexed with general integer expressions, but may not be passed as arguments to functions or indexed with negative constant expressions.\n\nThis extension leverages existing SPIR-V capabilities, allowing use of OpTypeRuntimeArray as the last member of a uniform buffer block structure while prohibiting OpArrayLength.\n\nApplications needing to know array sizes at runtime should calculate the length and pass it to shaders via a separate uniform. This calculation can be performed using the formula: max((buffer_object_size - offset_of_array) / stride_of_array, 0), where buffer_object_size is the size of the bound buffer, offset_of_array is the byte offset of the array in the block, and stride_of_array is the byte stride between consecutive array elements.\n\nUniform buffers have traditionally required explicit sizes for all arrays which limits flexibility. With this extension, developers can create a single shader that adapts to different data set sizes at runtime by binding differently sized buffers."
+  },
+  {
+   "month": "2025-10",
+   "extension": "VK_KHR_maintenance10",
+   "first_tag": "v1.4.330",
+   "description": "VK_KHR_maintenance10 adds a collection of minor features, none of which would warrant an entire extension of their own.\n\nThe new features are as follows:\n\n- New image format feature bits that indicate support for copying depth or stencil aspects using non-graphics queue families\n\n- If vkCmdSetSampleMaskEXT is called with pSampleMask set to NULL, it is treated as if the mask has all bits set to 1.\n\n- Add vkCmdEndRendering2KHR as an extensible version of vkCmdEndRendering\n\n- Add input attachment information to dynamic rendering\n\n- Require that vertex inputs follow sRGB encoding when those formats are used, instead of being underspecified.\n\n- Add a query to determine if sRGB images are resolved in nonlinear or linear space by default\n\n- Add an optional feature to allow applications to override the default sRGB resolve behavior\n\n- Add resolve mode and depth-stencil resolve support to vkCmdResolveImage2 to bring it in-line with render pass attachment resolves"
+  },
+  {
+   "month": "2025-10",
+   "extension": "VK_KHR_shader_fma",
+   "first_tag": "v1.4.329",
+   "description": "This extension allows applications to use the SPV_KHR_fma extension to obtain correctly-rounded results for fused-multiply add (fma) operations.\n\nFused-multiply add is a building block of many high-precision numerical functions. It provides better accuracy than separate operations, because of the removal of the intermediate rounding step, and often costs less than the pair of separate operations.\n\nVulkan currently exposes an fma primitive that can give the reduced cost, but it is not guaranteed to be a fused operation, so the accuracy cannot be relied on. For applications which require the high accuracy, therefore, the operation must be emulated or the algorithm changed so as not to require fma. This is often vastly more costly, even though fma is supported in much of the underlying hardware."
+  },
+  {
+   "month": "2025-10",
+   "extension": "VK_OHOS_external_memory",
+   "first_tag": "v1.4.331",
+   "description": "This extension enables an application to: import Open Harmony OS OH_NativeBuffer objects created outside of Vulkan device into Vulkan memory objects, where they can be bound to images and buffers. It also allows an application to obtain the properties of OH_NativeBuffer object."
+  },
+  {
+   "month": "2025-11",
+   "extension": "VK_EXT_custom_resolve",
+   "first_tag": "v1.4.333",
+   "description": "This extension provides functionality for using shaders to resolve multisample rendering attachments.\n\nIt builds upon mechanics introduced by VK_QCOM_render_pass_shader_resolve, additionally adding support for dynamic rendering."
+  },
+  {
+   "month": "2025-11",
+   "extension": "VK_EXT_present_timing",
+   "first_tag": "v1.4.335",
+   "description": "This device extension allows an application that uses the VK_KHR_swapchain extension to obtain information about the presentation engine\u2019s display, to obtain timing information about each present, and to schedule a present to happen no earlier than a desired time. An application can use this to minimize various visual anomalies (e.g. stuttering).\n\nTraditional game and real-time animation applications need to correctly position their geometry for when the presentable image will be presented to the user. To accomplish this, applications need various timing information about the presentation engine\u2019s display. They need to know when presentable images were actually presented, and when they could have been presented. Applications also need to tell the presentation engine to display an image no sooner than a given time. This allows the application to avoid stuttering, so the animation looks smooth to the user."
+  },
+  {
+   "month": "2025-11",
+   "extension": "VK_EXT_ray_tracing_invocation_reorder",
+   "first_tag": "v1.4.333",
+   "description": "The ray tracing pipeline API provides some ability to reorder for locality, but it is useful to have more control over how the reordering happens and what information is included in the reordering. The shader API provides a hit object to contain result information from the hit which can be used as part of the explicit sorting plus options that contain an integer for hint bits to use to add more coherency."
+  },
+  {
+   "month": "2025-11",
+   "extension": "VK_QCOM_data_graph_model",
+   "first_tag": "v1.4.332",
+   "description": "This extension supports new VkPhysicalDeviceDataGraphProcessingEngineTypeARM, and VkPhysicalDeviceDataGraphOperationTypeARM types for data graph pipelines added in VK_ARM_data_graph.\n\nA new pipeline cache type is also added to seamlessly import ML models such as ONNX through QNN workflow, and run them on the device or an external compute engine."
+  },
+  {
+   "month": "2025-12",
+   "extension": "VK_EXT_shader_long_vector",
+   "first_tag": "v1.4.337",
+   "description": "This extension adds support for using vector types with more than four components in SPIR-V.\n\nLong vector types are defined by the SPV_EXT_long_vector SPIR-V extension and can be used with the GL_EXT_long_vector GLSL extension."
+  },
+  {
+   "month": "2025-12",
+   "extension": "VK_EXT_texture_compression_astc_3d",
+   "first_tag": "v1.4.337",
+   "description": "This extension adds support for 3D textures compressed using the Adaptive Scalable Texture Compression (ASTC) format.\n\nThese formats are compressed in 3D. As such, each slice will contain data for a Width x Height x Depth block of the texture. All transfer operations are done at the granularity of block dimensions."
+  },
+  {
+   "month": "2025-12",
+   "extension": "VK_NV_compute_occupancy_priority",
+   "first_tag": "v1.4.336",
+   "description": "This extension provides applications with control over how their compute workloads utilize GPU compute resources, specifically allowing prioritization relative to other simultaneously executing workloads. Applications can specify the priority with which compute workloads should occupy GPU compute resources, allowing for a fine-grained distinction between workloads that may want to execute at a background priority over a long period of time versus workloads with harder latency requirements.\n\nThe extension introduces a new command vkCmdSetComputeOccupancyPriorityNV that allows applications to set the occupancy priority for subsequent compute dispatches. The occupancy priority affects how compute workloads utilize GPU compute resources relative to other simultaneously executing workloads.\n\nThe occupancy priority is stateful on a command buffer. All commands listed in the Dispatching Commands chapter issued subsequent to a vkCmdSetComputeOccupancyPriorityNV call will be executed with the specified priority parameters until another vkCmdSetComputeOccupancyPriorityNV call is made.\n\nFor convenience, three named occupancy priority values are defined:\n\n- VK_COMPUTE_OCCUPANCY_PRIORITY_LOW_NV - a constant value that can be used for VkComputeOccupancyPriorityParametersNV::occupancyPriority to specify a low priority level.\n\n- VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV - a constant value that can be used for VkComputeOccupancyPriorityParametersNV::occupancyPriority to specify a normal priority level. This represents the default priority level.\n\n- VK_COMPUTE_OCCUPANCY_PRIORITY_HIGH_NV - a constant value that can be used for VkComputeOccupancyPriorityParametersNV::occupancyPriority to specify a high priority level.\n\nAll command buffers (primary and secondary) start with a priority level equal to the VK_COMPUTE_OCCUPANCY_PRIORITY_NORMAL_NV value. The priority state is not inherited by secondary command buffers - each command buffer maintains its own independent priority state."
+  },
+  {
+   "month": "2026-01",
+   "extension": "VK_EXT_descriptor_heap",
+   "first_tag": "v1.4.340",
+   "description": "This extension allows explicit management of descriptors, and the memory used to store descriptors, conceptualised as descriptor heaps. Descriptor heap memory can be accessed as any other memory, enabling management of descriptors on both CPU and the GPU.\n\nThis extension was developed based on issues discovered with VK_EXT_descriptor_buffer. There are more constraints on how it is implemented, to provide more portable guarantees and more predictable performance characteristics. For instance, rather than an arbitrary number of sampler or resource buffers, there is exactly one sampler heap and exactly one resource heap.\n\nThis extension also eliminates descriptor sets and pipeline layouts completely; instead applications can look descriptors up solely by their offset into a heap. Shaders still using descriptor set and binding decorations can still be mapped to heaps through an API that maps set and binding decorations to heap offsets, either as constants or through push data. This new mapping API also enables a much more straightforward mapping to HLSL shaders using the root signature and descriptor table interfaces.\n\nThe push constant API has also been replaced with the push data interface, which aims to provide much more clarity about how data is passed to the shader, without requiring any mapping information to be provided during pipeline or shader creation. Mappings are still available for shaders written for the legacy interface.\n\nThere is also a much clearer path for mapping shader constant data, with two recommended options for mapping constant data through push data; either directly in push data, or through a device address stored in push data, both of which can be mapped to shaders with set and binding interfaces."
+  },
+  {
+   "month": "2026-01",
+   "extension": "VK_EXT_shader_subgroup_partitioned",
+   "first_tag": "v1.4.340",
+   "description": "This extension enables support for a new class of group operations on subgroups via the GL_NV_shader_subgroup_partitioned GLSL extension and SPV_EXT_shader_subgroup_partitioned SPIR-V extension. Support for these new operations is advertised via the VK_SUBGROUP_FEATURE_PARTITIONED_BIT_EXT bit. Note that there is not a new GLSL extension since SPV_EXT_shader_subgroup_partitioned is compatible with SPV_NV_shader_subgroup_partitioned, so the GL_NV_shader_subgroup_partitioned GLSL extension can still be used.\n\nThis extension requires Vulkan 1.1, for general subgroup support."
+  },
+  {
+   "month": "2026-01",
+   "extension": "VK_KHR_internally_synchronized_queues",
+   "first_tag": "v1.4.340",
+   "description": "VK_KHR_internally_synchronized_queues allows queues to opt into being internally synchronized via the VK_DEVICE_QUEUE_CREATE_INTERNALLY_SYNCHRONIZED_BIT_KHR flag."
+  },
+  {
+   "month": "2026-01",
+   "extension": "VK_NV_push_constant_bank",
+   "first_tag": "v1.4.340",
+   "description": "The VK_NV_push_constant_bank extension allows applications to specify a bank and offset for push constants, enabling more flexible push constant management in descriptor heap scenarios where shaders are able to access different root descriptors.\n\nTraditional push constants are placed in a default location, but this extension allows applications to specify which hardware constant bank to use and at what offset within that bank. This provides greater control over memory layout and enables more efficient use of hardware resources in advanced descriptor heap configurations.\n\nThe extension integrates with VK_EXT_descriptor_heap by allowing VkPushConstantBankInfoNV structures to be chained to VkDescriptorSetAndBindingMappingEXT, VkPushDataInfoEXT, VkPushConstantsInfo, or VkIndirectCommandsLayoutTokenEXT structures, specifying the hardware bank where push constants should be placed as part of the descriptor heap mapping configuration or push data operations.\n\nKey features include:\n\n- Bank and offset specification for push constant placement\n\n- Integration with descriptor heap mapping through structure chaining\n\n- Support for GLSL shader qualifiers for bank and offset specification in SPIR-V\n\n- Validation of bank bounds and alignment requirements\n\n- Compatibility with existing push constant API\n\nThe number of available push constant banks is implementation-dependent and can be queried through separate limits in VkPhysicalDevicePushConstantBankPropertiesNV: maxGraphicsPushConstantBanks and maxComputePushConstantBanks for non-descriptor heap usage, and maxGraphicsPushDataBanks and maxComputePushDataBanks for descriptor heap scenarios. Applications must ensure bank indices remain within the appropriate implementation-defined range based on the shader type and usage context.\n\nShader support for banks and member offsets are defined by the SPV_NV_push_constant_bank SPIR-V extension, which can be used with the GLSL_NV_push_constant_bank GLSL extension."
+  },
+  {
+   "month": "2026-01",
+   "extension": "VK_QCOM_cooperative_matrix_conversion",
+   "first_tag": "v1.4.342",
+   "description": "This extension adds support for new SPIR-V shader instructions that allow loading and storing a cooperative matrix without needing to stage through shared memory and to allow bit casting arrays.\n\nThese instructions are defined by the SPV_QCOM_cooperative_matrix_conversion SPIR-V extension and can be used with the GLSL_QCOM_cooperative_matrix_conversion GLSL extension."
+  },
+  {
+   "month": "2026-02",
+   "extension": "VK_SEC_ubm_surface",
+   "first_tag": "v1.4.343",
+   "description": "The VK_SEC_ubm_surface extension is an instance extension. It provides a mechanism to create a VkSurfaceKHR object (defined by the VK_KHR_surface extension) that refers to a UBM ubm_surface, as well as a query to determine support for rendering to a UBM compositor."
+  },
+  {
+   "month": "2026-02",
+   "extension": "VK_VALVE_shader_mixed_float_dot_product",
+   "first_tag": "v1.4.344",
+   "description": "This extension enables support for mixed precision dot product accumulate operations in shaders as defined in SPV_VALVE_mixed_float_dot_product."
+  },
+  {
+   "month": "2026-03",
+   "extension": "VK_ARM_shader_instrumentation",
+   "first_tag": "v1.4.345",
+   "description": "This extension provides the ability to instrument shaders and capture performance metrics per shader type from commands executed by a queue."
+  },
+  {
+   "month": "2026-03",
+   "extension": "VK_KHR_device_address_commands",
+   "first_tag": "v1.4.346",
+   "description": "This extension enables applications to use device addresses in place of buffer objects for most functionality."
+  },
+  {
+   "month": "2026-03",
+   "extension": "VK_KHR_device_fault",
+   "first_tag": "v1.4.347",
+   "description": "Device loss can be triggered by a variety of issues, including invalid API usage, implementation errors, or hardware failures. This extension introduces two new commands:\n\n- vkGetDeviceFaultReportsKHR\n\n- vkGetDeviceFaultDebugInfoKHR\n\nvkGetDeviceFaultReportsKHR allows developers to query for additional information on GPU faults which may have caused device loss, and to generate binary crash dumps, which may be loaded into external tools for further diagnosis. Additionally this command allows developers to query for additional information on GPU faults which were internally recovered by the implementation.\n\nvkGetDeviceFaultReportsKHR differs from vkGetDeviceFaultInfoEXT in that it can be called at any time, is able to report faults which do not result in VK_ERROR_DEVICE_LOST and allows the caller to wait for such an error to occur.\n\nvkGetDeviceFaultDebugInfoKHR provides a separate interface which must only be called when a device loss has occurred to provide extended GPU vendor specific crash post-mortem information."
+  },
+  {
+   "month": "2026-03",
+   "extension": "VK_KHR_shader_abort",
+   "first_tag": "v1.4.347",
+   "description": "This extension enables the use of the OpAbortKHR instruction in shaders."
+  },
+  {
+   "month": "2026-03",
+   "extension": "VK_KHR_shader_constant_data",
+   "first_tag": "v1.4.347",
+   "description": "This extension allows the use of the SPV_KHR_constant_data extension in SPIR-V shader modules which enables the specification and specialization of arrays of constant data."
+  },
+  {
+   "month": "2026-04",
+   "extension": "VK_ARM_data_graph_instruction_set_tosa",
+   "first_tag": "v1.4.348",
+   "description": "This extensions adds support for the TOSA.001000.1 extended instruction set for use in data graphs as defined by VK_ARM_data_graph. It also adds detailed queries to report the TOSA profiles, levels, and extensions that are supported along with the quality of the implementation (e.g. accelerated, experimental, deprecated, etc)."
+  },
+  {
+   "month": "2026-04",
+   "extension": "VK_ARM_data_graph_optical_flow",
+   "first_tag": "v1.4.349",
+   "description": "This extension allows applications to estimate the 2D displacement of pixels between two images."
+  },
+  {
+   "month": "2026-04",
+   "extension": "VK_EXT_primitive_restart_index",
+   "first_tag": "v1.4.348",
+   "description": "This extension allows setting a custom primitive restart index. It is primarily intended to support GL emulation."
+  },
+  {
+   "month": "2026-04",
+   "extension": "VK_QCOM_queue_perf_hint",
+   "first_tag": "v1.4.348",
+   "description": "This extension exposes power constraints to the application, allowing it to provide hints for influencing the device\u2019s clock frequency.\n\nThese hints are VkQueue state and are persistent across the life of the queue until the app updates or removes the constraint. The kernel combines the constraints across the active queues from all processes to determine the actual clock frequency levels."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_AMD_gpa_interface",
+   "first_tag": "v1.4.351",
+   "description": "This extension adds GPU Performance API (GPA) interface support for accessing GPU global performance counters, streaming performance monitors (SPM), and thread traces (SQTT), on AMD Radeon\u2122 GPUs."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_ARM_data_graph_neural_accelerator_statistics",
+   "first_tag": "v1.4.350",
+   "description": "This extension adds support for getting data graph execution statistics for Arm neural accelerators."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_EXT_shader_split_barrier",
+   "first_tag": "v1.4.351",
+   "description": "This extension splits OpControlBarrier by exposing two new barrier operations with SPV_EXT_split_barrier:\n\n- OpControlBarrierArriveEXT - notifies that invocation has arrived here\n\n- OpControlBarrierWaitEXT - waits on all invocations before proceeding execution\n\nIn the Vulkan context, this allows apps to synchronize Subgroup execution flow within a Workgroup without requiring all Subgroups to wait at the arrival condition before proceeding to execute independent work. It also permits synchronizing memory access like other control barriers."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_KHR_maintenance11",
+   "first_tag": "v1.4.350",
+   "description": "VK_KHR_maintenance11 adds a collection of minor features, none of which would warrant an entire extension of their own.\n\nThe new features are as follows:\n\n- Add D3D compatibility for mismatch between Arrayed in shaders and the arrayness of the underlying descriptor when the descriptor contains a single array layer\n\n- Clarify the pipeline depth clipping state when the pipeline is created without VK_DYNAMIC_STATE_DEPTH_CLIP_ENABLE_EXT being set and the VkPipelineRasterizationDepthClipStateCreateInfoEXT struct is not present\n\n- Add VK_SHADER_CREATE_INDEPENDENT_SETS_BIT_KHR to enable shader object functionality to mimic VK_PIPELINE_LAYOUT_CREATE_INDEPENDENT_SETS_BIT_EXT used for graphics pipeline libraries, including a new pipeline layout creation flag VK_PIPELINE_LAYOUT_CREATE_NO_TASK_SHADER_BIT_KHR to ensure pipeline layouts used with shader objects also created with VK_SHADER_CREATE_NO_TASK_SHADER_BIT_EXT to be compatible\n\n- Allow queueFamilyIndexCount of 1 in VkBufferCreateInfo, VkPhysicalDeviceImageDrmFormatModifierInfoEXT, VkTensorCreateInfoARM, and VkImageCreateInfo, when sharingMode is VK_SHARING_MODE_CONCURRENT.\n\n- Require minImageTransferGranularity to be (1,1,1) even on transfer-only queues and add optimalImageTransferGranularity queue family property to communicate the performance bump for copies not aligned to the optimal granularity.\n\n- When copying between a buffer and an image on a transfer-only queue, do not require bufferOffset to be a multiple of 4."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_KHR_opacity_micromap",
+   "first_tag": "v1.4.351",
+   "description": "When adding transparency to a ray traced scene, an application can choose between further tessellating the geometry or using an any-hit shader to allow the ray through specific parts of the geometry. These options have the downside of either significantly increasing memory consumption or adding runtime overhead to run shader code in the middle of traversal, respectively.\n\nThis extension adds the ability to add an opacity micromap to geometry when building an acceleration structure. The opacity micromap compactly encodes opacity information which can be read by the implementation to mark parts of triangles as opaque or transparent. The format is externally visible to allow the application to compress its internal geometry and surface representations into the compressed format ahead of time. The compressed format subdivides each triangle into a set of subtriangles, each of which can be assigned either two or four opacity values. These opacity values can control if a ray hitting that subtriangle is treated as an opaque hit, complete miss, or possible hit, depending on the controls described in Ray Opacity Micromap.\n\nThis extension provides:\n\n- the ability to create micromaps as VkAccelerationStructureKHR structures\n\n- the ability to build, copy, and query micromaps with the acceleration structure functions, and\n\n- a structure to extend VkAccelerationStructureGeometryTrianglesDataKHR to attach a micromap to the geometry of the acceleration structure.\n\nTraversing an acceleration structure that contains opacity micromap data requires the shader or pipeline to declare that it does so. Traversal performed by pipeline trace ray instructions requires the pipeline to have been created with VK_PIPELINE_CREATE_RAY_TRACING_OPACITY_MICROMAP_BIT_KHR. Traversal performed by OpRayQueryProceedKHR instead requires the shader to declare the OpacityMicromapIdKHR execution mode, added by SPV_KHR_opacity_micromap, with its specialization-constant operand equal to VK_TRUE. See Ray Opacity Micromap for details."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_NV_cooperative_matrix_decode_vector",
+   "first_tag": "v1.4.352",
+   "description": "This extension adds a device feature for the SPIR-V CooperativeMatrixDecodeVectorNV capability and the SPV_NV_cooperative_matrix_decode_vector SPIR-V extension.\n\nWhen enabled, shaders may use an optional decode vector operand with OpCooperativeMatrixLoadTensorNV (see that SPIR-V extension) to load multiple block-adjacent elements per decode callback invocation.\n\nAn implementation must also support VkPhysicalDeviceCooperativeMatrix2FeaturesNV::cooperativeMatrixBlockLoads when exposing this extension."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_QCOM_elapsed_timer_query",
+   "first_tag": "v1.4.351",
+   "description": "This extension adds a new query type to write out the elapsed time between a set of commands, providing similar functionality to GL_ARB_timer_query.\n\nThere is no existing solution on tilers for measuring commands inside render pass instances, as comparing query timestamps will not give valid results.\n\nThis extension, solves the issue by adding a new query type that can be used to measure time between a begin and end query and works inside render pass instances. The implementation is responsible for accumulating the correct elapsed time for the commands across all tiles."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_QCOM_image_processing3",
+   "first_tag": "v1.4.351",
+   "description": "This extension introduces a new SPIR-V built-in function to support predefined image gather operations used in popular image processing algorithms such as super resolution upscaling and contrast-adaptive sharpening.\n\nThe OpImageGatherQCOM instruction supports the following modes:\n\n- GatherH2QCOM - produces an image gather with an extra horizontal offset\n\n- GatherV2QCOM - produces an image gather with an extra vertical offset. Combined with OpImageGather and GatherH2QCOM, this is useful for creating a 12-tap filter for upscaling.\n\n- GatherDQCOM - produces an image gather by sampling the cardinal offsets. Combined with a point sample of the center texel, this is useful for creating a 5-tap sharpening filter (eg. CAS).\n\n- Gather4x1QCOM - produces an image gather by sampling 4 texels in a horizontal row. This is useful for kernels requiring vectorized loads, and can help with cache locality for linear access.\n\nEach of the image processing instructions operate on the same sampled images that the OpImage*Gather instructions support with the exception of cube-maps, depth comparison, ConstOffsets, and sparse residency check.\n\nImplementations of this extension should support these operations natively at the HW instruction level, offering potential performance gains as well as ease of development.\n\nThis extension also adds some block matching improvements over VK_QCOM_image_processing and VK_QCOM_image_processing2 by exposing more formats and wrap modes."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_QCOM_shader_multiple_wait_queues",
+   "first_tag": "v1.4.351",
+   "description": "This extension adds a new loop control hint to the SPIR-V execution environment, instructing the compiler that it should use multiple wait queues to optimize a loop.\n\nThis can improve performance for loops that have high latency instructions such as for VK_KHR_cooperative_matrix operations, by allowing the compiler to issue instructions for future iterations while waiting for the current iteration to complete."
+  },
+  {
+   "month": "2026-05",
+   "extension": "VK_SEC_throttle_hint",
+   "first_tag": "v1.4.350",
+   "description": "This extension is intended to convey throttle hints to the device, but does not specify the throttling behavior or any minimum guarantees. This extension is intended to communicate information from layered API implementations such as ANGLE to internal proprietary system schedulers.\n\nIt has no behavioral implications beyond enabling more intelligent behavior from the system scheduler.\n\nApplication developers should avoid using this extension. It is documented solely for the benefit of tools and layer developers, who may need to manipulate pNext chains that include these structures.\n\nNote | There is currently no specification language written for this extension. The links to APIs defined by the extension are to stubs that only include generated content such as API declarations and implicit valid usage statements.\n\nNote | This extension is only intended for use in specific embedded environments with known implementation details, and is therefore undocumented."
+  },
+  {
+   "month": "2026-06",
+   "extension": "VK_ARM_tensor_controls",
+   "first_tag": "v1.4.355",
+   "description": "This extension adds support for a few tensor features supported on Arm hardware."
+  },
+  {
+   "month": "2026-06",
+   "extension": "VK_EXT_multisampled_render_to_swapchain",
+   "first_tag": "v1.4.353",
+   "description": "This extension adds the equivalent of VK_IMAGE_CREATE_MULTISAMPLED_RENDER_TO_SINGLE_SAMPLED_BIT_EXT to swapchain create flags such that the functionality of the VK_EXT_multisampled_render_to_single_sampled extension can be used with its images."
+  },
+  {
+   "month": "2026-06",
+   "extension": "VK_IMG_filter_linear_2d",
+   "first_tag": "v1.4.354",
+   "description": "This extension introduces VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_2D_BIT_IMG, which indicates that a format supports the behavior of VK_FORMAT_FEATURE_2_SAMPLED_IMAGE_FILTER_LINEAR_BIT but only for 1D and 2D image types."
+  },
+  {
+   "month": "2026-06",
+   "extension": "VK_KHR_extended_flags",
+   "first_tag": "v1.4.353",
+   "description": "This extension adds a new VkFormatFeatureFlagBits4KHR format feature flag type, supporting up to 64 additional flags beyond those defined by VkFormatFeatureFlagBits2; and a new VkFormatProperties4KHR structure to extend VkFormatProperties2. The new structure does not replace format feature flag bits specified by existing commands and structures, unlike VkFormatProperties3. Instead, it adds new flags to the existing APIs. Initially, no new format flag bits are defined.\n\nThis extension also adds a new VkImageCreateFlagBits2KHR image create flag type, supporting up to 32 additional flags, and a new VkImageCreateFlags2CreateInfoKHR structure to extend VkImageCreateInfo and other commands that specify image create flag bits. The new structure duplicates image create flag bits specified by existing commands and structures, while also adding up to 32 new flags. All the existing VkImageCreateFlagBits are given corresponding VkImageCreateFlagBits2KHR bits with the same meaning. Initially, no new image create flag bits are defined.\n\nThis extension also adds a new VkImageUsageFlagBits2KHR image usage flag type, supporting up to 32 additional flags, and a new VkImageUsageFlags2CreateInfoKHR structure to extend VkImageCreateInfo and other commands that specify image usage flag bits. The new structure duplicates image usage flag bits specified by existing commands and structures, while also adding up to 32 new flags. All the existing VkImageUsageFlagBits are given corresponding VkImageUsageFlagBits2KHR bits with the same meaning. Initially, no new image usage flag bits are defined.\n\nThe extension is infrastructure used because the API is running out of available bits in the VkFormatFeatureFlagBits2 and VkImageUsageFlagBits types, and will soon thereafter run out of bits in VkImageCreateFlagBits.\n\nFinally, this extension adds all the same 64-bit flag types first introduced by VK_KHR_maintenance5. This will allow API variants like Vulkan SC to support the extended flags without requiring other, unrelated functionality of VK_KHR_maintenance5."
+  },
+  {
+   "month": "2026-06",
+   "extension": "VK_KHR_video_encode_feedback2",
+   "first_tag": "v1.4.353",
+   "description": "This extension builds upon the VK_QUERY_TYPE_VIDEO_ENCODE_FEEDBACK_KHR queries introduced by the VK_KHR_video_encode_queue extension and extends the set of supported video encode feedback values with additional statistics about the encoded picture, including per picture partition feedback values."
+  },
+  {
+   "month": "2026-07",
+   "extension": "VK_EXT_image_tiling_control",
+   "first_tag": "v1.4.358",
+   "description": "This extension provides per-image selection of optimal tiling arrangements by extending VkImageCreateInfo with VkImageTilingControlCreateInfoEXT when multiple arrangements are supported by the implementation.\n\nVK_IMAGE_TILING_CONTROL_DEFAULT_EXT can be set to use the tiling arrangement that is the same selection as with the VkImageTilingControlCreateInfoEXT structure omitted.\n\nVK_IMAGE_TILING_CONTROL_MIN_SIZE_EXT can be set to minimize memory size requirements with reduced consideration for memory access performance.\n\nVK_IMAGE_TILING_CONTROL_MAX_PERFORMANCE_EXT can be set to maximize memory access performance with reduced consideration for increases in memory size requirements."
+  },
+  {
+   "month": "2026-07",
+   "extension": "VK_EXT_shader_ocp_microscaling_types",
+   "first_tag": "v1.4.356",
+   "description": "This extension enables support for the floating-point data types defined in the Open Compute Project (OCP) Microscaling Formats specification."
+  },
+  {
+   "month": "2026-08",
+   "extension": "VK_EXT_cooperative_matrix_maintenance1",
+   "first_tag": "v1.4.359",
+   "description": "This extension adds several new features building on the cooperative matrix types added in VK_KHR_cooperative_matrix. The goal is to add and accelerate features beyond just simple GEMM kernels, including adding support for type/use conversions, reductions, per-element operations, and conversion of an element index to a matrix coordinate.\n\nThe new functionality is defined by the SPV_EXT_cooperative_matrix_maintenance1 SPIR-V extension and can be used with the GLSL_EXT_cooperative_matrix_maintenance1 GLSL extension.\n\nThis extension also provides a new command to query the properties of cooperative matrices, which can be easily extended by other extensions in the future. The new query also includes inputs for the desired subgroup size and (when used together with extensions that support workgroup scope cooperative matrices, such as VK_NV_cooperative_matrix2) the number of invocations in the local workgroup, allowing implementations to expose properties that are optimal or compatible only with specific subgroup sizes or local workgroup sizes."
+  },
+  {
+   "month": "2026-08",
+   "extension": "VK_NV_private_data_base_handle",
+   "first_tag": "v1.4.361",
+   "description": "Layers commonly wrap Vulkan device-level object handles. When a tool or application needs the driver\u2019s underlying handle (for example, to communicate directly with the driver outside the layer chain), it has no standard way to recover it from a wrapped handle.\n\nThis extension exposes a mechanism that NVIDIA already ships internally: creating a VkPrivateDataSlot with VK_PRIVATE_DATA_SLOT_CREATE_BASE_OBJECT_HANDLE_BIT_NV and then calling vkGetPrivateData with that slot causes the implementation to return its own base handle for the object rather than any previously set private data.\n\nBecause vkGetPrivateData is already forwarded through the layer dispatch chain with each layer substituting the real handle for its wrapper, no new dispatch entry points are required."
+  },
+  {
+   "month": "2026-09",
+   "extension": "VK_INTEL_device_info",
+   "first_tag": "v1.4.363",
+   "description": "This extension adds a new query to obtain the version of the graphics intellectual property (IP) block implemented by a physical device.\n\nThe IP version is reported as three separate values: an architecture generation, a release within that generation, and a revision within that release. VkPhysicalDeviceProperties::deviceID identifies a device precisely, but does not indicate which graphics IP that device implements without a lookup table maintained by the application. These values expose the graphics IP directly, and are ordered, so an application can compare them in order of significance to select between code paths tuned for a minimum graphics IP version.\n\nA physical device which does not report an IP version reports zero for all three values, so an application should check for this case rather than treating the values as an IP version."
+  },
+  {
+   "month": "2026-09",
+   "extension": "VK_KHR_pipeline_library_group_handles",
+   "first_tag": "v1.4.362",
+   "description": "This extension is based on the VK_EXT_pipeline_library_group_handles extension.\n\nWhen using pipeline libraries in ray tracing pipelines, a library might get linked into different pipelines in an incremental way. An application can have a strategy where a ray tracing pipeline is comprised of N pipeline libraries and is later augmented by creating a new pipeline with N + 1 libraries. Without this extension, all group handles must be re-queried as the group handle is tied to the pipeline, not the library. This is problematic for applications which aim to decouple construction of record buffers and the linkage of ray tracing pipelines.\n\nTo aid in this, this extension enables support for querying group handles directly from pipeline libraries. Group handles obtained from a library must remain bitwise identical in any VkPipeline that links to the library.\n\nWith this feature, the extension also improves compatibility with DXR 1.1 AddToStateObject(), which guarantees that group handles returned remain bitwise identical between parent and child pipelines. In addition, querying group handles from COLLECTION objects is also supported with that API."
+  },
+  {
+   "month": "2026-09",
+   "extension": "VK_VALVE_buffer_device_address_allocation_alignment",
+   "first_tag": "v1.4.362",
+   "description": "This extension allows applications to specify the alignment of any buffer device address allocation, beyond the current specification requirements which only requires that the memory has enough alignment to satisfy any alignment request the implementation may require on its own.\n\nWhen layering some other APIs, e.g. D3D12, applications are sometimes able to rely on the allocated buffer device address being aligned to a potentially larger alignment than what the implementation would normally allocate for. Some applications rely on this implementation detail and will behave in unexpected ways if tighter alignments are used. vkAllocateMemory as well as sparse buffer creation is affected by this and this extension adds extra requirements on the implementation when requested by application."
+  },
+  {
+   "month": "2026-10",
+   "extension": "VK_ARM_cooperative_matrix_layouts",
+   "first_tag": "v1.4.365",
+   "description": "This extension allows the use of Arm-specific cooperative matrix memory layouts introduced by SPV_ARM_cooperative_matrix_layouts."
+  },
+  {
+   "month": "2026-10",
+   "extension": "VK_GOOGLE_hdr_smpte_st_209450_metadata",
+   "first_tag": "v1.4.366",
+   "description": "This extension provides a mechanism for an application to attach SMPTE ST 2094-50 dynamic metadata to a swapchain via the VkHdrSmpteSt209450GOOGLE structure.\n\nThe SMPTE ST 2094-50 standard defines dynamic metadata for use in high dynamic range (HDR) image sequences. This metadata provides information for tone mapping of image content to displays characterized by their HDR headroom."
+  }
+ ]
+}
