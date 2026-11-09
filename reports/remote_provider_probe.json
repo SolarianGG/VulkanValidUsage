@@ -1,0 +1,728 @@
+{
+ "date": "2026-11-09T22:05:31",
+ "model": "deepseek/deepseek-v4-flash-0731",
+ "prompts": 6,
+ "providers": [
+  {
+   "provider": "DeepInfra",
+   "slug": "deepinfra/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000006",
+    "completion": "0.00000018",
+    "input_cache_read": "0.000000015",
+    "discount": 0
+   },
+   "ok": 0,
+   "errors": [
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke"
+   ],
+   "latency_s": [],
+   "cost_usd": 0.0,
+   "answers": [],
+   "latency_s_median": null
+  },
+  {
+   "provider": "BaseTen",
+   "slug": "baseten/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000013",
+    "completion": "0.00000026",
+    "input_cache_read": "0.000000028",
+    "discount": 0
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    1.803,
+    2.378,
+    7.188,
+    1.309,
+    5.761,
+    4.26
+   ],
+   "cost_usd": 0.00201864,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "BaseTen",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 150,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` queue family capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the quer"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "BaseTen",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 250,
+     "text": "The problem is that you are specifying `VK_SHADER_STAGE_GEOMETRY_BIT` in the `stageMask` of `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (since the `geometryShader` f"
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "BaseTen",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 228,
+     "text": "Based on the provided context, the draw count is read from a buffer during execution. The context does not specify any additional requirements for vertex input state or dynamic state for these indirec"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "BaseTen",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 52,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, then it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "BaseTen",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 340,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format does not support `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`. \n\nPer the specificatio"
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "BaseTen",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 185,
+     "text": "The copy is invalid because the `imageSubresource.aspectMask` is `VK_IMAGE_ASPECT_DEPTH_BIT`, but the source image format is `VK_FORMAT_R8G8B8A8_UNORM`, which is a color format and does not have a dep"
+    }
+   ],
+   "latency_s_median": 4.26
+  },
+  {
+   "provider": "CoreWeave",
+   "slug": "coreweave/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000013",
+    "completion": "0.00000027",
+    "input_cache_read": "0.00000005",
+    "discount": 0
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    1.476,
+    2.31,
+    1.767,
+    1.043,
+    2.304,
+    2.292
+   ],
+   "cost_usd": 0.00204584,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "CoreWeave",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 140,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the query pool was cr"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "CoreWeave",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 253,
+     "text": "The issue is that you are specifying `VK_SHADER_STAGE_GEOMETRY_BIT` in the `stageMask` for `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (geometry shaders not enabled)"
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "CoreWeave",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 187,
+     "text": "To record an indirect draw with a dynamic vertex stride, you must record **`vkCmdBindVertexBuffers2`** (or `vkCmdBindVertexBuffers2EXT` for the EXT version) earlier in the command buffer to set the pe"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "CoreWeave",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 52,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, then it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "CoreWeave",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 347,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` in "
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "CoreWeave",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 285,
+     "text": "The copy is invalid because the `imageSubresource.aspectMask` is set to `VK_IMAGE_ASPECT_DEPTH_BIT`, but the source image format is `VK_FORMAT_R8G8B8A8_UNORM`, which is a color format and does not hav"
+    }
+   ],
+   "latency_s_median": 2.292
+  },
+  {
+   "provider": "StreamLake",
+   "slug": "streamlake/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.000000132",
+    "completion": "0.000000396",
+    "input_cache_read": "0.0000000042",
+    "discount": 0.7
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    2.85,
+    6.381,
+    4.418,
+    3.676,
+    7.191,
+    5.11
+   ],
+   "cost_usd": 0.0021378720000000003,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "StreamLake",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 112,
+     "text": "The command pool must support **graphics operations** (i.e., the queue family must have the `VK_QUEUE_GRAPHICS_BIT` capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "StreamLake",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 221,
+     "text": "The issue is that you are specifying `VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` in the `stageMask` of `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (the `geometryShader` "
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "StreamLake",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 146,
+     "text": "To record an indirect draw with a dynamic vertex stride (where only the per-binding stride is dynamic, not the entire vertex input layout), you must record a **`vkCmdBindVertexBuffers2`** command earl"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "StreamLake",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 51,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "StreamLake",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 336,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does **not** support the `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC"
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "StreamLake",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 162,
+     "text": "The copy is invalid because the `imageSubresource.aspectMask` is `VK_IMAGE_ASPECT_DEPTH_BIT`, but the source image format is `VK_FORMAT_R8G8B8A8_UNORM`, which has no depth aspect. The aspect mask must"
+    }
+   ],
+   "latency_s_median": 5.11
+  },
+  {
+   "provider": "Cohere",
+   "slug": "cohere/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000014",
+    "completion": "0.00000028",
+    "input_cache_read": "0.00000007",
+    "discount": 0
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    0.823,
+    2.381,
+    2.044,
+    1.01,
+    1.956,
+    3.669
+   ],
+   "cost_usd": 0.00212632,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "Cohere",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 106,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the query type is `VK"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "Cohere",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 172,
+     "text": "The issue is that you are specifying `VK_SHADER_STAGE_GEOMETRY_BIT` in the `stageMask` of `vkCmdResetEvent2`, but geometry shaders are not enabled on the device (the `geometryShader` feature is disabl"
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "Cohere",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 226,
+     "text": "Based on the provided context, the draw count is read from a buffer during execution, and the command is affected by conditional rendering. However, the context does not specify requirements for dynam"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "Cohere",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 51,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "Cohere",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 222,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` in "
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "Cohere",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 261,
+     "text": "The issue is that you specified `VK_IMAGE_ASPECT_DEPTH_BIT` in the `imageSubresource.aspectMask`, but the source image has format `VK_FORMAT_R8G8B8A8_UNORM`, which is a color format and does not have "
+    }
+   ],
+   "latency_s_median": 2.044
+  },
+  {
+   "provider": "Parasail",
+   "slug": "parasail/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000014",
+    "completion": "0.00000028",
+    "input_cache_read": "0.00000005",
+    "discount": 0
+   },
+   "ok": 5,
+   "errors": [
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke"
+   ],
+   "latency_s": [
+    19.347,
+    26.345,
+    10.123,
+    25.277,
+    14.121
+   ],
+   "cost_usd": 0.0019966800000000002,
+   "answers": [
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "Parasail",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 199,
+     "text": "The issue is that you are specifying `VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` in the `stageMask` of `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (geometry shaders not "
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "Parasail",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 191,
+     "text": "Based on the provided context, the draw count is read from a buffer during execution. The context does not specify any additional requirements for dynamic vertex input state.\n\nHowever, based on my own"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "Parasail",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 51,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "Parasail",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 321,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` in "
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "Parasail",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 169,
+     "text": "The copy is invalid because the `imageSubresource.aspectMask` is set to `VK_IMAGE_ASPECT_DEPTH_BIT`, but the source image format is `VK_FORMAT_R8G8B8A8_UNORM`, which is a color format and does not hav"
+    }
+   ],
+   "latency_s_median": 19.347
+  },
+  {
+   "provider": "Mancer 2",
+   "slug": "mancer/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000015",
+    "completion": "0.0000005",
+    "input_cache_read": "0.000000075",
+    "discount": 0
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    3.722,
+    7.259,
+    7.481,
+    3.66,
+    7.472,
+    10.041
+   ],
+   "cost_usd": 0.0025475,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "Mancer 2",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 108,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` queue family capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the quer"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "Mancer 2",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 262,
+     "text": "The issue is that you are specifying `VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` as the `stageMask` for `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (geometry shaders not"
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "Mancer 2",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 215,
+     "text": "Based on the provided context, I cannot determine the specific requirements for a draw with a dynamic vertex stride and an indirect draw count. The context only describes the behavior of the indirect "
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "Mancer 2",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 52,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, then it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "Mancer 2",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 288,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` in "
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "Mancer 2",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 251,
+     "text": "The copy is invalid because you specified `VK_IMAGE_ASPECT_DEPTH_BIT` in `imageSubresource.aspectMask`, but the source image has format `VK_FORMAT_R8G8B8A8_UNORM`, which is a color format and does not"
+    }
+   ],
+   "latency_s_median": 7.472
+  },
+  {
+   "provider": "SiliconFlow",
+   "slug": "siliconflow/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000022",
+    "completion": "0.00000066",
+    "input_cache_read": "0.000000028",
+    "discount": 0
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    1.809,
+    5.083,
+    3.751,
+    1.469,
+    4.56,
+    3.497
+   ],
+   "cost_usd": 0.00357104,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "SiliconFlow",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 105,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the query type is `VK"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "SiliconFlow",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 262,
+     "text": "The issue is that you are specifying `VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` in the `stageMask` of `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (the `geometryShader` "
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "SiliconFlow",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 206,
+     "text": "Based on the provided context, the draw count is read from a buffer during execution, and the command is affected by conditional rendering. However, the context does not specify requirements for dynam"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "SiliconFlow",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 50,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "SiliconFlow",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 259,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` in "
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "SiliconFlow",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 158,
+     "text": "The copy is invalid because the `imageSubresource.aspectMask` is `VK_IMAGE_ASPECT_DEPTH_BIT`, but the source image format is `VK_FORMAT_R8G8B8A8_UNORM`, which does not have a depth aspect. \n\nFor `vkCm"
+    }
+   ],
+   "latency_s_median": 3.751
+  },
+  {
+   "provider": "GMICloud",
+   "slug": "gmicloud/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.000000286",
+    "completion": "0.000000858",
+    "input_cache_read": "0.0000000091",
+    "discount": 0.35
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    2.616,
+    3.416,
+    6.494,
+    1.98,
+    3.536,
+    3.112
+   ],
+   "cost_usd": 0.0018798806,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "GMICloud",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 108,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` queue family capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the quer"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "GMICloud",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 275,
+     "text": "The issue is that you are specifying `VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` in the `stageMask` of `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (geometry shaders not "
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "GMICloud",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 364,
+     "text": "Based on the provided context, the draw count is read from a buffer during execution for `vkCmdDrawMeshTasksIndirectCountNV` and `vkCmdDrawMeshTasksIndirectCountEXT`. However, the context does not spe"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "GMICloud",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 52,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, then it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "GMICloud",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 297,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` in "
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "GMICloud",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 173,
+     "text": "The copy is invalid because you specified `VK_IMAGE_ASPECT_DEPTH_BIT` in `imageSubresource.aspectMask`, but the source image format is `VK_FORMAT_R8G8B8A8_UNORM`, which does not have a depth aspect. \n"
+    }
+   ],
+   "latency_s_median": 3.416
+  },
+  {
+   "provider": "Novita",
+   "slug": "novita/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.0000004092",
+    "completion": "0.0000012276",
+    "input_cache_read": "0.00000002604",
+    "discount": 0.07
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    2.061,
+    4.278,
+    4.018,
+    2.144,
+    4.139,
+    4.235
+   ],
+   "cost_usd": 0.0069060684,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "Novita",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 105,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` capability).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the query type is `VK"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "Novita",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 273,
+     "text": "The problem is that you are naming the geometry shader stage (`VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT`) in the `stageMask` of `vkCmdResetEvent2`, but geometry shaders are not enabled on the device. \n"
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "Novita",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 244,
+     "text": "Based on the provided context, I don't have enough information to answer this question. The context only describes the signatures and general behavior of indirect draw commands (like `vkCmdDrawMeshTas"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "Novita",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 49,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if the transformData address was not NULL when srcAccelerationStructure was last built, then it must not be NULL in the update call"
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "Novita",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 323,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format does not support `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`. \n\nPer the specificatio"
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "Novita",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 261,
+     "text": "The copy is invalid because the `imageSubresource.aspectMask` is set to `VK_IMAGE_ASPECT_DEPTH_BIT`, but the source image format is `VK_FORMAT_R8G8B8A8_UNORM`, which is a color format and does not hav"
+    }
+   ],
+   "latency_s_median": 4.139
+  },
+  {
+   "provider": "Chutes",
+   "slug": "chutes/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000044",
+    "completion": "0.00000132",
+    "input_cache_read": "0.000000044",
+    "discount": 0
+   },
+   "ok": 6,
+   "errors": [],
+   "latency_s": [
+    2.813,
+    4.627,
+    3.795,
+    1.962,
+    4.395,
+    4.644
+   ],
+   "cost_usd": 0.00743776,
+   "answers": [
+    {
+     "qid": "qp-061cf80350-de",
+     "provider": "Chutes",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 109,
+     "text": "The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` queue flag).\n\nThis is required by VUID-vkCmdBeginQueryIndexedEXT-queryType-00804: if the query pool was cr"
+    },
+    {
+     "qid": "qp-10da09acd9-de",
+     "provider": "Chutes",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 311,
+     "text": "The issue is that you are specifying `VK_SHADER_STAGE_GEOMETRY_BIT` in the `stageMask` of `vkCmdResetEvent2`, but the geometry shader stage is not enabled on the device (since the `geometryShader` fea"
+    },
+    {
+     "qid": "qp-14be9f7fd8-de",
+     "provider": "Chutes",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 263,
+     "text": "To record an indirect draw with a dynamic vertex stride, you must record **`vkCmdBindPipeline`** with a graphics pipeline that has the vertex input binding stride set to `VK_DYNAMIC_STATE_VERTEX_INPUT"
+    },
+    {
+     "qid": "qp-17b357d107-id",
+     "provider": "Chutes",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 51,
+     "text": "No. VUID-vkBuildAccelerationStructuresKHR-pInfos-03767 requires that if `transformData` was not NULL when `srcAccelerationStructure` was last built, it must not be NULL in the update call."
+    },
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "Chutes",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 292,
+     "text": "The issue is that your fragment shader is performing atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report support for `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFE"
+    },
+    {
+     "qid": "qp-21904f21bf-id",
+     "provider": "Chutes",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 238,
+     "text": "The copy is invalid because the `imageSubresource.aspectMask` is set to `VK_IMAGE_ASPECT_DEPTH_BIT`, but the source image has format `VK_FORMAT_R8G8B8A8_UNORM`, which is a color format and does not ha"
+    }
+   ],
+   "latency_s_median": 4.395
+  },
+  {
+   "provider": "Baidu",
+   "slug": "baidu/fp8",
+   "quantization": "fp8",
+   "pricing": {
+    "prompt": "0.00000044",
+    "completion": "0.00000132",
+    "input_cache_read": "0.000000014",
+    "discount": 0
+   },
+   "ok": 1,
+   "errors": [
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke",
+    "429: {\"error\":{\"message\":\"Provider returned error\",\"code\":429,\"metadata\":{\"raw\":\"deepseek/deepseek-v4-flash-0731 is temporarily rate-limited upstream. Please retry shortly, or add your own provider ke"
+   ],
+   "latency_s": [
+    10.479
+   ],
+   "cost_usd": 0.000843992,
+   "answers": [
+    {
+     "qid": "qp-1bdef10841-id",
+     "provider": "Baidu",
+     "model": "deepseek/deepseek-v4-flash-0731",
+     "completion_tokens": 303,
+     "text": "The issue is that your fragment shader performs atomic operations on a storage texel buffer, but the format `VK_FORMAT_R32_UINT` does not report `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT` in "
+    }
+   ],
+   "latency_s_median": 10.479
+  }
+ ]
+}

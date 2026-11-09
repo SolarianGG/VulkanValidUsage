@@ -56,12 +56,12 @@ ollama:
 openrouter:
   answerer_remote:
     model: deepseek/deepseek-v4-flash-0731
-    provider: {order: [], allow_fallbacks: false, require_parameters: true, data_collection: deny, quantizations: [bf16, fp8]}
+    provider: {order: [cohere/fp8], allow_fallbacks: false, require_parameters: true, data_collection: deny, quantizations: [bf16, fp8]}  # pinned 2026-11-09 by reports/remote_provider_probe.json (deepinfra: 429)
     reasoning: {enabled: false}
     max_tokens: 1024
   judge:
     model: google/gemini-3.8-flash
-    provider: {order: [], allow_fallbacks: false, require_parameters: true, data_collection: deny}
+    provider: {order: [google-ai-studio], allow_fallbacks: false, require_parameters: true, data_collection: deny}  # pinned 2026-11-09 (the provider of all 900 Stage 3b calls)
     reasoning: {effort: medium}
     max_tokens: 2048
   budget_usd: 10
