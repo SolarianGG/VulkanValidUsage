@@ -1,0 +1,17 @@
+{
+ "jobs": 590,
+ "todo": 29,
+ "estimate": {
+  "qwen": {
+   "calls": 29,
+   "prompt_tokens_max": 4474,
+   "prompt_tokens_mean": 1332,
+   "over_num_ctx": 0
+  }
+ },
+ "qwen_gpu_share": 1.0,
+ "qwen_seconds": 893.5,
+ "written": 29,
+ "missing": 4,
+ "spent_usd": 0.0
+}

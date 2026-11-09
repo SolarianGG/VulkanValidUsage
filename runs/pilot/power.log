@@ -1,0 +1,162 @@
+H2a rrf vs bm25 (class@5) 0.05
+H2b rrf vs dense (class@5) 0.04
+H3a rrf_rerank vs rrf (class@5) 0.08
+H1a qwen rrf_rerank vs closed 0.15
+H1b remote rrf_rerank vs closed 0.13
+{
+ "alpha": 0.00625,
+ "target_power": 0.8,
+ "n_sim": 2000,
+ "n_perm": 2000,
+ "main_vus": 400,
+ "comparisons": {
+  "H2a rrf vs bm25 (class@5)": {
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.689,
+   "mean_b": 0.722,
+   "discordant": 0.078,
+   "b_minus_a": 0.033,
+   "questions_per_entity": 2.25,
+   "main_questions": 800,
+   "mde": 0.05,
+   "power_at_mde": 0.908,
+   "coarse_curve": {
+    "0.01": 0.026,
+    "0.02": 0.154,
+    "0.03": 0.43,
+    "0.04": 0.75,
+    "0.05": 0.892
+   }
+  },
+  "H2b rrf vs dense (class@5)": {
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.689,
+   "mean_b": 0.722,
+   "discordant": 0.078,
+   "b_minus_a": 0.033,
+   "questions_per_entity": 2.25,
+   "main_questions": 800,
+   "mde": 0.04,
+   "power_at_mde": 0.83,
+   "coarse_curve": {
+    "0.01": 0.04,
+    "0.02": 0.228,
+    "0.03": 0.552,
+    "0.04": 0.83
+   }
+  },
+  "H3a rrf_rerank vs rrf (class@5)": {
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.722,
+   "mean_b": 0.533,
+   "discordant": 0.278,
+   "b_minus_a": -0.189,
+   "questions_per_entity": 2.25,
+   "main_questions": 800,
+   "mde": 0.08,
+   "power_at_mde": 0.864,
+   "coarse_curve": {
+    "0.01": 0.006,
+    "0.02": 0.036,
+    "0.03": 0.122,
+    "0.04": 0.222,
+    "0.05": 0.428,
+    "0.06": 0.572,
+    "0.07": 0.708,
+    "0.08": 0.858
+   }
+  },
+  "H1a qwen rrf_rerank vs closed": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.178,
+   "mean_b": 0.6,
+   "discordant": 0.556,
+   "b_minus_a": 0.422,
+   "questions_per_entity": 1.12,
+   "main_questions": 400,
+   "mde": 0.15,
+   "power_at_mde": 0.86,
+   "coarse_curve": {
+    "0.01": 0.01,
+    "0.02": 0.016,
+    "0.03": 0.016,
+    "0.04": 0.042,
+    "0.05": 0.064,
+    "0.06": 0.14,
+    "0.07": 0.176,
+    "0.08": 0.266,
+    "0.09": 0.336,
+    "0.1": 0.428,
+    "0.11": 0.538,
+    "0.12": 0.652,
+    "0.13": 0.742,
+    "0.14": 0.82
+   }
+  },
+  "H1b remote rrf_rerank vs closed": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.422,
+   "mean_b": 0.778,
+   "discordant": 0.444,
+   "b_minus_a": 0.356,
+   "questions_per_entity": 1.12,
+   "main_questions": 400,
+   "mde": 0.13,
+   "power_at_mde": 0.804,
+   "coarse_curve": {
+    "0.01": 0.008,
+    "0.02": 0.014,
+    "0.03": 0.03,
+    "0.04": 0.058,
+    "0.05": 0.09,
+    "0.06": 0.146,
+    "0.07": 0.25,
+    "0.08": 0.302,
+    "0.09": 0.418,
+    "0.1": 0.546,
+    "0.11": 0.638,
+    "0.12": 0.734,
+    "0.13": 0.846
+   }
+  },
+  "H3b rrf_rerank vs rrf (score, both answerers)": {
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.711,
+   "mean_b": 0.689,
+   "discordant": 0.289,
+   "b_minus_a": -0.022,
+   "questions_per_entity": 2.25,
+   "main_questions": 800,
+   "mde": 0.09,
+   "power_at_mde": 0.902,
+   "coarse_curve": {
+    "0.01": 0.012,
+    "0.02": 0.042,
+    "0.03": 0.08,
+    "0.04": 0.168,
+    "0.05": 0.332,
+    "0.06": 0.486,
+    "0.07": 0.65,
+    "0.08": 0.812
+   }
+  },
+  "H4 qwen rrf_rerank vs remote closed (NI)": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.422,
+   "mean_b": 0.6,
+   "discordant": 0.489,
+   "b_minus_a": 0.178,
+   "questions_per_entity": 1.12,
+   "margin": -0.05,
+   "main_questions": 400,
+   "p_confirm_ni_at_true_diff_0": 0.29
+  }
+ }
+}

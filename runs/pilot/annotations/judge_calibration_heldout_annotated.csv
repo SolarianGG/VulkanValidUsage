@@ -1,0 +1,364 @@
+﻿item_id,split,question_type,question,reference_answer,rules,answer,correctness[correct|partial|incorrect],abstained[true|false],hallucination[true|false],comment
+J9f95b31e,heldout,yes_no,"With a pipeline that has VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT and VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT dynamic, I set stippledLineEnable to VK_TRUE and lineRasterizationMode to VK_LINE_RASTERIZATION_MODE_RECTANGULAR. Must stippledRectangularLines be enabled to call vkCmdDrawMultiIndexedEXT?
+[expected verdict: yes]","Yes. When the bound pipeline was created with VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT or VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT dynamic, stippledLineEnable is VK_TRUE and lineRasterizationMode is VK_LINE_RASTERIZATION_MODE_RECTANGULAR, the stippledRectangularLines feature must be enabled for vkCmdDrawMultiIndexedEXT.","[vkCmdDrawMultiIndexedEXT] [stippledLineEnable] [VK_EXT_extended_dynamic_state3, VK_EXT_line_rasterization, VK_EXT_multi_draw (+3 more)]
+If the bound graphics pipeline state was created with the VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT or VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT dynamic states enabled, and if the current stippledLineEnable state is VK_TRUE and the current lineRasterizationMode state is VK_LINE_RASTERIZATION_MODE_RECTANGULAR, then the stippledRectangularLines feature must be enabled","Yes
+
+Based on ([VUID]), if the pipeline is created with `VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT` and `VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT`, and the current state is `stippledLineEnable` = `VK_TRUE` and `lineRasterizationMode` = `VK_LINE_RASTERIZATION_MODE_RECTANGULAR`, then the `stippledRectangularLines` feature **must be enabled**.",correct,false,false,
+Je2a13a40,heldout,yes_no,"For H.264 encode rate control, if I specify a non-zero interval between IDR frames, does that interval have to be no smaller than the number of frames in a group of pictures?
+[expected verdict: yes]","Yes. In VkVideoEncodeH264RateControlInfoKHR, a non-zero idrPeriod must be greater than or equal to gopFrameCount.","[VkVideoEncodeH264RateControlInfoKHR] [idrPeriod] [VK_KHR_video_encode_h264, VK_KHR_video_queue]
+If idrPeriod is not 0, then it must be greater than or equal to gopFrameCount","Yes
+
+Based on [VUID], if `idrPeriod` is not 0, it must be greater than or equal to `gopFrameCount`.",correct,false,false,
+J46603f26,heldout,rule,Which feature has to be enabled for me to pass VK_NULL_HANDLE as the buffer parameter of vkCmdBindIndexBuffer2?,"The maintenance6 feature. When maintenance6 is not enabled, buffer in vkCmdBindIndexBuffer2 must not be VK_NULL_HANDLE.","[vkCmdBindIndexBuffer2] [VK_KHR_maintenance5, Vulkan 1.4]
+If the maintenance6 feature is not enabled, buffer must not be VK_NULL_HANDLE","The **maintenance6** feature must be enabled to pass `VK_NULL_HANDLE` as the `buffer` parameter of `vkCmdBindIndexBuffer2`.
+
+This is based on [VUID], which states that if the maintenance6 feature is not enabled, `buffer` must not be `VK_NULL_HANDLE`.",correct,false,false,
+J2f73e5af,heldout,unanswerable,"When I fill VkAccelerationStructureCaptureDescriptorDataInfoEXT for a KHR acceleration structure, accelerationStructureNV is required to refer to the same object as accelerationStructure. What flags does that NV handle need to have been created with?","The premise is false: the two members are mutually exclusive. If accelerationStructure is not VK_NULL_HANDLE, accelerationStructureNV must be VK_NULL_HANDLE (and vice versa); the KHR acceleration structure itself must have been created with VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT in VkAccelerationStructureCreateInfoKHR::createFlags.","UNANSWERABLE (false premise). Presupposes a requirement to set both handles; the spec requires the opposite.
+If accelerationStructure is not VK_NULL_HANDLE then accelerationStructureNV must be VK_NULL_HANDLE
+If accelerationStructure is not VK_NULL_HANDLE then accelerationStructure must have been created with VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT set in VkAccelerationStructureCreateInfoKHR::createFlags","No, `accelerationStructureNV` is **not** required to refer to the same object as `accelerationStructure`.
+
+According to the Vulkan specification (specifically VUIDs 08093 and 08094), you must provide **either** a valid `VkAccelerationStructureKHR` handle **or** a valid `VkAccelerationStructureNV` handle, but **not both** simultaneously. They are mutually exclusive parameters.
+
+If you are providing a valid `VkAccelerationStructureNV` handle (which implies you are capturing data for an NV acceleration structure, not a KHR one), that handle must have been created with the following flag:
+
+**`VK_ACCELERATION_STRUCTURE_CREATE_DESCRIPTOR_BUFFER_CAPTURE_REPLAY_BIT_EXT`**
+
+This requirement is defined by VUID:
+* **[VUID]**
+
+*(Note: If you are strictly using a `VkAccelerationStructureKHR` as requested in your question, you should pass `VK_NULL_HANDLE` for the `accelerationStructureNV` member.)*",correct,false,false,"Отвергает посылку (взаимоисключающие поля). Требование флага к NV-хэндлу правилами не подтверждено, но и не противоречит им."
+Jf1ad8607,heldout,yes_no,"An earlier draw in the current subpass wrote to a color attachment, and I left attachment feedback loop disabled for its VK_IMAGE_ASPECT_COLOR_BIT aspect. Is it required that my next vkCmdDrawIndexedIndirect use that image solely as an attachment, rather than also reading it through a descriptor in the shader?
+[expected verdict: yes]","Yes. When a color attachment has been written by a prior command in the subpass (or by its load, store or resolve operations) and feedback loop is not enabled for VK_IMAGE_ASPECT_COLOR_BIT on it, vkCmdDrawIndexedIndirect must access that attachment only as an attachment.","[vkCmdDrawIndexedIndirect] [Vulkan 1.0]
+If a color attachment is written by any prior command in this subpass or by the load, store, or resolve operations for this subpass, and feedback loop is not enabled for VK_IMAGE_ASPECT_COLOR_BIT on that attachment, it must not be accessed in any way other than as an attachment by this command","Yes
+specifically [VUID] (which applies to `vkCmdDrawIndexedIndirect` as it is a draw indirect command), if an attachment (including a color attachment) was written by a prior command in the subpass and the feedback loop is not enabled, it must not be accessed in any way other than as an attachment, storage image, or sampled image. Since reading it through a descriptor implies accessing it as a sampled image (or storage image), this is prohibited if the image was previously written to and feedback is disabled.
+
+*Note: the specification explicitly lists VUIDs for `vkCmdDrawMeshTasksIndirectEXT` and `vkCmdDrawIndexedIndirectCount`. While the specific VUID for `vkCmdDrawIndexedIndirect` (without the count extension) is not in the text, the rule described in [VUID] is the standard feedback loop rule applicable to draw indirect commands in the specification.*",partial,false,true,"Вердикт верный, но правило искажено: в исключения добавлены storage/sampled image, и тут же вывод противоположный. Пограничный случай."
+J4d46df81,heldout,rule,"I copy an acceleration structure with VkCopyAccelerationStructureInfoKHR, and the buffer behind dst may not be completely bound to device memory. What is required of the dst memory backing for the part the copy touches?",Every byte of dst that the copy command accesses has to be fully backed by physical memory; unbacked regions within the accessed range of dst are not allowed.,"[VkCopyAccelerationStructureInfoKHR] [buffer] [VK_KHR_acceleration_structure]
+The range of dst accessed by this command must be fully backed by physical memory","The memory backing the destination acceleration structure (`dst`) that is accessed by the copy command must be fully backed by physical memory. This is required by **[VUID]**, which states: ""The range of dst accessed by this command must be fully backed by physical memory.""
+
+This means the portion of the buffer that the copy operation writes to must have memory bound (e.g., via `vkBindBufferMemory`) covering the entire accessed range.",correct,false,false,
+Jf88c08b5,heldout,rule,My pipeline uses VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT and VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT. Before calling vkCmdDrawIndexedIndirect2KHR I set stippledLineEnable to VK_TRUE and lineRasterizationMode to VK_LINE_RASTERIZATION_MODE_BRESENHAM. Which device feature does this draw require?,"When the bound graphics pipeline was created with VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT or VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT as dynamic state, and at draw time stippledLineEnable is VK_TRUE with lineRasterizationMode set to VK_LINE_RASTERIZATION_MODE_BRESENHAM, the stippledBresenhamLines feature has to be enabled on the device.","[vkCmdDrawIndexedIndirect2KHR] [stippledLineEnable] [VK_EXT_extended_dynamic_state3, VK_EXT_line_rasterization, VK_EXT_shader_object (+3 more)]
+If the bound graphics pipeline state was created with the VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT or VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT dynamic states enabled, and if the current stippledLineEnable state is VK_TRUE and the current lineRasterizationMode state is VK_LINE_RASTERIZATION_MODE_BRESENHAM, then the stippledBresenhamLines feature must be enabled","The draw requires the **`stippledBresenhamLines`** feature to be enabled.
+
+This is because you set `stippledLineEnable` to `VK_TRUE` and `lineRasterizationMode` to `VK_LINE_RASTERIZATION_MODE_BRESENHAM` with dynamic states enabled, which directly matches the condition in **[VUID]** (and its equivalent for `vkCmdDrawIndexedIndirect2KHR`).",correct,false,false,
+J97697e2b,heldout,rule,"Beyond the generic graphics/compute/transfer requirement, what device property limits which VkCommandPool the commandBuffer for vkCmdCopyMemoryIndirectKHR may be allocated from, and how?",VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues: the command pool of commandBuffer must support at least one of the queue types listed in supportedQueues.,"[vkCmdCopyMemoryIndirectKHR] [commandBuffer] [VK_KHR_copy_memory_indirect, VK_NV_copy_memory_indirect]
+The VkCommandPool that commandBuffer was allocated from must support at least one of the queue types specified in VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues","Beyond the generic requirement that the command buffer's command pool must support `VK_QUEUE_COMPUTE_BIT`, `VK_QUEUE_GRAPHICS_BIT`, or `VK_QUEUE_TRANSFER_BIT`, the specific device property that limits the valid command pools is:
+
+**`VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues`How it works:**
+The command buffer must be allocated from a `VkCommandPool` whose queue family supports **at least one** of the queue types explicitly listed in the `supportedQueues` member of the `VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR` structure.
+
+This is defined in **[VUID]**.
+
+*Note: While VUIDs,, and state the generic requirement (Compute/Graphics/Transfer), VUID clarifies that the implementation may further restrict this to a specific subset of those queue types via the `supportedQueues` property.*",correct,false,false,
+J672aa361,heldout,yes_no,"I'm calling vkCmdCopyImage with a srcImage in a block-compressed format. If a region's srcOffset.y plus extent.height ends above the bottom edge of the srcSubresource, does extent.height have to be a whole multiple of the format's texel block height?
+[expected verdict: yes]","Yes. For each element of pRegions, whenever srcOffset.y + extent.height does not equal the height of the subresource specified by srcSubresource, extent.height must be a multiple of the texel block extent height of the VkFormat of srcImage; only a region that reaches the bottom edge of the subresource is exempt.","[vkCmdCopyImage] [srcImage] [Vulkan 1.0]
+For each element of pRegions, if the sum of srcOffset.y and extent.height does not equal the height of the subresource specified by srcSubresource, extent.height must be a multiple of the texel block extent height of the VkFormat of srcImage","Yes. 
+This is required by [VUID]: if the sum of `srcOffset.y` and `extent.height` does not equal the height of the subresource (i.e., the region does not end exactly at the bottom edge), then `extent.height` must be a multiple of the texel block extent height of the source image’s format. This applies to block-compressed formats, where the texel block height is the compressed block’s height.",correct,false,false,
+Jc2da1726,heldout,rule,"I copy an acceleration structure with VkCopyAccelerationStructureInfoKHR, and the buffer behind dst may not be completely bound to device memory. What is required of the dst memory backing for the part the copy touches?",Every byte of dst that the copy command accesses has to be fully backed by physical memory; unbacked regions within the accessed range of dst are not allowed.,"[VkCopyAccelerationStructureInfoKHR] [buffer] [VK_KHR_acceleration_structure]
+The range of dst accessed by this command must be fully backed by physical memory","The range of `dst` accessed by the copy command must be fully backed by physical memory.
+
+**VUID:** `[VUID]`",correct,false,false,
+J01d0bd5a,heldout,yes_no,"For an image that uses a linear (row-major) texel arrangement, am I required to avoid the creation flag that allows the image to be only partially backed by memory?
+[expected verdict: yes]","Yes. If tiling is VK_IMAGE_TILING_LINEAR, flags must not contain VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT, so a linear image cannot be partially resident.","[VkImageCreateInfo] [tiling] [Vulkan 1.0]
+If tiling is VK_IMAGE_TILING_LINEAR, flags must not contain VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT","No.
+
+The creation flag that allows an image to be partially backed by memory is `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` (or `VK_IMAGE_CREATE_2_SPARSE_RESIDENCY_BIT_KHR` for the 64-bit variant). The Vulkan specification does not impose a restriction preventing the use of this flag with `VK_IMAGE_TILING_LINEAR`.
+
+The `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` is specifically designed to allow images to be backed by sparse memory, which is typically used with `VK_IMAGE_TILING_OPTIMAL` to save memory, but it is not mutually exclusive with linear tiling in the specification's constraints. The requirement to also set `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` applies regardless of the tiling mode.
+
+(Note: While sparse residency is most commonly associated with optimal tiling, the spec does not explicitly forbid combining it with linear tiling, though implementations may choose to ignore the sparse residency aspect for linear images or require optimal tiling for sparse images to be meaningful. However, based strictly on the specification and standard VUIDs like `[VUID]` which governs sparse binding combinations, there is no VUID stating that sparse residency is invalid for linear tiling.)
+
+*Correction based on strict interpretation of common usage vs spec text:* the specification does not explicitly list a VUID forbidding this combination. However, in practice, sparse memory is almost exclusively used with optimal tiling. But the question asks if you are *required* to avoid it. The spec does not state this requirement.
+
+**Answer:** No.
+
+*(Self-Correction/Refinement)*: Wait, let's re-read the definition. `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` says ""the image can be partially backed using sparse memory binding"". It does not mention tiling. `VK_IMAGE_CREATE_SPARSE_BINDING_BIT` also does not mention tiling. There is no VUID in the specification or that says ""If tiling is linear, sparse residency is invalid"". Therefore, the answer remains No.
+
+**Final Answer Formulation:**
+No. The specification does not require avoiding `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` (or `VK_IMAGE_CREATE_2_SPARSE_RESIDENCY_BIT_KHR`) when using `VK_IMAGE_TILING_LINEAR`. While sparse memory is typically associated with optimal tiling, the flags themselves do not impose a tiling restriction.",incorrect,false,true,"Неверный вердикт ""нет"" и прямое утверждение, что запрета нет; ответ длинный, с самоисправлениями."
+J09b3e977,heldout,rule,I build a micromap with vkCmdBuildAccelerationStructuresKHR by chaining a VkAccelerationStructureGeometryMicromapDataKHR into the geometry's pNext. What usage must the buffers behind its data and triangleArray device addresses have been created with?,"When a geometry's pNext chain includes VkAccelerationStructureGeometryMicromapDataKHR, the buffers whose device addresses are used for its data and triangleArray members need VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR in their creation usage.","[vkCmdBuildAccelerationStructuresKHR] [micromap] [VK_KHR_acceleration_structure, VK_KHR_opacity_micromap]
+For each element of pInfos[i].pGeometries or pInfos[i].ppGeometries, if it includes a VkAccelerationStructureGeometryMicromapDataKHR structure in its pNext chain, the buffers from which the buffer device addresses for its data and triangleArray members are queried must have been created with the VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR usage flag","The buffers behind the `data` and `triangleArray` device addresses must have been created with the **`VK_BUFFER_USAGE_ACCELERATION_STRUCTURE_BUILD_INPUT_READ_ONLY_BIT_KHR`** usage flag.
+
+This requirement is specified in VUID **`[VUID]`**.",correct,false,false,
+Jed28095a,heldout,scenario,"Per-attachment color write toggling is enabled on my device, and my pipeline sets that toggle as its only dynamic state, with rasterization not discarded. The subpass has three active color targets. I set the write toggles for just two attachments right before an indirect non-indexed draw. Is this valid?","No. When the colorWriteEnable feature is enabled, the pipeline has VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT and rasterizerDiscardEnable is VK_FALSE, the most recent vkCmdSetColorWriteEnableEXT call must have an attachmentCount greater than or equal to the number of active color attachments; 2 is fewer than the 3 active ones.","[vkCmdDrawIndirect] [attachmentCount] [VK_EXT_color_write_enable, VK_KHR_dynamic_rendering, Vulkan 1.3]
+If the colorWriteEnable feature is enabled, a shader object is bound to the VK_SHADER_STAGE_FRAGMENT_BIT stage or a graphics pipeline is bound which was created with the VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT dynamic state enabled, and the current value of rasterizerDiscardEnable is VK_FALSE, then the attachmentCount parameter of the most recent call to vkCmdSetColorWriteEnableEXT in the current command buffer must be greater than or equal to the number of active color attachments","No, this is not valid.
+
+When per-attachment color write toggling is enabled, the dynamic state must be set for **all** active color attachments in the subpass, not just a subset. The Vulkan specification requires that if an attachment is active in a subpass, its corresponding color write enable state must be defined.
+
+**VUID:** `[VUID]` (and related VUIDs for draw commands)
+> ""If the pipeline dynamic state includes VK_DYNAMIC_STATE_COLOR_WRITE_ENABLE_EXT, then for each active color attachment in the subpass, the corresponding color write enable state must be set.""
+
+Additionally, `[VUID]` implies that the state must be consistent for all active attachments. Failing to set the toggle for the third active attachment violates this requirement.
+
+**Answer:** No, it is invalid.",correct,false,true,"Суть (задать все активные вложения) совпадает с attachmentCount >= числа активных, но цитата VUID выдумана - по инструкции разметки это галлюцинация."
+Jc19ccf7a,heldout,scenario,"I'm creating a regular (not imageless) framebuffer for a render pass using multiple views; its single subpass renders views 1 and 2 and writes one color attachment. The framebuffer has one layer and matches the image size, and the color view covers mip 0 and two array layers with matching format, sample count and color-attachment usage. Is this valid?","No. When renderPass uses non-zero view masks, each color, input, depth/stencil or resolve attachment view in pAttachments needs a layerCount larger than the index of the highest bit set in those masks. Views 1 and 2 give a highest bit index of 2, so the view must have at least 3 layers; 2 layers violate the rule.","[VkFramebufferCreateInfo] [renderPass] [VK_KHR_multiview, Vulkan 1.1]
+If renderPass was specified with non-zero view masks, each element of pAttachments that is used as an input, color, resolve, or depth/stencil attachment by renderPass must have a layerCount greater than the index of the most significant bit set in any of those view masks","No, this is **not valid**.
+
+According to the Vulkan specification, a framebuffer attachment must correspond to a single image view. The `VkFramebufferCreateInfo::pAttachments` member expects an array of `VkImageView` handles, where each handle represents one attachment.
+
+In your scenario, you are attempting to use a single image view that covers **two array layers** as one attachment. This violates the requirement that each attachment in the framebuffer corresponds to a distinct image view. If an image has multiple views (e.g., covering different layers or mip levels), you must create separate `VkImageView` objects for each distinct usage (e.g., one view for layer 0, another for layer 1) and pass them as separate entries in the `pAttachments` array.
+
+Additionally, the specification states regarding `VkFramebufferCreateInfo::pAttachments`:
+> ""pAttachments is a pointer to an array of VkImageView handles, each of which will be used as the corresponding attachment in a render pass instance.""
+
+It does not support a single `VkImageView` spanning multiple layers or mip levels to represent multiple attachments. Each attachment in the render pass must map to exactly one `VkImageView`.
+
+**VUIDs related to this constraint:**
+* **[VUID]**: Implies that the number of attachments must match the number of image views provided.
+* **[VUID]**: While the text, this is a fundamental requirement enforced by the driver and the spec definition of `pAttachments`. The spec implies that `pAttachments` is an array where index `i` corresponds to the `i`-th attachment in the render pass.
+
+Therefore, you must create separate image views for the different layers you wish to render to and pass them as separate elements in the `pAttachments` array.",incorrect,false,true,"Вердикт ""нет"" совпал, но причина выдумана (будто один view на несколько слоёв недопустим); правило про layerCount и view mask не названо."
+J299d82cb,heldout,scenario,"On a single-GPU device with the newer synchronization model turned on but geometry shaders not enabled, I record a reset of a valid, never-waited event outside any render pass in a graphics command buffer, naming only the geometry shader stage as the stage. What is wrong?","Since the geometryShader feature is not enabled, the stageMask of vkCmdResetEvent2 must not include VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT, so specifying the geometry shader stage is invalid.","[vkCmdResetEvent2] [stageMask] [VK_KHR_synchronization2, Vulkan 1.3]
+If the geometryShader feature is not enabled, stageMask must not contain VK_PIPELINE_STAGE_2_GEOMETRY_SHADER_BIT","The issue is that you're naming the geometry shader stage (`VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT`) in the `stageMask` for `vkCmdResetEvent2`, but geometry shaders are not enabled on the device. 
+
+Per [VUID] (and the equivalent for `vkCmdResetEvent2KHR`), the `stageMask` must only include stages that are supported by the device. Since the geometry shader feature is not enabled, specifying `VK_PIPELINE_STAGE_GEOMETRY_SHADER_BIT` in the stage mask is invalid.
+
+You should use a stage mask that only includes stages that are actually supported by the device, such as `VK_PIPELINE_STAGE_ALL_COMMANDS_BIT` or a stage that is enabled (e.g., vertex or fragment shader stages).",correct,false,false,"Названа стадия без _2_, а совет про ALL_COMMANDS не по теме, но суть верна."
+Jfa6f7801,heldout,unanswerable,"If I bind embedded immutable samplers with VkBindDescriptorBufferEmbeddedSamplersInfoEXT and set stageFlags to only VK_SHADER_STAGE_FRAGMENT_BIT, the vertex stage keeps its previous set binding. What do I need to do to bind the same set for the vertex stage too?","The premise is false: stageFlags only selects pipeline bind points. Specifying a subset of a bind point's stages still affects all stages of that bind point, so VK_SHADER_STAGE_FRAGMENT_BIT alone binds the set for the whole graphics bind point, including the vertex stage, as if the original command had been called with VK_PIPELINE_BIND_POINT_GRAPHICS.","UNANSWERABLE (false premise). False premise that stageFlags gives per-stage binding granularity; the section states the binding affects all stages of the bind point.
+If stageFlags specifies a subset of all stages corresponding to one or more pipeline bind points, the binding operation still affects all stages corresponding to the given pipeline bind point(s) as if the equivalent original version of this command had been called with the same parameters.","You **do not** need to take any special action to ""re-bind"" the vertex stage.
+
+According to the documentation for `VkBindDescriptorBufferEmbeddedSamplersInfoEXT` (and similarly for `VkBindDescriptorSetsInfoEXT` and `VkPushDescriptorSetInfo`), if `stageFlags` specifies a subset of stages (e.g., only `VK_SHADER_STAGE_FRAGMENT_BIT`), the binding operation **still affects all stages** corresponding to the given pipeline bind point (e.g., both Vertex and Fragment for graphics pipelines).
+
+The text explicitly states:
+> ""If stageFlags specifies a subset of all stages corresponding to one or more pipeline bind points, the binding operation still affects all stages corresponding to the given pipeline bind point(s) as if the equivalent original version of this command had been called with the same parameters.""
+
+Therefore, calling `vkCmdBindDescriptorBufferEmbeddedSamplersEXT` with `stageFlags` set to `VK_SHADER_STAGE_FRAGMENT_BIT` will update the descriptor buffer binding for **both** the Vertex and Fragment shader stages simultaneously. The Vertex stage will not keep its ""previous set binding"" in the sense of remaining unchanged; rather, the binding is applied to the entire pipeline bind point.
+
+If your goal is to ensure the Vertex stage uses the *same* embedded sampler configuration as the Fragment stage, the single call with `VK_SHADER_STAGE_FRAGMENT_BIT` achieves this. If you intended to bind *different* configurations to different stages within the same bind point, that is not supported by the `stageFlags` mechanism in this manner; `stageFlags` acts as a filter for which stages *receive* the update, but the update applies to the whole bind point.
+
+**Conclusion:** No additional steps are required. The single call updates the binding for all stages in that pipeline bind point.
+
+*(Note: the specification describes the behavior of `stageFlags` for binding operations. While the specific VUIDs for this behavior are typically found in sections like `[VUID]` or similar in the full spec, the specification explicitly describes this behavior without citing a specific VUID number in the specification.)*",correct,false,false,Посылка отвергнута: подмножество stageFlags затрагивает весь bind point.
+J27b771e2,heldout,rule,I start a pipeline statistics query whose enabled counters include ones that count graphics work. What capability does the command pool my command buffer was allocated from need?,The command pool must support graphics operations whenever the pipeline-statistics query pool (VK_QUERY_TYPE_PIPELINE_STATISTICS) has any pipelineStatistics bits indicating graphics operations.,"[vkCmdBeginQuery] [queryType] [Vulkan 1.0]
+If the queryType used to create queryPool was VK_QUERY_TYPE_PIPELINE_STATISTICS and any of the pipelineStatistics indicate graphics operations, the VkCommandPool that commandBuffer was allocated from must support graphics operations","The command pool must support **graphics operations** (i.e., have the `VK_QUEUE_GRAPHICS_BIT` queue flag).
+
+This is required by [VUID], which states that if the query type is `VK_QUERY_TYPE_PIPELINE_STATISTICS` and any of the `pipelineStatistics` indicate graphics operations, the `VkCommandPool` that `commandBuffer` was allocated from must support graphics operations.",correct,false,false,
+Je8a686a0,heldout,yes_no,"On a device where the legacy vertex attribute compatibility feature is turned on, a multi-draw reads a vertex attribute in an ordinary non-packed format made of three 32-bit float components. Must the computed address of that attribute be aligned to the size of one component?
+[expected verdict: no]",No. The rule that attribAddress must be a multiple of the component size of a non-packed format applies only when legacyVertexAttributes is not enabled or the format has 64-bit components; with the feature enabled and 32-bit components (e.g. VK_FORMAT_R32G32B32_SFLOAT) it does not apply.,"[vkCmdDrawMultiEXT] [format] [VK_EXT_multi_draw]
+For each vertex attribute accessed by this command, if its VkVertexInputAttributeDescription::format or VkVertexInputAttributeDescription2EXT::format is not a packed format, and either the legacyVertexAttributes feature is not enabled or format has 64-bit components, the value of attribAddress, calculated as described in Vertex Input Calculation, must be a multiple of the component size of the format","Yes
+specifically **[VUID]**, the alignment requirement depends on whether the format is packed and the state of the `legacyVertexAttributes` feature.
+
+The condition for requiring alignment to the component size is:
+> ""if its... format is **not a packed format**, and either the **legacyVertexAttributes feature is not enabled** or format has 64-bit components, the value of attribAddress... must be a multiple of the component size of the format""
+
+In your scenario:
+1. The format is **not packed** (ordinary non-packed format).
+2. The format consists of **three 32-bit float components** (not 64-bit).
+3. The `legacyVertexAttributes` feature is **turned on** (enabled).
+
+The VUID states the requirement applies if `legacyVertexAttributes` is **not enabled**. Since the feature **is enabled** in your case, the specific constraint in [VUID] does not apply.
+
+Furthermore, (Vertex Input Extraction) states: ""If either format is a 64-bit format or the **legacyVertexAttributes feature is not enabled**, attribAddress must be a multiple of the size in bytes of the component type..."". The converse implies that if the feature *is* enabled and the format is not 64-bit, the strict alignment to the component size is not mandated by these specific rules (allowing for arbitrary alignment as described in regarding legacy features).
+
+Therefore, the address does not *must* be aligned to the component size under these specific conditions.
+
+**No**
+
+*(Correction during thought process: The question asks ""Must the computed address... be aligned...?"" If the rule says ""If X, then must align"", and X is false (feature is enabled), then the rule does not force alignment. So the answer to ""Must it be aligned?"" is No.)*
+
+**Final Answer Formulation:**
+No.
+
+According to **[VUID]**, the requirement for `attribAddress` to be a multiple of the component size applies only if the format is not packed **and** (`legacyVertexAttributes` is not enabled **or** the format has 64-bit components). Since the `legacyVertexAttributes` feature is enabled and the format is 32-bit (not 64-bit), the condition triggering the alignment requirement is not met. confirms that when `legacyVertexAttributes` is enabled, vertex attributes can be loaded from arbitrary buffer alignments.",partial,false,false,"Ответ начинается с ""Yes"", затем дважды исправляется на ""No"". Итоговый вывод верный, но вердикт нечёткий."
+J91472942,heldout,yes_no,"I use descriptor heaps, and one shader binding is mapped so that the resource's address is read straight out of push data. If the shader touches that resource during an address-based indirect compute dispatch, does the pushed value have to be a valid device address?
+[expected verdict: yes]","Yes. For vkCmdDispatchIndirect2KHR, if the bound pipeline or shader was created with a VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT mapping and a shader accesses a resource using it, the address at the expected push data location must be a valid VkDeviceAddress.","[vkCmdDispatchIndirect2KHR] [VK_EXT_descriptor_heap, VK_KHR_device_address_commands]
+If a pipeline is bound to the pipeline bind point used by this command, or shader is bound to a shader stage used by this command, and it was created with a descriptor mapping using VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT, and a shader accesses a resource using that mapping, the value of the address at the expected location in push data must be a valid VkDeviceAddress","Yes. If the shader accesses a resource mapped via `VK_DESCRIPTOR_MAPPING_SOURCE_PUSH_ADDRESS_EXT` during `vkCmdDispatchBase`, the value at the expected push data location must be a valid `VkDeviceAddress` ([VUID]).",correct,false,false,"Вместо vkCmdDispatchIndirect2KHR назван vkCmdDispatchBase, но правило и вердикт верные."
+J33ded5c6,heldout,rule,My device reports shaderRoundingModeRTZFloat16 as VK_FALSE. What does that mean for using the RoundingModeRTZ execution mode in my SPIR-V shaders?,"When shaderRoundingModeRTZFloat16 is VK_FALSE, a shader must not use the RoundingModeRTZ execution mode for the 16-bit floating-point type; RTZ rounding for half-precision floats is unavailable.","[RuntimeSpirv] [shaderRoundingModeRTZFloat16] [VK_KHR_shader_float_controls, Vulkan 1.2]
+If shaderRoundingModeRTZFloat16 is VK_FALSE, then RoundingModeRTZ for 16-bit floating-point type must not be used","It means you **must not use** the `RoundingModeRTZ` execution mode for 16-bit floating-point types in your SPIR-V shaders.
+
+Per [VUID]: If `shaderRoundingModeRTZFloat16` is `VK_FALSE`, then `RoundingModeRTZ` for 16-bit floating-point types must not be used.",correct,false,false,
+Jb2c95505,heldout,yes_no,"Can I clear a color image directly while it sits in the layout optimized for being a transfer source, passing that layout to the clear command?
+[expected verdict: no]","No. vkCmdClearColorImage only accepts imageLayout values VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL or VK_IMAGE_LAYOUT_GENERAL; VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL is not allowed.","[vkCmdClearColorImage] [imageLayout] [Vulkan 1.0]
+imageLayout must be VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR, VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL or VK_IMAGE_LAYOUT_GENERAL","No.
+
+The valid layouts for `vkCmdClearColorImage` are `VK_IMAGE_LAYOUT_SHARED_PRESENT_KHR`, `VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL`, or `VK_IMAGE_LAYOUT_GENERAL` ([VUID]). The layout optimized for being a transfer source is `VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL`, which is not in this list.",correct,false,false,
+Ja2f64372,heldout,rule,"Beyond the generic graphics/compute/transfer requirement, what device property limits which VkCommandPool the commandBuffer for vkCmdCopyMemoryIndirectKHR may be allocated from, and how?",VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues: the command pool of commandBuffer must support at least one of the queue types listed in supportedQueues.,"[vkCmdCopyMemoryIndirectKHR] [commandBuffer] [VK_KHR_copy_memory_indirect, VK_NV_copy_memory_indirect]
+The VkCommandPool that commandBuffer was allocated from must support at least one of the queue types specified in VkPhysicalDeviceCopyMemoryIndirectPropertiesKHR::supportedQueues","The `VkCommandPool` that the command buffer for `vkCmdCopyMemoryIndirectKHR` is allocated from must support **transfer operations** (i.e., the pool must have been created with the `VK_COMMAND_POOL_CREATE_TRANSIENT_BIT`? No—that’s not the relevant limit). 
+
+The correct answer is: **The `VkPhysicalDeviceHostCopyMemoryPropertiesEXT::copySrcLayoutCount` and `copyDstLayoutCount` limits do not apply here.** 
+
+Actually, the specific limit is **`VkPhysicalDeviceMaintenance5PropertiesKHR::earlyFragmentTestSamples`**? No.
+
+Let me be precise. The VUID for `vkCmdCopyMemoryIndirectKHR` states:
+
+- **[VUID]** (or similar): The command buffer must have been allocated from a command pool that was created with the **`VK_COMMAND_POOL_CREATE_TRANSIENT_BIT`**? No, that’s not it.
+
+The actual requirement is: The command pool must have been created with the **`VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT`**? No.
+
+I recall that `vkCmdCopyMemoryIndirectKHR` is a **transfer** command, but it also requires the **`VK_KHR_maintenance5`** extension. The device property that limits the pool is **`VkPhysicalDeviceMaintenance5PropertiesKHR::maxIndirectCopyMemorySize`**? No, that’s a size limit.
+
+The correct answer is: **There is no additional device property beyond the generic transfer queue family support.** The command pool must be created on a queue family that supports **transfer operations** (i.e., the queue family’s `queueFlags` must include `VK_QUEUE_TRANSFER_BIT`). This is the only requirement—there is no special property that further restricts which command pool can be used for this command.
+
+If you are asking about a specific property like `VkPhysicalDeviceHostCopyMemoryPropertiesEXT` (which is for `vkCmdCopyMemoryToImageIndirectEXT`), that’s a different extension.
+
+So, the answer is: **No additional device property beyond the generic transfer queue support.** The command buffer must be allocated from a command pool created on a queue family that supports transfer operations. This is covered by [VUID] (which requires the command buffer to be in a valid state) and the general requirement that the command pool’s queue family must support the command’s operation type (transfer). 
+
+If you meant a specific property like `VkPhysicalDeviceMaintenance5PropertiesKHR::maxIndirectCopyMemorySize`, that limits the `size` parameter, not the pool. 
+
+Thus, the answer is: **No special device property; only the queue family’s transfer support matters.**",incorrect,false,true,"Нужное свойство supportedQueues не названо, ответ - хаотичный поток догадок; итог ""никакого свойства нет"" неверен."
+Ja9d9acf1,heldout,yes_no,"In a host vkBuildAccelerationStructuresKHR call with mode VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR, one VK_GEOMETRY_TYPE_TRIANGLES_KHR geometry had a non-NULL geometry.triangles.transformData when srcAccelerationStructure was last built. Can I pass a NULL transformData for that geometry in this update?
+[expected verdict: no]","No. In an update, if a triangle geometry's geometry.triangles.transformData address was non-NULL in the last build of srcAccelerationStructure, it must be non-NULL in the update as well.","[vkBuildAccelerationStructuresKHR] [pInfos] [VK_KHR_acceleration_structure]
+For each element of pInfos, if its mode member is VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR, then for each VkAccelerationStructureGeometryKHR structure referred to by its pGeometries or ppGeometries members, if geometryType is VK_GEOMETRY_TYPE_TRIANGLES_KHR, if its geometry.triangles.transformData address was not NULL when srcAccelerationStructure was last built, then it must not be NULL","No. 
+When updating an acceleration structure with `VK_BUILD_ACCELERATION_STRUCTURE_MODE_UPDATE_KHR`, the geometry data (including `transformData`) must match the data used in the original build. If `transformData` was non-NULL in the source build, it must be non-NULL and point to the same transform data in the update call. Passing NULL would violate the requirement that the geometry be identical to the one used in the initial build. 
+
+VUID: `[VUID]` (for update mode, the geometry must be identical to the one used in the initial build).",partial,false,true,"Основное требование (не NULL) верно, но выдумано «должен указывать на те же данные» и «геометрия должна быть идентичной» - правило этого не требует."
+J32a88b5d,heldout,yes_no,"Is it allowed to blit into a destination image whose format the device reports as usable as a blit source but not as a blit target?
+[expected verdict: no]","No. For a blit (VkBlitImageInfo2), the format features of dstImage have to contain VK_FORMAT_FEATURE_BLIT_DST_BIT; blit-source support alone does not permit using the image as the destination.","[VkBlitImageInfo2] [dstImage] [VK_KHR_copy_commands2, Vulkan 1.3]
+The format features of dstImage must contain VK_FORMAT_FEATURE_BLIT_DST_BIT","No. The destination image must have the `VK_FORMAT_FEATURE_BLIT_DST_BIT` format feature, as required by [VUID].",correct,false,false,
+Jeed0505a,heldout,scenario,"I draw with vkCmdDrawIndexedIndirect using shader objects and no bound graphics pipeline. The device has shaderObject, meshShader and taskShader enabled; tessellationShader and geometryShader are disabled. In this command buffer I called vkCmdBindShadersEXT for VK_SHADER_STAGE_VERTEX_BIT and VK_SHADER_STAGE_FRAGMENT_BIT with valid shaders and for VK_SHADER_STAGE_MESH_BIT_EXT with VK_NULL_HANDLE. What is wrong?","With no graphics pipeline bound and the taskShader feature enabled, vkCmdBindShadersEXT must have been called in the current command buffer with VK_SHADER_STAGE_TASK_BIT_EXT among its pStages (for example binding VK_NULL_HANDLE to it). The task stage was never included in any bind call, so the draw is invalid.","[vkCmdDrawIndexedIndirect] [VK_EXT_mesh_shader, VK_EXT_shader_object]
+If there is no bound graphics pipeline, and the taskShader feature is enabled, vkCmdBindShadersEXT must have been called in the current command buffer with pStages with an element of VK_SHADER_STAGE_TASK_BIT_EXT","**What is wrong:**
+You are violating the validation requirement for the **Task Shader stage**.
+
+**Reasoning:**
+1. **Analysis**: You are using `vkCmdDrawIndexedIndirect` with `VK_EXT_mesh_shader` and `VK_EXT_shader_object` enabled.
+2. **Missing Stage**: The device has `taskShader` enabled. According to **[VUID]**, if `taskShader` is enabled and there is no bound graphics pipeline, `vkCmdBindShadersEXT` **must** have been called with an element of `VK_SHADER_STAGE_TASK_BIT_EXT`.
+3. **Your State**: You bound shaders for `VERTEX`, `FRAGMENT`, and `MESH`, but **not** for `TASK`.
+4. **Result**: This triggers the validation error defined in **[VUID]**.
+
+**Corrective Action:**
+You must call `vkCmdBindShadersEXT` with a valid shader object for `VK_SHADER_STAGE_TASK_BIT_EXT` before calling `vkCmdDrawIndexedIndirect`.
+
+*(Note: Binding `VK_NULL_HANDLE` for the Mesh stage is generally allowed if the pipeline uses a null mesh shader, but the Task stage cannot be omitted if the feature is enabled.)*",correct,false,false,
+J79722de9,heldout,rule,I'm recording a device-side build of an opacity micromap. What type must the destination acceleration structure object have been given when I created it?,"For a build whose type is VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR, the dstAccelerationStructure has to have been created with VkAccelerationStructureCreateInfoKHR::type equal to VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR or VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR.","[vkCmdBuildAccelerationStructuresKHR] [dstAccelerationStructure] [VK_KHR_acceleration_structure, VK_KHR_opacity_micromap]
+For each element of pInfos, if its type member is VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR, its dstAccelerationStructure member must have been created with a value of VkAccelerationStructureCreateInfoKHR::type equal to either VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR or VK_ACCELERATION_STRUCTURE_TYPE_GENERIC_KHR","The destination acceleration structure object must have been created with `type` set to `VK_ACCELERATION_STRUCTURE_TYPE_OPACITY_MICROMAP_KHR` ([VUID]). Additionally, the `VkPhysicalDeviceOpacityMicromapFeaturesKHR::micromap` feature must be enabled.",partial,false,false,"Назван только OPACITY_MICROMAP, упущен допустимый GENERIC; лишнее условие про feature."
+Jdf8332b7,heldout,scenario,"My fragment shader performs 32-bit atomic adds on a VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER whose buffer view uses VK_FORMAT_R32_UINT. The shader's image type declares the matching R32ui format with a 32-bit unsigned sampled type, and the buffer is not sparse. On this device the format's buffer features include VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT but not VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT. What is wrong with my vkCmdDraw?","Because the storage texel buffer descriptor is accessed with atomic operations during vkCmdDraw, the buffer view's format features must include VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT. Here VK_FORMAT_R32_UINT only reports VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT, so the atomic access is invalid.","[vkCmdDraw] [Vulkan 1.0]
+If a VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER descriptor is accessed using atomic operations as a result of this command, then the storage texel buffer’s format features must contain VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT","You are violating the validation rule for atomic operations on storage texel buffers.
+
+According to **[VUID]**, if a `VK_DESCRIPTOR_TYPE_STORAGE_TEXEL_BUFFER` descriptor is accessed using atomic operations (such as your 32-bit atomic adds), the storage texel buffer's format features **must** contain `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`.
+
+In your scenario, the buffer features include `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT` but **not** `VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT`. Therefore, performing atomic operations on this buffer within a draw command is invalid.
+
+**Fix:** You must either:
+1. Ensure the buffer format supports atomic operations (e.g., use a format that has the `ATOMIC_BIT` feature enabled on your specific device).
+2. Remove the atomic operations from the shader code for this buffer.
+3. Use a different descriptor type (e.g., `VK_DESCRIPTOR_TYPE_STORAGE_BUFFER`) if atomic operations are not strictly required on a texel buffer.
+
+**Cited VUID:** `[VUID]`",correct,false,false,
+Jb3df92bd,heldout,rule,My pipeline uses VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT and VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT. Before calling vkCmdDrawIndexedIndirect2KHR I set stippledLineEnable to VK_TRUE and lineRasterizationMode to VK_LINE_RASTERIZATION_MODE_BRESENHAM. Which device feature does this draw require?,"When the bound graphics pipeline was created with VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT or VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT as dynamic state, and at draw time stippledLineEnable is VK_TRUE with lineRasterizationMode set to VK_LINE_RASTERIZATION_MODE_BRESENHAM, the stippledBresenhamLines feature has to be enabled on the device.","[vkCmdDrawIndexedIndirect2KHR] [stippledLineEnable] [VK_EXT_extended_dynamic_state3, VK_EXT_line_rasterization, VK_EXT_shader_object (+3 more)]
+If the bound graphics pipeline state was created with the VK_DYNAMIC_STATE_LINE_STIPPLE_ENABLE_EXT or VK_DYNAMIC_STATE_LINE_RASTERIZATION_MODE_EXT dynamic states enabled, and if the current stippledLineEnable state is VK_TRUE and the current lineRasterizationMode state is VK_LINE_RASTERIZATION_MODE_BRESENHAM, then the stippledBresenhamLines feature must be enabled","Specifically **[VUID]**, the draw requires the **`stippledRectangularLines`** feature.
+
+However, there is a conflict in your scenario:
+1. You set `lineRasterizationMode` to `VK_LINE_RASTERIZATION_MODE_BRESENHAM`.
+2. ([VUID]) only specifies a requirement for `stippledRectangularLines` when the mode is `VK_LINE_RASTERIZATION_MODE_RECTANGULAR`.
+3. ([VUID]) states that if `stippledLineEnable` is `VK_TRUE` and `lineRasterizationMode` is `VK_LINE_RASTERIZATION_MODE_BRESENHAM`, the **`stippledBresenhamLines`** feature must be enabled.
+
+Since your pipeline uses dynamic states, the validation logic for the draw command will check the *current* state values against the pipeline creation requirements. Therefore, with `stippledLineEnable` = `VK_TRUE` and `lineRasterizationMode` = `VK_LINE_RASTERIZATION_MODE_BRESENHAM`, the draw requires the **`stippledBresenhamLines`** feature.
+
+**Answer:** `stippledBresenhamLines`
+
+**Cited VUIDs:**
+* `[VUID]` 
+* `[VUID]`",partial,false,false,"Сначала заявлен stippledRectangularLines, затем исправлено на stippledBresenhamLines. Итог верный, но начало неверное."
+Je9c3cb74,heldout,yes_no,"For H.264 encode rate control, if I specify a non-zero interval between IDR frames, does that interval have to be no smaller than the number of frames in a group of pictures?
+[expected verdict: yes]","Yes. In VkVideoEncodeH264RateControlInfoKHR, a non-zero idrPeriod must be greater than or equal to gopFrameCount.","[VkVideoEncodeH264RateControlInfoKHR] [idrPeriod] [VK_KHR_video_encode_h264, VK_KHR_video_queue]
+If idrPeriod is not 0, then it must be greater than or equal to gopFrameCount","No. The specification does not require the IDR period to be greater than or equal to the GOP frame count. The `idrPeriod` and `gopFrameCount` are independent parameters in `VkVideoEncodeH264RateControlInfoKHR`, and no such constraint is stated. The specification only defines their individual semantics (e.g., 0 means implementation-dependent, `UINT32_MAX` means infinite) and notes that implementations may use them as guidance for rate control, but does not impose a relationship between them.
+
+This answer is, which contains no VUID or explicit requirement linking these two values.",incorrect,false,true,"Неверный вердикт: утверждает, что связи idrPeriod и gopFrameCount в спеке нет, вопреки правилу."
+J76db3db8,heldout,rule,"I issue an indirect draw whose draw count is read from a buffer. The pipeline treats only the per-binding vertex stride as dynamic, not the entire vertex input layout. What must I record earlier in the command buffer for this draw to be valid?","If the bound graphics pipeline has VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE enabled but not VK_DYNAMIC_STATE_VERTEX_INPUT_EXT, then before vkCmdDrawIndirectCount the command buffer must contain a still-valid call to vkCmdBindVertexBuffers2 with a non-NULL pStrides, or to vkCmdBindVertexBuffers3KHR with setStride equal to VK_TRUE.","[vkCmdDrawIndirectCount] [pStrides] [VK_AMD_draw_indirect_count, VK_EXT_extended_dynamic_state, VK_KHR_draw_indirect_count (+2 more)]
+If the bound graphics pipeline was created with the VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE dynamic state enabled, but without the VK_DYNAMIC_STATE_VERTEX_INPUT_EXT dynamic state enabled, then vkCmdBindVertexBuffers2 with a non-NULL pStrides parameter or vkCmdBindVertexBuffers3KHR with setStride set to VK_TRUE must have been called and not subsequently invalidated in the current command buffer prior to this draw command","You must have called `vkCmdBindVertexBuffers2` with a non-NULL `pStrides` parameter (or `vkCmdBindVertexBuffers3KHR` with `setStride` set to `VK_TRUE`) for the relevant vertex buffer binding, and that binding must not have been subsequently invalidated in the current command buffer prior to the draw command.
+
+This is required by [VUID], which states that if the pipeline was created with `VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE` enabled but without `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT`, then such a binding command must have been recorded and not invalidated before the draw.",correct,false,false,
+Jfc42395f,heldout,rule,"I fill a VkShaderCreateInfoEXT with stage = VK_SHADER_STAGE_GEOMETRY_BIT to make a geometry shader object, but I did not enable the geometryShader feature on the device. What is required for this to be valid?",VkShaderCreateInfoEXT::stage must not be VK_SHADER_STAGE_GEOMETRY_BIT unless the geometryShader feature is enabled; to create a geometry-stage shader object you have to enable geometryShader.,"[VkShaderCreateInfoEXT] [stage] [VK_EXT_shader_object]
+If the geometryShader feature is not enabled, stage must not be VK_SHADER_STAGE_GEOMETRY_BIT","I don't know. The VUIDs cited ([VUID]) clearly state that if the geometryShader feature is not enabled, `stage` must not be `VK_SHADER_STAGE_GEOMETRY_BIT`. This means your usage is **invalid** as-is. 
+
+To make it valid, you would need to enable the `geometryShader` feature when creating the logical device (via `VkPhysicalDeviceFeatures` or `VkPhysicalDeviceVulkan12Features`). However,",correct,false,false,"Начинается с «не знаю», но дальше даёт верный вывод, так что это не отказ (abstained=false). Ответ обрезан."
+J65f494ed,heldout,scenario,"In a primary command buffer that is recording (graphics pool, outside video coding) I call vkCmdSetScissor with firstScissor = 0, scissorCount = 1 and one VkRect2D: offset = {0, 100}, extent = {64, 2147483600}. What is wrong with this call?","It violates the overflow rule for scissor rectangles: for every element of pScissors, offset.y + extent.height must be computable without signed integer addition overflow. Here 100 + 2147483600 exceeds the largest 32-bit signed value (2147483647), so the call is invalid; the horizontal values and the other parameters are fine.","[vkCmdSetScissor] [offset] [Vulkan 1.0]
+Evaluation of (offset.y + extent.height) must not cause a signed integer addition overflow for any element of pScissors","The issue is that the scissor rectangle's extent height (2147483600) exceeds the maximum allowed value. The Vulkan specification requires that the sum of `offset.y` and `extent.height` must not exceed `VkPhysicalDeviceLimits::maxFramebufferHeight` ([VUID]). Since 100 + 2147483600 = 2147483700, this exceeds the typical maximum framebuffer height limit (often 16384 or similar, but at minimum must be ≤ 2^31-1).
+
+Additionally, the scissor rectangle must be within the framebuffer bounds, and the extent dimensions must be valid per [VUID] (extent.width and extent.height must be ≤ maxFramebufferWidth/Height respectively).
+
+The call itself is valid in terms of `firstScissor` and `scissorCount` ([VUID] is satisfied since 0+1=1 ≤ maxViewports), but the rectangle dimensions are invalid.",incorrect,false,true,Подменено правило: сумма сравнивается с maxFramebufferHeight вместо переполнения int32; выдуманные ограничения.
+J4c020d01,heldout,scenario,"For vkCmdBeginRendering I pass a VkRenderingInfo with flags = 0, viewMask 0, layerCount 1, no depth or stencil attachment, and one color attachment: a 4-sample UNORM view in COLOR_ATTACHMENT_OPTIMAL with resolveMode = VK_RESOLVE_MODE_CUSTOM_BIT_EXT and a single-sampled resolveImageView of the same format and layout. customResolve is enabled and renderArea fits. What's wrong?","Because an attachment's resolveMode contains VK_RESOLVE_MODE_CUSTOM_BIT_EXT, VkRenderingInfo::flags has to include VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT; with flags = 0 the structure is invalid. This applies to any color, depth or stencil attachment that uses the custom resolve mode.","[VkRenderingInfo] [pColorAttachments] [VK_EXT_custom_resolve, VK_KHR_dynamic_rendering, Vulkan 1.3]
+For any element of pColorAttachments, pDepthAttachment, or pStencilAttachment, if resolveMode contains VK_RESOLVE_MODE_CUSTOM_BIT_EXT, then flags must contain VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT","There is no explicit VUID that directly states what is wrong with your setup. However, I can identify a potential issue from the specification text:
+
+The key issue is that you have **not set the `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` flag** in `VkRenderingInfo::flags`. 
+
+From:
+> The contents of a resolve attachment within the render area become undefined at the time vkCmdBeginCustomResolveEXT is called if all of the following conditions are true:
+> - **VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT is set.**
+> - The attachment sets resolveMode to VK_RESOLVE_MODE_CUSTOM_BIT_EXT.
+
+And from:
+> Following this call, any resolveImageView with resolveMode set to VK_RESOLVE_MODE_CUSTOM_BIT_EXT will be written by outputs which would otherwise have written to the imageView image until the end of the current render pass instance.
+
+Without the `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` flag set, the custom resolve behavior (including the undefined contents of the resolve attachment at `vkCmdBeginCustomResolveEXT` and the writes to the resolve attachment during the custom resolve pass) will not be triggered, even though you've set `resolveMode` to `VK_RESOLVE_MODE_CUSTOM_BIT_EXT`.
+
+**To fix this:** You need to set `VK_RENDERING_CUSTOM_RESOLVE_BIT_EXT` in the `flags` member of your `VkRenderingInfo` structure.
+
+Note:",partial,false,true,"Нужный флаг назван, но заявлено «явного VUID нет» (противоречит правилу), а ошибка подана как «custom resolve не сработает», а не как нарушение. Согласовано с J83b82853/Jcfec215f."
+J30f81b55,heldout,rule,"I issue an indirect draw whose draw count is read from a buffer. The pipeline treats only the per-binding vertex stride as dynamic, not the entire vertex input layout. What must I record earlier in the command buffer for this draw to be valid?","If the bound graphics pipeline has VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE enabled but not VK_DYNAMIC_STATE_VERTEX_INPUT_EXT, then before vkCmdDrawIndirectCount the command buffer must contain a still-valid call to vkCmdBindVertexBuffers2 with a non-NULL pStrides, or to vkCmdBindVertexBuffers3KHR with setStride equal to VK_TRUE.","[vkCmdDrawIndirectCount] [pStrides] [VK_AMD_draw_indirect_count, VK_EXT_extended_dynamic_state, VK_KHR_draw_indirect_count (+2 more)]
+If the bound graphics pipeline was created with the VK_DYNAMIC_STATE_VERTEX_INPUT_BINDING_STRIDE dynamic state enabled, but without the VK_DYNAMIC_STATE_VERTEX_INPUT_EXT dynamic state enabled, then vkCmdBindVertexBuffers2 with a non-NULL pStrides parameter or vkCmdBindVertexBuffers3KHR with setStride set to VK_TRUE must have been called and not subsequently invalidated in the current command buffer prior to this draw command","Here is the analysis:
+
+The scenario describes an indirect draw where the **draw count** is read from a buffer (e.g., using `vkCmdDrawMeshTasksIndirectCountNV`, `vkCmdDrawMeshTasksIndirectCountEXT`, or `vkCmdDrawIndirectByteCount2EXT`). The question asks what must be recorded earlier if the pipeline treats only the **per-binding vertex stride** as dynamic.
+
+1. **Analysis**: the specification sections through describe the function signatures, parameters, and host synchronization requirements for various indirect draw commands. They mention that these commands are ""affected by conditional rendering"" but do not explicitly list the specific pipeline state requirements regarding dynamic states (like vertex strides) in the text.
+2. **Specification Knowledge**: In Vulkan, when a draw command is issued (especially indirect ones reading counts from buffers), the pipeline state must be fully defined before execution. If a vertex attribute binding has a dynamic stride (indicated by the `dynamic` flag in `VkVertexInputBindingDescription`), the application must call `vkCmdSetVertexInputDivisor` (or similar dynamic state setters depending on the version and specific dynamic state enabled) to set the stride for that binding.
+3. **The ""Dynamic"" State Requirement**: The phrase ""treats only the per-binding vertex stride as dynamic"" implies that the vertex input layout is not fully static. In Vulkan, if a vertex attribute binding is marked as having a dynamic stride, the driver requires the application to set this stride via a dynamic state command (typically `vkCmdSetVertexInputDivisor` in older specs or via the `VkPipelineDynamicStateCreateInfo` enabling `VK_DYNAMIC_STATE_VERTEX_INPUT_EXT` or similar mechanisms in newer specs) **before** the draw command is executed.
+4. **Missing Context in the specification**: It only mentions that the commands are ""affected by conditional rendering"".
+
+**Conclusion**:
+To make the draw valid when the vertex stride is dynamic, you must record the command that sets the dynamic vertex input state (specifically the vertex stride for the affected binding) **before** the indirect draw command.
+
+Since 
+
+**Answer**:
+You must record **`vkCmdSetVertexInputDivisor`** (or the equivalent dynamic state setter for vertex input strides) earlier in the command buffer.
+
+*Note: Based on general Vulkan specification knowledge, if a vertex binding stride is dynamic, the corresponding dynamic state command must be issued before the draw command. Failure to do so typically results in a VUID violation such as `[VUID]` (or similar, depending on the specific dynamic state enabled).*",incorrect,false,true,"Нужные vkCmdBindVertexBuffers2/3KHR не названы; предложена vkCmdSetVertexInputDivisor, не связанная с этим правилом."
+J21f40007,heldout,unanswerable,"I'm restoring a serialized micromap with vkCmdCopyMemoryToMicromapEXT using mode VK_COPY_MICROMAP_MODE_DESERIALIZE_COMPACT_EXT. Does dst then only need to be as large as the compacted size, rather than the size used when the data was serialized?","There is no VK_COPY_MICROMAP_MODE_DESERIALIZE_COMPACT_EXT mode in Vulkan. For VkCopyMemoryToMicromapInfoEXT, mode must be VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT, and dst must have been created with a size at least as large as the one used to serialize the data in src.","UNANSWERABLE (false premise). Invents a combined deserialize+compact copy mode by merging two real VkCopyMicromapModeEXT values.
+mode must be VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT
+dst must have been created with a size greater than or equal to that used to serialize the data in src","No, that is not correct.
+
+First, the mode value you specified, `VK_COPY_MICROMAP_MODE_DESERIALIZE_COMPACT_EXT`, does not exist in the `VkCopyMicromapModeEXT` enumeration. The valid modes are:
+* `VK_COPY_MICROMAP_MODE_CLONE_EXT`
+* `VK_COPY_MICROMAP_MODE_SERIALIZE_EXT`
+* `VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT`
+* `VK_COPY_MICROMAP_MODE_COMPACT_EXT`
+
+Assuming you intended to use `VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT` (deserializing into a micromap) or `VK_COPY_MICROMAP_MODE_COMPACT_EXT` (creating a compact version), the destination memory requirements differ:
+
+1. **Deserialization (`VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT`):** The destination must be able to hold the deserialized data. According to **[VUID]**, the `dst` must have been created with a size **greater than or equal to that used to serialize the data in src**. It cannot be smaller than the original serialized size.
+2. **Compaction (`VK_COPY_MICROMAP_MODE_COMPACT_EXT`):** This mode specifically creates a more compact version. According to the description in, the `dst` must have been created with a size **at least as large as that returned by `vkCmdWriteMicromapsPropertiesEXT` after the build of the micromap specified by src** (which implies the compacted size).
+
+Therefore, you cannot use a destination buffer smaller than the original serialized size for deserialization. You can only use a smaller buffer if you explicitly use the `VK_COPY_MICROMAP_MODE_COMPACT_EXT` mode, which generates a new compacted representation.
+
+**Conclusion:**
+* If using `VK_COPY_MICROMAP_MODE_DESERIALIZE_EXT`: `dst` must be $\ge$ **serialized size**.
+* If using `VK_COPY_MICROMAP_MODE_COMPACT_EXT`: `dst` must be $\ge$ **compacted size**.
+
+You cannot mix these requirements (e.g., deserializing into a buffer sized for compaction) unless the compacted size happens to be larger than the serialized size, which is generally not the case for compaction operations.
+
+**Relevant VUIDs:**
+* `[VUID]`
+* `[VUID]` (for the serialize mode counterpart)",correct,false,false,Несуществование режима DESERIALIZE_COMPACT названо.
+J080eeb6c,heldout,scenario,"For a VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER VkResourceDescriptorInfoEXT (valid, aligned, non-zero, in-limit range from a uniform buffer) I chain a VkDebugUtilsObjectNameInfoEXT with objectType = VK_OBJECT_TYPE_BUFFER, objectHandle = VK_NULL_HANDLE and a valid UTF-8 pObjectName. What is wrong?","When a VkDebugUtilsObjectNameInfoEXT is in the pNext chain of VkResourceDescriptorInfoEXT, its objectType must be VK_OBJECT_TYPE_UNKNOWN; using VK_OBJECT_TYPE_BUFFER violates this.","[VkResourceDescriptorInfoEXT] [pNext] [VK_EXT_debug_utils, VK_EXT_descriptor_heap]
+If there is a VkDebugUtilsObjectNameInfoEXT structure in the pNext chain, its objectType must be VK_OBJECT_TYPE_UNKNOWN","The issue is that `objectHandle` must be a valid Vulkan handle of the type associated with `objectType` (in this case, a `VkBuffer` handle), **or** `VK_NULL_HANDLE` **only if** `objectType` is `VK_OBJECT_TYPE_UNKNOWN`. 
+
+Since you set `objectType = VK_OBJECT_TYPE_BUFFER` but `objectHandle = VK_NULL_HANDLE`, this violates **[VUID]**, which requires that when `objectType` is not `VK_OBJECT_TYPE_UNKNOWN`, `objectHandle` must be a valid handle of that type (not `VK_NULL_HANDLE`).
+
+For naming a descriptor via `VkResourceDescriptorInfoEXT`, the correct usage (per the specification) is to set `objectType = VK_OBJECT_TYPE_UNKNOWN` and `objectHandle = VK_NULL_HANDLE`, as described in the section on `VkResourceDescriptorInfoEXT`.",incorrect,false,true,"Выдвинуто нарушение про NULL objectHandle, а не требование objectType = UNKNOWN. Совет про UNKNOWN есть, но диагноз неверный."
+Jd6fa4fa7,heldout,rule,My device reports shaderRoundingModeRTZFloat16 as VK_FALSE. What does that mean for using the RoundingModeRTZ execution mode in my SPIR-V shaders?,"When shaderRoundingModeRTZFloat16 is VK_FALSE, a shader must not use the RoundingModeRTZ execution mode for the 16-bit floating-point type; RTZ rounding for half-precision floats is unavailable.","[RuntimeSpirv] [shaderRoundingModeRTZFloat16] [VK_KHR_shader_float_controls, Vulkan 1.2]
+If shaderRoundingModeRTZFloat16 is VK_FALSE, then RoundingModeRTZ for 16-bit floating-point type must not be used","It means you **must not** use the `RoundingModeRTZ` execution mode for 16-bit floating-point types in your SPIR-V shaders. 
+
+This is enforced by **[VUID]**, which states: *""If shaderRoundingModeRTZFloat16 is VK_FALSE, then RoundingModeRTZ for 16-bit floating-point type must not be used.""*
+
+In other words, your device does not support round-towards-zero for 16-bit float operations, so any shader that attempts to use this execution mode for 16-bit floats will be invalid.",correct,false,false,
+J086421a7,heldout,yes_no,"Is it allowed to blit into a destination image whose format the device reports as usable as a blit source but not as a blit target?
+[expected verdict: no]","No. For a blit (VkBlitImageInfo2), the format features of dstImage have to contain VK_FORMAT_FEATURE_BLIT_DST_BIT; blit-source support alone does not permit using the image as the destination.","[VkBlitImageInfo2] [dstImage] [VK_KHR_copy_commands2, Vulkan 1.3]
+The format features of dstImage must contain VK_FORMAT_FEATURE_BLIT_DST_BIT","No. The destination image must have the `VK_FORMAT_FEATURE_BLIT_DST_BIT` format feature, regardless of whether it supports blit source. This is required by [VUID].",correct,false,false,
+J9c50e37b,heldout,scenario,"The extension allowing mixed color and depth sample counts is enabled. My pipeline has a cluster culling stage and a fragment stage, no descriptors, sample shading off, rasterization discard statically off, and only the coverage modulation mode left dynamic. In the matching render pass and subpass I issue one cluster draw with a 1x1x1 group count, never having set any dynamic state and with no queries running. What is wrong?","The coverage modulation mode was never set: since the pipeline has VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV, VK_NV_framebuffer_mixed_samples is enabled and rasterizerDiscardEnable is VK_FALSE, vkCmdSetCoverageModulationModeNV must be called and not invalidated in the command buffer before vkCmdDrawClusterHUAWEI.","[vkCmdDrawClusterHUAWEI] [VK_EXT_extended_dynamic_state3, VK_EXT_shader_object, VK_HUAWEI_cluster_culling_shader (+1 more)]
+If the VK_NV_framebuffer_mixed_samples extension is enabled, a shader object is bound to any graphics stage or a graphics pipeline is bound which was created with the VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV dynamic state enabled, and the current value of rasterizerDiscardEnable is VK_FALSE, then vkCmdSetCoverageModulationModeNV must have been called and not subsequently invalidated in the current command buffer prior to this drawing command","The issue is that you have not set the coverage modulation mode dynamic state, which is required.
+
+[VUID] states that if the `VK_NV_framebuffer_mixed_samples` extension is enabled (which allows mixed color and depth sample counts), and a graphics pipeline is bound with the `VK_DYNAMIC_STATE_COVERAGE_MODULATION_MODE_NV` dynamic state enabled (which you have, since it's the only dynamic state), and `rasterizerDiscardEnable` is `VK_FALSE` (which you have, since it's statically off), then `vkCmdSetCoverageModulationModeNV` **must** have been called and not subsequently invalidated prior to the drawing command.
+
+Since you never set any dynamic state, this requirement is violated. You must call `vkCmdSetCoverageModulationModeNV` before issuing the `vkCmdDrawClusterHUAWEI` command.",correct,false,false,
+Jbb1d769a,heldout,yes_no,"I created my mesh-shading graphics pipeline with VkGraphicsPipelineCreateInfo::subpass = 0, but after vkCmdNextSubpass the render pass is now in subpass 1. Is it allowed to call vkCmdDrawMeshTasksEXT with that pipeline still bound?
+[expected verdict: no]","No. For vkCmdDrawMeshTasksEXT, the current subpass index of the render pass must equal the subpass member of the VkGraphicsPipelineCreateInfo used to create the bound graphics pipeline, so a pipeline built for subpass 0 cannot be used in subpass 1.","[vkCmdDrawMeshTasksEXT] [subpass] [VK_EXT_mesh_shader]
+The subpass index of the current render pass must be equal to the subpass member of the VkGraphicsPipelineCreateInfo structure specified when creating the VkPipeline bound to VK_PIPELINE_BIND_POINT_GRAPHICS","No
+
+The Vulkan specification states that `vkCmdDrawMeshTasksEXT` must be called with a graphics pipeline bound that was created with `VkGraphicsPipelineCreateInfo::subpass` matching the current subpass of the render pass instance. If the render pass instance is in subpass 1, but the bound pipeline was created for subpass 0, this violates the requirement.
+
+**VUID:** `[VUID]` (or generally `[VUID]`.
+
+Specifically, the VUID `[VUID]` requires:
+`VkGraphicsPipelineCreateInfo::subpass` must be equal to the current subpass of the render pass instance.",correct,false,false,"""matching"" вместо ""equal"", но суть верна."

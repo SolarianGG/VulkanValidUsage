@@ -1,0 +1,304 @@
+{
+ "run_id": "pilot",
+ "status": "exploratory (PLAN \u00a710, 2026-11-10)",
+ "bootstrap": 10000,
+ "permutations": 10000,
+ "tests": {
+  "H1a": {
+   "comparison": "qwen rrf_rerank vs closed",
+   "metric": "score",
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.2778,
+   "mean_b": 0.7,
+   "diff": 0.4222,
+   "ci95": [
+    0.2766,
+    0.5581
+   ],
+   "p": 0.0001,
+   "discordant": 0.733,
+   "p_holm": 0.0008,
+   "direction_ok": true
+  },
+  "H1b": {
+   "comparison": "remote rrf_rerank vs closed",
+   "metric": "score",
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.5,
+   "mean_b": 0.8444,
+   "diff": 0.3444,
+   "ci95": [
+    0.1977,
+    0.4792
+   ],
+   "p": 0.0003,
+   "discordant": 0.533,
+   "p_holm": 0.0021,
+   "direction_ok": true
+  },
+  "H2a": {
+   "comparison": "rrf vs bm25",
+   "metric": "class@5",
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.6889,
+   "mean_b": 0.7222,
+   "diff": 0.0333,
+   "ci95": [
+    -0.0227,
+    0.0889
+   ],
+   "p": 0.45135,
+   "discordant": 0.078,
+   "p_holm": 1.0,
+   "direction_ok": true
+  },
+  "H2b": {
+   "comparison": "rrf vs dense",
+   "metric": "class@5",
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.6889,
+   "mean_b": 0.7222,
+   "diff": 0.0333,
+   "ci95": [
+    -0.0114,
+    0.0814
+   ],
+   "p": 0.38276,
+   "discordant": 0.078,
+   "p_holm": 1.0,
+   "direction_ok": true
+  },
+  "H3a": {
+   "comparison": "rrf_rerank vs rrf",
+   "metric": "class@5",
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.7222,
+   "mean_b": 0.5333,
+   "diff": -0.1889,
+   "ci95": [
+    -0.29,
+    -0.087
+   ],
+   "p": 0.0011,
+   "discordant": 0.278,
+   "criterion_min_gain": 0.05,
+   "p_holm": 0.0066,
+   "direction_ok": false
+  },
+  "H3b": {
+   "comparison": "rrf_rerank vs rrf, both answerers",
+   "metric": "score",
+   "latency_condition": "not measured (phase L dropped)",
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.7944,
+   "mean_b": 0.7722,
+   "diff": -0.0222,
+   "ci95": [
+    -0.1277,
+    0.0795
+   ],
+   "p": 0.75672,
+   "discordant": 0.333,
+   "p_holm": 1.0,
+   "direction_ok": false
+  },
+  "H4": {
+   "comparison": "qwen rrf_rerank - remote closed (non-inferiority)",
+   "metric": "score",
+   "margin": -0.05,
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.5,
+   "mean_b": 0.7,
+   "diff": 0.2,
+   "ci95": [
+    0.0227,
+    0.3723
+   ],
+   "discordant": 0.6,
+   "p_superiority_two_sided": 0.05199,
+   "p": 0.0032,
+   "ni_holds": true,
+   "p_holm": 0.0128
+  },
+  "H5": {
+   "comparison": "remote rrf_rerank vs closed (cost)",
+   "questions": 45,
+   "entities": 40,
+   "cost_per_question": {
+    "a": 9.74e-05,
+    "b": 0.0003176,
+    "diff": 0.0002203,
+    "ci95": [
+     0.0001746,
+     0.0002596
+    ]
+   },
+   "cost_per_correct": {
+    "a": 0.0001947,
+    "b": 0.0003761,
+    "diff": 0.0001814,
+    "ci95": [
+     5.73e-05,
+     0.0002759
+    ]
+   },
+   "p": 0.0013,
+   "p_holm": 0.0066,
+   "direction_ok": false
+  }
+ },
+ "sensitivity_binary": {
+  "H1a": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.1778,
+   "mean_b": 0.6,
+   "diff": 0.4222,
+   "ci95": [
+    0.25,
+    0.5854
+   ],
+   "p": 0.0003,
+   "discordant": 0.556
+  },
+  "H1b": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.4222,
+   "mean_b": 0.7778,
+   "diff": 0.3556,
+   "ci95": [
+    0.1915,
+    0.5208
+   ],
+   "p": 0.0012,
+   "discordant": 0.444
+  },
+  "H3b": {
+   "questions": 90,
+   "entities": 40,
+   "mean_a": 0.7222,
+   "mean_b": 0.6889,
+   "diff": -0.0333,
+   "ci95": [
+    -0.1705,
+    0.0957
+   ],
+   "p": 0.73883,
+   "discordant": 0.3
+  },
+  "H4": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.4222,
+   "mean_b": 0.6,
+   "diff": 0.1778,
+   "ci95": [
+    -0.0238,
+    0.3673
+   ],
+   "p": 0.15458,
+   "discordant": 0.489
+  }
+ },
+ "exploratory": {
+  "H1 DiD qwen: (rrf_rerank - closed) recent+ext_niche vs core_1_0": {
+   "recent+ext_niche": {
+    "diff": 0.5833,
+    "questions": 18
+   },
+   "core_1_0": {
+    "diff": 0.2222,
+    "questions": 9
+   },
+   "did": 0.3611,
+   "ci95": [
+    -0.085,
+    0.7953
+   ]
+  },
+  "oracle - rrf_rerank (qwen, retrieval loss)": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.7,
+   "mean_b": 0.9556,
+   "diff": 0.2556,
+   "ci95": [
+    0.1556,
+    0.3691
+   ],
+   "p": 0.0001,
+   "discordant": 0.356
+  },
+  "H1 DiD remote: (rrf_rerank - closed) recent+ext_niche vs core_1_0": {
+   "recent+ext_niche": {
+    "diff": 0.3889,
+    "questions": 18
+   },
+   "core_1_0": {
+    "diff": 0.2222,
+    "questions": 9
+   },
+   "did": 0.1667,
+   "ci95": [
+    -0.2059,
+    0.5029
+   ]
+  },
+  "oracle - rrf_rerank (remote, retrieval loss)": {
+   "questions": 45,
+   "entities": 40,
+   "mean_a": 0.8444,
+   "mean_b": 0.9444,
+   "diff": 0.1,
+   "ci95": [
+    0.0,
+    0.2045
+   ],
+   "p": 0.09419,
+   "discordant": 0.267
+  },
+  "H2 interaction: (rrf - bm25) class@5, descriptive - identifier": {
+   "pairs": 45,
+   "entities": 40,
+   "did": 0.1111,
+   "ci95": [
+    0.0,
+    0.2222
+   ]
+  }
+ },
+ "mde_pilot": {
+  "H1a": {
+   "alpha_0.05": 0.35,
+   "alpha_0.05/8": 0.44
+  },
+  "H1b": {
+   "alpha_0.05": 0.3,
+   "alpha_0.05/8": 0.37
+  },
+  "H2a": {
+   "alpha_0.05": 0.13,
+   "alpha_0.05/8": 0.18
+  },
+  "H2b": {
+   "alpha_0.05": 0.13,
+   "alpha_0.05/8": 0.18
+  },
+  "H3a": {
+   "alpha_0.05": 0.2,
+   "alpha_0.05/8": 0.25
+  },
+  "H3b": {
+   "alpha_0.05": 0.2,
+   "alpha_0.05/8": 0.25
+  }
+ }
+}

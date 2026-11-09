@@ -1,0 +1,28 @@
+{
+ "jobs": 1180,
+ "todo": 1180,
+ "estimate": {
+  "qwen": {
+   "calls": 590,
+   "prompt_tokens_max": 6384,
+   "prompt_tokens_mean": 1387,
+   "over_num_ctx": 0
+  },
+  "remote": {
+   "calls": 590,
+   "input_tokens": 890937,
+   "output_tokens_est": 118000,
+   "price": {
+    "prompt": "0.00000014",
+    "completion": "0.00000028"
+   },
+   "est_usd": 0.1578
+  }
+ },
+ "qwen_gpu_share": 1.0,
+ "qwen_seconds": 3931.9,
+ "remote_seconds": 973.7,
+ "written": 1180,
+ "missing": 30,
+ "spent_usd": 0.1477
+}

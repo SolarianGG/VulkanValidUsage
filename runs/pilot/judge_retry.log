@@ -1,0 +1,74 @@
+{
+ "answers": 1180,
+ "missing_answers": 5,
+ "calls": 2253,
+ "todo": 43,
+ "estimate": {
+  "correctness": {
+   "calls": 25,
+   "input_tokens": 38649,
+   "output_tokens_est": 5943,
+   "est_usd": 0.0513
+  },
+  "faithfulness": {
+   "calls": 18,
+   "input_tokens": 50693,
+   "output_tokens_est": 7238,
+   "est_usd": 0.0652
+  },
+  "total_usd": 0.1165,
+  "price": {
+   "prompt": "0.00000075",
+   "completion": "0.00000375"
+  }
+ },
+ "written": 43,
+ "failed": 0,
+ "spent_usd": 0.1471
+}
+| answerer | config | part | n | score | correct | abstain | selective_accuracy | hallucination | fabricated_identifier | fabricated_vuid | citation_correct | faithful_supported | self_knowledge | missing |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| qwen | bm25 | answerable | 45 | 0.689 | 0.578 | 0.022 | 0.705 | 0.356 | 0.067 | 0.089 | 0.769 | 0.511 | 0.289 | 0.0 |
+| qwen | bm25 | unanswerable | 5 | 0.6 | 0.6 | 0.0 | 0.6 | 0.4 | 0.0 | 0.2 |  | 0.6 | 0.2 | 0.0 |
+| qwen | closed | answerable | 45 | 0.278 | 0.178 | 0.0 | 0.291 | 0.767 | 0.442 | 0.744 | 0.0 |  |  | 0.044 |
+| qwen | closed | unanswerable | 5 | 0.2 | 0.2 | 0.0 | 0.2 | 0.8 | 0.4 | 0.4 |  |  |  | 0.0 |
+| qwen | dense | answerable | 45 | 0.767 | 0.689 | 0.0 | 0.767 | 0.267 | 0.022 | 0.111 | 0.732 | 0.489 | 0.467 | 0.0 |
+| qwen | dense | unanswerable | 5 | 0.5 | 0.4 | 0.0 | 0.5 | 0.4 | 0.0 | 0.2 |  | 0.4 | 0.4 | 0.0 |
+| qwen | hyde_rrf_rerank | answerable | 45 | 0.667 | 0.556 | 0.0 | 0.667 | 0.378 | 0.022 | 0.178 | 0.632 | 0.533 | 0.356 | 0.0 |
+| qwen | hyde_rrf_rerank | unanswerable | 5 | 0.6 | 0.6 | 0.0 | 0.6 | 0.4 | 0.0 | 0.0 |  | 0.8 | 0.2 | 0.0 |
+| qwen | oracle | answerable | 45 | 0.956 | 0.933 | 0.0 | 0.956 | 0.067 | 0.022 | 0.0 | 1.0 | 0.911 | 0.044 | 0.0 |
+| qwen | oracle_distract | answerable | 45 | 0.922 | 0.889 | 0.0 | 0.922 | 0.111 | 0.0 | 0.0 | 1.0 | 0.867 | 0.089 | 0.0 |
+| qwen | rewrite_rrf_rerank | answerable | 45 | 0.689 | 0.644 | 0.0 | 0.705 | 0.318 | 0.045 | 0.114 | 0.703 | 0.523 | 0.341 | 0.022 |
+| qwen | rewrite_rrf_rerank | unanswerable | 5 | 0.6 | 0.6 | 0.0 | 0.6 | 0.4 | 0.4 | 0.2 |  | 0.8 | 0.2 | 0.0 |
+| qwen | rrf | answerable | 45 | 0.767 | 0.689 | 0.0 | 0.767 | 0.267 | 0.089 | 0.067 | 0.634 | 0.489 | 0.422 | 0.0 |
+| qwen | rrf | unanswerable | 5 | 0.4 | 0.4 | 0.0 | 0.4 | 0.6 | 0.0 | 0.0 |  | 0.6 | 0.2 | 0.0 |
+| qwen | rrf_rerank | answerable | 45 | 0.7 | 0.6 | 0.0 | 0.7 | 0.4 | 0.044 | 0.222 | 0.6 | 0.467 | 0.467 | 0.0 |
+| qwen | rrf_rerank | unanswerable | 5 | 0.5 | 0.4 | 0.0 | 0.5 | 0.6 | 0.0 | 0.0 |  | 0.8 | 0.2 | 0.0 |
+| qwen | rrf_rerank_k10 | answerable | 45 | 0.744 | 0.667 | 0.0 | 0.744 | 0.311 | 0.022 | 0.111 | 0.711 | 0.511 | 0.378 | 0.0 |
+| qwen | rrf_rerank_k10 | unanswerable | 5 | 0.6 | 0.6 | 0.0 | 0.6 | 0.4 | 0.2 | 0.0 |  | 0.8 | 0.2 | 0.0 |
+| qwen | rrf_rerank_k3 | answerable | 45 | 0.656 | 0.556 | 0.022 | 0.686 | 0.409 | 0.068 | 0.182 | 0.588 | 0.477 | 0.409 | 0.022 |
+| qwen | rrf_rerank_k3 | unanswerable | 5 | 0.4 | 0.4 | 0.0 | 0.4 | 0.6 | 0.0 | 0.2 |  | 0.4 | 0.2 | 0.0 |
+| qwen | rrf_rerank_strict | answerable | 45 | 0.611 | 0.511 | 0.133 | 0.705 | 0.4 | 0.0 | 0.067 | 0.742 | 0.467 | 0.178 | 0.0 |
+| qwen | rrf_rerank_strict | unanswerable | 5 | 0.4 | 0.4 | 0.0 | 0.4 | 0.6 | 0.0 | 0.0 |  | 0.6 | 0.2 | 0.0 |
+| remote | bm25 | answerable | 45 | 0.789 | 0.733 | 0.0 | 0.789 | 0.178 | 0.022 | 0.089 | 0.73 | 0.644 | 0.289 | 0.0 |
+| remote | bm25 | unanswerable | 5 | 0.6 | 0.6 | 0.4 | 0.333 | 0.4 | 0.0 | 0.0 |  | 0.2 | 0.0 | 0.0 |
+| remote | closed | answerable | 45 | 0.5 | 0.422 | 0.0 | 0.511 | 0.523 | 0.136 | 0.841 | 0.047 |  |  | 0.022 |
+| remote | closed | unanswerable | 5 | 0.0 | 0.0 | 0.0 | 0.0 | 1.0 | 0.2 | 0.8 |  |  |  | 0.0 |
+| remote | dense | answerable | 45 | 0.733 | 0.667 | 0.022 | 0.75 | 0.222 | 0.0 | 0.111 | 0.69 | 0.444 | 0.467 | 0.0 |
+| remote | dense | unanswerable | 5 | 0.4 | 0.4 | 0.4 | 0.0 | 0.6 | 0.0 | 0.0 |  | 0.2 | 0.2 | 0.0 |
+| remote | hyde_rrf_rerank | answerable | 45 | 0.8 | 0.756 | 0.0 | 0.8 | 0.178 | 0.022 | 0.133 | 0.649 | 0.578 | 0.356 | 0.0 |
+| remote | hyde_rrf_rerank | unanswerable | 5 | 0.6 | 0.6 | 0.2 | 0.5 | 0.4 | 0.0 | 0.0 |  | 0.6 | 0.0 | 0.0 |
+| remote | oracle | answerable | 45 | 0.944 | 0.911 | 0.0 | 0.944 | 0.022 | 0.0 | 0.0 | 1.0 | 0.956 | 0.044 | 0.0 |
+| remote | oracle_distract | answerable | 45 | 0.967 | 0.956 | 0.0 | 0.967 | 0.022 | 0.0 | 0.0 | 1.0 | 0.956 | 0.044 | 0.0 |
+| remote | rewrite_rrf_rerank | answerable | 45 | 0.789 | 0.711 | 0.022 | 0.807 | 0.156 | 0.0 | 0.111 | 0.658 | 0.622 | 0.311 | 0.0 |
+| remote | rewrite_rrf_rerank | unanswerable | 5 | 0.6 | 0.6 | 0.2 | 0.5 | 0.4 | 0.0 | 0.0 |  | 0.6 | 0.0 | 0.0 |
+| remote | rrf | answerable | 45 | 0.822 | 0.756 | 0.022 | 0.841 | 0.111 | 0.0 | 0.089 | 0.643 | 0.578 | 0.311 | 0.0 |
+| remote | rrf | unanswerable | 5 | 0.4 | 0.2 | 0.2 | 0.25 | 0.8 | 0.0 | 0.0 |  | 0.6 | 0.2 | 0.0 |
+| remote | rrf_rerank | answerable | 45 | 0.844 | 0.778 | 0.0 | 0.844 | 0.156 | 0.0 | 0.156 | 0.605 | 0.533 | 0.4 | 0.0 |
+| remote | rrf_rerank | unanswerable | 5 | 0.3 | 0.2 | 0.2 | 0.125 | 0.8 | 0.0 | 0.2 |  | 0.6 | 0.2 | 0.0 |
+| remote | rrf_rerank_k10 | answerable | 45 | 0.778 | 0.711 | 0.0 | 0.778 | 0.2 | 0.0 | 0.044 | 0.758 | 0.533 | 0.378 | 0.0 |
+| remote | rrf_rerank_k10 | unanswerable | 5 | 0.2 | 0.2 | 0.0 | 0.2 | 0.8 | 0.0 | 0.0 |  | 0.6 | 0.2 | 0.0 |
+| remote | rrf_rerank_k3 | answerable | 45 | 0.833 | 0.778 | 0.0 | 0.833 | 0.156 | 0.044 | 0.2 | 0.5 | 0.444 | 0.444 | 0.0 |
+| remote | rrf_rerank_k3 | unanswerable | 5 | 0.3 | 0.2 | 0.0 | 0.3 | 0.6 | 0.0 | 0.2 |  | 0.4 | 0.2 | 0.0 |
+| remote | rrf_rerank_strict | answerable | 45 | 0.611 | 0.533 | 0.2 | 0.764 | 0.133 | 0.0 | 0.067 | 0.609 | 0.444 | 0.267 | 0.0 |
+| remote | rrf_rerank_strict | unanswerable | 5 | 0.8 | 0.8 | 0.8 | 0.0 | 0.2 | 0.0 | 0.0 |  | 0.2 | 0.0 | 0.0 |
