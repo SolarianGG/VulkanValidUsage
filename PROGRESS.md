@@ -1,6 +1,6 @@
 # Progress
 
-Last updated: 2026-11-10. Plan stages refer to `PLAN.md` §4; checkpoints to `PLAN.md` §5.
+Last updated: 2026-11-13. Plan stages refer to `PLAN.md` §4; checkpoints to `PLAN.md` §5.
 
 ## Status by stage
 
@@ -14,7 +14,7 @@ Last updated: 2026-11-10. Plan stages refer to `PLAN.md` §4; checkpoints to `PL
 | 5. Retrieval | **pilot done** | `runs/pilot/`; checkpoint §5.3 passed |
 | 6. Generation | **pilot done** | `runs/pilot/answers.jsonl`, 1,180 answers |
 | 7. Evaluation | **pilot done** | judge, metrics, power; judge kappa 0.89 (80 human labels, revised) |
-| 8. Report | not started (next session) | pilot = final run; see Hypotheses and Next steps |
+| 8. Report | **done** (approved by the user 2026-11-13) | `reports/report.md` + `notebooks/report.ipynb` |
 
 ## Stage 0 — what was verified
 - Spec tag `v1.4.366` (freeze 2026-11-07), image `khronosgroup/docker-images@sha256:f1ca671f…4762`.
@@ -232,20 +232,38 @@ for reference. Generation: 45 answerable questions (40 entities); retrieval: 90.
   +0.11 [0.0, 0.22] (45 pairs). Retrieval loss (oracle - rrf_rerank): qwen +0.26 [0.16, 0.37], remote
   +0.10 [0.0, 0.20].
 
+## Stage 8 — report (2026-11-11)
+- `uv run vkrag report` (`src/vkrag/report.py`, ~15 s, no paid calls) -> `reports/report_tables.md`,
+  `reports/report_data.json`, `reports/figures/{score_by_stratum,recall_at_k,pareto_cost_remote,score_vs_latency}.png`,
+  `reports/error_candidates.md`. CIs: cluster bootstrap by entity (unanswerable: per question).
+- `uv run --group report python notebooks/make_report_notebook.py` -> executed `notebooks/report.ipynb`
+  (new dependency group `report`: nbformat, nbclient, ipykernel).
+- `reports/report.md`: summary, setup, Tables 0-4, strata, unanswerable, hypotheses, cost/latency, spend,
+  22 error-analysis items in 5 categories, calibration, limitations, reproduction.
+- New findings while writing:
+  - score by gold-in-context (`rrf_rerank`): qwen 0.92 in / 0.42 out, remote 0.94 / 0.72. The remote
+    model recovers from retrieval misses, which explains the null H3b;
+  - H5: at 318 uUSD/question `rrf_rerank` cannot beat closed cost/correct (195) even at score 1.0;
+  - bare verdicts: 20 remote answers of only "Yes."/"No." (correct verdict) were judged partial and none
+    was in calibration. Counting them as correct moves remote scores by +0.01-0.07; conclusions unchanged;
+  - no `outdated_identifier` in any answer; no generation VU changed text in the last 10 tags;
+  - rewrite failures: a single invented identifier replaces the whole query (5 questions lose class@5 1 -> 0).
+- Logged OpenRouter spend $6.47 (judge $5.11, Stage 3b $0.93, cutoff probe $0.29, remote answers $0.15);
+  key usage ~$7.06.
+- Tests: 124 passing.
+
 ## Open questions for the user
-1. Checkpoint §5.1: review of `reports/stage1_samples.md` (optional; otherwise a limitation).
+1. Checkpoint §5.1: review of `reports/stage1_samples.md` (optional; otherwise a limitation, as written).
+
+Resolved 2026-11-13: report approved; annotator expertise filled in (one year of Vulkan, own projects
+with descriptor buffers, bindless indexing, Slang, ray tracing).
 
 Resolved 2026-11-10: phase L, repeats, `oracle_entity` dropped; H1-H5 exploratory; no main run
 (budget); judge calibration done; held-out reported blind first + revised; report = `reports/report.md`
 + notebook.
 
 ## Next steps
-The pilot is the final run (no main run; PLAN §10, 2026-11-10). Calibration, re-generation and the
-hypothesis tests are done.
-1. Stage 8: `reports/report.md` (English) + notebook with figures (PLAN Stage 8 tables 0-3, strata
-   plot, Pareto score vs cost, limitations: exploratory status, pilot-tuned masking/autochecks,
-   held-out labels revised after the disagreement list, qwen nondeterminism, no latency/phase L,
-   no repeats, no `oracle_entity`).
-2. Optional: checkpoint §5.1 review of `reports/stage1_samples.md` (else a limitation).
+All plan stages are done; the pilot is the final run (PLAN §10).
+The experiment is complete. Optional: checkpoint §5.1 review of `reports/stage1_samples.md`.
 
-Tests: 120 passing.
+Tests: 124 passing.

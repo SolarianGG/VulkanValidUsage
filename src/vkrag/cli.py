@@ -293,6 +293,17 @@ def hypotheses(sample: str = typer.Option("pilot", help="sample of the run"),
     print(json.dumps(run(run_id, sample, n_sim), indent=1))
 
 
+@app.command()
+def report(sample: str = typer.Option("pilot", help="sample of the run"),
+           run_id: str = typer.Option("pilot", help="runs/<run_id>/ with all Stage 5-7 outputs")) -> None:
+    """Stage 8 tables, figures and error candidates -> reports/{report_tables.md, report_data.json, figures/}."""
+    import json
+
+    from vkrag.report import run
+
+    print(json.dumps(run(run_id, sample), indent=1))
+
+
 annotate_app = typer.Typer(no_args_is_help=True)
 app.add_typer(annotate_app, name="annotate")
 

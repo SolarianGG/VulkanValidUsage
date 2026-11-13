@@ -51,6 +51,10 @@ uv run vkrag index             # data/processed/index/: BM25 + bge-m3 dense/spar
 uv run vkrag transform --run-id pilot   # phase A: qwen rewrite + HyDE -> runs/<id>/query_transforms.jsonl
 uv run vkrag retrieve --run-id pilot [--configs all]   # phase B -> retrieved.jsonl + retrieval_metrics.json (~4 min)
 uv run vkrag acceptable --run-id pilot [--dry-run] [--max-usd 1]   # stage 3b judge (OpenRouter, pilot $0.93) -> acceptable_vuids, final gold
+uv run vkrag hypotheses        # runs/pilot/hypotheses.json (~45 s)
+uv run vkrag report            # Stage 8: reports/{report_tables.md, report_data.json, figures/, error_candidates.md} (~15 s)
+uv run --group report python notebooks/make_report_notebook.py   # executes notebooks/report.ipynb
 ```
+Final report text: `reports/report.md` (hand-written; numbers from `report_tables.md`).
 Question generation: one Claude Code subagent per batch (fresh context, own scratch dir), prompt `data/questions/generation_log/prompt_v2.md` (pilot used v1).
 OpenRouter: `generation/openrouter.py` (key from `.env`, never print it); checks in `reports/openrouter_check.json`.
