@@ -7,6 +7,7 @@
   stemmed (Snowball English) when `stem=True`; parts are words, so they must match prose forms.
 - Version-like numbers (`1.3`) are kept as one token.
 """
+
 from __future__ import annotations
 
 import re
@@ -18,7 +19,8 @@ CAMEL = re.compile(r"[A-Z]+(?=[A-Z][a-z])|[A-Z]?[a-z]+|[A-Z]+|\d+")
 
 # English stop words (the bm25s / sklearn-style core list, without words meaningful in VU rules
 # such as "not", "no", "must", "only", "all", "any", "each").
-STOPWORDS = frozenset("""
+STOPWORDS = frozenset(
+    """
 a about above after again against am an and are as at be because been before being below between
 both but by can could did do does doing down during few for from further had has have having he her
 here hers herself him himself his how i if in into is it its itself just me more most my myself nor
@@ -26,7 +28,8 @@ of off on once or other our ours ourselves out over own same she should so some 
 their theirs them themselves then there these they this those through to too under until up very
 was we were what when where which while who whom why will with would you your yours yourself
 yourselves
-""".split())
+""".split()
+)
 
 
 def is_identifier(tok: str) -> bool:
@@ -103,8 +106,10 @@ def plain_words(text: str) -> list[str]:
 
 def leak_ngrams(question: str, vu_text: str) -> tuple[int, int]:
     """(content-word n-gram, n-gram with stop words) shared by a question and its VU text."""
-    return (max_common_ngram(content_words(question), content_words(vu_text)),
-            max_common_ngram(plain_words(question), plain_words(vu_text)))
+    return (
+        max_common_ngram(content_words(question), content_words(vu_text)),
+        max_common_ngram(plain_words(question), plain_words(vu_text)),
+    )
 
 
 def max_common_ngram(a: list[str], b: list[str]) -> int:

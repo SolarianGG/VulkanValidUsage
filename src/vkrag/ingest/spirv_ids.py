@@ -8,6 +8,7 @@ Sources (pinned, see data/external/spirv_identifiers.meta.json):
 
 Output: data/external/spirv_identifiers.txt, one identifier per line, sorted.
 """
+
 from __future__ import annotations
 
 import json

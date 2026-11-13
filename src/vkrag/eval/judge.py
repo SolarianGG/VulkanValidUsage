@@ -11,6 +11,7 @@ automatic checks and the merged per-answer table runs/<run_id>/scores.jsonl + ge
 - missing answers are not judged: incorrect, abstained=false, missing=true (skip policy, Stage 6);
 - a judgment that fails 3 times is recorded with `failed=true` and treated the same way.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -29,15 +30,28 @@ from vkrag.eval.masking import mask
 PROMPTS = Path(__file__).resolve().parents[1] / "generation" / "prompts"
 KINDS = ("correctness", "faithfulness")
 SCHEMAS = {
-    "correctness": {"type": "object", "additionalProperties": False,
-                    "required": ["correctness", "abstained", "hallucination", "scenario_other_violation", "reason"],
-                    "properties": {"correctness": {"type": "string", "enum": ["correct", "partial", "incorrect"]},
-                                   "abstained": {"type": "boolean"}, "hallucination": {"type": "boolean"},
-                                   "scenario_other_violation": {"type": "boolean"}, "reason": {"type": "string"}}},
-    "faithfulness": {"type": "object", "additionalProperties": False,
-                     "required": ["faithfulness", "self_knowledge", "reason"],
-                     "properties": {"faithfulness": {"type": "string", "enum": ["supported", "contradicts", "not_grounded"]},
-                                    "self_knowledge": {"type": "boolean"}, "reason": {"type": "string"}}},
+    "correctness": {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["correctness", "abstained", "hallucination", "scenario_other_violation", "reason"],
+        "properties": {
+            "correctness": {"type": "string", "enum": ["correct", "partial", "incorrect"]},
+            "abstained": {"type": "boolean"},
+            "hallucination": {"type": "boolean"},
+            "scenario_other_violation": {"type": "boolean"},
+            "reason": {"type": "string"},
+        },
+    },
+    "faithfulness": {
+        "type": "object",
+        "additionalProperties": False,
+        "required": ["faithfulness", "self_knowledge", "reason"],
+        "properties": {
+            "faithfulness": {"type": "string", "enum": ["supported", "contradicts", "not_grounded"]},
+            "self_knowledge": {"type": "boolean"},
+            "reason": {"type": "string"},
+        },
+    },
 }
 SCORE = {"correct": 1.0, "partial": 0.5, "incorrect": 0.0}
 OUTPUT_TOKENS_EST = 500  # reasoning medium + JSON; refined from cached calls once available
@@ -122,17 +136,38 @@ def build_calls(answers: list[dict], qs: dict, judge_repeat_idx: int = 0) -> lis
             continue
         q = qs[a["qid"]]
         masked, marker = mask(a["answer"])
-        base = {"answer_key": a["key"], "qid": a["qid"], "config": a["config"], "answerer": a["answerer"],
-                "repeat_idx": a["repeat_idx"], "judge_repeat_idx": judge_repeat_idx, "judge_model": model}
+        base = {
+            "answer_key": a["key"],
+            "qid": a["qid"],
+            "config": a["config"],
+            "answerer": a["answerer"],
+            "repeat_idx": a["repeat_idx"],
+            "judge_repeat_idx": judge_repeat_idx,
+            "judge_model": model,
+        }
         system, ph = prompts["correctness"]
-        calls.append(base | {"kind": "correctness", "prompt_hash": ph, "mask_marker": marker,
-                             "messages": [{"role": "system", "content": system},
-                                          {"role": "user", "content": correctness_message(q, masked, vtext)}]})
+        calls.append(
+            base
+            | {
+                "kind": "correctness",
+                "prompt_hash": ph,
+                "mask_marker": marker,
+                "messages": [{"role": "system", "content": system}, {"role": "user", "content": correctness_message(q, masked, vtext)}],
+            }
+        )
         if a["config"] != "closed" and a.get("context"):
             system, ph = prompts["faithfulness"]
-            calls.append(base | {"kind": "faithfulness", "prompt_hash": ph,
-                                 "messages": [{"role": "system", "content": system},
-                                              {"role": "user", "content": faithfulness_message(q, a["answer"], a["context"], chunks)}]})
+            calls.append(
+                base
+                | {
+                    "kind": "faithfulness",
+                    "prompt_hash": ph,
+                    "messages": [
+                        {"role": "system", "content": system},
+                        {"role": "user", "content": faithfulness_message(q, a["answer"], a["context"], chunks)},
+                    ],
+                }
+            )
     for c in calls:
         c["input_hash"] = _h(c["messages"])  # masking / context changes invalidate the cache
         c["key"] = _h({k: c[k] for k in ("answer_key", "kind", "prompt_hash", "input_hash", "judge_model", "judge_repeat_idx")})
@@ -155,15 +190,27 @@ def estimate(todo: list[dict], cached: list[dict]) -> dict:
         tin = sum(tokens.count(m["content"], "qwen") + 8 for c in js for m in c["messages"])
         per_out = (sum(r["completion_tokens"] for r in real) / len(real)) if len(real) >= 5 else OUTPUT_TOKENS_EST
         tout = int(per_out * len(js))
-        out[kind] = {"calls": len(js), "input_tokens": tin, "output_tokens_est": tout,
-                     "est_usd": round(tin * float(price.get("prompt", 0)) + tout * float(price.get("completion", 0)), 4)}
+        out[kind] = {
+            "calls": len(js),
+            "input_tokens": tin,
+            "output_tokens_est": tout,
+            "est_usd": round(tin * float(price.get("prompt", 0)) + tout * float(price.get("completion", 0)), 4),
+        }
     out["total_usd"] = round(sum(v["est_usd"] for v in out.values()), 4)
     out["price"] = {k: price.get(k) for k in ("prompt", "completion")}
     return out
 
 
-def run(sample: str, run_id: str, dry_run: bool = False, max_usd: float | None = None, limit: int | None = None,
-        judge_repeat_idx: int = 0, configs: tuple[str, ...] | None = None, workers: int = 8) -> dict:
+def run(
+    sample: str,
+    run_id: str,
+    dry_run: bool = False,
+    max_usd: float | None = None,
+    limit: int | None = None,
+    judge_repeat_idx: int = 0,
+    configs: tuple[str, ...] | None = None,
+    workers: int = 8,
+) -> dict:
     from vkrag.generation.openrouter import OpenRouter
 
     rdir = ROOT / "runs" / run_id
@@ -175,8 +222,13 @@ def run(sample: str, run_id: str, dry_run: bool = False, max_usd: float | None =
     cached = _jsonl(out_file)
     have = {r["key"] for r in cached if not r.get("failed")}
     todo = [c for c in calls if c["key"] not in have]
-    stats = {"answers": len(answers), "missing_answers": sum(a["missing"] for a in answers), "calls": len(calls),
-             "todo": len(todo), "estimate": estimate(todo, cached) if todo else {}}
+    stats = {
+        "answers": len(answers),
+        "missing_answers": sum(a["missing"] for a in answers),
+        "calls": len(calls),
+        "todo": len(todo),
+        "estimate": estimate(todo, cached) if todo else {},
+    }
     if dry_run or not todo:
         return stats
     if limit:
@@ -212,28 +264,65 @@ def run(sample: str, run_id: str, dry_run: bool = False, max_usd: float | None =
             with lock:
                 if r is not None:
                     state["spent"] += r.cost_usd or 0.0
-                uf.write(json.dumps({"ts": round(time.time(), 3), "phase": "D", "kind": c["kind"], "qid": c["qid"],
-                                     "config": c["config"], "model": rc["model"], "answerer": c["answerer"],
-                                     "repeat_idx": c["repeat_idx"], "attempt": attempt, "error": None if v else err,
-                                     "prompt_tokens": r.usage.get("prompt_tokens") if r else None,
-                                     "completion_tokens": r.usage.get("completion_tokens") if r else None,
-                                     "reasoning_tokens": r.reasoning_tokens if r else None,
-                                     "latency_s": r.latency_s if r else None, "provider": r.provider if r else None,
-                                     "finish_reason": r.finish_reason if r else None,
-                                     "cost_usd": r.cost_usd if r else None,
-                                     "cached_tokens": r.cached_tokens if r else None}) + "\n")
+                uf.write(
+                    json.dumps(
+                        {
+                            "ts": round(time.time(), 3),
+                            "phase": "D",
+                            "kind": c["kind"],
+                            "qid": c["qid"],
+                            "config": c["config"],
+                            "model": rc["model"],
+                            "answerer": c["answerer"],
+                            "repeat_idx": c["repeat_idx"],
+                            "attempt": attempt,
+                            "error": None if v else err,
+                            "prompt_tokens": r.usage.get("prompt_tokens") if r else None,
+                            "completion_tokens": r.usage.get("completion_tokens") if r else None,
+                            "reasoning_tokens": r.reasoning_tokens if r else None,
+                            "latency_s": r.latency_s if r else None,
+                            "provider": r.provider if r else None,
+                            "finish_reason": r.finish_reason if r else None,
+                            "cost_usd": r.cost_usd if r else None,
+                            "cached_tokens": r.cached_tokens if r else None,
+                        }
+                    )
+                    + "\n"
+                )
                 uf.flush()
             if v is not None:
                 break
             time.sleep(2 * (attempt + 1))
-        rec = {k: c[k] for k in ("key", "input_hash", "answer_key", "qid", "config", "answerer", "repeat_idx", "judge_repeat_idx",
-                                 "kind", "prompt_hash", "judge_model")}
-        rec.update({"verdict": v, "failed": v is None, "error": None if v else err, "mask_marker": c.get("mask_marker"),
-                    "actual_model": r.model if r else None, "provider": r.provider if r else None,
-                    "cost_usd": r.cost_usd if r else None,
-                    "prompt_tokens": r.usage.get("prompt_tokens") if r else None,
-                    "completion_tokens": r.usage.get("completion_tokens") if r else None,
-                    "reasoning_tokens": r.reasoning_tokens if r else None})
+        rec = {
+            k: c[k]
+            for k in (
+                "key",
+                "input_hash",
+                "answer_key",
+                "qid",
+                "config",
+                "answerer",
+                "repeat_idx",
+                "judge_repeat_idx",
+                "kind",
+                "prompt_hash",
+                "judge_model",
+            )
+        }
+        rec.update(
+            {
+                "verdict": v,
+                "failed": v is None,
+                "error": None if v else err,
+                "mask_marker": c.get("mask_marker"),
+                "actual_model": r.model if r else None,
+                "provider": r.provider if r else None,
+                "cost_usd": r.cost_usd if r else None,
+                "prompt_tokens": r.usage.get("prompt_tokens") if r else None,
+                "completion_tokens": r.usage.get("completion_tokens") if r else None,
+                "reasoning_tokens": r.reasoning_tokens if r else None,
+            }
+        )
         with lock:
             state["failed"] += v is None
             state["written"] += 1
@@ -243,14 +332,18 @@ def run(sample: str, run_id: str, dry_run: bool = False, max_usd: float | None =
                 state["stop"] = True
                 stats["stopped_at_budget"] = state["written"]
 
-    with open(out_file, "a", encoding="utf-8") as f, open(usage_file, "a", encoding="utf-8") as uf, \
-            ThreadPoolExecutor(max_workers=workers) as ex:
+    with (
+        open(out_file, "a", encoding="utf-8") as f,
+        open(usage_file, "a", encoding="utf-8") as uf,
+        ThreadPoolExecutor(max_workers=workers) as ex,
+    ):
         for fut in [ex.submit(one, c, f, uf) for c in todo]:
             fut.result()
     return stats | {"written": state["written"], "failed": state["failed"], "spent_usd": round(state["spent"], 4)}
 
 
 # ---------------------------------------------------------------- merge and metrics
+
 
 def merge(sample: str, run_id: str, judge_repeat_idx: int = 0) -> list[dict]:
     """One row per answer: judge verdicts, automatic checks, score -> runs/<run_id>/scores.jsonl."""
@@ -268,20 +361,47 @@ def merge(sample: str, run_id: str, judge_repeat_idx: int = 0) -> list[dict]:
     for a in answers:
         q = qs[a["qid"]]
         row = {k: a[k] for k in ("qid", "config", "answerer", "repeat_idx")}
-        row.update({"stratum": q["stratum"], "style": q["style"], "answer_type": q.get("answer_type"),
-                    "entity": q.get("entity"), "answerable": q["stratum"] != "unanswerable", "missing": a["missing"],
-                    "cost_usd": a.get("cost_usd"), "latency_s": a.get("latency_s"),
-                    "prompt_tokens": a.get("prompt_tokens"), "completion_tokens": a.get("completion_tokens"),
-                    "reasoning_tokens": a.get("reasoning_tokens"), "answer_chars": len(a["answer"] or "")})
+        row.update(
+            {
+                "stratum": q["stratum"],
+                "style": q["style"],
+                "answer_type": q.get("answer_type"),
+                "entity": q.get("entity"),
+                "answerable": q["stratum"] != "unanswerable",
+                "missing": a["missing"],
+                "cost_usd": a.get("cost_usd"),
+                "latency_s": a.get("latency_s"),
+                "prompt_tokens": a.get("prompt_tokens"),
+                "completion_tokens": a.get("completion_tokens"),
+                "reasoning_tokens": a.get("reasoning_tokens"),
+                "answer_chars": len(a["answer"] or ""),
+            }
+        )
         jc, jf = j.get((a["key"], "correctness")), j.get((a["key"], "faithfulness"))
         if a["missing"] or (jc and jc["failed"]):
-            row.update({"correctness": "incorrect", "abstained": False, "hallucination": None, "score": 0.0,
-                        "judge_failed": bool(jc and jc["failed"])})
+            row.update(
+                {
+                    "correctness": "incorrect",
+                    "abstained": False,
+                    "hallucination": None,
+                    "score": 0.0,
+                    "judge_failed": bool(jc and jc["failed"]),
+                }
+            )
         elif jc:
             v = jc["verdict"]
-            row.update({"correctness": v["correctness"], "abstained": v["abstained"], "hallucination": v["hallucination"],
-                        "scenario_other_violation": v["scenario_other_violation"], "score": SCORE[v["correctness"]],
-                        "judge_reason": v["reason"], "mask_marker": jc.get("mask_marker"), "judge_failed": False})
+            row.update(
+                {
+                    "correctness": v["correctness"],
+                    "abstained": v["abstained"],
+                    "hallucination": v["hallucination"],
+                    "scenario_other_violation": v["scenario_other_violation"],
+                    "score": SCORE[v["correctness"]],
+                    "judge_reason": v["reason"],
+                    "mask_marker": jc.get("mask_marker"),
+                    "judge_failed": False,
+                }
+            )
         else:
             row["correctness"] = None  # not judged yet
         if jf and not jf["failed"]:
@@ -309,20 +429,28 @@ def metrics(rows: list[dict]) -> dict:
     out = {}
     for (a, c, part), rs in sorted(groups.items()):
         answered = [r for r in rs if not r["abstained"] and not r["missing"]]
-        m = {"n": len(rs), "score": round(statistics.mean(r["score"] for r in rs), 3),
-             "correct": _rate(rs, "correctness", lambda v: v == "correct"),
-             "abstain": _rate(rs, "abstained"), "missing": _rate(rs, "missing"),
-             "selective_accuracy": round(statistics.mean(r["score"] for r in answered), 3) if answered else None,
-             "coverage": round(len(answered) / len(rs), 3),
-             "hallucination": _rate(rs, "hallucination"),
-             "fabricated_identifier": _rate(rs, "fabricated_identifier"), "outdated_identifier": _rate(rs, "outdated_identifier"),
-             "fabricated_vuid": _rate(rs, "fabricated_vuid"), "citation_correct": _rate(rs, "citation_correct"),
-             "cites_vuid": _rate([r for r in rs if not r["missing"]], "cited_vuids"),
-             "faithful_supported": _rate(rs, "faithfulness", lambda v: v == "supported"),
-             "self_knowledge": _rate(rs, "self_knowledge"), "mask_marker": _rate(rs, "mask_marker"),
-             "verdict_match": _rate(rs, "verdict_match"), "verdict_conditional": _rate(rs, "verdict", lambda v: v == "conditional"),
-             "answer_chars_median": statistics.median(r["answer_chars"] for r in rs),
-             "latency_s_p50": round(statistics.median([r["latency_s"] for r in rs if r.get("latency_s")] or [0]), 2)}
+        m = {
+            "n": len(rs),
+            "score": round(statistics.mean(r["score"] for r in rs), 3),
+            "correct": _rate(rs, "correctness", lambda v: v == "correct"),
+            "abstain": _rate(rs, "abstained"),
+            "missing": _rate(rs, "missing"),
+            "selective_accuracy": round(statistics.mean(r["score"] for r in answered), 3) if answered else None,
+            "coverage": round(len(answered) / len(rs), 3),
+            "hallucination": _rate(rs, "hallucination"),
+            "fabricated_identifier": _rate(rs, "fabricated_identifier"),
+            "outdated_identifier": _rate(rs, "outdated_identifier"),
+            "fabricated_vuid": _rate(rs, "fabricated_vuid"),
+            "citation_correct": _rate(rs, "citation_correct"),
+            "cites_vuid": _rate([r for r in rs if not r["missing"]], "cited_vuids"),
+            "faithful_supported": _rate(rs, "faithfulness", lambda v: v == "supported"),
+            "self_knowledge": _rate(rs, "self_knowledge"),
+            "mask_marker": _rate(rs, "mask_marker"),
+            "verdict_match": _rate(rs, "verdict_match"),
+            "verdict_conditional": _rate(rs, "verdict", lambda v: v == "conditional"),
+            "answer_chars_median": statistics.median(r["answer_chars"] for r in rs),
+            "latency_s_p50": round(statistics.median([r["latency_s"] for r in rs if r.get("latency_s")] or [0]), 2),
+        }
         costs = [r["cost_usd"] for r in rs if r.get("cost_usd") is not None]
         if costs:
             m["cost_per_question"] = round(sum(costs) / len(rs), 6)
@@ -334,8 +462,20 @@ def metrics(rows: list[dict]) -> dict:
 
 
 def table(m: dict) -> str:
-    cols = ("n", "score", "correct", "abstain", "selective_accuracy", "hallucination", "fabricated_identifier",
-            "fabricated_vuid", "citation_correct", "faithful_supported", "self_knowledge", "missing")
+    cols = (
+        "n",
+        "score",
+        "correct",
+        "abstain",
+        "selective_accuracy",
+        "hallucination",
+        "fabricated_identifier",
+        "fabricated_vuid",
+        "citation_correct",
+        "faithful_supported",
+        "self_knowledge",
+        "missing",
+    )
     lines = ["| answerer | config | part | " + " | ".join(cols) + " |", "|" + "---|" * (len(cols) + 3)]
     for k, v in m.items():
         lines.append("| " + " | ".join(k.split("|")) + " | " + " | ".join("" if v.get(c) is None else str(v[c]) for c in cols) + " |")

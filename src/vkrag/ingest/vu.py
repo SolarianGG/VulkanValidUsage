@@ -2,6 +2,7 @@
 
 validusage.json is the only source of VU text. Explicit/implicit is decided by the VUID suffix.
 """
+
 from __future__ import annotations
 
 import json
@@ -11,8 +12,22 @@ from vkrag.config import BUILD, PROCESSED
 from vkrag.normalize import html_to_text
 
 IMPLICIT_SUFFIXES = {
-    "parameter", "sType", "pNext", "recording", "cmdpool", "videocoding", "arraylength", "parent",
-    "suspended", "commonparent", "unique", "renderpass", "zerobitmask", "queuecount", "bufferlevel", "queuetype",
+    "parameter",
+    "sType",
+    "pNext",
+    "recording",
+    "cmdpool",
+    "videocoding",
+    "arraylength",
+    "parent",
+    "suspended",
+    "commonparent",
+    "unique",
+    "renderpass",
+    "zerobitmask",
+    "queuecount",
+    "bufferlevel",
+    "queuetype",
 }
 SPIRV_ENTITIES = {"RuntimeSpirv", "StandaloneSpirv"}
 
@@ -50,27 +65,29 @@ def load_records() -> tuple[list[dict], dict]:
                 c = conds.get(vuid)
                 if explicit and c is None:
                     stats["explicit_without_adoc_condition"] += 1
-                recs.append({
-                    "vuid": vuid,
-                    "entity": entity,
-                    "vuid_entity": vuid_entity,
-                    "entity_kind": kind,
-                    "parameter": param,
-                    "suffix": suffix,
-                    "explicit": explicit,
-                    "suffix_num": int(suffix) if explicit else None,
-                    "json_condition": cond_key,
-                    "condition": c["condition"] if c else None,
-                    "condition_raw": c["condition_raw"] if c else None,
-                    "adoc_source": c["sources"][0] if c else None,
-                    "refpage": c["refpage"] if c else None,
-                    "entity_core_version": origin.get("core_version"),
-                    "entity_extensions": origin.get("extensions", []),
-                    "page": e.get("page"),
-                    "text": text,
-                    "text_html": e["text"],
-                    "refs": refs,
-                })
+                recs.append(
+                    {
+                        "vuid": vuid,
+                        "entity": entity,
+                        "vuid_entity": vuid_entity,
+                        "entity_kind": kind,
+                        "parameter": param,
+                        "suffix": suffix,
+                        "explicit": explicit,
+                        "suffix_num": int(suffix) if explicit else None,
+                        "json_condition": cond_key,
+                        "condition": c["condition"] if c else None,
+                        "condition_raw": c["condition_raw"] if c else None,
+                        "adoc_source": c["sources"][0] if c else None,
+                        "refpage": c["refpage"] if c else None,
+                        "entity_core_version": origin.get("core_version"),
+                        "entity_extensions": origin.get("extensions", []),
+                        "page": e.get("page"),
+                        "text": text,
+                        "text_html": e["text"],
+                        "refs": refs,
+                    }
+                )
                 stats[f"{kind}_{'explicit' if explicit else 'implicit'}"] += 1
     stats["unknown_suffixes"] = dict(unknown_suffix)
     return recs, dict(stats)

@@ -428,5 +428,5 @@ uv run --group report python notebooks/make_report_notebook.py          # notebo
 
 Frozen inputs: `data/questions/pilot_questions.jsonl` (manifest sha256 `094b8a26…`, LF-normalized),
 `data/processed/samples.json`, `runs/pilot/*.jsonl`. The model revisions, the Ollama digest and the
-OpenRouter providers are pinned in `configs/default.yaml` and `runs/pilot/manifest.json`. The decision
-log is in `PLAN.md` §10.
+OpenRouter providers are pinned in `configs/default.yaml` and `runs/pilot/manifest.json`. References such
+as "PLAN §10" point to the internal design document and its decision log, which is not published.

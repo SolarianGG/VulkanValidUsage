@@ -8,6 +8,7 @@
 - KaTeX markup from HTML -> linear text (fractions, sub/superscripts);
 - HTML entities are unescaped, whitespace is collapsed.
 """
+
 from __future__ import annotations
 
 import html as htmllib
@@ -18,11 +19,35 @@ from bs4 import BeautifulSoup, NavigableString, Tag
 # ---------------------------------------------------------------- TeX → text
 
 _TEX_SIMPLE = {
-    r"\times": "×", r"\cdot": "·", r"\leq": "≤", r"\le": "≤", r"\geq": "≥", r"\ge": "≥",
-    r"\neq": "≠", r"\ne": "≠", r"\lt": "<", r"\gt": ">", r"\pm": "±", r"\infty": "∞",
-    r"\lvert": "|", r"\rvert": "|", r"\vert": "|", r"\mid": "|", r"\ldots": "...", r"\cdots": "...",
-    r"\log": "log", r"\min": "min", r"\max": "max", r"\sum": "sum", r"\in": "∈",
-    r"\_": "_", r"\,": " ", r"\;": " ", r"\!": "", r"\quad": " ", r"\qquad": " ",
+    r"\times": "×",
+    r"\cdot": "·",
+    r"\leq": "≤",
+    r"\le": "≤",
+    r"\geq": "≥",
+    r"\ge": "≥",
+    r"\neq": "≠",
+    r"\ne": "≠",
+    r"\lt": "<",
+    r"\gt": ">",
+    r"\pm": "±",
+    r"\infty": "∞",
+    r"\lvert": "|",
+    r"\rvert": "|",
+    r"\vert": "|",
+    r"\mid": "|",
+    r"\ldots": "...",
+    r"\cdots": "...",
+    r"\log": "log",
+    r"\min": "min",
+    r"\max": "max",
+    r"\sum": "sum",
+    r"\in": "∈",
+    r"\_": "_",
+    r"\,": " ",
+    r"\;": " ",
+    r"\!": "",
+    r"\quad": " ",
+    r"\qquad": " ",
 }
 _TEX_WRAP = ("mathit", "mathtt", "textrm", "text", "mathrm", "mathbf", "textit", "texttt", "mathsf", "operatorname", "mathbin")
 

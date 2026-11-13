@@ -10,6 +10,7 @@ preprocessor replays what the `-spec all` build does:
   - clauses with atoms undefined in this build are false and dropped; defined non-VK_* atoms
     (service attributes) are removed from clauses.
 """
+
 from __future__ import annotations
 
 import json
@@ -167,7 +168,6 @@ class Preprocessor:
         if local or skip_depth:
             self.stats["unclosed_ifdef_files"] += 1
 
-
     @staticmethod
     def _tagged(numbered: list[tuple[int, str]], tags: list[str]) -> list[tuple[int, str]]:
         """Lines between `tag::NAME[]` and `end::NAME[]` (markers usually live in comments `// tag::x[]`)."""
@@ -211,7 +211,12 @@ def run() -> dict:
             multi += 1
             # the same VUID at several sites: OR of the conditions
             cond = minimize(frozenset().union(*fd.conds))
-        out[vuid] = {"condition": to_str(simplify_versions(cond)), "condition_raw": to_str(cond), "sources": fd.sources, "refpage": fd.refpage}
+        out[vuid] = {
+            "condition": to_str(simplify_versions(cond)),
+            "condition_raw": to_str(cond),
+            "sources": fd.sources,
+            "refpage": fd.refpage,
+        }
     report = {
         "vuids": len(out),
         "multi_site_vuids": multi,

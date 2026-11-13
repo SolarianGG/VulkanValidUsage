@@ -21,8 +21,7 @@ def test_paired_effect_ci_and_p():
 def test_cost_test_ratio():
     rng = np.random.default_rng(0)
     a, b = ("m", "closed"), ("m", "rag")
-    sc = {f"q{i}": {"entity": f"e{i}", a: {"cost_usd": 1.0, "score": 0.5}, b: {"cost_usd": 2.0, "score": 1.0}}
-          for i in range(20)}
+    sc = {f"q{i}": {"entity": f"e{i}", a: {"cost_usd": 1.0, "score": 0.5}, b: {"cost_usd": 2.0, "score": 1.0}} for i in range(20)}
     r = H.cost_test(sc, a, b, 500, 500, rng)
     assert r["cost_per_question"]["diff"] == 1.0 and r["cost_per_correct"]["a"] == 2.0
     assert r["cost_per_correct"]["diff"] == 0.0

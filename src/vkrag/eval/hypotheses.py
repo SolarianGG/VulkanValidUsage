@@ -13,6 +13,7 @@ Every comparison is paired by question and clustered by entity:
 MDE at the pilot size comes from `power.mde` (same simulation as before the run) at α = 0.05 and at
 α = 0.05 / 8.
 """
+
 from __future__ import annotations
 
 import json
@@ -27,6 +28,7 @@ FAMILY = ("H1a", "H1b", "H2a", "H2b", "H3a", "H3b", "H4", "H5")
 
 
 # ---------------------------------------------------------------- data
+
 
 def _scores(run_id: str) -> dict[str, dict]:
     """qid -> {"entity", "stratum", "style", (answerer, config): row} for answerable questions."""
@@ -61,6 +63,7 @@ def ret_rows(rt: dict, a: str, b: str, metric: str = "class@5") -> list[tuple[st
 
 # ---------------------------------------------------------------- statistics
 
+
 def _arrays(rows):
     cl = P._clusters(rows)  # per-entity arrays of (a, b)
     diff = np.array([(c[:, 1] - c[:, 0]).sum() for c in cl])
@@ -79,10 +82,17 @@ def paired(rows, n_boot: int, n_perm: int, rng) -> dict:
     p = (1 + (t >= abs(s.sum()) - 1e-12).sum()) / (n_perm + 1)
     a = np.concatenate([c[:, 0] for c in cl])
     b = np.concatenate([c[:, 1] for c in cl])
-    return {"questions": int(n.sum()), "entities": len(cl), "mean_a": round(float(a.mean()), 4),
-            "mean_b": round(float(b.mean()), 4), "diff": round(float(est), 4),
-            "ci95": [round(float(np.quantile(boots, 0.025)), 4), round(float(np.quantile(boots, 0.975)), 4)],
-            "p": round(float(p), 5), "discordant": round(float((a != b).mean()), 3), "_boots": boots}
+    return {
+        "questions": int(n.sum()),
+        "entities": len(cl),
+        "mean_a": round(float(a.mean()), 4),
+        "mean_b": round(float(b.mean()), 4),
+        "diff": round(float(est), 4),
+        "ci95": [round(float(np.quantile(boots, 0.025)), 4), round(float(np.quantile(boots, 0.975)), 4)],
+        "p": round(float(p), 5),
+        "discordant": round(float((a != b).mean()), 3),
+        "_boots": boots,
+    }
 
 
 def did(rows_by_group: dict[str, list], g1: str, g0: str, n_boot: int, rng) -> dict:
@@ -94,10 +104,12 @@ def did(rows_by_group: dict[str, list], g1: str, g0: str, n_boot: int, rng) -> d
         idx = rng.integers(len(s), size=(n_boot, len(s)))
         out[g] = (s.sum() / n.sum(), s[idx].sum(axis=1) / n[idx].sum(axis=1), int(n.sum()))
     d = out[g1][1] - out[g0][1]
-    return {g1: {"diff": round(float(out[g1][0]), 4), "questions": out[g1][2]},
-            g0: {"diff": round(float(out[g0][0]), 4), "questions": out[g0][2]},
-            "did": round(float(out[g1][0] - out[g0][0]), 4),
-            "ci95": [round(float(np.quantile(d, 0.025)), 4), round(float(np.quantile(d, 0.975)), 4)]}
+    return {
+        g1: {"diff": round(float(out[g1][0]), 4), "questions": out[g1][2]},
+        g0: {"diff": round(float(out[g0][0]), 4), "questions": out[g0][2]},
+        "did": round(float(out[g1][0] - out[g0][0]), 4),
+        "ci95": [round(float(np.quantile(d, 0.025)), 4), round(float(np.quantile(d, 0.975)), 4)],
+    }
 
 
 def did_paired(rows: list[tuple[str, float, float]], n_boot: int, rng) -> dict:
@@ -108,8 +120,12 @@ def did_paired(rows: list[tuple[str, float, float]], n_boot: int, rng) -> dict:
     n = np.array([len(c) for c in cl], dtype=float)
     idx = rng.integers(len(s), size=(n_boot, len(s)))
     boots = s[idx].sum(axis=1) / n[idx].sum(axis=1)
-    return {"pairs": int(n.sum()), "entities": len(cl), "did": round(float(s.sum() / n.sum()), 4),
-            "ci95": [round(float(np.quantile(boots, 0.025)), 4), round(float(np.quantile(boots, 0.975)), 4)]}
+    return {
+        "pairs": int(n.sum()),
+        "entities": len(cl),
+        "did": round(float(s.sum() / n.sum()), 4),
+        "ci95": [round(float(np.quantile(boots, 0.025)), 4), round(float(np.quantile(boots, 0.975)), 4)],
+    }
 
 
 def cost_test(sc: dict, a: tuple[str, str], b: tuple[str, str], n_boot: int, n_perm: int, rng) -> dict:
@@ -142,13 +158,23 @@ def cost_test(sc: dict, a: tuple[str, str], b: tuple[str, str], n_boot: int, n_p
     _, pa, pb = stats(mp, np.broadcast_to(n, flip.shape))
     t0 = abs(cpc_b - cpc_a)
     p_cpc = (1 + (np.abs(pb - pa) >= t0 - 1e-15).sum()) / (n_perm + 1)
-    return {"questions": nq, "entities": len(m),
-            "cost_per_question": {"a": round(float(m[:, 0].sum() / n.sum()), 7), "b": round(float(m[:, 2].sum() / n.sum()), 7),
-                                  "diff": round(float(cpq), 7),
-                                  "ci95": [round(float(np.quantile(bq, 0.025)), 7), round(float(np.quantile(bq, 0.975)), 7)]},
-            "cost_per_correct": {"a": round(float(cpc_a), 7), "b": round(float(cpc_b), 7), "diff": round(float(cpc_b - cpc_a), 7),
-                                 "ci95": [round(float(np.quantile(bb - ba, 0.025)), 7), round(float(np.quantile(bb - ba, 0.975)), 7)]},
-            "p": round(float(p_cpc), 5)}
+    return {
+        "questions": nq,
+        "entities": len(m),
+        "cost_per_question": {
+            "a": round(float(m[:, 0].sum() / n.sum()), 7),
+            "b": round(float(m[:, 2].sum() / n.sum()), 7),
+            "diff": round(float(cpq), 7),
+            "ci95": [round(float(np.quantile(bq, 0.025)), 7), round(float(np.quantile(bq, 0.975)), 7)],
+        },
+        "cost_per_correct": {
+            "a": round(float(cpc_a), 7),
+            "b": round(float(cpc_b), 7),
+            "diff": round(float(cpc_b - cpc_a), 7),
+            "ci95": [round(float(np.quantile(bb - ba, 0.025)), 7), round(float(np.quantile(bb - ba, 0.975)), 7)],
+        },
+        "p": round(float(p_cpc), 5),
+    }
 
 
 def holm(ps: dict[str, float]) -> dict[str, float]:
@@ -173,6 +199,7 @@ def _mde(rows, n_sim: int, n_perm: int, rng) -> dict:
 
 # ---------------------------------------------------------------- run
 
+
 def run(run_id: str = "pilot", sample: str = "pilot", n_sim: int = 1000, n_perm_mde: int = 1000) -> dict:
     cfg = load_config()
     rng = np.random.default_rng(cfg["seed"])
@@ -182,15 +209,22 @@ def run(run_id: str = "pilot", sample: str = "pilot", n_sim: int = 1000, n_perm_
     ent = P._entities(sample)
     rt = _retrieval(run_id, ent)
     Q, R = ("qwen", "rrf_rerank"), ("remote", "rrf_rerank")
-    out: dict = {"run_id": run_id, "status": "exploratory (PLAN §10, 2026-11-10)", "bootstrap": nb, "permutations": npm,
-                 "tests": {}, "sensitivity_binary": {}, "exploratory": {}, "mde_pilot": {}}
+    out: dict = {
+        "run_id": run_id,
+        "status": "exploratory (PLAN §10, 2026-11-10)",
+        "bootstrap": nb,
+        "permutations": npm,
+        "tests": {},
+        "sensitivity_binary": {},
+        "exploratory": {},
+        "mde_pilot": {},
+    }
     T = out["tests"]
 
     def gen(name, a, b, desc):
         r = gen_rows(sc, a, b)
         T[name] = {"comparison": desc, "metric": "score"} | paired(r, nb, npm, rng)
-        out["sensitivity_binary"][name] = {k: v for k, v in paired(gen_rows(sc, a, b, True), nb, npm, rng).items()
-                                           if k != "_boots"}
+        out["sensitivity_binary"][name] = {k: v for k, v in paired(gen_rows(sc, a, b, True), nb, npm, rng).items() if k != "_boots"}
         out["mde_pilot"][name] = _mde(gen_rows(sc, a, b, True), n_sim, n_perm_mde, rng)
 
     def ret(name, a, b, desc):
@@ -206,21 +240,30 @@ def run(run_id: str = "pilot", sample: str = "pilot", n_sim: int = 1000, n_perm_
     T["H3a"]["criterion_min_gain"] = cfg["eval"]["rerank_min_gain"]
     # H3b: both answerers pooled; a question contributes one pair per answerer inside its entity cluster
     pooled = gen_rows(sc, ("qwen", "rrf"), Q) + gen_rows(sc, ("remote", "rrf"), R)
-    T["H3b"] = {"comparison": "rrf_rerank vs rrf, both answerers", "metric": "score",
-                "latency_condition": "not measured (phase L dropped)"} | paired(pooled, nb, npm, rng)
-    out["sensitivity_binary"]["H3b"] = {k: v for k, v in paired(
-        gen_rows(sc, ("qwen", "rrf"), Q, True) + gen_rows(sc, ("remote", "rrf"), R, True), nb, npm, rng).items() if k != "_boots"}
-    out["mde_pilot"]["H3b"] = _mde(gen_rows(sc, ("qwen", "rrf"), Q, True) + gen_rows(sc, ("remote", "rrf"), R, True),
-                                   n_sim, n_perm_mde, rng)
+    T["H3b"] = {
+        "comparison": "rrf_rerank vs rrf, both answerers",
+        "metric": "score",
+        "latency_condition": "not measured (phase L dropped)",
+    } | paired(pooled, nb, npm, rng)
+    out["sensitivity_binary"]["H3b"] = {
+        k: v
+        for k, v in paired(gen_rows(sc, ("qwen", "rrf"), Q, True) + gen_rows(sc, ("remote", "rrf"), R, True), nb, npm, rng).items()
+        if k != "_boots"
+    }
+    out["mde_pilot"]["H3b"] = _mde(
+        gen_rows(sc, ("qwen", "rrf"), Q, True) + gen_rows(sc, ("remote", "rrf"), R, True), n_sim, n_perm_mde, rng
+    )
     # H4: non-inferiority of qwen rrf_rerank against remote closed
     h4 = {"comparison": "qwen rrf_rerank - remote closed (non-inferiority)", "metric": "score", "margin": margin} | paired(
-        gen_rows(sc, ("remote", "closed"), Q), nb, npm, rng)
+        gen_rows(sc, ("remote", "closed"), Q), nb, npm, rng
+    )
     h4["p_superiority_two_sided"] = h4.pop("p")
     h4["p"] = round(float((h4["_boots"] <= margin).mean()), 5)  # one-sided NI p (bootstrap)
     h4["ni_holds"] = h4["ci95"][0] > margin
     T["H4"] = h4
-    out["sensitivity_binary"]["H4"] = {k: v for k, v in paired(
-        gen_rows(sc, ("remote", "closed"), Q, True), nb, npm, rng).items() if k != "_boots"}
+    out["sensitivity_binary"]["H4"] = {
+        k: v for k, v in paired(gen_rows(sc, ("remote", "closed"), Q, True), nb, npm, rng).items() if k != "_boots"
+    }
     T["H5"] = {"comparison": "remote rrf_rerank vs closed (cost)"} | cost_test(sc, ("remote", "closed"), R, nb, npm, rng)
 
     ph = holm({k: T[k]["p"] for k in FAMILY})
@@ -253,10 +296,9 @@ def run(run_id: str = "pilot", sample: str = "pilot", n_sim: int = 1000, n_perm_
     for qid, d in rt.items():
         if "rrf" in d and "bm25" in d and qid in qs:
             vu[qs[qid]["vuid"]][d["style"]] = (d["entity"], d["rrf"]["class@5"] - d["bm25"]["class@5"])
-    rows = [(v["descriptive"][0], v["descriptive"][1], v["identifier"][1]) for v in vu.values()
-            if "descriptive" in v and "identifier" in v]
+    rows = [(v["descriptive"][0], v["descriptive"][1], v["identifier"][1]) for v in vu.values() if "descriptive" in v and "identifier" in v]
     E["H2 interaction: (rrf - bm25) class@5, descriptive - identifier"] = did_paired(rows, nb, rng)
-    for k, v in out["sensitivity_binary"].items():
+    for v in out["sensitivity_binary"].values():
         v.pop("_boots", None)
     (ROOT / "runs" / run_id / "hypotheses.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
     return out

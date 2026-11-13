@@ -2,6 +2,11 @@
 name = "vkrag"
 version = "0.1.0"
 description = "Vulkan Valid Usage: RAG vs model memory experiment"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Matsvei Piarerva" }]
+keywords = ["vulkan", "rag", "retrieval", "llm-evaluation", "bm25", "bge-m3"]
 requires-python = ">=3.11,<3.12"
 dependencies = [
     "typer>=0.12",
@@ -39,7 +44,7 @@ ml = [
 vkrag = "vkrag.cli:app"
 
 [dependency-groups]
-dev = ["pytest>=8.2"]
+dev = ["pytest>=8.2", "ruff>=0.8"]
 report = [
     "ipykernel>=7.4.0",
     "nbclient>=0.11.0",
@@ -64,3 +69,22 @@ torch = [{ index = "pytorch-cu124" }]
 name = "pytorch-cu124"
 url = "https://download.pytorch.org/whl/cu124"
 explicit = true
+
+[tool.ruff]
+line-length = 140
+target-version = "py311"
+extend-exclude = ["notebooks/report.ipynb"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+    "E741",  # short names like `l` are used for local lists
+    "B023",  # closures are called within the same loop iteration (retrieval/run.py, report.py)
+    "B905",  # zip() over aligned lists; strict= is not used
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/test_strata.py" = ["E501"]  # verbatim gpuinfo.org HTML rows
+
+[tool.ruff.format]
+line-ending = "lf"

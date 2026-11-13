@@ -1,4 +1,5 @@
 """Stage 2: stratum assignment (PLAN §9.3 examples), sampling, gpuinfo parsing, history helpers."""
+
 from datetime import date
 
 import pytest
@@ -99,8 +100,7 @@ def test_sampling_constraints_and_determinism():
         per_entity[r["entity"]] = per_entity.get(r["entity"], 0) + 1
     assert max(per_entity.values()) <= 3  # global cap across strata
     assert len({r["equiv_class_id"] for r in a}) == len(a)
-    pilot = sample(c, {"a": 3, "b": 3}, 3, seed=2, used_vuids={r["vuid"] for r in a},
-                   used_classes={r["equiv_class_id"] for r in a})
+    pilot = sample(c, {"a": 3, "b": 3}, 3, seed=2, used_vuids={r["vuid"] for r in a}, used_classes={r["equiv_class_id"] for r in a})
     assert not {r["vuid"] for r in pilot} & {r["vuid"] for r in a}
     assert not {r["equiv_class_id"] for r in pilot} & {r["equiv_class_id"] for r in a}
 
@@ -117,7 +117,9 @@ def test_gpuinfo_parse_and_combine():
     p = parse_page(PAGE)
     assert p["coverage"] == {"VK_EXT_mesh_shader": 0.4839, "VK_KHR_swapchain": 1.0}
     assert p["filters"]["age"]["label"] == "Recent (1y)" and p["table_rows"] == 2
-    inst = parse_page('<tr role="row" class="odd"><td class="value sorting_1">VK_KHR_surface</td><td class="text-center"><a class="supported" href="x">99.5<span style="font-size:10px;">%</span></a></td><td class="text-center"><a class="na" href="y">0.5<span style="font-size:10px;">%</span></a></td><td class="value">2016-02-16</td></tr>')
+    inst = parse_page(
+        '<tr role="row" class="odd"><td class="value sorting_1">VK_KHR_surface</td><td class="text-center"><a class="supported" href="x">99.5<span style="font-size:10px;">%</span></a></td><td class="text-center"><a class="na" href="y">0.5<span style="font-size:10px;">%</span></a></td><td class="value">2016-02-16</td></tr>'
+    )
     assert inst["coverage"] == {"VK_KHR_surface": 0.995} and inst["table_rows"] == 1
     per = {"windows": {"VK_KHR_win32_surface": 0.99, "VK_EXT_x": 0.6}, "linux": {"VK_EXT_x": 0.2}}
     plat = {"VK_KHR_win32_surface": "win32"}
@@ -126,7 +128,13 @@ def test_gpuinfo_parse_and_combine():
 
 
 def test_history_window_and_text_change():
-    dates = {"v1.3.200": "2021-12-01", "v1.3.269": "2023-11-03", "v1.3.270": "2023-11-10", "v1.4.300": "2024-06-01", "v1.4.400": "2027-01-01"}
+    dates = {
+        "v1.3.200": "2021-12-01",
+        "v1.3.269": "2023-11-03",
+        "v1.3.270": "2023-11-10",
+        "v1.4.300": "2024-06-01",
+        "v1.4.400": "2027-01-01",
+    }
     tags, start = select_tags(dates, "v1.4.300", date(2026, 11, 7), 3)
     assert start == "2023-11-07" and tags == ["v1.3.269", "v1.3.270", "v1.4.300"]
     same = text_change("buffer must be  bound", "buffer must be bound", 0.1)

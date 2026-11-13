@@ -8,6 +8,7 @@ Outputs in data/processed/index/ (gitignored):
   manifest.json       corpus hash, model revisions, parameters, sizes, timings
 Ollama must not hold the GPU while the dense pass runs (checked by `ollama ps`).
 """
+
 from __future__ import annotations
 
 import json
@@ -42,7 +43,11 @@ def build_bm25(chunks: list[dict], cfg: dict) -> dict:
     r = bm25s.BM25(k1=cfg["bm25"]["k1"], b=cfg["bm25"]["b"], method="lucene")
     r.index(toks, show_progress=False)
     r.save(str(IDX / "bm25"), show_progress=False)
-    return {"seconds": round(time.time() - t, 1), "vocab": len(r.vocab_dict), "avg_doc_tokens": round(float(np.mean([len(x) for x in toks])), 1)}
+    return {
+        "seconds": round(time.time() - t, 1),
+        "vocab": len(r.vocab_dict),
+        "avg_doc_tokens": round(float(np.mean([len(x) for x in toks])), 1),
+    }
 
 
 def build_dense_sparse(chunks: list[dict]) -> dict:
@@ -68,8 +73,13 @@ def build_dense_sparse(chunks: list[dict]) -> dict:
     m = sp.csr_matrix((np.asarray(vals, dtype=np.float32), (rows, cols)), shape=(len(chunks), vocab))
     sp.save_npz(IDX / "sparse.npz", m)
     norms = np.linalg.norm(dense, axis=1)
-    return {"seconds": round(time.time() - t, 1), "dim": int(dense.shape[1]), "norm_min": round(float(norms.min()), 4),
-            "norm_max": round(float(norms.max()), 4), "sparse_nnz_mean": round(m.nnz / len(chunks), 1)}
+    return {
+        "seconds": round(time.time() - t, 1),
+        "dim": int(dense.shape[1]),
+        "norm_min": round(float(norms.min()), 4),
+        "norm_max": round(float(norms.max()), 4),
+        "sparse_nnz_mean": round(m.nnz / len(chunks), 1),
+    }
 
 
 def build(which: str = "all") -> dict:
@@ -81,17 +91,33 @@ def build(which: str = "all") -> dict:
     man_path = IDX / "manifest.json"
     man = json.load(open(man_path, encoding="utf-8")) if man_path.exists() else {}
     cov = json.load(open(PROCESSED / "coverage_report.json", encoding="utf-8"))
-    man.update({"corpus_hash": cov["corpus_hash"], "n_docs": len(doc_ids),
-                "by_type": {t: sum(c["type"] == t for c in chunks) for t in ("section", "vu")}})
+    man.update(
+        {
+            "corpus_hash": cov["corpus_hash"],
+            "n_docs": len(doc_ids),
+            "by_type": {t: sum(c["type"] == t for c in chunks) for t in ("section", "vu")},
+        }
+    )
     if which in ("all", "bm25"):
-        man["bm25"] = {**build_bm25(chunks, cfg), "k1": cfg["bm25"]["k1"], "b": cfg["bm25"]["b"], "method": "lucene",
-                       "tokenizer": "vkrag.index.tokenize (identifiers whole + parts, stop words, Snowball english)"}
+        man["bm25"] = {
+            **build_bm25(chunks, cfg),
+            "k1": cfg["bm25"]["k1"],
+            "b": cfg["bm25"]["b"],
+            "method": "lucene",
+            "tokenizer": "vkrag.index.tokenize (identifiers whole + parts, stop words, Snowball english)",
+        }
     if which in ("all", "dense"):
         loaded = ollama_loaded()
         if loaded:
             raise RuntimeError(f"Ollama holds models {loaded}; unload them first (keep_alive=0)")
         e = cfg["embedder"]
-        man["dense_sparse"] = {**build_dense_sparse(chunks), "model": e["model"], "revision": e["revision"],
-                               "max_length": e["max_length"], "fp16": e["fp16"], "batch_size": e["batch_size"]}
+        man["dense_sparse"] = {
+            **build_dense_sparse(chunks),
+            "model": e["model"],
+            "revision": e["revision"],
+            "max_length": e["max_length"],
+            "fp16": e["fp16"],
+            "batch_size": e["batch_size"],
+        }
     man_path.write_text(json.dumps(man, indent=1) + "\n", encoding="utf-8")
     return man

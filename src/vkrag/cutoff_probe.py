@@ -12,6 +12,7 @@
 
 Outputs in data/processed/cutoff_probe/: items.json, answers.jsonl, judged.jsonl, result.json.
 """
+
 from __future__ import annotations
 
 import json
@@ -26,21 +27,29 @@ from vkrag.history import docs_tag_dates, tag_key
 from vkrag.ingest.registry import _xml_at
 
 OUT = PROCESSED / "cutoff_probe"
-QUESTION = ("What does the Vulkan extension {ext} provide? Answer in 2-3 sentences. "
-            "If you do not know this extension, answer \"I don't know\".")
+QUESTION = (
+    'What does the Vulkan extension {ext} provide? Answer in 2-3 sentences. If you do not know this extension, answer "I don\'t know".'
+)
 SYSTEM = "You are an expert on the Vulkan API. Answer concisely."
 JUDGE_SYSTEM = (
     "You check whether a model knows a Vulkan extension. You get the extension name, the official description "
     "from the Vulkan specification and the model's answer. recognized=true only if the answer correctly states "
     "the extension's actual purpose and includes at least one specific fact consistent with the description that "
     "cannot be guessed from the extension name alone. A refusal, a generic guess from the name, or a description "
-    "of a different feature is recognized=false. Reply with JSON only.")
+    "of a different feature is recognized=false. Reply with JSON only."
+)
 JUDGE_SCHEMA = {
     "type": "json_schema",
-    "json_schema": {"name": "recognition", "strict": True, "schema": {
-        "type": "object",
-        "properties": {"recognized": {"type": "boolean"}, "reason": {"type": "string"}},
-        "required": ["recognized", "reason"], "additionalProperties": False}},
+    "json_schema": {
+        "name": "recognition",
+        "strict": True,
+        "schema": {
+            "type": "object",
+            "properties": {"recognized": {"type": "boolean"}, "reason": {"type": "string"}},
+            "required": ["recognized", "reason"],
+            "additionalProperties": False,
+        },
+    },
 }
 
 
@@ -150,12 +159,25 @@ def ask(models: list[str]) -> None:
             msgs = [{"role": "system", "content": SYSTEM}, {"role": "user", "content": QUESTION.format(ext=it["extension"])}]
             if m == "qwen":
                 r = cl.chat(msgs, num_predict=n_pred)
-                rec = {"model": m, "model_id": cfg["ollama"]["model"], "digest": digest, "content": r.content,
-                       "finish_reason": r.done_reason, "latency_s": r.latency_s}
+                rec = {
+                    "model": m,
+                    "model_id": cfg["ollama"]["model"],
+                    "digest": digest,
+                    "content": r.content,
+                    "finish_reason": r.done_reason,
+                    "latency_s": r.latency_s,
+                }
             else:
                 r = cl.chat(rc, msgs, max_tokens=n_pred)
-                rec = {"model": m, "model_id": r.model, "provider": r.provider, "content": r.content,
-                       "finish_reason": r.finish_reason, "cost_usd": r.cost_usd, "latency_s": r.latency_s}
+                rec = {
+                    "model": m,
+                    "model_id": r.model,
+                    "provider": r.provider,
+                    "content": r.content,
+                    "finish_reason": r.finish_reason,
+                    "cost_usd": r.cost_usd,
+                    "latency_s": r.latency_s,
+                }
             rec.update(extension=it["extension"], month=it["month"])
             _append(path, rec)
         if m == "qwen":
@@ -177,20 +199,28 @@ def judge() -> None:
         if (a["model"], a["extension"]) in done:
             continue
         it = items[a["extension"]]
-        user = (f"Extension: {a['extension']}\n\nOfficial description:\n{it['description']}\n\n"
-                f"Model answer:\n{a['content']}\n\nReturn recognized and a reason of at most 40 words.")
-        for attempt in range(3):
-            r = o.chat(rc, [{"role": "system", "content": JUDGE_SYSTEM}, {"role": "user", "content": user}],
-                       response_format=JUDGE_SCHEMA)
+        user = (
+            f"Extension: {a['extension']}\n\nOfficial description:\n{it['description']}\n\n"
+            f"Model answer:\n{a['content']}\n\nReturn recognized and a reason of at most 40 words."
+        )
+        for _attempt in range(3):
+            r = o.chat(rc, [{"role": "system", "content": JUDGE_SYSTEM}, {"role": "user", "content": user}], response_format=JUDGE_SCHEMA)
             try:
                 v = json.loads(r.content or "")
                 break
             except json.JSONDecodeError:
                 v = None
-        rec = {"model": a["model"], "extension": a["extension"], "month": a["month"],
-               "recognized": None if v is None else v["recognized"], "reason": None if v is None else v["reason"],
-               "judge_model": r.model, "judge_provider": r.provider, "cost_usd": r.cost_usd,
-               "reasoning_tokens": r.reasoning_tokens}
+        rec = {
+            "model": a["model"],
+            "extension": a["extension"],
+            "month": a["month"],
+            "recognized": None if v is None else v["recognized"],
+            "reason": None if v is None else v["reason"],
+            "judge_model": r.model,
+            "judge_provider": r.provider,
+            "cost_usd": r.cost_usd,
+            "reasoning_tokens": r.reasoning_tokens,
+        }
         _append(path, rec)
 
 
@@ -240,8 +270,11 @@ def result() -> dict:
         cut = cutoff_month(share, bins)
         out["models"][model] = {
             "by_month": {mo: {"recognized": by_m[mo][0], "n": by_m[mo][1]} for mo in data["months"]},
-            "by_bin": {b: {"recognized": by_b[b][0], "n": by_b[b][1], "share": None if share[b] is None else round(share[b], 3)} for b in bins},
-            "cutoff_bin": cut, "cutoff_date": bin_end(cut) if cut else None,
+            "by_bin": {
+                b: {"recognized": by_b[b][0], "n": by_b[b][1], "share": None if share[b] is None else round(share[b], 3)} for b in bins
+            },
+            "cutoff_bin": cut,
+            "cutoff_date": bin_end(cut) if cut else None,
         }
     out["judge_cost_usd"] = round(sum(j.get("cost_usd") or 0 for j in judged), 4)
     (OUT / "result.json").write_text(json.dumps(out, indent=1), encoding="utf-8")

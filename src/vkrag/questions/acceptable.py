@@ -7,6 +7,7 @@ Approved VUs become acceptable_vuids; their classes are added to gold_chunk_ids 
 Questions with more than 2 approved VUs are flagged `ambiguous` for manual review.
 Judge calls are cached in generation_log/<sample>_acceptable.jsonl by (qid, candidate, prompt hash, model).
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -22,10 +23,16 @@ TOP_N = 10
 MAX_ACCEPTABLE = 2
 SCHEMA = {
     "type": "json_schema",
-    "json_schema": {"name": "acceptable", "strict": True, "schema": {
-        "type": "object",
-        "properties": {"equivalent": {"type": "boolean"}, "reason": {"type": "string"}},
-        "required": ["equivalent", "reason"], "additionalProperties": False}},
+    "json_schema": {
+        "name": "acceptable",
+        "strict": True,
+        "schema": {
+            "type": "object",
+            "properties": {"equivalent": {"type": "boolean"}, "reason": {"type": "string"}},
+            "required": ["equivalent", "reason"],
+            "additionalProperties": False,
+        },
+    },
 }
 
 
@@ -68,8 +75,10 @@ def candidates(sample: str, run_id: str) -> dict[str, list[str]]:
 
 
 def user_message(q: dict, gold_text: str, cand_text: str) -> str:
-    return (f"Question:\n{q['question']}\n\nReference answer:\n{q['reference_answer']}\n\n"
-            f"Gold rule:\n{gold_text}\n\nCandidate rule:\n{cand_text}")
+    return (
+        f"Question:\n{q['question']}\n\nReference answer:\n{q['reference_answer']}\n\n"
+        f"Gold rule:\n{gold_text}\n\nCandidate rule:\n{cand_text}"
+    )
 
 
 def _cache_path(sample: str) -> Path:
@@ -115,9 +124,15 @@ def run(sample: str, run_id: str, dry_run: bool = False, max_usd: float | None =
         in_tok = sum(len(system) + len(user_message(qs[qid], chunk_text[qs[qid]["vuid"]], chunk_text[c])) for qid, c in todo) / 3.5
         out_tok = len(todo) * 200
     est = in_tok * float(price.get("prompt", 0)) + out_tok * float(price.get("completion", 0))
-    stats = {"questions": len(cands), "candidates": sum(map(len, cands.values())), "todo_calls": len(todo),
-             "est_input_tokens": int(in_tok), "est_output_tokens": out_tok, "est_usd": round(est, 4),
-             "price_per_token": {k: price.get(k) for k in ("prompt", "completion")}}
+    stats = {
+        "questions": len(cands),
+        "candidates": sum(map(len, cands.values())),
+        "todo_calls": len(todo),
+        "est_input_tokens": int(in_tok),
+        "est_output_tokens": out_tok,
+        "est_usd": round(est, 4),
+        "price_per_token": {k: price.get(k) for k in ("prompt", "completion")},
+    }
     if dry_run or not todo:
         return stats
     if limit:
@@ -128,8 +143,10 @@ def run(sample: str, run_id: str, dry_run: bool = False, max_usd: float | None =
     with open(_cache_path(sample), "a", encoding="utf-8") as f:
         for i, (qid, c) in enumerate(todo):
             q = qs[qid]
-            msgs = [{"role": "system", "content": system},
-                    {"role": "user", "content": user_message(q, chunk_text[q["vuid"]], chunk_text[c])}]
+            msgs = [
+                {"role": "system", "content": system},
+                {"role": "user", "content": user_message(q, chunk_text[q["vuid"]], chunk_text[c])},
+            ]
             v, r = None, None
             for _ in range(3):
                 r = o.chat(rc, msgs, response_format=SCHEMA)
@@ -141,12 +158,23 @@ def run(sample: str, run_id: str, dry_run: bool = False, max_usd: float | None =
                     continue
             if r.model and not r.model.startswith(rc["model"].split(":")[0].rsplit("-", 1)[0]):
                 raise RuntimeError(f"judge model mismatch: {r.model}")
-            rec = {"qid": qid, "candidate": c, "rank": cands[qid].index(c) + 1, "prompt_hash": ph,
-                   "judge_model": rc["model"], "actual_model": r.model, "provider": r.provider,
-                   "equivalent": None if v is None else v["equivalent"], "reason": None if v is None else v["reason"],
-                   "cost_usd": r.cost_usd, "prompt_tokens": r.usage.get("prompt_tokens"),
-                   "completion_tokens": r.usage.get("completion_tokens"), "reasoning_tokens": r.reasoning_tokens,
-                   "finish_reason": r.finish_reason, "latency_s": r.latency_s}
+            rec = {
+                "qid": qid,
+                "candidate": c,
+                "rank": cands[qid].index(c) + 1,
+                "prompt_hash": ph,
+                "judge_model": rc["model"],
+                "actual_model": r.model,
+                "provider": r.provider,
+                "equivalent": None if v is None else v["equivalent"],
+                "reason": None if v is None else v["reason"],
+                "cost_usd": r.cost_usd,
+                "prompt_tokens": r.usage.get("prompt_tokens"),
+                "completion_tokens": r.usage.get("completion_tokens"),
+                "reasoning_tokens": r.reasoning_tokens,
+                "finish_reason": r.finish_reason,
+                "latency_s": r.latency_s,
+            }
             f.write(json.dumps(rec, ensure_ascii=False) + "\n")
             f.flush()
             if max_usd is not None and spent > max_usd:
@@ -197,8 +225,20 @@ def apply(sample: str, run_id: str) -> dict:
     path.write_text(text, encoding="utf-8")
     mp = path.with_suffix(".manifest.json")
     man = json.load(open(mp, encoding="utf-8"))
-    man.update({"sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(), "gold_final": True, "stage": "3b",
-                "acceptable": {"questions_with_acceptable": n_acc, "ambiguous": ambiguous, "judge_model": model,
-                               "prompt_hash": ph, "run_id": run_id, "top_n": TOP_N}})
+    man.update(
+        {
+            "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+            "gold_final": True,
+            "stage": "3b",
+            "acceptable": {
+                "questions_with_acceptable": n_acc,
+                "ambiguous": ambiguous,
+                "judge_model": model,
+                "prompt_hash": ph,
+                "run_id": run_id,
+                "top_n": TOP_N,
+            },
+        }
+    )
     mp.write_text(json.dumps(man, indent=1) + "\n", encoding="utf-8")
     return {"written": True, "questions_with_acceptable": n_acc, "ambiguous": ambiguous, "sha256": man["sha256"]}

@@ -4,6 +4,7 @@ Only Ollama uses the GPU in this phase; the model is unloaded at the end (keep_a
 carries the prompt hash and the model digest (cache key) and the identifiers in the output that do
 not exist in identifiers.json / aliases.json / the SPIR-V dictionary (transform hallucinations).
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -76,13 +77,24 @@ def run(sample: str, run_id: str) -> dict:
                 old = have.get((q["qid"], kind))
                 if old and old["prompt_hash"] == ph and old["model_digest"] == digest and old["question_hash"] == q["question_hash"]:
                     continue
-                res = cli.chat([{"role": "system", "content": text}, {"role": "user", "content": q["question"]}],
-                               num_predict=oc["num_predict"][kind])
+                res = cli.chat(
+                    [{"role": "system", "content": text}, {"role": "user", "content": q["question"]}], num_predict=oc["num_predict"][kind]
+                )
                 out = clean(kind, res.content)
-                rec = {"qid": q["qid"], "kind": kind, "question_hash": q["question_hash"], "prompt_hash": ph,
-                       "model": oc["model"], "model_digest": digest, "text": out, "done_reason": res.done_reason,
-                       "prompt_tokens": res.prompt_eval_count, "completion_tokens": res.eval_count,
-                       "latency_s": res.latency_s, "unknown_identifiers": unknown_identifiers(out, lex)}
+                rec = {
+                    "qid": q["qid"],
+                    "kind": kind,
+                    "question_hash": q["question_hash"],
+                    "prompt_hash": ph,
+                    "model": oc["model"],
+                    "model_digest": digest,
+                    "text": out,
+                    "done_reason": res.done_reason,
+                    "prompt_tokens": res.prompt_eval_count,
+                    "completion_tokens": res.eval_count,
+                    "latency_s": res.latency_s,
+                    "unknown_identifiers": unknown_identifiers(out, lex),
+                }
                 stats["truncated"] += res.done_reason == "length"
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 f.flush()

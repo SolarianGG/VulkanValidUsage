@@ -11,6 +11,7 @@
 
 All assignments are deterministic functions of the config seed and the frozen sample.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -20,7 +21,7 @@ import xml.etree.ElementTree as ET
 from collections import Counter, defaultdict
 from pathlib import Path
 
-from vkrag.config import DATA, EXTERNAL, PROCESSED, RAW, load_config
+from vkrag.config import DATA, PROCESSED, RAW, load_config
 
 QDIR = DATA / "questions"
 GLOG = QDIR / "generation_log"
@@ -29,7 +30,7 @@ ANSWER_TYPES = ("rule", "yes_no", "scenario")
 PROMPT_VERSION = "prompt_v2"
 
 MAX_ITEMS_PER_BATCH = 25
-MAX_CONTEXT_CHARS = 240_000   # distinct shared context per batch (~60-70k tokens)
+MAX_CONTEXT_CHARS = 240_000  # distinct shared context per batch (~60-70k tokens)
 MAX_REFS_PER_ITEM = 6
 
 
@@ -87,8 +88,7 @@ def assign(vuids: list[str], strata: dict[str, dict], cfg: dict, sample: str) ->
             out[v] = {"answer_type": t}
         yn_by_stratum[st] = [v for v in order if out[v]["answer_type"] == "yes_no"]
     verdict = balanced_split(yn_by_stratum, ("yes", "no"), random.Random(stable_seed(seed, sample, "verdict")))
-    style = balanced_split({st: sorted(vs) for st, vs in by_stratum.items()}, STYLES,
-                           random.Random(stable_seed(seed, sample, "gen_style")))
+    style = balanced_split({st: sorted(vs) for st, vs in by_stratum.items()}, STYLES, random.Random(stable_seed(seed, sample, "gen_style")))
     for v in out:
         out[v]["gen_style"] = style[v]
         if v in verdict:
@@ -289,8 +289,13 @@ def unanswerable_input(sample: str, cfg: dict, corpus: Corpus, exclude_entities:
     else:
         q = dict(full)
     strata = {json.loads(l)["vuid"]: json.loads(l) for l in open(PROCESSED / "strata.jsonl", encoding="utf-8")}
-    eligible = sorted({s["entity"] for s in strata.values()
-                       if s["stratum"] and not s["excluded"] and s["entity_kind"] == "api" and s["entity"] not in exclude_entities})
+    eligible = sorted(
+        {
+            s["entity"]
+            for s in strata.values()
+            if s["stratum"] and not s["excluded"] and s["entity_kind"] == "api" and s["entity"] not in exclude_entities
+        }
+    )
     rng = random.Random(stable_seed(cfg["seed"], sample, "unans_entities"))
     k = 3 * (q["false_rule"] + q["false_behavior"])
     cands = rng.sample(eligible, min(k, len(eligible)))
@@ -341,7 +346,10 @@ def prepare(sample: str) -> dict:
         "samples_sha256": samples["sha256"],
         "prompt_version": PROMPT_VERSION,
         "n_vus": len(vuids),
-        "answer_type_by_stratum": {st: dict(Counter(a["answer_type"] for a in asg.values() if a["stratum"] == st)) for st in sorted({a["stratum"] for a in asg.values()})},
+        "answer_type_by_stratum": {
+            st: dict(Counter(a["answer_type"] for a in asg.values() if a["stratum"] == st))
+            for st in sorted({a["stratum"] for a in asg.values()})
+        },
         "verdicts": dict(Counter(a.get("expected_verdict") for a in asg.values() if a["answer_type"] == "yes_no")),
         "gen_style": dict(Counter(a["gen_style"] for a in asg.values())),
         "batches": sizes,

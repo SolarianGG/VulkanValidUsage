@@ -11,6 +11,7 @@ MDE = the smallest Δ (1 pp steps) where the test rejects at α = 0.05 / 8 (wors
 of simulations. H4 (non-inferiority): share of simulations with true difference 0 where the lower
 bound of the cluster bootstrap 95% CI of (qwen - remote) is above the margin.
 """
+
 from __future__ import annotations
 
 import json
@@ -110,12 +111,19 @@ def descriptives(rows) -> dict:
     a = np.array([r[1] for r in rows], dtype=float)
     b = np.array([r[2] for r in rows], dtype=float)
     cl = _clusters(rows)
-    return {"questions": len(rows), "entities": len(cl), "mean_a": round(a.mean(), 3), "mean_b": round(b.mean(), 3),
-            "discordant": round(float((a != b).mean()), 3), "b_minus_a": round(float((b - a).mean()), 3),
-            "questions_per_entity": round(len(rows) / len(cl), 2)}
+    return {
+        "questions": len(rows),
+        "entities": len(cl),
+        "mean_a": round(a.mean(), 3),
+        "mean_b": round(b.mean(), 3),
+        "discordant": round(float((a != b).mean()), 3),
+        "b_minus_a": round(float((b - a).mean()), 3),
+        "questions_per_entity": round(len(rows) / len(cl), 2),
+    }
 
 
 # ---------------------------------------------------------------- pilot tables
+
 
 def _entities(sample: str) -> dict[str, str]:
     from vkrag.retrieval.run import load_questions
@@ -123,8 +131,9 @@ def _entities(sample: str) -> dict[str, str]:
     return {q["qid"]: q.get("entity") or q["qid"] for q in load_questions(sample)}
 
 
-def generation_rows(run_id: str, ent: dict, a_key: tuple[str, str], b_key: tuple[str, str],
-                    outcome: str = "correct") -> list[tuple[str, int, int]]:
+def generation_rows(
+    run_id: str, ent: dict, a_key: tuple[str, str], b_key: tuple[str, str], outcome: str = "correct"
+) -> list[tuple[str, int, int]]:
     by = defaultdict(dict)
     for line in open(ROOT / "runs" / run_id / "scores.jsonl", encoding="utf-8"):
         r = json.loads(line)
@@ -167,19 +176,21 @@ def run(sample: str = "pilot", run_id: str = "pilot", n_sim: int = 2000, n_perm:
         out["comparisons"][name] = descriptives(rows) | {"main_questions": n_q} | mde(cl, n_q, n_sim, n_perm, rng)
         print(name, out["comparisons"][name].get("mde"))
     # H3b: rrf_rerank vs rrf, both answerers pooled; cluster = entity (both answerers inside)
-    rows = [(e, a, b) for m in ("qwen", "remote")
-            for e, a, b in generation_rows(run_id, ent, (m, "rrf"), (m, "rrf_rerank"))]
+    rows = [(e, a, b) for m in ("qwen", "remote") for e, a, b in generation_rows(run_id, ent, (m, "rrf"), (m, "rrf_rerank"))]
     if rows:
         cl = _clusters(rows)
         out["comparisons"]["H3b rrf_rerank vs rrf (score, both answerers)"] = (
-            descriptives(rows) | {"main_questions": 2 * n_main_vu} | mde(cl, 2 * n_main_vu, n_sim, n_perm, rng))
+            descriptives(rows) | {"main_questions": 2 * n_main_vu} | mde(cl, 2 * n_main_vu, n_sim, n_perm, rng)
+        )
     # H4: qwen rrf_rerank vs remote closed, non-inferiority at true difference 0
     rows = generation_rows(run_id, ent, ("remote", "closed"), ("qwen", "rrf_rerank"))
     if rows:
         cl = _clusters(rows)
         margin = cfg["eval"]["ni_margin"]
         out["comparisons"]["H4 qwen rrf_rerank vs remote closed (NI)"] = descriptives(rows) | {
-            "margin": margin, "main_questions": n_main_vu,
-            "p_confirm_ni_at_true_diff_0": round(ni_power(cl, n_main_vu, margin, n_sim, n_boot, rng), 3)}
+            "margin": margin,
+            "main_questions": n_main_vu,
+            "p_confirm_ni_at_true_diff_0": round(ni_power(cl, n_main_vu, margin, n_sim, n_boot, rng), 3),
+        }
     (ROOT / "runs" / run_id / "power.json").write_text(json.dumps(out, indent=1) + "\n", encoding="utf-8")
     return out

@@ -13,6 +13,7 @@ window: a suffix already present in the baseline is "before_window" (old by cons
 `strata.text_change.last_n_tags` tags back: normalized Levenshtein distance above the threshold,
 or a changed set of identifiers.
 """
+
 from __future__ import annotations
 
 import json
@@ -45,7 +46,9 @@ def tag_key(t: str) -> tuple[int, int]:
 def docs_tag_dates() -> dict[str, str]:
     out = subprocess.run(
         ["git", "-C", str(DOCS), "for-each-ref", "--format=%(refname:short) %(creatordate:short)", "refs/tags/v1.*"],
-        check=True, capture_output=True, text=True,
+        check=True,
+        capture_output=True,
+        text=True,
     ).stdout
     res = {}
     for line in out.splitlines():
@@ -153,14 +156,20 @@ def run() -> dict:
 
     baseline = scanned[0]
     records: dict[str, dict] = {}
-    stats = {"explicit": 0, "before_window": 0, "dated_in_window": 0, "undated": 0,
-             "new_in_last_n": 0, "text_changed_recently": 0, "matched_old_by": {}}
+    stats = {
+        "explicit": 0,
+        "before_window": 0,
+        "dated_in_window": 0,
+        "undated": 0,
+        "new_in_last_n": 0,
+        "text_changed_recently": 0,
+        "matched_old_by": {},
+    }
     for vuid, (entity, raw) in sorted(cur.items()):
         s = suffix_of(vuid)
         stats["explicit"] += 1
         ft = first_seen.get(s)
-        rec = {"suffix": s, "first_tag": ft, "first_date": dates.get(ft) if ft else None,
-               "before_window": ft == baseline}
+        rec = {"suffix": s, "first_tag": ft, "first_date": dates.get(ft) if ft else None, "before_window": ft == baseline}
         if ft is None:
             stats["undated"] += 1
         elif ft == baseline:
@@ -208,8 +217,11 @@ def run() -> dict:
         rho = spearmanr([a for a, _ in dated], [b for _, b in dated]).statistic
         base_max = max((int(r["suffix"]) for r in records.values() if r["before_window"]), default=0)
         below = sum(1 for a, _ in dated if a < base_max)
-        monotonic = {"spearman_suffix_vs_tag": round(float(rho), 4), "max_suffix_before_window": base_max,
-                     "dated_with_suffix_below_that": below}
+        monotonic = {
+            "spearman_suffix_vs_tag": round(float(rho), 4),
+            "max_suffix_before_window": base_max,
+            "dated_with_suffix_below_that": below,
+        }
 
     per_tag: dict[str, int] = {}
     for r in records.values():

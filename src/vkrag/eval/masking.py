@@ -1,5 +1,6 @@
 """Answer masking before the judge (PLAN §7.2, §9.3): configuration markers and VUIDs are removed so the
 judge cannot tell RAG from closed-book answers. VUIDs are checked separately by the automatic checks."""
+
 from __future__ import annotations
 
 import re
@@ -10,14 +11,31 @@ PATTERNS: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\bVUID-[A-Za-z0-9_-]+\b", re.I), VUID_TOKEN),
     # VUIDs cited without the prefix: vkCmdResetEvent2-stageMask-03929, VkFoo-bar-01234
     (re.compile(r"\b(?:vk|Vk|VK)[A-Za-z0-9_]*-[A-Za-z0-9_]+(?:-[A-Za-z0-9_]+)*-\d{5}\b"), VUID_TOKEN),
-    (re.compile(r"\bthe (?:provided |given )?(?:context|documents?|excerpts?|passages?) (?:does not|doesn't|do not|don't) "
-                r"(?:explicitly )?(?:mention|contain|say|cover|address|state|include)[^.]*\.", re.I), ""),
-    (re.compile(r"\b(?:according to|based on|per|as stated in|as shown in|from|in) the (?:provided |given )?"
-                r"(?:context|documents?|excerpts?|passages?)\b[^.,;:]*", re.I), ""),
+    (
+        re.compile(
+            r"\bthe (?:provided |given )?(?:context|documents?|excerpts?|passages?) (?:does not|doesn't|do not|don't) "
+            r"(?:explicitly )?(?:mention|contain|say|cover|address|state|include)[^.]*\.",
+            re.I,
+        ),
+        "",
+    ),
+    (
+        re.compile(
+            r"\b(?:according to|based on|per|as stated in|as shown in|from|in) the (?:provided |given )?"
+            r"(?:context|documents?|excerpts?|passages?)\b[^.,;:]*",
+            re.I,
+        ),
+        "",
+    ),
     (re.compile(r"\b(?:context|passage|excerpt|chunk|item) \[?\d+\]?", re.I), ""),
     (re.compile(r"\[\d+\]"), ""),
     (re.compile(r"\bfrom (?:my|general) (?:own )?knowledge\b[^.]*", re.I), ""),
-    (re.compile(r"\b(?:I am |I'm |I )?(?:relying|rely|relies|drawing|based) (?:on|from) (?:my )?(?:own |general )?knowledge\b[^.)]*", re.I), ""),
+    (
+        re.compile(
+            r"\b(?:I am |I'm |I )?(?:relying|rely|relies|drawing|based) (?:on|from) (?:my )?(?:own |general )?knowledge\b[^.)]*", re.I
+        ),
+        "",
+    ),
     (re.compile(r",? ?as permitted by the instructions\b", re.I), ""),
     (re.compile(r"\(?\b(?:from )?general (?:spec(?:ification)? |Vulkan )?knowledge(?:, not in (?:the )?context)?\)?", re.I), ""),
     (re.compile(r",? ?\bnot (?:in|from) (?:the )?context\b", re.I), ""),
@@ -30,8 +48,14 @@ PATTERNS: list[tuple[re.Pattern, str]] = [
     (re.compile(r"\*{0,2}\b(?:the )?snippets?\b\s*\*{0,2}", re.I), "the specification "),
     (re.compile(r"\b(the (?:\w+ ){0,2}(?:specification|text|documentation|sections?)) provided\b", re.I), r"\1"),
     # remaining mentions of the context are replaced by a neutral phrase (deleting them breaks sentences)
-    (re.compile(r"\b(?:the |this )?(?:provided |given |above |supplied )(?:context|text|snippets?|excerpts?|passages?|documents?|"
-                r"documentation|information)(?: (?:snippets?|passages?|excerpts?))?\b", re.I), "the specification"),
+    (
+        re.compile(
+            r"\b(?:the |this )?(?:provided |given |above |supplied )(?:context|text|snippets?|excerpts?|passages?|documents?|"
+            r"documentation|information)(?: (?:snippets?|passages?|excerpts?))?\b",
+            re.I,
+        ),
+        "the specification",
+    ),
     (re.compile(r"\b(?:the |this )context(?: (?:snippets?|passages?|excerpts?|items?))?\b", re.I), "the specification"),
     (re.compile(r"\bthe provided\b(?!\s+[a-z])", re.I), "the specification"),  # dangling after removed [n]
     (re.compile(r"\*\*\s*\*\*"), ""),  # bold markers left around a removed [n] / VUID

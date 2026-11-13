@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.11"
+          enable-cache: true
+      - name: Install (without the ml extra)
+        run: uv sync --group dev --frozen
+      - name: Lint
+        run: |
+          uv run --frozen ruff check .
+          uv run --frozen ruff format --check .
+      - name: Tests
+        run: uv run --frozen pytest -q
+      - name: Report tables reproduce from the committed run
+        run: |
+          uv run --frozen vkrag report
+          git diff --exit-code -- reports/report_tables.md reports/report_data.json

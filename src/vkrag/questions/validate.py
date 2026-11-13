@@ -7,6 +7,7 @@ checks each line and writes:
   generation_log/<sample>_validation.json     counts, reasons, per-batch drift statistics
 A VU whose identifier or descriptive line is rejected is reported in `regenerate`.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -232,9 +233,17 @@ def validate(sample: str, dedup: bool = False) -> dict:
                     rejects.append({**rec, "reasons": rs})
                     reasons.update(x.split(":")[0].split(" =")[0] for x in rs)
                 else:
-                    accepted.append({**rec, "stratum": item["stratum"], "entity": item["entity"], "entity_kind": item["entity_kind"],
-                                     "equiv_class_id": None, "batch": inp["batch"],
-                                     "question_hash": question_hash(rec["question"]) if rec.get("question") else None})
+                    accepted.append(
+                        {
+                            **rec,
+                            "stratum": item["stratum"],
+                            "entity": item["entity"],
+                            "entity_kind": item["entity_kind"],
+                            "equiv_class_id": None,
+                            "batch": inp["batch"],
+                            "question_hash": question_hash(rec["question"]) if rec.get("question") else None,
+                        }
+                    )
             if not ok_all:
                 regenerate.append(vuid)
         rej_path = inp_path.with_name(inp_path.name.replace(".input.json", ".rejects.jsonl"))
@@ -256,10 +265,17 @@ def validate(sample: str, dedup: bool = False) -> dict:
             (rejects if rs else ok).append({**rec, "reasons": rs} if rs else rec)
         for rec in ok:
             accepted.append({**rec, "stratum": "unanswerable", "question_hash": question_hash(rec["question"])})
-        (bdir / "batch_unans.rejects.jsonl").write_text("".join(json.dumps(x, ensure_ascii=False) + "\n" for x in rejects), encoding="utf-8")
+        (bdir / "batch_unans.rejects.jsonl").write_text(
+            "".join(json.dumps(x, ensure_ascii=False) + "\n" for x in rejects), encoding="utf-8"
+        )
         have = Counter(r["subtype"] for r in ok)
-        unans.update({"accepted": dict(have), "rejected": len(rejects),
-                      "quota_short": {k: v - have.get(k, 0) for k, v in uin["quotas"].items() if have.get(k, 0) < v}})
+        unans.update(
+            {
+                "accepted": dict(have),
+                "rejected": len(rejects),
+                "quota_short": {k: v - have.get(k, 0) for k, v in uin["quotas"].items() if have.get(k, 0) < v},
+            }
+        )
 
     # equivalence class of the gold VU (for gold_chunk_ids at freeze)
     eq = {}

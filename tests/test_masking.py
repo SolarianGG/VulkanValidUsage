@@ -22,8 +22,10 @@ def test_context_markers_removed():
 
 
 def test_remaining_context_mentions_neutralized():
-    s = ("Based on the provided context, here is the analysis: The context explicitly states in **[2]** that X. "
-         "The provided text for vkCmdResetEvent2 (**[1]**) does not list it. While the provided context snippet cites Y.")
+    s = (
+        "Based on the provided context, here is the analysis: The context explicitly states in **[2]** that X. "
+        "The provided text for vkCmdResetEvent2 (**[1]**) does not list it. While the provided context snippet cites Y."
+    )
     t, m = mask(s)
     assert m and "context" not in t.lower() and "provided" not in t.lower() and "**" not in t, t
     assert t.startswith("Here is the analysis")
@@ -60,16 +62,23 @@ def test_plain_answer_untouched():
 
 
 def test_section_markers_from_pilot():
-    for s in ["**Relevant VUIDs (from context):** [VUID]", "**Relevant VUIDs from context:** none",
-              "1. **Context Analysis**: the rule applies.", "**VUID:** `[VUID]` **Rule:** ` (VU) [VUID]`",
-              "According to the VUIDs provided, it is invalid.", "This matches [VUID] (Section in context)."]:
+    for s in [
+        "**Relevant VUIDs (from context):** [VUID]",
+        "**Relevant VUIDs from context:** none",
+        "1. **Context Analysis**: the rule applies.",
+        "**VUID:** `[VUID]` **Rule:** ` (VU) [VUID]`",
+        "According to the VUIDs provided, it is invalid.",
+        "This matches [VUID] (Section in context).",
+    ]:
         t, m = mask(s)
         assert m and "context" not in t.lower() and "provided" not in t and "(VU)" not in t, t
 
 
 def test_fixed_point_and_general_knowledge():
-    for s in ["Consistent with the context provided, x must be y.",
-              "**Relevant VUIDs (from general spec knowledge, not in context):** none.",
-              "The Vulkan specification text provided does not say."]:
+    for s in [
+        "Consistent with the context provided, x must be y.",
+        "**Relevant VUIDs (from general spec knowledge, not in context):** none.",
+        "The Vulkan specification text provided does not say.",
+    ]:
         t, m = mask(s)
         assert m and "provided" not in t and "context" not in t.lower() and "knowledge" not in t, t

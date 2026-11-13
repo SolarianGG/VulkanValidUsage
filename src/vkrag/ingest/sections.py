@@ -13,6 +13,7 @@ Units:
 VU blocks are removed from the tree before text extraction; their VUIDs go to `vuids_in_section`.
 Host Synchronization and Command Properties stay in the text.
 """
+
 from __future__ import annotations
 
 import re
@@ -31,11 +32,11 @@ HEADING_NUM_RE = re.compile(r"^(?:(?:Chapter|Appendix)\s+)?(?:[A-Z](?=[.:\s])|\d
 
 @dataclass
 class Unit:
-    kind: str                     # refpage | prose
+    kind: str  # refpage | prose
     source_anchor: str
     title: str
-    path: list[str]               # titles of enclosing sections (chapter first)
-    section_anchor: str           # id of the enclosing sectN heading
+    path: list[str]  # titles of enclosing sections (chapter first)
+    section_anchor: str  # id of the enclosing sectN heading
     elements: list[Tag] = field(default_factory=list)
     entity: str | None = None
     vuids_in_section: list[str] = field(default_factory=list)
@@ -146,8 +147,15 @@ class SectionParser:
                 vuids = self.vu_block_vuids.get(id(ch), [])
                 ra, ent = self._refpage_identity(ch, vuids)
                 rp_idx += 1
-                unit = Unit("refpage", ra or f"{anchor}#refpage{rp_idx}", ent or ra or title, cur_path, anchor or "",
-                            entity=ent, vuids_in_section=vuids)
+                unit = Unit(
+                    "refpage",
+                    ra or f"{anchor}#refpage{rp_idx}",
+                    ent or ra or title,
+                    cur_path,
+                    anchor or "",
+                    entity=ent,
+                    vuids_in_section=vuids,
+                )
                 words = sum(len(e.get_text().split()) for e in run)
                 if run and words <= ATTACH_MAX_WORDS:
                     unit.elements.extend(run)

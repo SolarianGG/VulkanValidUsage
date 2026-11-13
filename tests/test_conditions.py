@@ -63,8 +63,13 @@ def test_bad(bad):
 
 @pytest.mark.parametrize(
     "name,ver",
-    [("VK_VERSION_1_3", (1, 3)), ("VK_BASE_VERSION_1_1", (1, 1)), ("VK_GRAPHICS_VERSION_1_4", (1, 4)),
-     ("VK_COMPUTE_VERSION_1_2", (1, 2)), ("VK_KHR_maintenance1", None)],
+    [
+        ("VK_VERSION_1_3", (1, 3)),
+        ("VK_BASE_VERSION_1_1", (1, 1)),
+        ("VK_GRAPHICS_VERSION_1_4", (1, 4)),
+        ("VK_COMPUTE_VERSION_1_2", (1, 2)),
+        ("VK_KHR_maintenance1", None),
+    ],
 )
 def test_version_of(name, ver):
     assert version_of(name) == ver

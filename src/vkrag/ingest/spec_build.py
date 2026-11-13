@@ -3,6 +3,7 @@
 The build runs in a named Docker volume (ext4 inside the docker-desktop WSL VM), not under /mnt/c.
 Outputs are copied into data/build/ and their sha256 is recorded in data/build/build_info.json.
 """
+
 from __future__ import annotations
 
 import datetime as dt
@@ -111,7 +112,7 @@ ls -la gen/out/html/vkspec.html gen/out/validation/validusage.json
     info = {
         "tag": tag,
         "docker_image": image,
-        "built_at": dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds"),
+        "built_at": dt.datetime.now(dt.UTC).isoformat(timespec="seconds"),
         "docs_commit": _git(DOCS, "rev-list", "-n1", tag).strip(),
         "files": {p.name: sha256(p) for p in [BUILD / "vkspec.html", BUILD / "validusage.json", BUILD / "specattribs.adoc"]},
     }

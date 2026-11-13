@@ -9,8 +9,17 @@ data/processed/*.faiss
 data/processed/index/
 runs/*/
 !runs/.gitkeep
+!runs/pilot/
 .ipynb_checkpoints/
 # derived and large (> 25 MB); rebuilt by `vkrag ingest` / `vkrag chunk`
 data/processed/chunks.jsonl
 data/processed/vu_base.jsonl
 data/processed/vuids.jsonl
+
+# local working documents (design plan in Russian, progress log, Claude Code instructions)
+PLAN.md
+CLAUDE.md
+PROGRESS.md
+
+# raw gpuinfo.org pages (manual export); only gpuinfo_snapshot.json is published
+data/external/gpuinfo/

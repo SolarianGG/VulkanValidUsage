@@ -5,6 +5,7 @@ Outputs:
   data/processed/registry.json     entities: core_version | extensions, extension flags
   data/processed/identifiers.json  union of vk.xml identifiers over all tags + main
 """
+
 from __future__ import annotations
 
 import json
@@ -12,7 +13,6 @@ import re
 import subprocess
 import xml.etree.ElementTree as ET
 from collections import defaultdict
-from pathlib import Path
 
 from vkrag.conditions import version_of
 from vkrag.config import PROCESSED, RAW, load_config

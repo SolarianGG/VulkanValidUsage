@@ -15,12 +15,13 @@ Combining platforms (`strata.gpuinfo_combine`):
             e.g. win32 / xlib / wayland) is rated only on the OS where it can exist (max over
             platforms), so `VK_KHR_win32_surface` is not halved by Linux.
 """
+
 from __future__ import annotations
 
 import html
 import json
 import re
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from vkrag.config import EXTERNAL, PROCESSED, ROOT, load_config
@@ -30,9 +31,9 @@ SNAPSHOT = EXTERNAL / "gpuinfo_snapshot.json"
 
 ROW_RE = re.compile(
     r'<tr role="row"[^>]*>\s*<td[^>]*>\s*(?:<a [^>]*>)?(?P<name>VK_[A-Za-z0-9_]+)(?:</a>)?\s*</td>'
-    r'\s*<td[^>]*>\s*<a [^>]*>(?P<cov>[0-9.]+)<span[^>]*>%</span></a>\s*</td>'
-    r'\s*<td[^>]*>\s*<a [^>]*>(?P<miss>[0-9.]+)<span[^>]*>%</span></a>\s*</td>'
-    r'\s*<td[^>]*>(?P<first>[0-9-]*)</td>',
+    r"\s*<td[^>]*>\s*<a [^>]*>(?P<cov>[0-9.]+)<span[^>]*>%</span></a>\s*</td>"
+    r"\s*<td[^>]*>\s*<a [^>]*>(?P<miss>[0-9.]+)<span[^>]*>%</span></a>\s*</td>"
+    r"\s*<td[^>]*>(?P<first>[0-9-]*)</td>",
     re.S,
 )
 BODY_ROW_RE = re.compile(r'<tr role="row"[^>]*>\s*<td')
@@ -107,9 +108,14 @@ def run() -> dict:
             clash = set(page["coverage"]) & set(per_platform[p])
             if clash:
                 raise ValueError(f"{path}: extensions on both device and instance pages: {sorted(clash)[:5]}")
-            mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=timezone.utc).date().isoformat()
-            pages[f"{p}_{kind}"] = {"file": str(path.relative_to(ROOT)).replace("\\", "/"), "url": page["url"], "saved": mtime,
-                                    "filters": page["filters"], "extensions": len(page["coverage"])}
+            mtime = datetime.fromtimestamp(path.stat().st_mtime, tz=UTC).date().isoformat()
+            pages[f"{p}_{kind}"] = {
+                "file": str(path.relative_to(ROOT)).replace("\\", "/"),
+                "url": page["url"],
+                "saved": mtime,
+                "filters": page["filters"],
+                "extensions": len(page["coverage"]),
+            }
             per_platform[p].update(page["coverage"])
     combined = combine(per_platform, ext_platform, how)
     in_registry = set(reg["extensions"])
@@ -144,5 +150,9 @@ def sensitivity(threshold: float) -> dict[str, int]:
 
 if __name__ == "__main__":
     s = run()
-    print(json.dumps({k: s[k] for k in ("date", "window", "combine", "pages", "unknown_to_registry", "registry_missing_from_snapshot")}, indent=1))
+    print(
+        json.dumps(
+            {k: s[k] for k in ("date", "window", "combine", "pages", "unknown_to_registry", "registry_missing_from_snapshot")}, indent=1
+        )
+    )
     print(Path(SNAPSHOT))

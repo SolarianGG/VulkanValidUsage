@@ -1,5 +1,6 @@
 """Stage 5 retrieval primitives (PLAN §4 Stage 5): BM25 with alias expansion, dense, sparse, RRF,
 reranking, context assembly with equivalence-class deduplication, oracle contexts."""
+
 from __future__ import annotations
 
 import json
@@ -207,15 +208,20 @@ def oracle_distract_context(q: dict, corpus: Corpus, dense: np.ndarray | None, s
     """Gold (as in oracle) + n distractor VU chunks outside the gold class and acceptable classes
     (PLAN §9.3): same entity, same entity-family prefix, same parent spec section, nearest by dense."""
     gold = corpus.chunks[q["vuid"]]
-    banned_cls = {gold["equiv_class_id"]} | {corpus.chunks[a]["equiv_class_id"] for a in q.get("acceptable_vuids", []) if a in corpus.chunks}
+    banned_cls = {gold["equiv_class_id"]} | {
+        corpus.chunks[a]["equiv_class_id"] for a in q.get("acceptable_vuids", []) if a in corpus.chunks
+    }
     vus = [c for c in corpus.chunks.values() if c["type"] == "vu" and c["equiv_class_id"] not in banned_cls]
     fam = _family(gold["entity"])
     gsec = corpus.chunks[corpus.sections[gold["section_id"]][0]]["path"] if gold["section_id"] in corpus.sections else None
     levels = [
         [c for c in vus if c["entity"] == gold["entity"]],
         [c for c in vus if c["entity"] != gold["entity"] and _family(c["entity"]) == fam],
-        [c for c in vus if gsec and corpus.sections.get(c["section_id"]) and
-         corpus.chunks[corpus.sections[c["section_id"]][0]]["path"][:2] == gsec[:2]],
+        [
+            c
+            for c in vus
+            if gsec and corpus.sections.get(c["section_id"]) and corpus.chunks[corpus.sections[c["section_id"]][0]]["path"][:2] == gsec[:2]
+        ],
     ]
     rng = random.Random(f"{seed}|{q['qid']}")
     picked, used_cls, level = [], set(), 0

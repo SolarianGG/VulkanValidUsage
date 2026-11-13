@@ -5,6 +5,7 @@ Outputs (data/processed/):
   vuids.jsonl          VU records with equivalence classes and parent section
   coverage_report.json VUID -> chunk mapping, json vs Headers diff, length stats
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -122,8 +123,9 @@ def _load_jsonl(path):
 def _headers_diff(tag: str, built: set[str]) -> dict:
     import subprocess
 
-    data = subprocess.run(["git", "-C", str(RAW / "Vulkan-Headers"), "show", f"{tag}:registry/validusage.json"],
-                          check=True, capture_output=True).stdout
+    data = subprocess.run(
+        ["git", "-C", str(RAW / "Vulkan-Headers"), "show", f"{tag}:registry/validusage.json"], check=True, capture_output=True
+    ).stdout
     hv = json.loads(data)["validation"]
     hset = {e["vuid"] for b in hv.values() for lst in b.values() for e in lst}
     return {"headers_total": len(hset), "only_in_build": sorted(built - hset), "only_in_headers": sorted(hset - built)}
@@ -147,13 +149,24 @@ def run() -> dict:
         parts = split_unit(u, max_tokens)
         for i, text in enumerate(parts):
             cid = f"sec-{_h(u.source_anchor + '|' + str(i) + '|' + _h(text, 16))}"
-            chunks.append({
-                "chunk_id": cid, "type": "section", "section_kind": u.kind, "entity": u.entity,
-                "section_id": u.source_anchor, "part_idx": i, "n_parts": len(parts),
-                "title": u.title, "path": u.path, "source_anchor": u.source_anchor,
-                "refs": u.refs, "vuids_in_section": u.vuids_in_section if i == 0 else [],
-                "index_text": text, "llm_text": text,
-            })
+            chunks.append(
+                {
+                    "chunk_id": cid,
+                    "type": "section",
+                    "section_kind": u.kind,
+                    "entity": u.entity,
+                    "section_id": u.source_anchor,
+                    "part_idx": i,
+                    "n_parts": len(parts),
+                    "title": u.title,
+                    "path": u.path,
+                    "source_anchor": u.source_anchor,
+                    "refs": u.refs,
+                    "vuids_in_section": u.vuids_in_section if i == 0 else [],
+                    "index_text": text,
+                    "llm_text": text,
+                }
+            )
             if i == 0:
                 section_first_chunk[u.source_anchor] = cid
         # anchors -> first part (anchors inside later parts are rare; first part is the safe target)
@@ -168,14 +181,26 @@ def run() -> dict:
     for r in recs:
         r["section_id"] = vuid_to_section.get(r["vuid"])
         index_text, llm_text = vu_texts(r)
-        chunks.append({
-            "chunk_id": r["vuid"], "type": "vu", "entity": r["entity"], "entity_kind": r["entity_kind"],
-            "vuid": r["vuid"], "explicit": r["explicit"], "equiv_class_id": r["equiv_class_id"],
-            "section_id": r["section_id"], "part_idx": 0, "source_anchor": r["vuid"],
-            "condition": r["condition"], "core_version": r["entity_core_version"],
-            "extensions": r["entity_extensions"], "refs": r["refs"],
-            "index_text": index_text, "llm_text": llm_text,
-        })
+        chunks.append(
+            {
+                "chunk_id": r["vuid"],
+                "type": "vu",
+                "entity": r["entity"],
+                "entity_kind": r["entity_kind"],
+                "vuid": r["vuid"],
+                "explicit": r["explicit"],
+                "equiv_class_id": r["equiv_class_id"],
+                "section_id": r["section_id"],
+                "part_idx": 0,
+                "source_anchor": r["vuid"],
+                "condition": r["condition"],
+                "core_version": r["entity_core_version"],
+                "extensions": r["entity_extensions"],
+                "refs": r["refs"],
+                "index_text": index_text,
+                "llm_text": llm_text,
+            }
+        )
 
     # length stats (max over the three tokenizers) and the per-tokenizer max
     lengths = defaultdict(list)
@@ -192,8 +217,9 @@ def run() -> dict:
         xs = sorted(xs)
         return xs[min(len(xs) - 1, int(q * len(xs)))]
 
-    length_stats = {k: {"n": len(v), "p50": pct(v, .5), "p90": pct(v, .9), "p99": pct(v, .99), "max": max(v)}
-                    for k, v in lengths.items()}
+    length_stats = {
+        k: {"n": len(v), "p50": pct(v, 0.5), "p90": pct(v, 0.9), "p99": pct(v, 0.99), "max": max(v)} for k, v in lengths.items()
+    }
 
     # coverage: every explicit VUID has a VU chunk and a parent section
     explicit = [r for r in recs if r["explicit"]]
@@ -224,8 +250,7 @@ def run() -> dict:
     }
     all_refs = Counter(ref for c in chunks for ref in c["refs"])
     unresolved = {a: n for a, n in all_refs.items() if a not in anchor_to_chunk and a not in by_vuid}
-    coverage["refs_unresolved"] = {"distinct": len(unresolved), "total_distinct": len(all_refs),
-                                   "top": Counter(unresolved).most_common(20)}
+    coverage["refs_unresolved"] = {"distinct": len(unresolved), "total_distinct": len(all_refs), "top": Counter(unresolved).most_common(20)}
 
     PROCESSED.mkdir(parents=True, exist_ok=True)
     with open(PROCESSED / "chunks.jsonl", "w", encoding="utf-8") as f:

@@ -10,6 +10,7 @@ is retried once with a doubled output limit; after that the answer is recorded w
 For qwen the prompt is counted locally with the Qwen chat template (thinking off) and
 `prompt_tokens + num_predict <= num_ctx` is checked before the call.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -22,8 +23,7 @@ from types import SimpleNamespace
 from vkrag.config import PROCESSED, ROOT, load_config
 
 PROMPTS = Path(__file__).resolve().parent / "prompts"
-GEN_CONFIGS = ("closed", "oracle", "oracle_distract", "bm25", "dense", "rrf", "rrf_rerank",
-               "rewrite_rrf_rerank", "hyde_rrf_rerank")
+GEN_CONFIGS = ("closed", "oracle", "oracle_distract", "bm25", "dense", "rrf", "rrf_rerank", "rewrite_rrf_rerank", "hyde_rrf_rerank")
 # exploratory controls: strict prompt over the rrf_rerank context; k in {3, 10} for rrf_rerank (pilot, H5 trade-off)
 CONTROL_CONFIGS = ("rrf_rerank_strict", "rrf_rerank_k3", "rrf_rerank_k10")
 ANSWERERS = ("qwen", "remote")
@@ -95,6 +95,7 @@ def qwen_prompt_tokens(messages: list[dict]) -> int:
 
 # ---------------------------------------------------------------- inputs
 
+
 def load_chunks() -> dict[str, dict]:
     out = {}
     for line in open(PROCESSED / "chunks.jsonl", encoding="utf-8"):
@@ -142,8 +143,9 @@ def gen_questions(sample: str) -> list[dict]:
     return [q for q in load_questions(sample) if q.get("in_generation")]
 
 
-def jobs(sample: str, run_id: str, configs: tuple[str, ...], answerers: tuple[str, ...], repeat_idx: int = 0,
-         limit: int | None = None) -> tuple[list[dict], dict]:
+def jobs(
+    sample: str, run_id: str, configs: tuple[str, ...], answerers: tuple[str, ...], repeat_idx: int = 0, limit: int | None = None
+) -> tuple[list[dict], dict]:
     qs = gen_questions(sample)
     if limit:
         qs = qs[:limit]
@@ -157,25 +159,40 @@ def jobs(sample: str, run_id: str, configs: tuple[str, ...], answerers: tuple[st
                     continue  # oracle* for unanswerable
                 ids = ctx.get((q["qid"], c))
                 system, ph = system_prompt(prompt_kind(c))
-                out.append({"qid": q["qid"], "config": c, "answerer": a, "repeat_idx": repeat_idx,
-                            "question_hash": q["question_hash"], "context": ids,
-                            "retrieval_hash": _h(ids) if ids is not None else None, "prompt_hash": ph,
-                            "messages": [{"role": "system", "content": system},
-                                         {"role": "user", "content": user_message(q, ids, chunks)}]})
+                out.append(
+                    {
+                        "qid": q["qid"],
+                        "config": c,
+                        "answerer": a,
+                        "repeat_idx": repeat_idx,
+                        "question_hash": q["question_hash"],
+                        "context": ids,
+                        "retrieval_hash": _h(ids) if ids is not None else None,
+                        "prompt_hash": ph,
+                        "messages": [{"role": "system", "content": system}, {"role": "user", "content": user_message(q, ids, chunks)}],
+                    }
+                )
     return out, chunks
 
 
 # ---------------------------------------------------------------- answerers
 
+
 def model_identity(answerer: str, cfg: dict) -> dict:
     if answerer == "qwen":
         o = cfg["ollama"]
-        return {"model_id": o["model"], "model_digest": o["digest"],
-                "params": {k: o[k] for k in ("num_ctx", "temperature", "presence_penalty", "think")}
-                | {"num_predict": o["num_predict"]["answer"]}}
+        return {
+            "model_id": o["model"],
+            "model_digest": o["digest"],
+            "params": {k: o[k] for k in ("num_ctx", "temperature", "presence_penalty", "think")}
+            | {"num_predict": o["num_predict"]["answer"]},
+        }
     rc = cfg["openrouter"]["answerer_remote"]
-    return {"model_id": rc["model"], "provider": rc["provider"],
-            "params": {"reasoning": rc.get("reasoning"), "max_tokens": rc["max_tokens"], "temperature": rc.get("temperature", 0)}}
+    return {
+        "model_id": rc["model"],
+        "provider": rc["provider"],
+        "params": {"reasoning": rc.get("reasoning"), "max_tokens": rc["max_tokens"], "temperature": rc.get("temperature", 0)},
+    }
 
 
 def cache_key(job: dict, ident: dict) -> str:
@@ -215,10 +232,20 @@ class QwenAnswerer:
             if limit < 64:
                 raise ContextOverflow(f"prompt {n_prompt} tokens leaves {limit} of num_ctx {num_ctx}")
         r = self.cli.chat(messages, num_predict=limit)
-        return {"content": r.content, "finish_reason": r.done_reason, "prompt_tokens_local": n_prompt,
-                "prompt_tokens": r.prompt_eval_count, "completion_tokens": r.eval_count, "reasoning_tokens": 0,
-                "latency_s": r.latency_s, "actual_model": r.model, "provider": "ollama", "cost_usd": None,
-                "cached_tokens": None, "num_predict": limit}
+        return {
+            "content": r.content,
+            "finish_reason": r.done_reason,
+            "prompt_tokens_local": n_prompt,
+            "prompt_tokens": r.prompt_eval_count,
+            "completion_tokens": r.eval_count,
+            "reasoning_tokens": 0,
+            "latency_s": r.latency_s,
+            "actual_model": r.model,
+            "provider": "ollama",
+            "cost_usd": None,
+            "cached_tokens": None,
+            "num_predict": limit,
+        }
 
     def default_limit(self) -> int:
         return self.cfg["num_predict"]["answer"]
@@ -251,11 +278,21 @@ class RemoteAnswerer:
         want = self.rc["provider"]["order"][0].split("/")[0].lower()
         if (r.provider or "").lower().replace(" ", "") != want:
             raise ModelMismatch(f"provider {r.provider} != {want}")
-        return {"content": r.content, "finish_reason": r.finish_reason, "prompt_tokens_local": None,
-                "prompt_tokens": r.usage.get("prompt_tokens"), "completion_tokens": r.usage.get("completion_tokens"),
-                "reasoning_tokens": r.reasoning_tokens, "latency_s": r.latency_s, "actual_model": r.model,
-                "provider": r.provider, "cost_usd": r.cost_usd, "cached_tokens": r.cached_tokens,
-                "num_predict": limit, "has_reasoning_text": bool((r.reasoning or "").strip())}
+        return {
+            "content": r.content,
+            "finish_reason": r.finish_reason,
+            "prompt_tokens_local": None,
+            "prompt_tokens": r.usage.get("prompt_tokens"),
+            "completion_tokens": r.usage.get("completion_tokens"),
+            "reasoning_tokens": r.reasoning_tokens,
+            "latency_s": r.latency_s,
+            "actual_model": r.model,
+            "provider": r.provider,
+            "cost_usd": r.cost_usd,
+            "cached_tokens": r.cached_tokens,
+            "num_predict": limit,
+            "has_reasoning_text": bool((r.reasoning or "").strip()),
+        }
 
     def default_limit(self) -> int:
         return self.rc["max_tokens"]
@@ -272,8 +309,16 @@ class ModelMismatch(RuntimeError):
     pass
 
 
-def answer_one(ans, job: dict, usage_f, run_id: str, max_errors: int = 3, backoff_s: float = 5.0,
-               start_limit: int | None = None, max_limit: int | None = None) -> dict:
+def answer_one(
+    ans,
+    job: dict,
+    usage_f,
+    run_id: str,
+    max_errors: int = 3,
+    backoff_s: float = 5.0,
+    start_limit: int | None = None,
+    max_limit: int | None = None,
+) -> dict:
     """One answer under the skip policy; every attempt goes to usage.jsonl.
     `start_limit`/`max_limit` (re-runs of missing answers): start at `start_limit` and keep doubling on
     truncation while the doubled limit stays <= `max_limit` (default: one doubling)."""
@@ -306,28 +351,71 @@ def answer_one(ans, job: dict, usage_f, run_id: str, max_errors: int = 3, backof
             break
         limit *= 2
     ok = res is not None and (res["content"] or "").strip() and res["finish_reason"] != "length"
-    rec = {k: job[k] for k in ("qid", "config", "answerer", "repeat_idx", "question_hash", "context",
-                               "retrieval_hash", "prompt_hash")}
-    rec.update({"answer": (res["content"] or "").strip() if ok else None, "missing": not ok,
-                "error": None if ok else last_error, "retries": errors + truncations})
+    rec = {k: job[k] for k in ("qid", "config", "answerer", "repeat_idx", "question_hash", "context", "retrieval_hash", "prompt_hash")}
+    rec.update(
+        {
+            "answer": (res["content"] or "").strip() if ok else None,
+            "missing": not ok,
+            "error": None if ok else last_error,
+            "retries": errors + truncations,
+        }
+    )
     if res is not None:
-        rec.update({k: res.get(k) for k in ("finish_reason", "prompt_tokens_local", "prompt_tokens", "completion_tokens",
-                                            "reasoning_tokens", "latency_s", "actual_model", "provider", "cost_usd",
-                                            "cached_tokens", "num_predict")})
+        rec.update(
+            {
+                k: res.get(k)
+                for k in (
+                    "finish_reason",
+                    "prompt_tokens_local",
+                    "prompt_tokens",
+                    "completion_tokens",
+                    "reasoning_tokens",
+                    "latency_s",
+                    "actual_model",
+                    "provider",
+                    "cost_usd",
+                    "cached_tokens",
+                    "num_predict",
+                )
+            }
+        )
     return rec
 
 
 def _usage(f, job: dict, answerer: str, attempt: int, res: dict | None, error: str | None) -> None:
-    row = {"ts": round(time.time(), 3), "phase": "C", "qid": job["qid"], "config": job["config"], "model": answerer,
-           "repeat_idx": job["repeat_idx"], "attempt": attempt, "error": error}
+    row = {
+        "ts": round(time.time(), 3),
+        "phase": "C",
+        "qid": job["qid"],
+        "config": job["config"],
+        "model": answerer,
+        "repeat_idx": job["repeat_idx"],
+        "attempt": attempt,
+        "error": error,
+    }
     if res:
-        row.update({k: res.get(k) for k in ("prompt_tokens", "prompt_tokens_local", "completion_tokens", "reasoning_tokens",
-                                            "latency_s", "provider", "finish_reason", "cost_usd", "cached_tokens")})
+        row.update(
+            {
+                k: res.get(k)
+                for k in (
+                    "prompt_tokens",
+                    "prompt_tokens_local",
+                    "completion_tokens",
+                    "reasoning_tokens",
+                    "latency_s",
+                    "provider",
+                    "finish_reason",
+                    "cost_usd",
+                    "cached_tokens",
+                )
+            }
+        )
     f.write(json.dumps(row) + "\n")
     f.flush()
 
 
 # ---------------------------------------------------------------- run
+
 
 def remote_pricing(cfg: dict) -> dict:
     """Price of the pinned endpoint (providers differ from the model-level price)."""
@@ -359,15 +447,31 @@ def estimate(todo: list[dict], cfg: dict) -> dict:
             price = remote_pricing(cfg)
             tin = sum(tokens.count(m["content"], "remote") + 8 for j in js for m in j["messages"])
             tout = REMOTE_OUTPUT_TOKENS_EST * len(js)
-            e.update({"input_tokens": tin, "output_tokens_est": tout, "price": {k: price.get(k) for k in ("prompt", "completion")},
-                      "est_usd": round(tin * float(price.get("prompt", 0)) + tout * float(price.get("completion", 0)), 4)})
+            e.update(
+                {
+                    "input_tokens": tin,
+                    "output_tokens_est": tout,
+                    "price": {k: price.get(k) for k in ("prompt", "completion")},
+                    "est_usd": round(tin * float(price.get("prompt", 0)) + tout * float(price.get("completion", 0)), 4),
+                }
+            )
         out[a] = e
     return out
 
 
-def run(sample: str, run_id: str, configs: tuple[str, ...] = GEN_CONFIGS, answerers: tuple[str, ...] = ANSWERERS,
-        repeat_idx: int = 0, dry_run: bool = False, max_usd: float | None = None, limit: int | None = None,
-        retry_missing: bool = False, start_limit: int | None = None, max_limit: int | None = None) -> dict:
+def run(
+    sample: str,
+    run_id: str,
+    configs: tuple[str, ...] = GEN_CONFIGS,
+    answerers: tuple[str, ...] = ANSWERERS,
+    repeat_idx: int = 0,
+    dry_run: bool = False,
+    max_usd: float | None = None,
+    limit: int | None = None,
+    retry_missing: bool = False,
+    start_limit: int | None = None,
+    max_limit: int | None = None,
+) -> dict:
     cfg = load_config()
     rdir = ROOT / "runs" / run_id
     out_file, usage_file = rdir / "answers.jsonl", rdir / "usage.jsonl"

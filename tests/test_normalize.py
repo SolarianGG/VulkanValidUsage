@@ -1,4 +1,5 @@
 """Normalization on real fragments of the built spec v1.4.366 (tests/fixtures, see make_fixtures.py)."""
+
 import json
 from pathlib import Path
 

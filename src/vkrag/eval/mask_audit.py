@@ -2,6 +2,7 @@
 
 Run: uv run python -m vkrag.eval.mask_audit [run_id]
 """
+
 from __future__ import annotations
 
 import json
@@ -28,7 +29,7 @@ def main(run_id: str = "pilot") -> None:
         for m in RESIDUAL.finditer(t):
             hits[r["config"]] += 1
             if len(examples) < 25:
-                examples.append((r["config"], t[max(0, m.start() - 60):m.end() + 40].replace("\n", " ")))
+                examples.append((r["config"], t[max(0, m.start() - 60) : m.end() + 40].replace("\n", " ")))
             break
     print("config | answers | marker removed | residual")
     for c in n:

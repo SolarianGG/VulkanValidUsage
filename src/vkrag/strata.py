@@ -16,6 +16,7 @@ Otherwise the clause with the highest popularity (min coverage of its non-promot
 vendor extension = 0) decides: >= threshold and only KHR/EXT -> ext_popular, else ext_niche.
 `recent` overrides everything when the VU first appeared after the recent cutoff.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -24,8 +25,8 @@ import random
 from collections import Counter, defaultdict
 from datetime import date
 
-from vkrag.conditions import CORE, DNF, conj, from_str, simplify_versions, version_of
-from vkrag.config import EXTERNAL, PROCESSED, ROOT, load_config
+from vkrag.conditions import DNF, conj, from_str, simplify_versions, version_of
+from vkrag.config import PROCESSED, ROOT, load_config
 
 STRATA = ("recent", "ext_niche", "ext_popular", "core_promoted", "core_1_0")
 BASE_STRATA = STRATA[1:]
@@ -84,8 +85,7 @@ def classify_clause(reg: Registry, clause: frozenset[str]) -> dict:
         v = max(vers + [p for p in promoted.values() if p] or [(1, 0)])
         return {"path": "core", "version": v, "ext_only_promoted": bool(exts)}
     pop = min(reg.popularity(x) for x in rest)
-    return {"path": "ext", "extensions": rest, "popularity": pop,
-            "non_vendor": all(not reg.is_vendor(x) for x in rest)}
+    return {"path": "ext", "extensions": rest, "popularity": pop, "non_vendor": all(not reg.is_vendor(x) for x in rest)}
 
 
 def base_stratum(reg: Registry, cond: DNF, entity: str, threshold: float) -> dict:
@@ -100,13 +100,15 @@ def base_stratum(reg: Registry, cond: DNF, entity: str, threshold: float) -> dic
     core = [p for p in paths if p["path"] == "core"]
     if core:
         best = min(core, key=lambda p: p["version"])
-        out.update(base="core_1_0" if best["version"] == (1, 0) else "core_promoted",
-                   core_version="%d.%d" % best["version"], cond_ext_only_promoted=best["ext_only_promoted"])
+        out.update(
+            base="core_1_0" if best["version"] == (1, 0) else "core_promoted",
+            core_version="{}.{}".format(*best["version"]),
+            cond_ext_only_promoted=best["ext_only_promoted"],
+        )
         return out
     best = max((p for p in paths if p["path"] == "ext"), key=lambda p: (p["popularity"], p["non_vendor"], p["extensions"]))
     popular = best["popularity"] >= threshold and best["non_vendor"]
-    out.update(base="ext_popular" if popular else "ext_niche", path_extensions=best["extensions"],
-               popularity=round(best["popularity"], 4))
+    out.update(base="ext_popular" if popular else "ext_niche", path_extensions=best["extensions"], popularity=round(best["popularity"], 4))
     return out
 
 
@@ -144,8 +146,14 @@ def stable_seed(seed: int, stratum: str) -> int:
     return seed + int(hashlib.sha256(stratum.encode()).hexdigest()[:8], 16)
 
 
-def sample(cands: list[dict], per_stratum: dict[str, int], max_per_entity: int, seed: int,
-           used_vuids: set[str] = frozenset(), used_classes: set[str] = frozenset()) -> list[dict]:
+def sample(
+    cands: list[dict],
+    per_stratum: dict[str, int],
+    max_per_entity: int,
+    seed: int,
+    used_vuids: set[str] = frozenset(),
+    used_classes: set[str] = frozenset(),
+) -> list[dict]:
     """PLAN §9.3 sampling: strata in ascending candidate count, shuffled with a stable per-stratum
     seed, greedy: <= max_per_entity VUs per entity (across strata), one VU per equivalence class."""
     by = defaultdict(list)
@@ -193,10 +201,13 @@ def assign(cfg: dict, reg: Registry, hist: dict, vus: list[dict]) -> tuple[list[
         cond = from_str(v["condition"]) if v.get("condition") is not None else None
         rec = {k: v[k] for k in ("vuid", "entity", "entity_kind", "equiv_class_id", "equiv_class_size", "condition")}
         h = hist["vuids"].get(v["vuid"])
-        rec.update(first_tag=h and h["first_tag"], first_date=h and h["first_date"],
-                   before_window=bool(h and h["before_window"]),
-                   text_changed_recently=bool(h and h.get("text_changed_recently")),
-                   new_in_last_n=bool(h and h.get("new_in_last_n")))
+        rec.update(
+            first_tag=h and h["first_tag"],
+            first_date=h and h["first_date"],
+            before_window=bool(h and h["before_window"]),
+            text_changed_recently=bool(h and h.get("text_changed_recently")),
+            new_in_last_n=bool(h and h.get("new_in_last_n")),
+        )
         if cond is None:
             rec.update(stratum=None, base_stratum=None, excluded="condition_missing")
             log["condition_missing"] += 1
@@ -230,7 +241,9 @@ def table(recs: list[dict], main: list[dict], pilot: list[dict]) -> str:
     total = sum(avail.values())
     lines = ["| stratum | available VUs | entities | weight | main | pilot |", "|---|---|---|---|---|---|"]
     for s in STRATA:
-        lines.append(f"| {s} | {avail.get(s, 0)} | {len(ents.get(s, ()))} | {avail.get(s, 0) / total:.3f} | {sel_m.get(s, 0)} | {sel_p.get(s, 0)} |")
+        lines.append(
+            f"| {s} | {avail.get(s, 0)} | {len(ents.get(s, ()))} | {avail.get(s, 0) / total:.3f} | {sel_m.get(s, 0)} | {sel_p.get(s, 0)} |"
+        )
     lines.append(f"| **total** | {total} | {len(set().union(*ents.values()))} | 1.000 | {len(main)} | {len(pilot)} |")
     return "\n".join(lines)
 
@@ -277,26 +290,45 @@ def run(allow_no_recent: bool = False) -> dict:
         main = sample(elig, {s: st["per_stratum"] for s in strata_used}, st["max_per_entity"], cfg["seed"])
         n_pilot = cfg["questions"]["pilot"]["answerable"]
         per = {s: n_pilot // len(strata_used) + (1 if i < n_pilot % len(strata_used) else 0) for i, s in enumerate(strata_used)}
-        pilot = sample(elig, per, st["max_per_entity"], cfg["seed"] + 1,
-                       used_vuids={r["vuid"] for r in main}, used_classes={r["equiv_class_id"] for r in main})
+        pilot = sample(
+            elig,
+            per,
+            st["max_per_entity"],
+            cfg["seed"] + 1,
+            used_vuids={r["vuid"] for r in main},
+            used_classes={r["equiv_class_id"] for r in main},
+        )
         path = PROCESSED / "samples.json"
         prev = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
         new_hash = samples_hash([r["vuid"] for r in main], [r["vuid"] for r in pilot])
         if prev.get("frozen"):
             if prev["sha256"] != new_hash:
-                raise RuntimeError("samples.json is frozen and the recomputed sample differs; inputs changed. "
-                                   "Unfreeze explicitly (PLAN §10 entry) before resampling.")
+                raise RuntimeError(
+                    "samples.json is frozen and the recomputed sample differs; inputs changed. "
+                    "Unfreeze explicitly (PLAN §10 entry) before resampling."
+                )
             sampled_frozen = prev
         else:
             sampled_frozen = None
         if sampled_frozen is None:
-            path.write_text(json.dumps({
-                "provisional": cutoff is None,
-                "recent_cutoff": cutoff, "recent_cutoff_by_model": cut_dates, "seed": cfg["seed"],
-                "per_stratum": st["per_stratum"], "max_per_entity": st["max_per_entity"],
-                "popularity_threshold": st["popularity_threshold"], "gpuinfo_date": snap["date"],
-                "main": [r["vuid"] for r in main], "pilot": [r["vuid"] for r in pilot],
-            }, indent=1), encoding="utf-8")
+            path.write_text(
+                json.dumps(
+                    {
+                        "provisional": cutoff is None,
+                        "recent_cutoff": cutoff,
+                        "recent_cutoff_by_model": cut_dates,
+                        "seed": cfg["seed"],
+                        "per_stratum": st["per_stratum"],
+                        "max_per_entity": st["max_per_entity"],
+                        "popularity_threshold": st["popularity_threshold"],
+                        "gpuinfo_date": snap["date"],
+                        "main": [r["vuid"] for r in main],
+                        "pilot": [r["vuid"] for r in pilot],
+                    },
+                    indent=1,
+                ),
+                encoding="utf-8",
+            )
     report = [
         "# Stage 2: strata",
         "",
@@ -309,7 +341,8 @@ def run(allow_no_recent: bool = False) -> dict:
         "",
         "## Eligibility",
         "",
-        "| status | explicit VUs |", "|---|---|",
+        "| status | explicit VUs |",
+        "|---|---|",
         *[f"| {k} | {v} |" for k, v in sorted(log.items(), key=lambda kv: -kv[1])],
         "",
         "## Stratum x available x selected",
@@ -324,8 +357,9 @@ def run(allow_no_recent: bool = False) -> dict:
         "",
         "## First tag date (eligible, inside the history window) x base stratum",
         "",
-        crosstab([dict(r, year=(r["first_date"] or "")[:7] if not r["before_window"] else "before window") for r in elig],
-                 "year", "base_stratum"),
+        crosstab(
+            [dict(r, year=(r["first_date"] or "")[:7] if not r["before_window"] else "before window") for r in elig], "year", "base_stratum"
+        ),
         "",
         "## Flags (eligible)",
         "",
@@ -337,16 +371,29 @@ def run(allow_no_recent: bool = False) -> dict:
         f"- `origin_unknown` (entity outside vk.xml, treated as core 1.0): {sum(r['origin_unknown'] for r in elig)}",
     ]
     if sampled:
-        report += ["", "## Main sample: stratum x entity kind", "", crosstab(main, "stratum", "entity_kind", [s for s in STRATA]),
-                   "", f"Distinct entities in main: {len({r['entity'] for r in main})}; "
-                   f"with text_changed_recently: {sum(r['text_changed_recently'] for r in main)}",
-                   "", "## Main sample: stratum x base stratum", "", crosstab(main, "stratum", "base_stratum", list(STRATA)),
-                   "", "## Cutoff sensitivity (main sample)", "",
-                   "| cutoff | recent VUs available | main: recent -> not recent | main: not recent -> recent |", "|---|---|---|---|"]
+        report += [
+            "",
+            "## Main sample: stratum x entity kind",
+            "",
+            crosstab(main, "stratum", "entity_kind", [s for s in STRATA]),
+            "",
+            f"Distinct entities in main: {len({r['entity'] for r in main})}; "
+            f"with text_changed_recently: {sum(r['text_changed_recently'] for r in main)}",
+            "",
+            "## Main sample: stratum x base stratum",
+            "",
+            crosstab(main, "stratum", "base_stratum", list(STRATA)),
+            "",
+            "## Cutoff sensitivity (main sample)",
+            "",
+            "| cutoff | recent VUs available | main: recent -> not recent | main: not recent -> recent |",
+            "|---|---|---|---|",
+        ]
         for c in st.get("recent_cutoff_sensitivity", []):
             isr = lambda r, c=c: bool(r["first_date"] and not r["before_window"] and r["first_date"] > c)  # noqa: E731
-            report.append(f"| {c} | {sum(isr(r) for r in elig)} | {sum(1 for r in main if r['stratum'] == 'recent' and not isr(r))} | "
-                          f"{sum(1 for r in main if r['stratum'] != 'recent' and isr(r))} |")
+            report.append(
+                f"| {c} | {sum(isr(r) for r in elig)} | {sum(1 for r in main if r['stratum'] == 'recent' and not isr(r))} | "
+                f"{sum(1 for r in main if r['stratum'] != 'recent' and isr(r))} |"
+            )
     (ROOT / "reports" / "strata_table.md").write_text("\n".join(report) + "\n", encoding="utf-8")
-    return {"log": log, "cutoff": cutoff, "main": len(main), "pilot": len(pilot),
-            "available": dict(Counter(r["stratum"] for r in elig))}
+    return {"log": log, "cutoff": cutoff, "main": len(main), "pilot": len(pilot), "available": dict(Counter(r["stratum"] for r in elig))}

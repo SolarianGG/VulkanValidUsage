@@ -8,10 +8,11 @@ asciidoctor semantics: `ifdef::a,b[]` is OR, `ifdef::a+b[]` is AND; no parenthes
 (if `,` is present the string is split on `,`). Nested ifdefs combine with AND.
 DNF = frozenset of clauses; clause = frozenset of names (AND). The empty clause = `core` (unconditional).
 """
+
 from __future__ import annotations
 
 import re
-from typing import Iterable
+from collections.abc import Iterable
 
 Clause = frozenset[str]
 DNF = frozenset[Clause]

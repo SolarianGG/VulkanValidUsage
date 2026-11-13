@@ -7,6 +7,7 @@
 - implicit VUs are never merged (each is its own class), otherwise template rules such as
   "must be a valid handle" would collapse into huge classes.
 """
+
 from __future__ import annotations
 
 import re
@@ -83,6 +84,8 @@ def assign_classes(recs: list[dict], alias_names: dict[str, list[str]], placehol
         "size_distribution": dict(sorted(sizes.items())),
         "merged_by_text_only": merged_by_text,
         "merged_by_text_by_entity_kind": dict(merged_by_text_kind),
-        "largest": [{"class": "eq-" + r.removeprefix("VUID-"), "size": n,
-                     "entities": sorted({m.split("-")[1] for m in members[r]})[:12]} for n, r in largest],
+        "largest": [
+            {"class": "eq-" + r.removeprefix("VUID-"), "size": n, "entities": sorted({m.split("-")[1] for m in members[r]})[:12]}
+            for n, r in largest
+        ],
     }

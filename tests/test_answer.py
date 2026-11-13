@@ -1,4 +1,5 @@
 """Phase C: context format, configuration mapping and the skip policy (PLAN Stage 6, §9.3)."""
+
 import io
 import json
 
@@ -47,8 +48,17 @@ class Fake:
         return {"content": o[0], "finish_reason": o[1]}
 
 
-JOB = {"qid": "q", "config": "c", "answerer": "fake", "repeat_idx": 0, "question_hash": "h", "context": None,
-       "retrieval_hash": None, "prompt_hash": "p", "messages": []}
+JOB = {
+    "qid": "q",
+    "config": "c",
+    "answerer": "fake",
+    "repeat_idx": 0,
+    "question_hash": "h",
+    "context": None,
+    "retrieval_hash": None,
+    "prompt_hash": "p",
+    "messages": [],
+}
 
 
 def _run(outcomes):

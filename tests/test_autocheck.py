@@ -4,8 +4,7 @@ from vkrag.eval.autocheck import VUID_BARE, VUID_FULL, Checker, verdict
 class FakeChecker(Checker):
     current = {"vkCmdDraw", "VK_PIPELINE_STAGE_HOST_BIT", "VkBuffer"}
     outdated = {"VK_OLD_NAME_KHR"}
-    vu_class = {"VUID-vkCmdDraw-None-02700": "eq-a", "VUID-vkCmdDrawIndexed-None-02700": "eq-a",
-                "VUID-vkCmdDraw-None-09999": "eq-b"}
+    vu_class = {"VUID-vkCmdDraw-None-02700": "eq-a", "VUID-vkCmdDrawIndexed-None-02700": "eq-a", "VUID-vkCmdDraw-None-09999": "eq-b"}
 
 
 def test_identifiers():
@@ -21,7 +20,9 @@ def test_identifier_from_question_not_fabricated():
 def test_cited_vuids_with_and_without_prefix():
     c = FakeChecker()
     assert c.cited_vuids("VUID-vkCmdDraw-None-02700 and vkCmdDraw-None-09999, again VUID-vkCmdDraw-None-02700") == [
-        "VUID-vkCmdDraw-None-02700", "VUID-vkCmdDraw-None-09999"]
+        "VUID-vkCmdDraw-None-02700",
+        "VUID-vkCmdDraw-None-09999",
+    ]
     assert VUID_FULL.search("x") is None and VUID_BARE.search("VkBuffer-size-00001")
 
 

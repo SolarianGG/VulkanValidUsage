@@ -6,6 +6,7 @@
 - citation accuracy: a cited VUID is in the gold class or a class of acceptable_vuids;
 - yes/no verdict extraction: yes | no | conditional | none.
 """
+
 from __future__ import annotations
 
 import json
@@ -16,7 +17,9 @@ from vkrag.config import EXTERNAL, PROCESSED
 
 VK_ID = re.compile(r"\b(?:PFN_vk|vk|Vk|VK_)[A-Za-z0-9_]+\b")
 VUID_FULL = re.compile(r"\bVUID-([A-Za-z0-9_]+(?:-[A-Za-z0-9_]+)*-\d{5})\b")
-VUID_BARE = re.compile(r"(?<![\w-])((?:vk|Vk|VK|Spv|Runtime|Standalone|Base|Builtin)[A-Za-z0-9_]*-[A-Za-z0-9_]+(?:-[A-Za-z0-9_]+)*-\d{5})\b")
+VUID_BARE = re.compile(
+    r"(?<![\w-])((?:vk|Vk|VK|Spv|Runtime|Standalone|Base|Builtin)[A-Za-z0-9_]*-[A-Za-z0-9_]+(?:-[A-Za-z0-9_]+)*-\d{5})\b"
+)
 VERDICT = re.compile(r"^\W*(yes|no)\b", re.I)
 CONDITIONAL = re.compile(r"^\W*(it depends|depends|only if|not necessarily|conditionally|it can be|sometimes)\b", re.I)
 
@@ -57,8 +60,12 @@ class Checker:
             if t in self.current or t in in_question or _is_vuid_part(text, m):
                 continue
             (old if t in self.outdated else fab).add(t)
-        return {"fabricated_identifiers": sorted(fab), "outdated_identifiers": sorted(old),
-                "fabricated_identifier": bool(fab), "outdated_identifier": bool(old)}
+        return {
+            "fabricated_identifiers": sorted(fab),
+            "outdated_identifiers": sorted(old),
+            "fabricated_identifier": bool(fab),
+            "outdated_identifier": bool(old),
+        }
 
     def cited_vuids(self, text: str) -> list[str]:
         out = ["VUID-" + m.group(1) for m in VUID_FULL.finditer(text)]
@@ -84,7 +91,7 @@ class Checker:
 
 def _is_vuid_part(text: str, m: re.Match) -> bool:
     """`vkCmdDraw` inside `VUID-vkCmdDraw-None-02700` or a bare `vkCmdDraw-None-02700` is not an identifier claim."""
-    return text[max(0, m.start() - 5):m.start()] == "VUID-" or text[m.end():m.end() + 1] == "-"
+    return text[max(0, m.start() - 5) : m.start()] == "VUID-" or text[m.end() : m.end() + 1] == "-"
 
 
 def verdict(answer: str) -> str:

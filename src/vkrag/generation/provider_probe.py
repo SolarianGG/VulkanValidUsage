@@ -4,6 +4,7 @@ real pilot prompts (rrf_rerank contexts); errors, latency and cost go to reports
 
 Run: uv run python -m vkrag.generation.provider_probe [n_prompts]
 """
+
 from __future__ import annotations
 
 import json
@@ -25,8 +26,17 @@ def main(n: int = 6) -> None:
     out = {"date": time.strftime("%Y-%m-%dT%H:%M:%S"), "model": rc["model"], "prompts": len(js), "providers": []}
     for e in eps:
         slug = e["tag"]
-        row = {"provider": e["provider_name"], "slug": slug, "quantization": e.get("quantization"),
-               "pricing": e.get("pricing"), "ok": 0, "errors": [], "latency_s": [], "cost_usd": 0.0, "answers": []}
+        row = {
+            "provider": e["provider_name"],
+            "slug": slug,
+            "quantization": e.get("quantization"),
+            "pricing": e.get("pricing"),
+            "ok": 0,
+            "errors": [],
+            "latency_s": [],
+            "cost_usd": 0.0,
+            "answers": [],
+        }
         for j in js:
             try:
                 r = o.chat(rc, j["messages"], provider_order=[slug])
@@ -34,8 +44,15 @@ def main(n: int = 6) -> None:
                 row["ok"] += ok
                 row["latency_s"].append(r.latency_s)
                 row["cost_usd"] += r.cost_usd or 0
-                row["answers"].append({"qid": j["qid"], "provider": r.provider, "model": r.model,
-                                       "completion_tokens": r.usage.get("completion_tokens"), "text": (r.content or "")[:200]})
+                row["answers"].append(
+                    {
+                        "qid": j["qid"],
+                        "provider": r.provider,
+                        "model": r.model,
+                        "completion_tokens": r.usage.get("completion_tokens"),
+                        "text": (r.content or "")[:200],
+                    }
+                )
             except Exception as ex:  # noqa: BLE001
                 row["errors"].append(str(ex)[:200])
         row["latency_s_median"] = sorted(row["latency_s"])[len(row["latency_s"]) // 2] if row["latency_s"] else None

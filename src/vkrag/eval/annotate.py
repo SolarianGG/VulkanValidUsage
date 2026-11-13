@@ -8,6 +8,7 @@ The key (`*.key.jsonl`: item -> qid, answerer, config, answer key, split) is not
 `import` validates the label columns, merges with the key and reports kappa against the judge:
 linear-weighted for correctness, plain for abstained / hallucination, with cluster-free bootstrap 95% CI.
 """
+
 from __future__ import annotations
 
 import csv
@@ -19,8 +20,7 @@ from pathlib import Path
 
 from vkrag.config import ROOT, load_config
 
-LABELS = {"correctness": ("correct", "partial", "incorrect"), "abstained": ("true", "false"),
-          "hallucination": ("true", "false")}
+LABELS = {"correctness": ("correct", "partial", "incorrect"), "abstained": ("true", "false"), "hallucination": ("true", "false")}
 N_ITEMS, N_TUNE = 80, 40
 
 
@@ -48,9 +48,11 @@ def select(answers: list[dict], qs: dict, seed: int, n: int = N_ITEMS) -> list[d
         for cell in order:
             if len(out) == n or not cells[cell]:
                 continue
+
             def k(a):
                 q = qs[a["qid"]]
                 return seen[(q["stratum"], q.get("answer_type"))], seen[a["qid"]]
+
             best = min(cells[cell], key=k)
             cells[cell].remove(best)
             q = qs[best["qid"]]
@@ -84,16 +86,36 @@ def export(sample: str, run_id: str, configs: tuple[str, ...]) -> dict:
         q = qs[a["qid"]]
         iid = "J" + hashlib.sha256(f"{seed}:{a['key']}".encode()).hexdigest()[:8]
         if q["stratum"] == "unanswerable":
-            rules = "UNANSWERABLE (false premise). " + q.get("rationale", "") + "\n" + "\n".join(
-                e["text"] for e in q.get("spec_evidence") or [])
+            rules = (
+                "UNANSWERABLE (false premise). "
+                + q.get("rationale", "")
+                + "\n"
+                + "\n".join(e["text"] for e in q.get("spec_evidence") or [])
+            )
         else:
             rules = "\n\n".join([vtext[q["vuid"]]] + [vtext[x] for x in q.get("acceptable_vuids") or [] if x in vtext])
         qtext = q["question"] + (f"\n[expected verdict: {q['expected_verdict']}]" if q.get("expected_verdict") else "")
-        rows.append({"item_id": iid, "split": split[a["key"]], "question_type": q.get("answer_type") or "unanswerable",
-                     "question": qtext, "reference_answer": q["reference_answer"], "rules": rules,
-                     "answer": mask(a["answer"])[0]})
-        keys.append({"item_id": iid, "qid": a["qid"], "answerer": a["answerer"], "config": a["config"],
-                     "answer_key": a["key"], "split": split[a["key"]]})
+        rows.append(
+            {
+                "item_id": iid,
+                "split": split[a["key"]],
+                "question_type": q.get("answer_type") or "unanswerable",
+                "question": qtext,
+                "reference_answer": q["reference_answer"],
+                "rules": rules,
+                "answer": mask(a["answer"])[0],
+            }
+        )
+        keys.append(
+            {
+                "item_id": iid,
+                "qid": a["qid"],
+                "answerer": a["answerer"],
+                "config": a["config"],
+                "answer_key": a["key"],
+                "split": split[a["key"]],
+            }
+        )
     rng.shuffle(rows)
     header = list(rows[0]) + [f"{k}[{'|'.join(v)}]" for k, v in LABELS.items()] + ["comment"]
     for part in ("tune", "heldout"):
@@ -107,9 +129,12 @@ def export(sample: str, run_id: str, configs: tuple[str, ...]) -> dict:
         for k in keys:
             f.write(json.dumps(k) + "\n")
     c = Counter((k["answerer"], k["split"]) for k in keys)
-    return {"items": len(rows), "by_answerer_split": {f"{a}/{s}": n for (a, s), n in sorted(c.items())},
-            "configs": dict(Counter(k["config"] for k in keys)),
-            "files": [str((d / f"judge_calibration_{p}.csv").relative_to(ROOT)) for p in ("tune", "heldout")]}
+    return {
+        "items": len(rows),
+        "by_answerer_split": {f"{a}/{s}": n for (a, s), n in sorted(c.items())},
+        "configs": dict(Counter(k["config"] for k in keys)),
+        "files": [str((d / f"judge_calibration_{p}.csv").relative_to(ROOT)) for p in ("tune", "heldout")],
+    }
 
 
 def import_labels(run_id: str, part: str) -> dict:
@@ -159,13 +184,19 @@ def agreement(run_id: str, labels: list[dict], n_boot: int | None = None) -> dic
     cfg = load_config()
     n_boot = n_boot or cfg["eval"]["bootstrap"]
     ph = prompt("correctness")[1]
-    judge = {r["answer_key"]: r["verdict"] for r in _jsonl(ROOT / "runs" / run_id / "judgments.jsonl")
-             if r["kind"] == "correctness" and r["prompt_hash"] == ph and not r["failed"] and r["judge_repeat_idx"] == 0}
+    judge = {
+        r["answer_key"]: r["verdict"]
+        for r in _jsonl(ROOT / "runs" / run_id / "judgments.jsonl")
+        if r["kind"] == "correctness" and r["prompt_hash"] == ph and not r["failed"] and r["judge_repeat_idx"] == 0
+    }
     pairs = [(l["human"], judge[l["answer_key"]]) for l in labels if l["answer_key"] in judge]
     rng = random.Random(cfg["seed"])
     out = {"paired": len(pairs)}
-    specs = {"correctness": (list(LABELS["correctness"]), True), "abstained": ([True, False], False),
-             "hallucination": ([True, False], False)}
+    specs = {
+        "correctness": (list(LABELS["correctness"]), True),
+        "abstained": ([True, False], False),
+        "hallucination": ([True, False], False),
+    }
     for field, (cats, weighted) in specs.items():
         a = [h[field] for h, _ in pairs]
         b = [j[field] for _, j in pairs]
@@ -178,6 +209,9 @@ def agreement(run_id: str, labels: list[dict], n_boot: int | None = None) -> dic
                 boots.append(v)
         boots.sort()
         ci = (round(boots[int(0.025 * len(boots))], 3), round(boots[int(0.975 * len(boots)) - 1], 3)) if boots else None
-        out[field] = {"kappa": None if kap is None else round(kap, 3), "ci95": ci,
-                      "agreement": round(sum(x == y for x, y in zip(a, b)) / len(a), 3) if a else None}
+        out[field] = {
+            "kappa": None if kap is None else round(kap, 3),
+            "ci95": ci,
+            "agreement": round(sum(x == y for x, y in zip(a, b)) / len(a), 3) if a else None,
+        }
     return out

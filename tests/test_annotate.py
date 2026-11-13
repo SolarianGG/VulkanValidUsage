@@ -15,9 +15,14 @@ def test_kappa_values():
 
 def test_select_round_robin_cells():
     qs = {f"q{i}": {"stratum": ["recent", "core_1_0"][i % 2], "answer_type": "rule"} for i in range(10)}
-    answers = [{"key": f"{a}{c}{i}", "qid": f"q{i}", "answerer": a, "config": c}
-               for a in ("qwen", "remote") for c in ("closed", "rrf") for i in range(10)]
+    answers = [
+        {"key": f"{a}{c}{i}", "qid": f"q{i}", "answerer": a, "config": c}
+        for a in ("qwen", "remote")
+        for c in ("closed", "rrf")
+        for i in range(10)
+    ]
     s = select(answers, qs, seed=1, n=8)
-    assert Counter((x["answerer"], x["config"]) for x in s) == {k: 2 for k in
-                                                               [("qwen", "closed"), ("qwen", "rrf"), ("remote", "closed"), ("remote", "rrf")]}
+    assert Counter((x["answerer"], x["config"]) for x in s) == {
+        k: 2 for k in [("qwen", "closed"), ("qwen", "rrf"), ("remote", "closed"), ("remote", "rrf")]
+    }
     assert Counter(qs[x["qid"]]["stratum"] for x in s) == {"recent": 4, "core_1_0": 4}

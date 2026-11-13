@@ -36,16 +36,25 @@ def test_split_vuid(vuid, expected):
 
 def _rec(vuid, entity, text, explicit=True, kind="api", **kw):
     _, param, suffix = split_vuid(vuid)
-    r = {"vuid": vuid, "entity": entity, "vuid_entity": entity, "parameter": param, "explicit": explicit,
-         "suffix_num": int(suffix) if explicit else None, "text": text, "entity_kind": kind,
-         "condition": None, "entity_core_version": None, "entity_extensions": []}
+    r = {
+        "vuid": vuid,
+        "entity": entity,
+        "vuid_entity": entity,
+        "parameter": param,
+        "explicit": explicit,
+        "suffix_num": int(suffix) if explicit else None,
+        "text": text,
+        "entity_kind": kind,
+        "condition": None,
+        "entity_core_version": None,
+        "entity_extensions": [],
+    }
     r.update(kw)
     return r
 
 
 def test_availability_label_compact():
-    r = _rec("VUID-vkCmdX-None-1", "vkCmdX", "t",
-             condition="VK_AMD_a+VK_KHR_b+VK_VERSION_1_2,VK_KHR_b+VK_KHR_c,VK_EXT_d+VK_KHR_b")
+    r = _rec("VUID-vkCmdX-None-1", "vkCmdX", "t", condition="VK_AMD_a+VK_KHR_b+VK_VERSION_1_2,VK_KHR_b+VK_KHR_c,VK_EXT_d+VK_KHR_b")
     assert availability_label(r) == "VK_AMD_a, VK_EXT_d, VK_KHR_b (+2 more)"
     assert availability_label(_rec("VUID-vkCmdX-None-1", "vkCmdX", "t", condition="core", entity_core_version="1.3")) == "Vulkan 1.3"
     assert availability_label(_rec("VUID-vkCmdX-None-1", "vkCmdX", "t", condition="VK_KHR_x,VK_VERSION_1_3")) == "VK_KHR_x, Vulkan 1.3"
@@ -61,9 +70,9 @@ def test_vu_texts_header_and_vuid():
 def test_equivalence_rules():
     recs = [
         _rec("VUID-vkCmdDraw-None-08606", "vkCmdDraw", "same template"),
-        _rec("VUID-vkCmdDispatch-None-08606", "vkCmdDispatch", "same template"),       # same suffix
+        _rec("VUID-vkCmdDispatch-None-08606", "vkCmdDispatch", "same template"),  # same suffix
         _rec("VUID-vkCmdFoo-x-00001", "vkCmdFoo", "Identical text"),
-        _rec("VUID-vkCmdBar-x-00002", "vkCmdBar", "identical   text"),                 # same raw text
+        _rec("VUID-vkCmdBar-x-00002", "vkCmdBar", "identical   text"),  # same raw text
         _rec("VUID-A-A-00003", "A", "The variable decorated with A must be Input", kind="builtin"),
         _rec("VUID-B-B-00004", "B", "The variable decorated with B must be Input", kind="builtin"),
         _rec("VUID-vkCmdFoo-x-parameter", "vkCmdFoo", "Identical text", explicit=False),  # implicit: never merged

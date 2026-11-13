@@ -6,9 +6,10 @@
 
 Only `tokenizer.json` is downloaded; the resolved commit of each repo is returned for the manifest.
 """
+
 from __future__ import annotations
 
-from functools import lru_cache
+from functools import cache
 
 from huggingface_hub import HfApi, hf_hub_download
 from tokenizers import Tokenizer
@@ -20,12 +21,12 @@ TOKENIZER_REPOS = {
 }
 
 
-@lru_cache(maxsize=None)
+@cache
 def _resolve(repo: str) -> str:
     return HfApi().model_info(repo).sha
 
 
-@lru_cache(maxsize=None)
+@cache
 def get(name: str) -> Tokenizer:
     repo = TOKENIZER_REPOS[name]
     path = hf_hub_download(repo, "tokenizer.json", revision=_resolve(repo))

@@ -2,8 +2,8 @@ import random
 
 import pytest
 
-from vkrag.questions.prepare import balanced_split, qid_of, quotas
 from vkrag.questions import validate as V
+from vkrag.questions.prepare import balanced_split, qid_of, quotas
 
 
 def test_quotas_sum_and_mix():
@@ -19,7 +19,7 @@ def test_balanced_split_alternates_odd_leftovers():
     assert len(out) == 15
     total = sum(v == "yes" for v in out.values())
     assert total in (7, 8)
-    for g, vs in groups.items():
+    for vs in groups.values():
         assert sum(out[v] == "yes" for v in vs) in (1, 2)
 
 
@@ -38,31 +38,50 @@ class FakeLex:
         return n in self.vk or n in self.spirv
 
 
-@pytest.mark.parametrize("q,expected", [
-    ("When I copy one image into another, what layout must the destination be in?", []),
-    ("Can the image size exceed the limit when flags are zero?", []),
-    ("Is vkCmdDraw allowed here?", ["vkCmdDraw"]),
-    ("What must srcImageLayout be?", ["srcImageLayout"]),
-    ("Can VK_IMAGE_LAYOUT_GENERAL be used?", ["VK_IMAGE_LAYOUT_GENERAL"]),
-    ("Must a variable in the Uniform storage class be a block?", ["Uniform"]),
-    ("Input variables of a fragment shader: may they be arrays?", []),  # sentence-initial plain word
-    ("Can the shader write gl_Position twice?", ["gl_Position"]),
-    ("Is a 64 KiB buffer of 65536 bytes enough?", []),
-])
+@pytest.mark.parametrize(
+    "q,expected",
+    [
+        ("When I copy one image into another, what layout must the destination be in?", []),
+        ("Can the image size exceed the limit when flags are zero?", []),
+        ("Is vkCmdDraw allowed here?", ["vkCmdDraw"]),
+        ("What must srcImageLayout be?", ["srcImageLayout"]),
+        ("Can VK_IMAGE_LAYOUT_GENERAL be used?", ["VK_IMAGE_LAYOUT_GENERAL"]),
+        ("Must a variable in the Uniform storage class be a block?", ["Uniform"]),
+        ("Input variables of a fragment shader: may they be arrays?", []),  # sentence-initial plain word
+        ("Can the shader write gl_Position twice?", ["gl_Position"]),
+        ("Is a 64 KiB buffer of 65536 bytes enough?", []),
+    ],
+)
 def test_identifiers_in(q, expected):
     assert V.identifiers_in(q, FakeLex()) == expected
 
 
-ITEM = {"vuid": "VUID-X-a-1", "entity": "X", "entity_kind": "api", "stratum": "core_1_0", "answer_type": "yes_no",
-        "expected_verdict": "no", "related_entities": ["Y"],
-        "vu_text": "If the image was created with a depth format then the layout must be a depth layout"}
+ITEM = {
+    "vuid": "VUID-X-a-1",
+    "entity": "X",
+    "entity_kind": "api",
+    "stratum": "core_1_0",
+    "answer_type": "yes_no",
+    "expected_verdict": "no",
+    "related_entities": ["Y"],
+    "vu_text": "If the image was created with a depth format then the layout must be a depth layout",
+}
 CTX = {"X": {"VUID-X-a-1", "VUID-X-a-2"}, "Y": {"VUID-Y-b-1"}}
 
 
 def rec(**kw):
-    base = {"qid": "q", "vuid": "VUID-X-a-1", "style": "identifier", "answer_type": "yes_no", "expected_verdict": "no",
-            "question": "Is any layout fine for a depth image?", "reference_answer": "No. It must be a depth layout.",
-            "checked_entities": ["X"], "checked_vuids": [], "also_relevant_vuids": []}
+    base = {
+        "qid": "q",
+        "vuid": "VUID-X-a-1",
+        "style": "identifier",
+        "answer_type": "yes_no",
+        "expected_verdict": "no",
+        "question": "Is any layout fine for a depth image?",
+        "reference_answer": "No. It must be a depth layout.",
+        "checked_entities": ["X"],
+        "checked_vuids": [],
+        "also_relevant_vuids": [],
+    }
     base.update(kw)
     return base
 
@@ -75,8 +94,7 @@ def test_vu_number_only_when_it_is_a_suffix_of_the_entity():
     ok = V.check_answerable(rec(question="Is any layout fine for a depth image of 65536 texels?"), ITEM, CTX, FakeLex(), 5)
     assert not any("VU number" in r for r in ok)
     ctx = {**CTX, "X": CTX["X"] | {"VUID-X-a-04121"}}
-    bad = V.check_answerable(rec(question="Is rule 04121 about depth images?", checked_vuids=["VUID-X-a-04121"]),
-                             ITEM, ctx, FakeLex(), 5)
+    bad = V.check_answerable(rec(question="Is rule 04121 about depth images?", checked_vuids=["VUID-X-a-04121"]), ITEM, ctx, FakeLex(), 5)
     assert any("VU number" in r for r in bad)
 
 
@@ -87,16 +105,18 @@ def test_check_answerable_ngram_leak():
 
 
 def test_check_answerable_coverage_and_verdict():
-    rs = V.check_answerable(rec(checked_entities=[], checked_vuids=["VUID-X-a-1"], expected_verdict="yes",
-                                reference_answer="Yes."), ITEM, CTX, FakeLex(), 5)
+    rs = V.check_answerable(
+        rec(checked_entities=[], checked_vuids=["VUID-X-a-1"], expected_verdict="yes", reference_answer="Yes."), ITEM, CTX, FakeLex(), 5
+    )
     assert any("miss 1 VUs" in r for r in rs)
     assert any("without verdict_changed" in r for r in rs)
 
 
 def test_check_scenario_needs_related():
     item = {**ITEM, "answer_type": "scenario"}
-    rs = V.check_answerable(rec(answer_type="scenario", expected_verdict=None, reference_answer="The layout is wrong."),
-                            item, CTX, FakeLex(), 5)
+    rs = V.check_answerable(
+        rec(answer_type="scenario", expected_verdict=None, reference_answer="The layout is wrong."), item, CTX, FakeLex(), 5
+    )
     assert any("related entities not checked" in r for r in rs)
 
 
@@ -106,6 +126,11 @@ def test_descriptive_infeasible_allows_null():
 
 
 def test_unanswerable_invented_exists():
-    r = {"subtype": "nonexistent", "question": "How do I call vkCmdDraw?", "reference_answer": "x", "rationale": "y",
-         "invented_identifiers": ["vkCmdDraw"]}
+    r = {
+        "subtype": "nonexistent",
+        "question": "How do I call vkCmdDraw?",
+        "reference_answer": "x",
+        "rationale": "y",
+        "invented_identifiers": ["vkCmdDraw"],
+    }
     assert any("exists" in x for x in V.check_unanswerable(r, FakeLex()))

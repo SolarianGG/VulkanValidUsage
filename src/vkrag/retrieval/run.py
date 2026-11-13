@@ -4,6 +4,7 @@ Only the embedder and the reranker use the GPU here; Ollama must be unloaded. Co
 need query transforms (rewrite / HyDE, phase A) are added once runs/<run_id>/query_transforms.jsonl exists.
 Records are cached by (qid, config, config_hash, question_hash); a rerun only fills what is missing.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -13,20 +14,28 @@ from pathlib import Path
 
 import numpy as np
 
-from vkrag.config import DATA, ROOT, load_config
+from vkrag.config import ROOT, load_config
 from vkrag.index.build import IDX, ollama_loaded
-from vkrag.retrieval.core import (Corpus, Reranker, Searchers, assemble_context, class_key, oracle_context,
-                                  oracle_distract_context, rrf)
+from vkrag.retrieval.core import Corpus, Reranker, Searchers, assemble_context, class_key, oracle_context, oracle_distract_context, rrf
 
-BASE_CONFIGS = ("bm25", "dense", "sparse", "rrf", "rrf_sparse", "bm25_rerank", "dense_rerank", "rrf_rerank",
-                "oracle", "oracle_distract")
+BASE_CONFIGS = ("bm25", "dense", "sparse", "rrf", "rrf_sparse", "bm25_rerank", "dense_rerank", "rrf_rerank", "oracle", "oracle_distract")
 TRANSFORM_CONFIGS = ("rewrite_rrf", "rewrite_rrf_rerank", "hyde_rrf", "hyde_rrf_rerank", "rewrite_append_rrf_rerank")
 
 
 def config_hash(name: str, cfg: dict) -> str:
     r = cfg["retrieval"]
-    parts = {"name": name, "depth": r["depth"], "k_rrf": r["k_rrf"], "k_gen": r["k_gen"], "collapse": r.get("collapse_classes", False), "rrf_key": "class" if r.get("collapse_classes") else "chunk", "raw_depth": r.get("raw_depth"), "bm25": cfg["bm25"],
-             "embedder": cfg["embedder"], "seed": cfg["seed"]}
+    parts = {
+        "name": name,
+        "depth": r["depth"],
+        "k_rrf": r["k_rrf"],
+        "k_gen": r["k_gen"],
+        "collapse": r.get("collapse_classes", False),
+        "rrf_key": "class" if r.get("collapse_classes") else "chunk",
+        "raw_depth": r.get("raw_depth"),
+        "bm25": cfg["bm25"],
+        "embedder": cfg["embedder"],
+        "seed": cfg["seed"],
+    }
     if "rerank" in name:
         parts["reranker"] = cfg["reranker"]
     if name.startswith(("rewrite", "hyde")):
@@ -142,9 +151,15 @@ def run(sample: str, run_id: str, configs: tuple[str, ...] = BASE_CONFIGS) -> di
                 else:
                     ranked = get(c)
                     ctx = assemble_context(ranked, corpus, k_gen)
-                rec = {"qid": q["qid"], "config": c, "config_hash": hashes[c], "question_hash": q["question_hash"],
-                       "ranked": [[d, round(sc, 6)] for d, sc in ranked] if ranked is not None else None,
-                       "context": ctx, **extra}
+                rec = {
+                    "qid": q["qid"],
+                    "config": c,
+                    "config_hash": hashes[c],
+                    "question_hash": q["question_hash"],
+                    "ranked": [[d, round(sc, 6)] for d, sc in ranked] if ranked is not None else None,
+                    "context": ctx,
+                    **extra,
+                }
                 f.write(json.dumps(rec) + "\n")
                 stats["written"] += 1
             f.flush()
@@ -161,8 +176,16 @@ def _manifest(rdir: Path, sample: str, cfg: dict, hashes: dict) -> None:
     man = json.load(open(p, encoding="utf-8")) if p.exists() else {}
     qman = json.load(open(out_path(sample).with_suffix(".manifest.json"), encoding="utf-8"))
     iman = json.load(open(IDX / "manifest.json", encoding="utf-8"))
-    man.update({"sample": sample, "questions_sha256": qman["sha256"], "corpus_hash": iman["corpus_hash"],
-                "index": {k: iman.get(k) for k in ("bm25", "dense_sparse")},
-                "retrieval": cfg["retrieval"], "reranker": cfg["reranker"], "embedder": cfg["embedder"]})
+    man.update(
+        {
+            "sample": sample,
+            "questions_sha256": qman["sha256"],
+            "corpus_hash": iman["corpus_hash"],
+            "index": {k: iman.get(k) for k in ("bm25", "dense_sparse")},
+            "retrieval": cfg["retrieval"],
+            "reranker": cfg["reranker"],
+            "embedder": cfg["embedder"],
+        }
+    )
     man.setdefault("config_hashes", {}).update(hashes)
     p.write_text(json.dumps(man, indent=1) + "\n", encoding="utf-8")

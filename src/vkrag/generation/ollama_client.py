@@ -1,5 +1,6 @@
 """Ollama chat client with the parameters PLAN §2 requires on every request:
 temperature=0, presence_penalty=0, think=false, explicit num_ctx and num_predict."""
+
 from __future__ import annotations
 
 import time
@@ -47,8 +48,14 @@ class Ollama:
         content = j["message"]["content"]
         if "<think>" in content or (j["message"].get("thinking") or "").strip():
             raise RuntimeError("thinking output present although think=false")
-        return OllamaResult(content=content, done_reason=j.get("done_reason"), prompt_eval_count=j.get("prompt_eval_count"),
-                            eval_count=j.get("eval_count"), latency_s=round(time.perf_counter() - t0, 3), model=j.get("model"))
+        return OllamaResult(
+            content=content,
+            done_reason=j.get("done_reason"),
+            prompt_eval_count=j.get("prompt_eval_count"),
+            eval_count=j.get("eval_count"),
+            latency_s=round(time.perf_counter() - t0, 3),
+            model=j.get("model"),
+        )
 
     def unload(self) -> None:
         self.http.post("/api/generate", json={"model": self.cfg["model"], "keep_alive": 0})

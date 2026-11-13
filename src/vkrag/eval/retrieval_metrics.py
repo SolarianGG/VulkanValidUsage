@@ -7,6 +7,7 @@ MRR@10    first chunk with relevance >= 2
 nDCG@10   graded relevance from gold_chunk_ids (3 / 2 / 1)
 For oracle configurations the context list is the ranking.
 """
+
 from __future__ import annotations
 
 import json
@@ -34,7 +35,7 @@ def metrics_for(ranking: list[str], q: dict, parent_parts: set[str], ks: list[in
     out["mrr@10"] = rr
     dcg = sum((2 ** gold.get(d, 0) - 1) / math.log2(i + 1) for i, d in enumerate(ranking[:10], 1))
     ideal = sorted(ideal if ideal is not None else gold.values(), reverse=True)[:10]
-    idcg = sum((2 ** g - 1) / math.log2(i + 1) for i, g in enumerate(ideal, 1))
+    idcg = sum((2**g - 1) / math.log2(i + 1) for i, g in enumerate(ideal, 1))
     out["ndcg@10"] = dcg / idcg if idcg else 0.0
     return out
 
@@ -85,17 +86,22 @@ def evaluate(sample: str, run_id: str) -> dict:
 
     summary = {}
     for c, items in per.items():
-        summary[c] = {"all": agg(items),
-                      "by_style": {s: agg([x for x in items if x["style"] == s]) for s in ("identifier", "descriptive")
-                                   if any(x["style"] == s for x in items)},
-                      "by_stratum": {s: agg([x for x in items if x["stratum"] == s]) for s in sorted({x["stratum"] for x in items})}}
+        summary[c] = {
+            "all": agg(items),
+            "by_style": {
+                s: agg([x for x in items if x["style"] == s]) for s in ("identifier", "descriptive") if any(x["style"] == s for x in items)
+            },
+            "by_stratum": {s: agg([x for x in items if x["stratum"] == s]) for s in sorted({x["stratum"] for x in items})},
+        }
     out_dir = ROOT / "runs" / run_id
     (out_dir / "retrieval_metrics.json").write_text(json.dumps(summary, indent=1) + "\n", encoding="utf-8")
     (out_dir / "retrieval_metrics_per_question.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows), encoding="utf-8")
     return summary
 
 
-def table(summary: dict, cols=("strict@1", "strict@5", "class@1", "class@5", "class@10", "class@20", "soft@5", "mrr@10", "ndcg@10", "ctx_class")) -> str:
+def table(
+    summary: dict, cols=("strict@1", "strict@5", "class@1", "class@5", "class@10", "class@20", "soft@5", "mrr@10", "ndcg@10", "ctx_class")
+) -> str:
     lines = ["| config | n | " + " | ".join(cols) + " |", "|---|---|" + "---|" * len(cols)]
     for c, s in summary.items():
         a = s["all"]

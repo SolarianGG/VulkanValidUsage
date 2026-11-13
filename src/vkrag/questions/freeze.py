@@ -9,6 +9,7 @@ Each answerable question gets graded gold chunks (PLAN §7.1):
 when the descriptive question is infeasible). Unanswerable questions have no gold and are always
 in generation. `gold_final` stays false until Stage 3b adds acceptable_vuids.
 """
+
 from __future__ import annotations
 
 import hashlib
@@ -72,11 +73,22 @@ def freeze(sample: str, force: bool = False) -> dict:
     out = []
     for r in recs:
         if r.get("stratum") == "unanswerable":
-            out.append({"qid": r["qid"], "sample": sample, "stratum": "unanswerable", "subtype": r["subtype"],
-                        "style": r.get("style", "identifier"), "question": r["question"],
-                        "reference_answer": r["reference_answer"], "rationale": r["rationale"],
-                        "spec_evidence": r.get("spec_evidence") or [], "invented_identifiers": r.get("invented_identifiers") or [],
-                        "in_generation": True, "question_hash": question_hash(r["question"])})
+            out.append(
+                {
+                    "qid": r["qid"],
+                    "sample": sample,
+                    "stratum": "unanswerable",
+                    "subtype": r["subtype"],
+                    "style": r.get("style", "identifier"),
+                    "question": r["question"],
+                    "reference_answer": r["reference_answer"],
+                    "rationale": r["rationale"],
+                    "spec_evidence": r.get("spec_evidence") or [],
+                    "invented_identifiers": r.get("invented_identifiers") or [],
+                    "in_generation": True,
+                    "question_hash": question_hash(r["question"]),
+                }
+            )
             continue
         if not r.get("question"):
             continue  # descriptive_infeasible placeholder
@@ -84,15 +96,26 @@ def freeze(sample: str, force: bool = False) -> dict:
         a = asg[v]
         gen_style = "identifier" if v in infeasible else a["gen_style"]
         q = {
-            "qid": r["qid"], "sample": sample, "vuid": v, "entity": r["entity"], "entity_kind": r["entity_kind"],
-            "stratum": r["stratum"], "equiv_class_id": vus[v]["equiv_class_id"], "style": r["style"],
-            "answer_type": r["answer_type"], "assigned_answer_type": a["answer_type"],
+            "qid": r["qid"],
+            "sample": sample,
+            "vuid": v,
+            "entity": r["entity"],
+            "entity_kind": r["entity_kind"],
+            "stratum": r["stratum"],
+            "equiv_class_id": vus[v]["equiv_class_id"],
+            "style": r["style"],
+            "answer_type": r["answer_type"],
+            "assigned_answer_type": a["answer_type"],
             "expected_verdict": r.get("expected_verdict") if r["answer_type"] == "yes_no" else None,
-            "question": r["question"], "reference_answer": r["reference_answer"],
-            "descriptive_infeasible": v in infeasible, "paired_qid": a["qids"]["descriptive" if r["style"] == "identifier" else "identifier"],
-            "in_generation": r["style"] == gen_style, "batch": r["batch"],
+            "question": r["question"],
+            "reference_answer": r["reference_answer"],
+            "descriptive_infeasible": v in infeasible,
+            "paired_qid": a["qids"]["descriptive" if r["style"] == "identifier" else "identifier"],
+            "in_generation": r["style"] == gen_style,
+            "batch": r["batch"],
             "gold_chunk_ids": gold_chunks(v, vus[v], by_class, sections, anchor, chunk_section),
-            "acceptable_vuids": [], "gold_final": False,
+            "acceptable_vuids": [],
+            "gold_final": False,
             "question_hash": question_hash(r["question"]),
         }
         out.append(q)
@@ -101,12 +124,20 @@ def freeze(sample: str, force: bool = False) -> dict:
     path.write_text(text, encoding="utf-8")
     ans = [q for q in out if q["stratum"] != "unanswerable"]
     manifest = {
-        "sample": sample, "file": path.name, "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
-        "questions": len(out), "answerable": len(ans), "unanswerable": len(out) - len(ans),
-        "in_generation": sum(q["in_generation"] for q in out), "corpus_hash": corpus_hash,
-        "gold_final": False, "stage": "3a",
-        "gold_class_size": {"max": max(len(by_class[q["equiv_class_id"]]) for q in ans),
-                            "multi": sum(len(by_class[q["equiv_class_id"]]) > 1 for q in ans)},
+        "sample": sample,
+        "file": path.name,
+        "sha256": hashlib.sha256(text.encode("utf-8")).hexdigest(),
+        "questions": len(out),
+        "answerable": len(ans),
+        "unanswerable": len(out) - len(ans),
+        "in_generation": sum(q["in_generation"] for q in out),
+        "corpus_hash": corpus_hash,
+        "gold_final": False,
+        "stage": "3a",
+        "gold_class_size": {
+            "max": max(len(by_class[q["equiv_class_id"]]) for q in ans),
+            "multi": sum(len(by_class[q["equiv_class_id"]]) > 1 for q in ans),
+        },
     }
     path.with_suffix(".manifest.json").write_text(json.dumps(manifest, indent=1) + "\n", encoding="utf-8")
     return manifest

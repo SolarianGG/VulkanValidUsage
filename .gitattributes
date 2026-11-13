@@ -1,0 +1,17 @@
+# Source, configs and docs are stored with LF.
+*.py text eol=lf
+*.md text eol=lf
+*.toml text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.Modelfile text eol=lf
+.gitignore text eol=lf
+.gitattributes text eol=lf
+
+# Data, run artifacts and fixtures are hashed byte for byte: keep them exactly as committed.
+data/** -text
+runs/** -text
+tests/fixtures/** -text
+notebooks/*.ipynb -text
+uv.lock -text
+reports/*.json text eol=lf

@@ -5,6 +5,7 @@ Routing comes from the config role (`openrouter.answerer_remote` / `openrouter.j
 optional `quantizations`. Every response is checked against the expected model and provider;
 a mismatch is an error (PLAN §5 cache key, §6 risks).
 """
+
 from __future__ import annotations
 
 import os
@@ -57,8 +58,7 @@ def api_key() -> str:
 class OpenRouter:
     def __init__(self, timeout: float = 180.0, retries: int = 3, backoff_s: float = 5.0):
         self.retries, self.backoff_s = retries, backoff_s
-        self.http = httpx.Client(base_url=BASE, timeout=timeout,
-                                 headers={"Authorization": f"Bearer {api_key()}", "X-Title": "vkrag"})
+        self.http = httpx.Client(base_url=BASE, timeout=timeout, headers={"Authorization": f"Bearer {api_key()}", "X-Title": "vkrag"})
 
     def get(self, path: str, **params) -> dict:
         r = self.http.get(path, params=params or None)
@@ -83,9 +83,16 @@ class OpenRouter:
             time.sleep(1.5 * (i + 1))
         return None
 
-    def chat(self, role_cfg: dict, messages: list[dict], *, max_tokens: int | None = None,
-             response_format: dict | None = None, provider_order: list[str] | None = None,
-             extra: dict | None = None) -> Result:
+    def chat(
+        self,
+        role_cfg: dict,
+        messages: list[dict],
+        *,
+        max_tokens: int | None = None,
+        response_format: dict | None = None,
+        provider_order: list[str] | None = None,
+        extra: dict | None = None,
+    ) -> Result:
         prov = dict(role_cfg["provider"])
         if provider_order is not None:
             prov["order"] = provider_order

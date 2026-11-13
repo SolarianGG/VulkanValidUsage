@@ -1,6 +1,11 @@
 # Text-only variant of qwen3.5:9b: same weights (blob sha256-02d45dc1...), no CLIP projector (922 MB VRAM).
 # Sampling parameters are still passed explicitly in every request.
-FROM C:\Users\margaryta\.ollama\models\blobs\sha256-02d45dc1cf451ba2475ac33b301c2dd8f985abe4c182ce04a1f2f5bf0260278d
+#
+# Setup: `ollama pull qwen3.5:9b`, then replace <OLLAMA_MODELS> below with your Ollama model store
+# (`ollama show qwen3.5:9b --modelfile` prints the full blob path in its first FROM line;
+# default store: %USERPROFILE%\.ollama\models on Windows, ~/.ollama/models on Linux/macOS), and run
+# `ollama create qwen3.5-9b-text -f configs/ollama/qwen3.5-9b-text.Modelfile`.
+FROM <OLLAMA_MODELS>/blobs/sha256-02d45dc1cf451ba2475ac33b301c2dd8f985abe4c182ce04a1f2f5bf0260278d
 TEMPLATE {{ .Prompt }}
 RENDERER qwen3.5
 PARSER qwen3.5
